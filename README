@@ -1,0 +1,12 @@
+
+Aronnax
+
+A JavaScript game engine that isn't necessarily more special then the rest.
+
+Includes object pooling.
+
+Requirements:
+- Phantom.js
+- grunt.js
+
+To build:
