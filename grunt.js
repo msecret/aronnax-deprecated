@@ -14,8 +14,9 @@ module.exports = function(grunt) {
     lint: {
       files: ['grunt.js', 'src/**/*.js', 'test/**/*.js']
     },
-    qunit: {
-      files: ['test/**/*.html']
+    jasmine : {
+      src : 'src/**/*.js',
+      specs : 'test/**/*.js'
     },
     concat: {
       dist: {
@@ -55,14 +56,19 @@ module.exports = function(grunt) {
         multistr: true
       },
       globals: {
-        browser: true,
-        dojo: true
+        browser: false,
+        dojo: false,
+        jasemine: false,
       }
     },
     uglify: {}
   });
 
+  grunt.loadNpmTasks('grunt-jasmine-runner');
+
+  grunt.registerTask('test', 'jasmine');
+
   // Default task.
-  grunt.registerTask('default', 'lint qunit concat min');
+  grunt.registerTask('default', 'lint test concat min');
 
 };
