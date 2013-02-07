@@ -16,12 +16,11 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "grunt": "*",
+    "grunt": "0.3.17",
     "phantomjs": "1.8.1",
-    "grunt-contrib-jasmine": "~0.3.1rc7",
     "grunt-jasmine-runner": "~0.6.0"
   },
   "bundledDependencies": [
-    "grunt-contrib-jasmine"
+    "grunt-jasmine-runner"
   ]
 }
