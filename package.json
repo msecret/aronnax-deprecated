@@ -1,0 +1,27 @@
+{
+    "name": "aronnax",
+    "version": "0.0.1",
+    "author": "Marco Segreto <msegreto@miceover.com>",
+    "description": "A JS game engine",
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "http://opensource.org/licenses/MIT"
+        }
+    ],
+    "homepage": "https://github.com/msecret/aronnax",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/msecret/aronnax.git"
+    },
+    "dependencies": {
+
+    },
+    "devDependencies": {
+        "grunt": "*",
+        "phantomjs": "1.8.1"
+    },
+    "bundledDependencies": [
+
+    ]
+}
