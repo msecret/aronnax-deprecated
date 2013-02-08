@@ -79,10 +79,11 @@ module.exports = function(grunt) {
         multistr: true,
         // environments
         browser: true,
-        devel: true,
-        dojo: true
+        devel: true
       },
       globals: {
+        aronnax: false,
+        goog: false,
         jasemine: false,
         describe : false,
         beforeEach : false,
@@ -90,17 +91,22 @@ module.exports = function(grunt) {
         it : false,
         spyOn : false
       }
+    },
+    synchtml: {
+      files: 'index.html'
     }
   });
 
   grunt.loadNpmTasks('grunt-jasmine-runner');
   grunt.loadNpmTasks('grunt-closure-tools');
+  grunt.loadTasks('build/grunt-tasks/synchtml');
 
   grunt.registerTask('test', 'jasmine');
   grunt.registerTask('compile', 'closureCompiler:compile');
   grunt.registerTask('compile-debug', 'closureCompiler:compile_debug');
+  grunt.registerTask('sync-html', 'synchtml');
 
   // Default task.
-  grunt.registerTask('default', 'lint test concat compile');
+  grunt.registerTask('default', 'lint test concat compile sync-html');
 
 };
