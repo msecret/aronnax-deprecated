@@ -27,24 +27,24 @@ module.exports = function(grunt) {
         dest: 'dist/<%= pkg.name %>.js'
       }
     },
-    'closure-compiler': {
+    closureCompiler: {
       compile: {
-        closurePath: 'build/closure-compiler',
+        closureCompiler: 'build/closure-compiler/compiler.jar',
         js: '<config:concat.dist.dest>',
-        jsOutputFile: 'dist/aronnax.min.js',
-        maxBuffer: 500,
+        output_file: 'dist/aronnax.min.js',
+        checkModified: true,
         options: {
           compilation_level: 'ADVANCED_OPTIMIZATIONS'
         }
       },
       compile_debug: {
-        closurePath: 'build/closure-compiler',
+        closureCompiler: 'build/closure-compiler/compiler.jar',
         js: '<config:concat.dist.dest>',
-        jsOutputFile: 'dist/aronnax.debug.min.js',
-        maxBuffer: 500,
+        output_file: 'dist/aronnax.min.js',
+        checkModified: false,
         options: {
           compilation_level: 'ADVANCED_OPTIMIZATIONS',
-          debug: true,
+          define: ["'goog.DEBUG=false'"],
           formatting: 'PRETTY_PRINT',
           summary_detail_level: 3
         }
@@ -90,16 +90,15 @@ module.exports = function(grunt) {
         it : false,
         spyOn : false
       }
-    },
-    uglify: {}
+    }
   });
 
   grunt.loadNpmTasks('grunt-jasmine-runner');
-  grunt.loadNpmTasks('grunt-closure-compiler');
+  grunt.loadNpmTasks('grunt-closure-tools');
 
   grunt.registerTask('test', 'jasmine');
-  grunt.registerTask('compile', 'closure-compiler:compile');
-  grunt.registerTask('compile-debug', 'closure-compiler:compile_debug');
+  grunt.registerTask('compile', 'closureCompiler:compile');
+  grunt.registerTask('compile-debug', 'closureCompiler:compile_debug');
 
   // Default task.
   grunt.registerTask('default', 'lint test concat compile');
