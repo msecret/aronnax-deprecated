@@ -27,6 +27,15 @@ module.exports = function(grunt) {
         dest: 'dist/<%= pkg.name %>.js'
       }
     },
+    closureDepsWriter: {
+      deps: {
+        closureLibraryPath: 'lib/closure-library',
+        output_file: 'dist/deps.js',
+        options: {
+          root_with_prefix: '"src ../../../../src"'
+        }
+      }
+    },
     closureCompiler: {
       compile: {
         closureCompiler: 'build/closure-compiler/compiler.jar',
@@ -104,9 +113,11 @@ module.exports = function(grunt) {
   grunt.registerTask('test', 'jasmine');
   grunt.registerTask('compile', 'closureCompiler:compile');
   grunt.registerTask('compile-debug', 'closureCompiler:compile_debug');
+  grunt.registerTask('deps', 'closureDepsWriter:deps');
   grunt.registerTask('sync-html', 'synchtml');
 
+
   // Default task.
-  grunt.registerTask('default', 'lint test concat compile sync-html');
+  grunt.registerTask('default', 'lint test deps concat compile sync-html');
 
 };
