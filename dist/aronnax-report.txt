@@ -1,0 +1,12 @@
+Compilation generated on Sat Feb 09 2013 00:05:30 GMT-0800 (PST)
+Copyright (C) 2013 Marco Segreto 
+Compilation report: 
+
+dist/aronnax.js:9846: WARNING - Parse error. illegal use of unknown JSDoc tag "exports"; ignoring it
+  @exports aronnax/main
+  ^
+
+0 error(s), 1 warning(s)
+
+Compiled size:	[32m4.88[39m kb 	([32m4994[39m bytes)
+GZipped size:	[32m2.23[39m kb 	([32m2279[39m bytes) -54.37%
