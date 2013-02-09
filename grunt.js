@@ -85,8 +85,14 @@ module.exports = function(grunt) {
       }
     },
     watch: {
-      files: '<config:lint.files>',
-      tasks: 'lint'
+      lint: {
+        files: '<config:lint.files>',
+        tasks: 'lint'
+      },
+      html: {
+        files: '<config:synchtml.files>',
+        tasks: 'synchtml'
+      }
     },
     jsdoc : {
       dist : {
@@ -134,6 +140,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-jasmine-runner');
   grunt.loadNpmTasks('grunt-closure-tools');
   grunt.loadNpmTasks('grunt-jsdoc-plugin');
+  grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadTasks('build/grunt-tasks/synchtml');
 
   grunt.registerTask('test', 'jasmine');
