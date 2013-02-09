@@ -9841,6 +9841,10 @@ goog.dom.DomHelper.prototype.getAncestor = goog.dom.getAncestor;
 goog.provide('aronnax.main');
 goog.require('goog.dom');
 
+/**
+  Initialization for aronnax engine
+  @exports aronnax/main
+ */
 aronnax.main = function( appTitle, parent ){
   var header =  {'style':'background:#FF0000'};
   var content = "Application " + appTitle + " Starting";

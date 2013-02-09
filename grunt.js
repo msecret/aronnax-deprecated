@@ -18,7 +18,7 @@ module.exports = function(grunt) {
       src : [
         'lib/closure-library/closure/goog/base.js',
         'dist/deps.js',
-        'src/*.js',
+        'src/*.js'
       ],
       specs : 'test/**/*.js'
     },
@@ -88,6 +88,12 @@ module.exports = function(grunt) {
       files: '<config:lint.files>',
       tasks: 'lint'
     },
+    jsdoc : {
+      dist : {
+        src: ['src/*.js', 'test/*.js'],
+        dest: 'doc'
+      }
+    },
     jshint: {
       options: {
         bitwise: true,
@@ -127,6 +133,7 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-jasmine-runner');
   grunt.loadNpmTasks('grunt-closure-tools');
+  grunt.loadNpmTasks('grunt-jsdoc-plugin');
   grunt.loadTasks('build/grunt-tasks/synchtml');
 
   grunt.registerTask('test', 'jasmine');
@@ -135,9 +142,10 @@ module.exports = function(grunt) {
   grunt.registerTask('deps', 'closureDepsWriter:deps');
   grunt.registerTask('concat', 'closureBuilder:concat');
   grunt.registerTask('sync-html', 'synchtml');
+  grunt.registerTask('doc', 'jsdoc');
 
 
   // Default task.
-  grunt.registerTask('default', 'lint deps concat test compile sync-html');
+  grunt.registerTask('default', 'lint deps concat test compile sync-html doc');
 
 };
