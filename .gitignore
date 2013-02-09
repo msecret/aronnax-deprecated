@@ -3,3 +3,4 @@
 .komodotools/
 *.komodoproject
 _SpecRunner.html
+lib/closure-library/closure/bin/build

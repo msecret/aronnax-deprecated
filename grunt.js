@@ -15,7 +15,11 @@ module.exports = function(grunt) {
       files: ['grunt.js', 'src/**/*.js', 'test/**/*.js']
     },
     jasmine : {
-      src : 'dist/aronnax.js',
+      src : [
+        'lib/closure-library/closure/goog/base.js',
+        'dist/deps.js',
+        'src/*.js',
+      ],
       specs : 'test/**/*.js'
     },
     concat: {
