@@ -146,6 +146,8 @@ module.exports = function(grunt) {
 
 
   // Default task.
-  grunt.registerTask('default', 'lint deps concat test compile sync-html doc');
+  grunt.registerTask('default', 'lint deps concat test sync-html');
 
+  // Full task
+  grunt.registerTask('full', 'lint deps concat test compile sync-html doc');
 };
