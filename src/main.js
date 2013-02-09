@@ -12,3 +12,5 @@ aronnax.main = function( appTitle, parent ){
   var element = goog.dom.createDom( 'div', header, content );
   goog.dom.appendChild( parent, element );
 };
+
+goog.exportSymbol('aronnax.main', aronnax.main);

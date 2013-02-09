@@ -15,7 +15,7 @@ module.exports = function(grunt) {
       files: ['grunt.js', 'src/**/*.js', 'test/**/*.js']
     },
     jasmine : {
-      src : 'src/**/*.js',
+      src : 'dist/aronnax.js',
       specs : 'test/**/*.js'
     },
     concat: {
@@ -36,10 +36,25 @@ module.exports = function(grunt) {
         }
       }
     },
+    closureBuilder: {
+      concat: {
+        closureLibraryPath: 'lib/closure-library',
+        inputs: 'src/*.js',
+        namespaces: 'aronnax.main',
+        output_file: 'dist/aronnax.js',
+        output_mode: 'script',
+        compile: false,
+        root: [
+          'src',
+          'lib/closure-library/closure',
+          'lib/closure-library/third_party/closure'
+        ]
+      }
+    },
     closureCompiler: {
       compile: {
         closureCompiler: 'build/closure-compiler/compiler.jar',
-        js: '<config:concat.dist.dest>',
+        js: '<config:closureBuilder.concat.output_file>',
         output_file: 'dist/aronnax.min.js',
         checkModified: true,
         options: {
@@ -114,10 +129,11 @@ module.exports = function(grunt) {
   grunt.registerTask('compile', 'closureCompiler:compile');
   grunt.registerTask('compile-debug', 'closureCompiler:compile_debug');
   grunt.registerTask('deps', 'closureDepsWriter:deps');
+  grunt.registerTask('concat', 'closureBuilder:concat');
   grunt.registerTask('sync-html', 'synchtml');
 
 
   // Default task.
-  grunt.registerTask('default', 'lint test deps concat compile sync-html');
+  grunt.registerTask('default', 'lint deps concat test compile sync-html');
 
 };
