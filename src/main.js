@@ -11,10 +11,7 @@ goog.require('goog.dom');
   @exports aronnax/main
  */
 aronnax.main = function( appTitle, parent ){
-  var header =  {'style':'background:#CCC999'};
-  var content = "Application " + appTitle + " Starting";
-  var element = goog.dom.createDom( 'div', header, content );
-  goog.dom.appendChild( parent, element );
+  console.log('Aronnax initialized');
 };
 
 goog.exportSymbol('aronnax.main', aronnax.main);

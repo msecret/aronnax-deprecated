@@ -14,15 +14,23 @@
     "type": "git",
     "url": "https://github.com/msecret/aronnax.git"
   },
-  "dependencies": {},
+  "dependencies": {
+    "closure-library": "20121212-r2367"
+  },
   "devDependencies": {
     "grunt": "0.3.17",
     "phantomjs": "1.8.1",
     "grunt-jasmine-runner": "~0.6.0",
-    "grunt-closure-compiler": "0.0.13"
+    "grunt-closure-tools": "0.6.12",
+    "grunt-contrib-watch": "0.1.4",
+    "grunt-jsdoc-plugin": "0.1.4",
+    "benchmark": "~1.0.0"
   },
   "bundledDependencies": [
     "grunt-jasmine-runner",
-    "grunt-closure-compiler"
+    "grunt-closure-tools",
+    "grunt-contrib-watch",
+    "grunt-jsdoc-plugin",
+    "benchmark"
   ]
 }

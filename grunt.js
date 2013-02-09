@@ -20,7 +20,7 @@ module.exports = function(grunt) {
         'dist/deps.js',
         'src/*.js'
       ],
-      specs : 'test/**/*.js'
+      specs : 'test/*.js'
     },
     concat: {
       dist: {
@@ -95,8 +95,8 @@ module.exports = function(grunt) {
         tasks: 'synchtml'
       }
     },
-    jsdoc : {
-      dist : {
+    jsdoc: {
+      dist: {
         src: ['src/*.js', 'test/*.js'],
         dest: 'doc'
       }
@@ -130,11 +130,12 @@ module.exports = function(grunt) {
         beforeEach : false,
         expect : false,
         it : false,
-        spyOn : false
+        spyOn : false,
+        Benchmark: false
       }
     },
     synchtml: {
-      files: 'index.html'
+      files: ['index.html', '_benchmarkRunner.html']
     }
   });
 
