@@ -9,6 +9,7 @@
 
 goog.provide('aronnax.main');
 goog.require('goog.dom');
+goog.require('aronnax.LinkedListNode');
 
 /**
   Initialization for aronnax engine

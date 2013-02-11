@@ -128,6 +128,7 @@ module.exports = function(grunt) {
         jasemine: false,
         describe : false,
         beforeEach : false,
+        afterEach: false,
         expect : false,
         it : false,
         spyOn : false,
