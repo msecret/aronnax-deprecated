@@ -7,6 +7,8 @@
  * @file Holds the main class
  */
 
+/** @namespace aronnax */
+
 goog.provide('aronnax.main');
 goog.require('goog.dom');
 goog.require('aronnax.accessor');

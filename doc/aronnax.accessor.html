@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Namespace: UnorderedList</title>
+    <title>JSDoc: Mixin: accessor</title>
     
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Namespace: UnorderedList</h1>
+    <h1 class="page-title">Mixin: accessor</h1>
     
     
 
@@ -29,7 +29,7 @@
     <h2>
         <span class="ancestors"><a href="aronnax.html">aronnax</a>.</span>
     
-    UnorderedList
+    accessor
     </h2>
     
 </header>  
@@ -40,7 +40,7 @@
     
     
         
-            <div class="description">An unordered linked list</div>
+            <div class="description">A mixin class for adding accessor methods to a classes properties.</div>
         
         
         
@@ -66,7 +66,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="linked_list.js.html">linked_list.js</a>, line 45
+        <a href="accessor.js.html">accessor.js</a>, line 16
     </li></ul></dd>
     
     
@@ -100,7 +100,7 @@
         <dl>
             
 <dt>
-    <h4 class="name" id="find"><span class="type-signature"></span>find<span class="signature">()</span><span class="type-signature"> &rarr; LinkedListNode</span></h4>
+    <h4 class="name" id="attrs"><span class="type-signature">&lt;static> </span>attrs<span class="signature">()</span><span class="type-signature"> &rarr; {Object}</span></h4>
     
     
 </dt>
@@ -108,12 +108,15 @@
     
     
     <div class="description">
-        Returns the node being searched for
+        Returns all the attributes as an object
     </div>
     
 
     
     
+    
+        <h5>This:</h5>
+        <ul><li>{aronnax.accessor}</li></ul>
     
     
     
@@ -141,7 +144,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="linked_list.js.html">linked_list.js</a>, line 117
+        <a href="accessor.js.html">accessor.js</a>, line 70
     </li></ul></dd>
     
     
@@ -162,7 +165,7 @@
     
             
 <div class="param-desc">
-    The item's data
+    All the attributes of the object
 </div>
 
 
@@ -173,7 +176,7 @@
 	</dt>
 	<dd>
 		
-<span class="param-type">@link LinkedListNode</span>
+<span class="param-type">Object</span>
 
 
 	</dd>
@@ -187,7 +190,7 @@
         
             
 <dt>
-    <h4 class="name" id="isEmpty"><span class="type-signature"></span>isEmpty<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+    <h4 class="name" id="get"><span class="type-signature">&lt;static> </span>get<span class="signature">(attr)</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -195,186 +198,15 @@
     
     
     <div class="description">
-        Returns whether the list is empty or not
+        Gets the attribute in the object
     </div>
     
 
     
     
     
-    
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="linked_list.js.html">linked_list.js</a>, line 89
-    </li></ul></dd>
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    Whether the list was empty or not
-</div>
-
-
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type">boolean</span>
-
-
-	</dd>
-</dl>
-
-        
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="length"><span class="type-signature"></span>length<span class="signature">()</span><span class="type-signature"> &rarr; {int}</span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        Returns the size of the list
-    </div>
-    
-
-    
-    
-    
-    
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="linked_list.js.html">linked_list.js</a>, line 73
-    </li></ul></dd>
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    length
-</div>
-
-
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type">int</span>
-
-
-	</dd>
-</dl>
-
-        
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="prepend"><span class="type-signature"></span>prepend<span class="signature">(data)</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        Adds a new LinkedListNode to the end of the list
-    </div>
-    
-
-    
-    
+        <h5>This:</h5>
+        <ul><li>{aronnax.accessor}</li></ul>
     
     
     
@@ -403,10 +235,15 @@
 	
         <tr>
             
-                <td class="name"><code>data</code></td>
+                <td class="name"><code>attr</code></td>
             
             
             <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
             
             </td>
             
@@ -414,7 +251,7 @@
             
             
             
-            <td class="description last"></td>
+            <td class="description last">The attribute on the object you want to get</td>
         </tr>
 	
 	
@@ -445,7 +282,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="linked_list.js.html">linked_list.js</a>, line 63
+        <a href="accessor.js.html">accessor.js</a>, line 24
     </li></ul></dd>
     
     
@@ -462,6 +299,16 @@
     
     
     
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    The attribute of the object
+</div>
+
+
+
+        
     
     
 </dd>
@@ -469,7 +316,7 @@
         
             
 <dt>
-    <h4 class="name" id="search"><span class="type-signature"></span>search<span class="signature">()</span><span class="type-signature"> &rarr; {bool}</span></h4>
+    <h4 class="name" id="set"><span class="type-signature">&lt;static> </span>set<span class="signature">(key, <span class="optional">value</span>)</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -477,14 +324,109 @@
     
     
     <div class="description">
-        Returns if the node is in the list
+        Sets the attribute, either with a key and value as params or as one param
+with key values pairs.
     </div>
     
 
     
     
     
+        <h5>This:</h5>
+        <ul><li>{aronnax.accessor}</li></ul>
     
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Argument</th>
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>key</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+|
+
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last">Either a key to set or a full object of key
+value pairs you want to set</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>value</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+                    
+                
+                </td>
+            
+            
+            
+            
+            <td class="description last">The value you want to set on the key</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
     
     
     
@@ -510,7 +452,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="linked_list.js.html">linked_list.js</a>, line 97
+        <a href="accessor.js.html">accessor.js</a>, line 42
     </li></ul></dd>
     
     
@@ -527,28 +469,6 @@
     
     
     
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    If the node is in the list
-</div>
-
-
-
-<dl>
-	<dt>
-		Type
-	</dt>
-	<dd>
-		
-<span class="param-type">bool</span>
-
-
-	</dd>
-</dl>
-
-        
     
     
 </dd>

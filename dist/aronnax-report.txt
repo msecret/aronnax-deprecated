@@ -1,92 +1,48 @@
-Compilation generated on Mon Feb 11 2013 09:55:32 GMT-0800 (PST)
+Compilation generated on Mon Feb 11 2013 10:56:29 GMT-0800 (PST)
 Copyright (C) 2013 Marco Segreto 
 Compilation report: 
 
-dist/aronnax.js:1559: WARNING - dangerous use of the global this object
-      if (this.hasOwnProperty(prop)) {
-          ^
+dist/aronnax.js:1555: WARNING - Parse error. illegal use of unknown JSDoc tag "file"; ignoring it
+ * @file Holds the accessor mixin class
+   ^
 
-dist/aronnax.js:1561: WARNING - dangerous use of the global this object
-          return this[prop];
-                 ^
+dist/aronnax.js:1562: WARNING - Parse error. illegal use of unknown JSDoc tag "mixin"; ignoring it
+ * @mixin
+   ^
 
-dist/aronnax.js:1577: WARNING - dangerous use of the global this object
-        if (this.hasOwnProperty(attr)) {
-            ^
-
-dist/aronnax.js:1578: WARNING - dangerous use of the global this object
-          this[attr] = attrs[attr];
-          ^
-
-dist/aronnax.js:1583: WARNING - dangerous use of the global this object
-      if (this.hasOwnProperty(key)) {
-          ^
-
-dist/aronnax.js:1584: WARNING - dangerous use of the global this object
-        this[key] = value;
-        ^
-
-dist/aronnax.js:1593: WARNING - dangerous use of the global this object
-      if (this.hasOwnProperty(prop)) {
-          ^
-
-dist/aronnax.js:1594: WARNING - dangerous use of the global this object
-        returnObj[prop] = this[prop];
-                          ^
-
-dist/aronnax.js:1605: WARNING - Parse error. illegal use of unknown JSDoc tag "file"; ignoring it
+dist/aronnax.js:1633: WARNING - Parse error. illegal use of unknown JSDoc tag "file"; ignoring it
  * @file Holds the linked list and node classes
    ^
-
-dist/aronnax.js:1617: WARNING - Parse error. illegal use of unknown JSDoc tag "constuctor"; ignoring it
- * @constuctor
-   ^
-
-dist/aronnax.js:1625: WARNING - dangerous use of the global this object
-  this.data = data;
-  ^
-
-dist/aronnax.js:1625: WARNING - dangerous use of this in static method aronnax.LinkedListNode
-  this.data = data;
-  ^
-
-dist/aronnax.js:1630: WARNING - dangerous use of the global this object
-  this.next = null;
-  ^
-
-dist/aronnax.js:1630: WARNING - dangerous use of this in static method aronnax.LinkedListNode
-  this.next = null;
-  ^
-
-dist/aronnax.js:1636: WARNING - dangerous use of the global this object
-  this.prev = null;
-  ^
-
-dist/aronnax.js:1636: WARNING - dangerous use of this in static method aronnax.LinkedListNode
-  this.prev = null;
-  ^
 
 dist/aronnax.js:1645: WARNING - Parse error. illegal use of unknown JSDoc tag "constuctor"; ignoring it
  * @constuctor
    ^
 
-dist/aronnax.js:1652: WARNING - dangerous use of the global this object
+dist/aronnax.js:1646: WARNING - Parse error. illegal use of unknown JSDoc tag "mixes"; ignoring it
+ * @mixes {aronnax.accessor}
+   ^
+
+dist/aronnax.js:1675: WARNING - Parse error. illegal use of unknown JSDoc tag "constuctor"; ignoring it
+ * @constuctor
+   ^
+
+dist/aronnax.js:1682: WARNING - dangerous use of the global this object
   this._head = null;
   ^
 
-dist/aronnax.js:1652: WARNING - dangerous use of this in static method aronnax.UnorderedList
+dist/aronnax.js:1682: WARNING - dangerous use of this in static method aronnax.UnorderedList
   this._head = null;
   ^
 
-dist/aronnax.js:10022: WARNING - Parse error. illegal use of unknown JSDoc tag "file"; ignoring it
+dist/aronnax.js:10051: WARNING - Parse error. illegal use of unknown JSDoc tag "file"; ignoring it
  * @file Holds the main class
    ^
 
-dist/aronnax.js:10032: WARNING - Parse error. illegal use of unknown JSDoc tag "exports"; ignoring it
+dist/aronnax.js:10063: WARNING - Parse error. illegal use of unknown JSDoc tag "exports"; ignoring it
   @exports aronnax/main
   ^
 
-0 error(s), 21 warning(s)
+0 error(s), 10 warning(s)
 
 Compiled size:	[32m2.01[39m kb 	([32m2058[39m bytes)
 GZipped size:	[32m1.03[39m kb 	([32m1052[39m bytes) -48.88%

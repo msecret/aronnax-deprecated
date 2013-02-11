@@ -1551,9 +1551,24 @@ goog.scope = function(fn) {
  * vim: set et ts=2 sw=2 tw=80:
  */
 
+/**
+ * @file Holds the accessor mixin class
+ */
+
 goog.provide('aronnax.accessor');
 
+/**
+ * A mixin class for adding accessor methods to a classes properties.
+ * @mixin
+ */
 aronnax.accessor = {
+  /** @this {aronnax.accessor} */
+  /**
+   * Gets the attribute in the object
+   * @this {aronnax.accessor}
+   * @param {string} attr The attribute on the object you want to get
+   * @return The attribute of the object
+   */
   get: function(attr) {
     for(var prop in this) {
       if (this.hasOwnProperty(prop)) {
@@ -1564,7 +1579,15 @@ aronnax.accessor = {
     }
   },
 
-  set: function(key, value, options) {
+  /**
+   * Sets the attribute, either with a key and value as params or as one param
+   * with key values pairs.
+   * @this {aronnax.accessor}
+   * @param {String|Object} key Either a key to set or a full object of key
+   * value pairs you want to set
+   * @param {String} [value] The value you want to set on the key
+   */
+  set: function(key, value) {
     var attrs;
     if (key === null) {
       return this;
@@ -1587,6 +1610,11 @@ aronnax.accessor = {
     }
   },
 
+  /**
+   * Returns all the attributes as an object
+   * @this {aronnax.accessor}
+   * @return {Object} All the attributes of the object
+   */
   attrs: function() {
     var returnObj = {};
     for(var prop in this) {
@@ -1615,7 +1643,9 @@ goog.require('aronnax.accessor');
  * @class LinkedListNode
  * @namespace aronnax.LinkedListNode
  * @constuctor
+ * @mixes {aronnax.accessor}
  * @param data whatever should be held in the node
+ * @this {LinkedListNode}
  */
 aronnax.LinkedListNode = function(data) {
   /**
@@ -1708,8 +1738,7 @@ aronnax.UnorderedList.prototype.search = function(item) {
 
 /**
  * Returns the node being searched for
- * @return {@link LinkedListNode} The item
-  return this._head === null;
+ * @return {@link LinkedListNode} The item's data
  */
 aronnax.UnorderedList.prototype.find = function(item) {
   var current = this._head,
@@ -10021,6 +10050,8 @@ goog.dom.DomHelper.prototype.getAncestor = goog.dom.getAncestor;
 /**
  * @file Holds the main class
  */
+
+/** @namespace aronnax */
 
 goog.provide('aronnax.main');
 goog.require('goog.dom');

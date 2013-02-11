@@ -26,6 +26,7 @@ describe('aronnax.accessor', function() {
       expect(actual).toBeFalsy();
     });
   });
+
   describe('set', function() {
     beforeEach(function() {
       accessor.attrA = 'outA';
@@ -52,6 +53,22 @@ describe('aronnax.accessor', function() {
       accessor.set('attrM', 'newM');
       var actual = accessor.get('attrM');
       expect(actual).toBeUndefined();
+    });
+  });
+
+  describe('attrs', function() {
+    var TestClass = function() {
+      this.testAttrA = 'testValueA';
+    };
+    var testInstance;
+    beforeEach(function() {
+      testInstance = new TestClass();
+      goog.mixin(TestClass.prototype, aronnax.accessor);
+    });
+    it('should return all the attributes of the class as an object', function() {
+      var expected = {'testAttrA': 'testValueA'};
+      var actual = testInstance.attrs();
+      expect(actual).toEqual(expected);
     });
   });
 });
