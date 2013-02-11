@@ -1546,55 +1546,187 @@ goog.scope = function(fn) {
 };
 
 
-/**
+/*
  * Copyright (C) 2013 Marco Segreto
  * vim: set et ts=2 sw=2 tw=80:
  */
 
-/*
+goog.provide('aronnax.accessor');
+
+aronnax.accessor = {
+  get: function(attr) {
+    for(var prop in this) {
+      if (this.hasOwnProperty(prop)) {
+        if (prop === attr) {
+          return this[prop];
+        }
+      }
+    }
+  },
+
+  set: function(key, value, options) {
+    var attrs;
+    if (key === null) {
+      return this;
+    }
+
+    // key being set with a key value object
+    if (typeof key === 'object') {
+      attrs = key;
+      for (var attr in attrs) {
+        if (this.hasOwnProperty(attr)) {
+          this[attr] = attrs[attr];
+        }
+      }
+    }
+    else { // key being set with a key value as params
+      if (this.hasOwnProperty(key)) {
+        this[key] = value;
+      }
+      return;
+    }
+  },
+
+  attrs: function() {
+    var returnObj = {};
+    for(var prop in this) {
+      if (this.hasOwnProperty(prop)) {
+        returnObj[prop] = this[prop];
+      }
+    }
+    return returnObj;
+  }
+};/**
+ * Copyright (C) 2013 Marco Segreto
+ * vim: set et ts=2 sw=2 tw=80:
+ */
+
+/**
  * @file Holds the linked list and node classes
  */
 
-goog.provide('aronnax.LinkedList');
+goog.provide('aronnax.UnorderedList');
 goog.provide('aronnax.LinkedListNode');
+goog.require('aronnax.accessor');
 
 
 /**
-  A single node for a linked list
-  @exports aronnax/LinkedListNode
-  @class
-  @constuctor
-  @param data
+ * A single node for a linked list
+ * @class LinkedListNode
+ * @namespace aronnax.LinkedListNode
+ * @constuctor
+ * @param data whatever should be held in the node
  */
 aronnax.LinkedListNode = function(data) {
+  /**
+   * The data in the node
+   * @private
+   */
   this.data = data;
-  this.nextNode = null;
-  this.prevNode = null;
+  /**
+   * The next node in the linked list
+   * @private
+   */
+  this.next = null;
+  /**
+   * The previous node in the linked list
+   * @type {@link LinkedListNode}
+   * @private
+   */
+  this.prev = null;
+};
+goog.mixin(aronnax.LinkedListNode.prototype, aronnax.accessor);
+
+
+/**
+ * An unordered linked list
+ * @class UnorderedList
+ * @namespace aronnax.UnorderedList
+ * @constuctor
+ */
+aronnax.UnorderedList = function() {
+  /**
+ * The start of the list, the first object to reference
+ * @type {Object}
+ */
+  this._head = null;
 };
 
 /**
- * Returns the data stored in the linked list node
- * @return {object} the data
+ * Adds a new LinkedListNode to the end of the list
+ * @param data
  */
-aronnax.LinkedListNode.prototype.getData = function() {
-  return this.data;
+aronnax.UnorderedList.prototype.prepend = function(data) {
+  var newNode = new aronnax.LinkedListNode(data);
+  newNode.set('next', this._head);
+  this._head = newNode;
 };
 
 /**
- * Will return the next node in the linked list
- * @return {object}
+ * Returns the size of the list
+ * @return {int} length
  */
-aronnax.LinkedListNode.prototype.next = function() {
-  return this.nextNode;
+aronnax.UnorderedList.prototype.length = function() {
+  var current = this._head,
+      count = 0;
+
+  while (current !== null) {
+    count += 1;
+    current = current.get('next');
+  }
+
+  return count;
 };
 
 /**
- * Will return the previous node in the linked list
- * @return {object}
+ * Returns whether the list is empty or not
+ * @return {boolean} Whether the list was empty or not
  */
-aronnax.LinkedListNode.prototype.prev = function() {
-  return this.prevNode;
-};// Copyright 2009 The Closure Library Authors. All Rights Reserved.
+aronnax.UnorderedList.prototype.isEmpty = function() {
+  return this._head === null;
+};
+
+/**
+ * Returns if the node is in the list
+ * @return {bool} If the node is in the list
+ */
+aronnax.UnorderedList.prototype.search = function(item) {
+  var current = this._head,
+      found = false;
+
+  while (current !== null && !found) {
+    if (current.get('data') === item) {
+      found = true;
+    }
+    else {
+      current = current.get('next');
+    }
+  }
+
+  return found;
+};
+
+/**
+ * Returns the node being searched for
+ * @return {@link LinkedListNode} The item
+  return this._head === null;
+ */
+aronnax.UnorderedList.prototype.find = function(item) {
+  var current = this._head,
+      found = false;
+
+  while (current !== null && !found) {
+    if (current.get('data') === item) {
+      return current.get('data');
+    }
+    else {
+      current = current.get('next');
+    }
+  }
+
+  return found;
+};
+// Copyright 2009 The Closure Library Authors. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -9886,8 +10018,14 @@ goog.dom.DomHelper.prototype.getAncestor = goog.dom.getAncestor;
  * vim: set et ts=2 sw=2 tw=80:
  */
 
+/**
+ * @file Holds the main class
+ */
+
 goog.provide('aronnax.main');
 goog.require('goog.dom');
+goog.require('aronnax.accessor');
+goog.require('aronnax.LinkedListNode');
 
 /**
   Initialization for aronnax engine

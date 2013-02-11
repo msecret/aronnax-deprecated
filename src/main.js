@@ -9,6 +9,7 @@
 
 goog.provide('aronnax.main');
 goog.require('goog.dom');
+goog.require('aronnax.accessor');
 goog.require('aronnax.LinkedListNode');
 
 /**
