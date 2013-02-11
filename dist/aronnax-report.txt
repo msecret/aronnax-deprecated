@@ -1,12 +1,48 @@
-Compilation generated on Sat Feb 09 2013 00:05:30 GMT-0800 (PST)
+Compilation generated on Sun Feb 10 2013 19:00:37 GMT-0800 (PST)
 Copyright (C) 2013 Marco Segreto 
 Compilation report: 
 
-dist/aronnax.js:9846: WARNING - Parse error. illegal use of unknown JSDoc tag "exports"; ignoring it
+dist/aronnax.js:1554: WARNING - Parse error. Non-JSDoc comment has annotations. Did you mean to start it with '/**'?
+/*
+^
+
+dist/aronnax.js:1564: WARNING - Parse error. illegal use of unknown JSDoc tag "exports"; ignoring it
+  @exports aronnax/LinkedListNode
+  ^
+
+dist/aronnax.js:1566: WARNING - Parse error. illegal use of unknown JSDoc tag "constuctor"; ignoring it
+  @constuctor
+  ^
+
+dist/aronnax.js:1570: WARNING - dangerous use of the global this object
+  this.data = data;
+  ^
+
+dist/aronnax.js:1570: WARNING - dangerous use of this in static method aronnax.LinkedListNode
+  this.data = data;
+  ^
+
+dist/aronnax.js:1571: WARNING - dangerous use of the global this object
+  this.nextNode = null;
+  ^
+
+dist/aronnax.js:1571: WARNING - dangerous use of this in static method aronnax.LinkedListNode
+  this.nextNode = null;
+  ^
+
+dist/aronnax.js:1572: WARNING - dangerous use of the global this object
+  this.prevNode = null;
+  ^
+
+dist/aronnax.js:1572: WARNING - dangerous use of this in static method aronnax.LinkedListNode
+  this.prevNode = null;
+  ^
+
+dist/aronnax.js:9894: WARNING - Parse error. illegal use of unknown JSDoc tag "exports"; ignoring it
   @exports aronnax/main
   ^
 
-0 error(s), 1 warning(s)
+0 error(s), 10 warning(s)
 
-Compiled size:	[32m4.88[39m kb 	([32m4994[39m bytes)
-GZipped size:	[32m2.23[39m kb 	([32m2279[39m bytes) -54.37%
+Compiled size:	[32m1.60[39m kb 	([32m1636[39m bytes)
+GZipped size:	[32m0.87[39m kb 	([32m891[39m bytes) -45.54%

@@ -1546,7 +1546,55 @@ goog.scope = function(fn) {
 };
 
 
-// Copyright 2009 The Closure Library Authors. All Rights Reserved.
+/**
+ * Copyright (C) 2013 Marco Segreto
+ * vim: set et ts=2 sw=2 tw=80:
+ */
+
+/*
+ * @file Holds the linked list and node classes
+ */
+
+goog.provide('aronnax.LinkedList');
+goog.provide('aronnax.LinkedListNode');
+
+
+/**
+  A single node for a linked list
+  @exports aronnax/LinkedListNode
+  @class
+  @constuctor
+  @param data
+ */
+aronnax.LinkedListNode = function(data) {
+  this.data = data;
+  this.nextNode = null;
+  this.prevNode = null;
+};
+
+/**
+ * Returns the data stored in the linked list node
+ * @return {object} the data
+ */
+aronnax.LinkedListNode.prototype.getData = function() {
+  return this.data;
+};
+
+/**
+ * Will return the next node in the linked list
+ * @return {object}
+ */
+aronnax.LinkedListNode.prototype.next = function() {
+  return this.nextNode;
+};
+
+/**
+ * Will return the previous node in the linked list
+ * @return {object}
+ */
+aronnax.LinkedListNode.prototype.prev = function() {
+  return this.prevNode;
+};// Copyright 2009 The Closure Library Authors. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -9846,10 +9894,7 @@ goog.require('goog.dom');
   @exports aronnax/main
  */
 aronnax.main = function( appTitle, parent ){
-  var header =  {'style':'background:#CCC999'};
-  var content = "Application " + appTitle + " Starting";
-  var element = goog.dom.createDom( 'div', header, content );
-  goog.dom.appendChild( parent, element );
+  console.log('Aronnax initialized');
 };
 
 goog.exportSymbol('aronnax.main', aronnax.main);

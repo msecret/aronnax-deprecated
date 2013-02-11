@@ -3,6 +3,10 @@
  * vim: set et ts=2 sw=2 tw=80:
  */
 
+/**
+ * @file Holds the main class
+ */
+
 goog.provide('aronnax.main');
 goog.require('goog.dom');
 
