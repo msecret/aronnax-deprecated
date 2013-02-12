@@ -69,7 +69,7 @@ aronnax.UnorderedList = function() {
  */
 aronnax.UnorderedList.prototype.prepend = function(data) {
   var newNode = new aronnax.LinkedListNode(data);
-  newNode.set('next', this._head);
+  newNode.set({'next': this._head, 'prev': null});
   this._head = newNode;
 };
 

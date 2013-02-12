@@ -55,6 +55,11 @@ describe('aronnax.UnorderedList', function() {
       var actual = testList.length();
       expect(actual).toEqual(expected);
     });
+    it('should set the prev reference to null', function() {
+      testList.prepend('testItemA');
+      var actual = testList.findNode('testItemA').get('prev');
+      expect(actual).toEqual(null);
+    });
   });
 
   describe('length', function() {
