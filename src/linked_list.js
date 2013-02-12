@@ -65,7 +65,8 @@ aronnax.UnorderedList = function() {
 
 /**
  * Adds a new LinkedListNode to the beginning of the list
- * @param data
+ * @param data Any data of any type that will be stored in the node
+ * @return {aronnax.LinkedListNode} The new node just prepended
  */
 aronnax.UnorderedList.prototype.prepend = function(data) {
   var newNode = new aronnax.LinkedListNode(data);
@@ -76,7 +77,8 @@ aronnax.UnorderedList.prototype.prepend = function(data) {
 
 /**
  * Adds a new LinkedListNode to the end of the list
- * @param data
+ * @param data Any data of any type that will be stored in the node
+ * @return {aronnax.LinkedListNode} The new node just appended
  */
 aronnax.UnorderedList.prototype.append = function(data) {
   var newNode = new aronnax.LinkedListNode(data),
