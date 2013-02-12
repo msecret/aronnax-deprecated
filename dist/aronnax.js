@@ -1562,11 +1562,10 @@ goog.provide('aronnax.accessor');
  * @mixin
  */
 aronnax.accessor = {
-  /** @this {aronnax.accessor} */
   /**
    * Gets the attribute in the object
-   * @this {aronnax.accessor}
-   * @param {string} attr The attribute on the object you want to get
+   * @this aronnax.accessor
+   * @param {String} attr The attribute on the object you want to get
    * @return The attribute of the object
    */
   get: function(attr) {
@@ -1582,7 +1581,7 @@ aronnax.accessor = {
   /**
    * Sets the attribute, either with a key and value as params or as one param
    * with key values pairs.
-   * @this {aronnax.accessor}
+   * @this aronnax.accessor
    * @param {String|Object} key Either a key to set or a full object of key
    * value pairs you want to set
    * @param {String} [value] The value you want to set on the key
@@ -1612,7 +1611,7 @@ aronnax.accessor = {
 
   /**
    * Returns all the attributes as an object
-   * @this {aronnax.accessor}
+   * @this aronnax.accessor
    * @return {Object} All the attributes of the object
    */
   attrs: function() {
@@ -1640,28 +1639,32 @@ goog.require('aronnax.accessor');
 
 /**
  * A single node for a linked list
- * @class LinkedListNode
- * @namespace aronnax.LinkedListNode
+ * @class
  * @constuctor
- * @mixes {aronnax.accessor}
- * @param data whatever should be held in the node
- * @this {LinkedListNode}
+ * @this aronnax.LinkedListNode
+ * @mixes aronnax.accessor
+ * @param data Whatever should be held in the node
  */
 aronnax.LinkedListNode = function(data) {
   /**
    * The data in the node
-   * @private
+   * @instance
+   * @protected
+   * @default null
    */
-  this.data = data;
+  this.data = data || null;
   /**
    * The next node in the linked list
-   * @private
+   * @instance
+   * @protected
+   * @type aronnax.LinkedListNode
    */
   this.next = null;
   /**
    * The previous node in the linked list
-   * @type {@link LinkedListNode}
-   * @private
+   * @instance
+   * @protected
+   * @type aronnax.LinkedListNode
    */
   this.prev = null;
 };
@@ -1670,31 +1673,50 @@ goog.mixin(aronnax.LinkedListNode.prototype, aronnax.accessor);
 
 /**
  * An unordered linked list
- * @class UnorderedList
- * @namespace aronnax.UnorderedList
+ * @class
  * @constuctor
+ * @this aronnax.UnorderedList
  */
 aronnax.UnorderedList = function() {
+  /** @lends UnorderedList.prototype */
   /**
- * The start of the list, the first object to reference
- * @type {Object}
- */
+  * The start of the list, the first object to reference
+  * @instance
+  * @protected
+  * @type {Object}
+  */
   this._head = null;
+};
+
+/**
+ * Adds a new LinkedListNode to the beginning of the list
+ * @param data
+ */
+aronnax.UnorderedList.prototype.prepend = function(data) {
+  var newNode = new aronnax.LinkedListNode(data);
+  newNode.set({'next': this._head, 'prev': null});
+  this._head = newNode;
 };
 
 /**
  * Adds a new LinkedListNode to the end of the list
  * @param data
  */
-aronnax.UnorderedList.prototype.prepend = function(data) {
-  var newNode = new aronnax.LinkedListNode(data);
-  newNode.set('next', this._head);
-  this._head = newNode;
+aronnax.UnorderedList.prototype.append = function(data) {
+  var newNode = new aronnax.LinkedListNode(data),
+      lastNode = this.last();
+  newNode.set({'next': null, 'prev': lastNode });
+  if (lastNode === null) {
+    this._head = newNode;
+  }
+  else {
+    lastNode.set({'next': newNode});
+  }
 };
 
 /**
  * Returns the size of the list
- * @return {int} length
+ * @return {Number} length
  */
 aronnax.UnorderedList.prototype.length = function() {
   var current = this._head,
@@ -1710,7 +1732,7 @@ aronnax.UnorderedList.prototype.length = function() {
 
 /**
  * Returns whether the list is empty or not
- * @return {boolean} Whether the list was empty or not
+ * @return {Boolean} Whether the list was empty or not
  */
 aronnax.UnorderedList.prototype.isEmpty = function() {
   return this._head === null;
@@ -1718,7 +1740,8 @@ aronnax.UnorderedList.prototype.isEmpty = function() {
 
 /**
  * Returns if the node is in the list
- * @return {bool} If the node is in the list
+ * @param item The item being searched for
+ * @returns {Boolean} If the node is in the list
  */
 aronnax.UnorderedList.prototype.search = function(item) {
   var current = this._head,
@@ -1737,16 +1760,17 @@ aronnax.UnorderedList.prototype.search = function(item) {
 };
 
 /**
- * Returns the node being searched for
- * @return {@link LinkedListNode} The item's data
+ * Returns the node's data being searched for
+ * @param item The node being searched for
+ * @returns {aronnax.LinkedListNode} The item's linked list node
  */
 aronnax.UnorderedList.prototype.find = function(item) {
   var current = this._head,
-      found = false;
+      found = null;
 
   while (current !== null && !found) {
     if (current.get('data') === item) {
-      return current.get('data');
+      return current;
     }
     else {
       current = current.get('next');
@@ -1754,6 +1778,54 @@ aronnax.UnorderedList.prototype.find = function(item) {
   }
 
   return found;
+};
+
+/**
+ * Return the node's data at a certain index in the list
+ * @param {Number} idx The index into the list
+ * @returns The linked list node's data
+ */
+aronnax.UnorderedList.prototype.index = function(idx) {
+    var current = this._head,
+        i = 0,
+        ilen = idx;
+
+    for ( ;i < ilen;i++) {
+      current = current.get('next');
+    }
+    return current;
+};
+
+/**
+ * Return the index of the list
+ * @param item The item being found
+ * @returns {Number} The index of the item in the list
+ */
+aronnax.UnorderedList.prototype.indexOf = function(item) {
+  var current = this._head,
+      i = 0;
+
+  for ( ;current !== null; i++) {
+    if (current.get('data') === item) {
+      return i;
+    }
+    current = current.get('next');
+  }
+
+  return 0;
+};
+
+/**
+ * Returns the last item in the list
+ * @returns {aronnax.LinkedListNode} The last node
+ */
+aronnax.UnorderedList.prototype.last = function() {
+  var length = this.length();
+  if (length === 0) {
+    return this._head;
+  }
+  var lastNode = this.index(length - 1);
+  return lastNode;
 };
 // Copyright 2009 The Closure Library Authors. All Rights Reserved.
 //
@@ -10051,7 +10123,10 @@ goog.dom.DomHelper.prototype.getAncestor = goog.dom.getAncestor;
  * @file Holds the main class
  */
 
-/** @namespace aronnax */
+/**
+ * Main aronnax namespace
+ * @namespace aronnax
+ */
 
 goog.provide('aronnax.main');
 goog.require('goog.dom');

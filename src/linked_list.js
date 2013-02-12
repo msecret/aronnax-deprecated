@@ -74,6 +74,22 @@ aronnax.UnorderedList.prototype.prepend = function(data) {
 };
 
 /**
+ * Adds a new LinkedListNode to the end of the list
+ * @param data
+ */
+aronnax.UnorderedList.prototype.append = function(data) {
+  var newNode = new aronnax.LinkedListNode(data),
+      lastNode = this.last();
+  newNode.set({'next': null, 'prev': lastNode });
+  if (lastNode === null) {
+    this._head = newNode;
+  }
+  else {
+    lastNode.set({'next': newNode});
+  }
+};
+
+/**
  * Returns the size of the list
  * @return {Number} length
  */
@@ -152,7 +168,7 @@ aronnax.UnorderedList.prototype.index = function(idx) {
     for ( ;i < ilen;i++) {
       current = current.get('next');
     }
-    return current.get('data');
+    return current;
 };
 
 /**
@@ -172,4 +188,17 @@ aronnax.UnorderedList.prototype.indexOf = function(item) {
   }
 
   return 0;
+};
+
+/**
+ * Returns the last item in the list
+ * @returns {aronnax.LinkedListNode} The last node
+ */
+aronnax.UnorderedList.prototype.last = function() {
+  var length = this.length();
+  if (length === 0) {
+    return this._head;
+  }
+  var lastNode = this.index(length - 1);
+  return lastNode;
 };

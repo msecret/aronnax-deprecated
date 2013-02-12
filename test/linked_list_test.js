@@ -66,6 +66,27 @@ describe('aronnax.UnorderedList', function() {
     });
   });
 
+  describe('append', function() {
+    beforeEach(function() {
+      testList = new aronnax.UnorderedList();
+      testList.append('testItemA');
+    });
+    it('should add the item to the list', function() {
+      var expected = 'testItemA';
+      var actual = testList.find('testItemA').get('data');
+      expect(actual).toBe(expected);
+    });
+    it('should set the prev reference to the last item', function() {
+      var prevLast = testList.last();
+      testList.append('testItemA');
+      var newLast = testList.last();
+      expect(newLast.get('prev')).toBe(prevLast);
+    });
+    it('should set the next reference to null', function() {
+      expect(testList.find('testItemA').get('next')).toBe(null);
+    });
+  });
+
   describe('length', function() {
     beforeEach(function() {
       testList = new aronnax.UnorderedList();
@@ -115,9 +136,9 @@ describe('aronnax.UnorderedList', function() {
       testList.prepend('testItemA');
       testList.prepend('testItemB');
       testList.prepend('testItemC');
-      expect(testList.index(0)).toBe('testItemC');
-      expect(testList.index(1)).toBe('testItemB');
-      expect(testList.index(2)).toBe('testItemA');
+      expect(testList.index(0).get('data')).toBe('testItemC');
+      expect(testList.index(1).get('data')).toBe('testItemB');
+      expect(testList.index(2).get('data')).toBe('testItemA');
     });
   });
 
@@ -129,6 +150,17 @@ describe('aronnax.UnorderedList', function() {
       expect(testList.indexOf('testItemA')).toEqual(2);
       expect(testList.indexOf('testItemB')).toBe(1);
       expect(testList.indexOf('testItemC')).toBe(0);
+    });
+  });
+
+  describe('last', function() {
+    beforeEach(function() {
+      testList = new aronnax.UnorderedList();
+    });
+    it('should return the last node in the list', function() {
+      testList.prepend('testItemA');
+      testList.prepend('testItemB');
+      expect(testList.last().get('data')).toEqual('testItemA');
     });
   });
 

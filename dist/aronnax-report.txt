@@ -1,4 +1,4 @@
-Compilation generated on Mon Feb 11 2013 10:56:29 GMT-0800 (PST)
+Compilation generated on Mon Feb 11 2013 23:28:10 GMT-0800 (PST)
 Copyright (C) 2013 Marco Segreto 
 Compilation report: 
 
@@ -10,39 +10,47 @@ dist/aronnax.js:1562: WARNING - Parse error. illegal use of unknown JSDoc tag "m
  * @mixin
    ^
 
-dist/aronnax.js:1633: WARNING - Parse error. illegal use of unknown JSDoc tag "file"; ignoring it
+dist/aronnax.js:1632: WARNING - Parse error. illegal use of unknown JSDoc tag "file"; ignoring it
  * @file Holds the linked list and node classes
    ^
 
-dist/aronnax.js:1645: WARNING - Parse error. illegal use of unknown JSDoc tag "constuctor"; ignoring it
+dist/aronnax.js:1643: WARNING - Parse error. illegal use of unknown JSDoc tag "constuctor"; ignoring it
  * @constuctor
    ^
 
-dist/aronnax.js:1646: WARNING - Parse error. illegal use of unknown JSDoc tag "mixes"; ignoring it
- * @mixes {aronnax.accessor}
+dist/aronnax.js:1645: WARNING - Parse error. illegal use of unknown JSDoc tag "mixes"; ignoring it
+ * @mixes aronnax.accessor
    ^
 
-dist/aronnax.js:1675: WARNING - Parse error. illegal use of unknown JSDoc tag "constuctor"; ignoring it
+dist/aronnax.js:1651: WARNING - Parse error. illegal use of unknown JSDoc tag "instance"; ignoring it
+   * @instance
+     ^
+
+dist/aronnax.js:1658: WARNING - Parse error. illegal use of unknown JSDoc tag "instance"; ignoring it
+   * @instance
+     ^
+
+dist/aronnax.js:1665: WARNING - Parse error. illegal use of unknown JSDoc tag "instance"; ignoring it
+   * @instance
+     ^
+
+dist/aronnax.js:1677: WARNING - Parse error. illegal use of unknown JSDoc tag "constuctor"; ignoring it
  * @constuctor
    ^
 
-dist/aronnax.js:1682: WARNING - dangerous use of the global this object
-  this._head = null;
-  ^
+dist/aronnax.js:1684: WARNING - Parse error. illegal use of unknown JSDoc tag "instance"; ignoring it
+  * @instance
+    ^
 
-dist/aronnax.js:1682: WARNING - dangerous use of this in static method aronnax.UnorderedList
-  this._head = null;
-  ^
-
-dist/aronnax.js:10051: WARNING - Parse error. illegal use of unknown JSDoc tag "file"; ignoring it
+dist/aronnax.js:10123: WARNING - Parse error. illegal use of unknown JSDoc tag "file"; ignoring it
  * @file Holds the main class
    ^
 
-dist/aronnax.js:10063: WARNING - Parse error. illegal use of unknown JSDoc tag "exports"; ignoring it
+dist/aronnax.js:10138: WARNING - Parse error. illegal use of unknown JSDoc tag "exports"; ignoring it
   @exports aronnax/main
   ^
 
-0 error(s), 10 warning(s)
+0 error(s), 12 warning(s)
 
-Compiled size:	[32m2.01[39m kb 	([32m2058[39m bytes)
-GZipped size:	[32m1.03[39m kb 	([32m1052[39m bytes) -48.88%
+Compiled size:	[32m2.26[39m kb 	([32m2315[39m bytes)
+GZipped size:	[32m1.13[39m kb 	([32m1162[39m bytes) -49.81%
