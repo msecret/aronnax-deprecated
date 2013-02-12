@@ -94,6 +94,47 @@ aronnax.UnorderedList.prototype.append = function(data) {
 };
 
 /**
+ * Removes a linked list node from the list. Can do so with an index, the data
+ * contained in the node, or the node itself. This function will not take care
+ * of any object deletion, its assumed whatever called the function can do that.
+ * @param {Number|Object|aronnax.LinkedListNode} item The item being removed can
+ * be an index into the list, that data in the node, or the node itself.
+ * @return {aronnax.LinkedListNode} The new node just removed.
+ */
+aronnax.UnorderedList.prototype.remove = function(item) {
+  var node = null;
+
+  if (typeof item === 'number') {
+    // remove the node with an index
+    node = this.index(item);
+  }
+  else if (item instanceof aronnax.LinkedListNode) {
+    // remove the actual node
+    node = item;
+  }
+  else {
+    // remove the node by finding the data
+    node = this.find(item);
+  }
+
+  if (node !== null) {
+    var prevNode = node.get('prev'),
+        nextNode = node.get('next');
+
+    if (prevNode !== null) {
+      prevNode.set('next', nextNode);
+    }
+    if (nextNode !== null) {
+      nextNode.set('prev', prevNode);
+    }
+
+    node.set({'prev': null, 'next': null});
+  }
+  return node;
+
+};
+
+/**
  * Returns the size of the list
  * @return {Number} length
  */

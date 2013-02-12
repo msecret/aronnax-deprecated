@@ -97,6 +97,54 @@ describe('aronnax.UnorderedList', function() {
     });
   });
 
+  describe('remove', function() {
+    beforeEach(function() {
+      testList = new aronnax.UnorderedList();
+      testList.append('testItemA');
+      testList.append('testItemB');
+    });
+    it('should remove the item when given an index into the list', function() {
+      testList.remove(1);
+      var actual = testList.search('testItemB');
+      expect(actual).toBe(false);
+    });
+    it('should remove the item when given data in the node', function() {
+      testList.remove('testItemB');
+      var actual = testList.search('testItemB');
+      expect(actual).toBe(false);
+    });
+    it('should remove the item when given the actual node', function() {
+      var nodeToRemove = testList.find('testItemB');
+      testList.remove(nodeToRemove);
+      var actual = testList.search('testItemB');
+      expect(actual).toBe(false);
+    });
+    it('will set the removed nodes prev and next to null', function() {
+      var nodeToRemove = testList.find('testItemB'),
+          removedNode = testList.remove(nodeToRemove);
+
+      expect(removedNode.get('next')).toBe(null);
+      expect(removedNode.get('prev')).toBe(null);
+    });
+    it('will set the prev and next nodes attributes correctly', function() {
+      testList.append('testItemC');
+      testList.remove('testItemB');
+      var testItemANode = testList.find('testItemA');
+      var testItemCNode = testList.find('testItemC');
+      expect(testItemANode.get('next')).toBe(testItemCNode);
+      expect(testItemCNode.get('prev')).toBe(testItemANode);
+    });
+    it('will return null when it cant find the node to be removed', function() {
+      var removedNode = testList.remove('testItemX');
+      expect(removedNode).toBe(null);
+    });
+    it('will work on a list of only one item', function() {
+      testList.remove(1);
+      var removedNode = testList.remove(0);
+      expect(removedNode.get('data')).toEqual('testItemA');
+    });
+  });
+
   describe('length', function() {
     beforeEach(function() {
       testList = new aronnax.UnorderedList();
