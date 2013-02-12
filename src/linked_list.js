@@ -71,6 +71,7 @@ aronnax.UnorderedList.prototype.prepend = function(data) {
   var newNode = new aronnax.LinkedListNode(data);
   newNode.set({'next': this._head, 'prev': null});
   this._head = newNode;
+  return newNode;
 };
 
 /**
@@ -87,6 +88,7 @@ aronnax.UnorderedList.prototype.append = function(data) {
   else {
     lastNode.set({'next': newNode});
   }
+  return newNode;
 };
 
 /**
@@ -158,7 +160,7 @@ aronnax.UnorderedList.prototype.find = function(item) {
 /**
  * Return the node's data at a certain index in the list
  * @param {Number} idx The index into the list
- * @returns The linked list node's data
+ * @returns {aronnax.LinkedListNode} The linked list node's data
  */
 aronnax.UnorderedList.prototype.index = function(idx) {
     var current = this._head,

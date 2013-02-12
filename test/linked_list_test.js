@@ -49,6 +49,11 @@ describe('aronnax.UnorderedList', function() {
       var actual = testList.find('testItemA').get('data');
       expect(actual).toBe(expected);
     });
+    it('should return the item just added to the list', function() {
+      var newNode = testList.prepend('testItemB');
+      var expected = testList.find('testItemB');
+      expect(newNode).toBe(expected);
+    });
     it('should update the length when a new node is added', function() {
       var expected = 1;
       var actual = testList.length();
@@ -75,6 +80,11 @@ describe('aronnax.UnorderedList', function() {
       var expected = 'testItemA';
       var actual = testList.find('testItemA').get('data');
       expect(actual).toBe(expected);
+    });
+    it('should return the item just added to the list', function() {
+      var newNode = testList.append('testItemB');
+      var expected = testList.find('testItemB');
+      expect(newNode).toBe(expected);
     });
     it('should set the prev reference to the last item', function() {
       var prevLast = testList.last();
