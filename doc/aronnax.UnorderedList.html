@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Namespace: UnorderedList</title>
+    <title>JSDoc: Class: UnorderedList</title>
     
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Namespace: UnorderedList</h1>
+    <h1 class="page-title">Class: UnorderedList</h1>
     
     
 
@@ -40,10 +40,29 @@
     
     
         
-            <div class="description">An unordered linked list</div>
-        
-        
-        
+<dt>
+    <h4 class="name" id="UnorderedList"><span class="type-signature"></span>new UnorderedList<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        An unordered linked list
+    </div>
+    
+
+    
+    
+    
+        <h5>This:</h5>
+        <ul><li><a href="aronnax.UnorderedList.html">aronnax.UnorderedList</a></li></ul>
+    
+    
+    
+    
+    
 <dl class="details">
     
         
@@ -66,7 +85,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="linked_list.js.html">linked_list.js</a>, line 45
+        <a href="linked_list.js.html">linked_list.js</a>, line 55
     </li></ul></dd>
     
     
@@ -77,8 +96,16 @@
     
 </dl>
 
-        
-        
+    
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
     
     </div>
     
@@ -93,29 +120,20 @@
     
     
     
-    
-    
-        <h3 class="subsection-title">Methods</h3>
+        <h3 class="subsection-title">Members</h3>
         
         <dl>
             
 <dt>
-    <h4 class="name" id="find"><span class="type-signature"></span>find<span class="signature">()</span><span class="type-signature"> &rarr; LinkedListNode</span></h4>
+    <h4 class="name" id="_head"><span class="type-signature">&lt;protected> </span>_head<span class="type-signature"> :Object</span></h4>
     
     
 </dt>
 <dd>
     
-    
     <div class="description">
-        Returns the node being searched for
+        The start of the list, the first object to reference
     </div>
-    
-
-    
-    
-    
-    
     
     
     
@@ -141,7 +159,115 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="linked_list.js.html">linked_list.js</a>, line 117
+        <a href="linked_list.js.html">linked_list.js</a>, line 63
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        </dl>
+    
+    
+    
+        <h3 class="subsection-title">Methods</h3>
+        
+        <dl>
+            
+<dt>
+    <h4 class="name" id="find"><span class="type-signature"></span>find<span class="signature">(item)</span><span class="type-signature"> &rarr; {<a href="aronnax.LinkedListNode.html">aronnax.LinkedListNode</a>}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Returns the node's data being searched for. Uses the findNode method.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>item</code></td>
+            
+            
+            <td class="type">
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">The item being searched for</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="linked_list.js.html">linked_list.js</a>, line 147
     </li></ul></dd>
     
     
@@ -173,7 +299,7 @@
 	</dt>
 	<dd>
 		
-<span class="param-type">@link LinkedListNode</span>
+<span class="param-type"><a href="aronnax.LinkedListNode.html">aronnax.LinkedListNode</a></span>
 
 
 	</dd>
@@ -187,7 +313,137 @@
         
             
 <dt>
-    <h4 class="name" id="isEmpty"><span class="type-signature"></span>isEmpty<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+    <h4 class="name" id="findNode"><span class="type-signature"></span>findNode<span class="signature">(item)</span><span class="type-signature"> &rarr; {<a href="aronnax.LinkedListNode.html">aronnax.LinkedListNode</a>}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Returns the node's data being searched for
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>item</code></td>
+            
+            
+            <td class="type">
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">The node being searched for</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="linked_list.js.html">linked_list.js</a>, line 126
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    The item's data
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type"><a href="aronnax.LinkedListNode.html">aronnax.LinkedListNode</a></span>
+
+
+	</dd>
+</dl>
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="isEmpty"><span class="type-signature"></span>isEmpty<span class="signature">()</span><span class="type-signature"> &rarr; {Boolean}</span></h4>
     
     
 </dt>
@@ -228,7 +484,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="linked_list.js.html">linked_list.js</a>, line 89
+        <a href="linked_list.js.html">linked_list.js</a>, line 96
     </li></ul></dd>
     
     
@@ -260,7 +516,7 @@
 	</dt>
 	<dd>
 		
-<span class="param-type">boolean</span>
+<span class="param-type">Boolean</span>
 
 
 	</dd>
@@ -274,7 +530,7 @@
         
             
 <dt>
-    <h4 class="name" id="length"><span class="type-signature"></span>length<span class="signature">()</span><span class="type-signature"> &rarr; {int}</span></h4>
+    <h4 class="name" id="length"><span class="type-signature"></span>length<span class="signature">()</span><span class="type-signature"> &rarr; {Number}</span></h4>
     
     
 </dt>
@@ -315,7 +571,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="linked_list.js.html">linked_list.js</a>, line 73
+        <a href="linked_list.js.html">linked_list.js</a>, line 80
     </li></ul></dd>
     
     
@@ -347,7 +603,7 @@
 	</dt>
 	<dd>
 		
-<span class="param-type">int</span>
+<span class="param-type">Number</span>
 
 
 	</dd>
@@ -369,7 +625,7 @@
     
     
     <div class="description">
-        Adds a new LinkedListNode to the end of the list
+        Adds a new LinkedListNode to the beginning of the list
     </div>
     
 
@@ -445,7 +701,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="linked_list.js.html">linked_list.js</a>, line 63
+        <a href="linked_list.js.html">linked_list.js</a>, line 70
     </li></ul></dd>
     
     
@@ -469,7 +725,7 @@
         
             
 <dt>
-    <h4 class="name" id="search"><span class="type-signature"></span>search<span class="signature">()</span><span class="type-signature"> &rarr; {bool}</span></h4>
+    <h4 class="name" id="search"><span class="type-signature"></span>search<span class="signature">(item)</span><span class="type-signature"> &rarr; {Boolean}</span></h4>
     
     
 </dt>
@@ -485,6 +741,49 @@
     
     
     
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>item</code></td>
+            
+            
+            <td class="type">
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">The item being searched for</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
     
     
     
@@ -510,7 +809,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="linked_list.js.html">linked_list.js</a>, line 97
+        <a href="linked_list.js.html">linked_list.js</a>, line 105
     </li></ul></dd>
     
     
@@ -542,7 +841,7 @@
 	</dt>
 	<dd>
 		
-<span class="param-type">bool</span>
+<span class="param-type">Boolean</span>
 
 
 	</dd>
@@ -569,13 +868,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Index</a></h2><h3>Modules</h3><ul><li><a href="fb2aa7c6aa.html">aronnax/main</a></li></ul><h3>Namespaces</h3><ul><li><a href="aronnax.html">aronnax</a></li><li><a href="aronnax.LinkedListNode.html">LinkedListNode</a></li><li><a href="aronnax.UnorderedList.html">UnorderedList</a></li></ul><h3>Mixins</h3><ul><li><a href="aronnax.accessor.html">accessor</a></li></ul>
+    <h2><a href="index.html">Index</a></h2><h3>Modules</h3><ul><li><a href="fb2aa7c6aa.html">aronnax/main</a></li></ul><h3>Classes</h3><ul><li><a href="aronnax.LinkedListNode.html">LinkedListNode</a></li><li><a href="aronnax.UnorderedList.html">UnorderedList</a></li></ul><h3>Namespaces</h3><ul><li><a href="aronnax.html">aronnax</a></li></ul><h3>Mixins</h3><ul><li><a href="aronnax.accessor.html">accessor</a></li></ul>
 </nav>
 
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Mon Feb 11 2013 10:56:32 GMT-0800 (PST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Mon Feb 11 2013 22:06:54 GMT-0800 (PST)
 </footer>
 
 <script> prettyPrint(); </script>

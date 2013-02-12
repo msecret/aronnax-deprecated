@@ -14,11 +14,10 @@ goog.provide('aronnax.accessor');
  * @mixin
  */
 aronnax.accessor = {
-  /** @this {aronnax.accessor} */
   /**
    * Gets the attribute in the object
-   * @this {aronnax.accessor}
-   * @param {string} attr The attribute on the object you want to get
+   * @this aronnax.accessor
+   * @param {String} attr The attribute on the object you want to get
    * @return The attribute of the object
    */
   get: function(attr) {
@@ -34,7 +33,7 @@ aronnax.accessor = {
   /**
    * Sets the attribute, either with a key and value as params or as one param
    * with key values pairs.
-   * @this {aronnax.accessor}
+   * @this aronnax.accessor
    * @param {String|Object} key Either a key to set or a full object of key
    * value pairs you want to set
    * @param {String} [value] The value you want to set on the key
@@ -64,7 +63,7 @@ aronnax.accessor = {
 
   /**
    * Returns all the attributes as an object
-   * @this {aronnax.accessor}
+   * @this aronnax.accessor
    * @return {Object} All the attributes of the object
    */
   attrs: function() {
