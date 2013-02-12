@@ -91,4 +91,26 @@ describe('aronnax.UnorderedList', function() {
     });
   });
 
+  describe('index', function() {
+    it('should return the correct object given the index', function() {
+      testList.prepend('testItemA');
+      testList.prepend('testItemB');
+      testList.prepend('testItemC');
+      expect(testList.index(0)).toBe('testItemC');
+      expect(testList.index(1)).toBe('testItemB');
+      expect(testList.index(2)).toBe('testItemA');
+    });
+  });
+
+  describe('indexOf', function() {
+    it('should return the index of the data given', function() {
+      testList.prepend('testItemA');
+      testList.prepend('testItemB');
+      testList.prepend('testItemC');
+      expect(testList.indexOf('testItemA')).toEqual(2);
+      expect(testList.indexOf('testItemB')).toBe(1);
+      expect(testList.indexOf('testItemC')).toBe(0);
+    });
+  });
+
 });

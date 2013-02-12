@@ -150,3 +150,38 @@ aronnax.UnorderedList.prototype.find = function(item) {
     return node.get('data');
   }
 };
+
+/**
+ * Return the node's data at a certain index in the list
+ * @param {Number} idx The index into the list
+ * @returns The linked list node's data
+ */
+aronnax.UnorderedList.prototype.index = function(idx) {
+    var current = this._head,
+        i = 0,
+        ilen = idx;
+
+    for ( ;i < ilen;i++) {
+      current = current.get('next');
+    }
+    return current.get('data');
+};
+
+/**
+ * Return the index of the list
+ * @param item The item being found
+ * @returns {Number} The index of the item in the list
+ */
+aronnax.UnorderedList.prototype.indexOf = function(item) {
+  var current = this._head,
+      i = 0;
+
+  for ( ;current !== null; i++) {
+    if (current.get('data') === item) {
+      return i;
+    }
+    current = current.get('next');
+  }
+
+  return 0;
+};
