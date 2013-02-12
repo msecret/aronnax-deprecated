@@ -16,10 +16,10 @@ describe('aronnax.accessor', function() {
       delete accessor.testAttr;
     });
     it('will return the property if there', function() {
-      accessor.testAttr = 'test';
+      accessor.testAttr = 'testAttrVal';
       var actual = accessor.get('testAttr');
       expect(actual).toBeDefined();
-      expect(actual).toEqual('test');
+      expect(actual).toEqual('testAttrVal');
     });
     it('will return undefined if the property is not there', function() {
       var actual = accessor.get('testAttr');
@@ -29,8 +29,8 @@ describe('aronnax.accessor', function() {
 
   describe('set', function() {
     beforeEach(function() {
-      accessor.attrA = 'outA';
-      accessor.attrB = 'outB';
+      accessor.attrA = 'attrValA';
+      accessor.attrB = 'attrValB';
     });
     it('will set the attribute with a key and value', function() {
       accessor.set('attrA', 'newA');
