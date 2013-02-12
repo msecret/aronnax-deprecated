@@ -121,9 +121,9 @@ aronnax.UnorderedList.prototype.search = function(item) {
 /**
  * Returns the node's data being searched for
  * @param item The node being searched for
- * @returns {aronnax.LinkedListNode} The item's data
+ * @returns {aronnax.LinkedListNode} The item's linked list node
  */
-aronnax.UnorderedList.prototype.findNode = function(item) {
+aronnax.UnorderedList.prototype.find = function(item) {
   var current = this._head,
       found = null;
 
@@ -137,18 +137,6 @@ aronnax.UnorderedList.prototype.findNode = function(item) {
   }
 
   return found;
-};
-
-/**
- * Returns the node's data being searched for. Uses the findNode method.
- * @param item The item being searched for
- * @returns {aronnax.LinkedListNode} The item's data
- */
-aronnax.UnorderedList.prototype.find = function(item) {
-  var node = this.findNode(item);
-  if(node !== null) {
-    return node.get('data');
-  }
 };
 
 /**
