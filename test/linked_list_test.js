@@ -232,7 +232,7 @@ describe('aronnax.UnorderedList', function() {
   });
 
   describe('toString', function() {
-    it('should return a string representation of the list', function() {
+    it('should return a string representation of the list data', function() {
       testList.append('testItemA');
       testList.append('testItemB');
       var expected = 'testItemA,testItemB';
