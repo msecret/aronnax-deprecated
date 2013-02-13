@@ -1690,17 +1690,20 @@ aronnax.UnorderedList = function() {
 
 /**
  * Adds a new LinkedListNode to the beginning of the list
- * @param data
+ * @param data Any data of any type that will be stored in the node
+ * @return {aronnax.LinkedListNode} The new node just prepended
  */
 aronnax.UnorderedList.prototype.prepend = function(data) {
   var newNode = new aronnax.LinkedListNode(data);
   newNode.set({'next': this._head, 'prev': null});
   this._head = newNode;
+  return newNode;
 };
 
 /**
  * Adds a new LinkedListNode to the end of the list
- * @param data
+ * @param data Any data of any type that will be stored in the node
+ * @return {aronnax.LinkedListNode} The new node just appended
  */
 aronnax.UnorderedList.prototype.append = function(data) {
   var newNode = new aronnax.LinkedListNode(data),
@@ -1712,6 +1715,48 @@ aronnax.UnorderedList.prototype.append = function(data) {
   else {
     lastNode.set({'next': newNode});
   }
+  return newNode;
+};
+
+/**
+ * Removes a linked list node from the list. Can do so with an index, the data
+ * contained in the node, or the node itself. This function will not take care
+ * of any object deletion, its assumed whatever called the function can do that.
+ * @param {Number|Object|aronnax.LinkedListNode} item The item being removed can
+ * be an index into the list, that data in the node, or the node itself.
+ * @return {aronnax.LinkedListNode} The new node just removed.
+ */
+aronnax.UnorderedList.prototype.remove = function(item) {
+  var node = null;
+
+  if (typeof item === 'number') {
+    // remove the node with an index
+    node = this.index(item);
+  }
+  else if (item instanceof aronnax.LinkedListNode) {
+    // remove the actual node
+    node = item;
+  }
+  else {
+    // remove the node by finding the data
+    node = this.find(item);
+  }
+
+  if (node !== null) {
+    var prevNode = node.get('prev'),
+        nextNode = node.get('next');
+
+    if (prevNode !== null) {
+      prevNode.set('next', nextNode);
+    }
+    if (nextNode !== null) {
+      nextNode.set('prev', prevNode);
+    }
+
+    node.set({'prev': null, 'next': null});
+  }
+  return node;
+
 };
 
 /**
@@ -1783,7 +1828,7 @@ aronnax.UnorderedList.prototype.find = function(item) {
 /**
  * Return the node's data at a certain index in the list
  * @param {Number} idx The index into the list
- * @returns The linked list node's data
+ * @returns {aronnax.LinkedListNode} The linked list node's data
  */
 aronnax.UnorderedList.prototype.index = function(idx) {
     var current = this._head,
@@ -1826,6 +1871,33 @@ aronnax.UnorderedList.prototype.last = function() {
   }
   var lastNode = this.index(length - 1);
   return lastNode;
+};
+
+/**
+ * Returns tthe list as an array
+ * @returns {Array} The linked list as an array in same order
+ */
+aronnax.UnorderedList.prototype.toArray = function() {
+  var current = this._head,
+      array = [];
+
+  while(current !== null) {
+    array.push(current.get('data'));
+    current = current.get('next');
+  }
+
+  return array;
+};
+
+/**
+ * Returns tthe list as an string of comma-separated values
+ * @returns {String} The linked list as a sring
+ */
+aronnax.UnorderedList.prototype.toString = function() {
+  var string = this.toArray()
+    .toString();
+
+  return string;
 };
 // Copyright 2009 The Closure Library Authors. All Rights Reserved.
 //

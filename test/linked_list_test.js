@@ -212,13 +212,32 @@ describe('aronnax.UnorderedList', function() {
   });
 
   describe('last', function() {
-    beforeEach(function() {
-      testList = new aronnax.UnorderedList();
-    });
     it('should return the last node in the list', function() {
       testList.prepend('testItemA');
       testList.prepend('testItemB');
       expect(testList.last().get('data')).toEqual('testItemA');
+    });
+  });
+
+  describe('toArray', function() {
+    it('should return an array', function() {
+      var actual = testList.toArray();
+      expect(actual).toEqual([]);
+    });
+    it('should return all data in the array', function() {
+      testList.append('testItemA');
+      var actual = testList.toArray();
+      expect(actual).toEqual(['testItemA']);
+    });
+  });
+
+  describe('toString', function() {
+    it('should return a string representation of the list', function() {
+      testList.append('testItemA');
+      testList.append('testItemB');
+      var expected = 'testItemA,testItemB';
+      var actual = testList.toString();
+      expect(actual).toEqual(expected);
     });
   });
 

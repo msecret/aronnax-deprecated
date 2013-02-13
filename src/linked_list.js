@@ -247,3 +247,30 @@ aronnax.UnorderedList.prototype.last = function() {
   var lastNode = this.index(length - 1);
   return lastNode;
 };
+
+/**
+ * Returns tthe list as an array
+ * @returns {Array} The linked list as an array in same order
+ */
+aronnax.UnorderedList.prototype.toArray = function() {
+  var current = this._head,
+      array = [];
+
+  while(current !== null) {
+    array.push(current.get('data'));
+    current = current.get('next');
+  }
+
+  return array;
+};
+
+/**
+ * Returns tthe list as an string of comma-separated values
+ * @returns {String} The linked list as a sring
+ */
+aronnax.UnorderedList.prototype.toString = function() {
+  var string = this.toArray()
+    .toString();
+
+  return string;
+};
