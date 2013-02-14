@@ -116,7 +116,7 @@ describe('aronnax.UnorderedList', function() {
     it('should remove the item when given the actual node', function() {
       var nodeToRemove = testList.find('testItemB');
       testList.remove(nodeToRemove);
-      var actual = testList.search('testItemB');
+      var actual = testList.search('testItem');
       expect(actual).toBe(false);
     });
     it('will set the removed nodes prev and next to null', function() {
@@ -241,4 +241,189 @@ describe('aronnax.UnorderedList', function() {
     });
   });
 
+});
+
+describe('aronnax.OrderedList', function() {
+  var testList;
+  beforeEach(function() {
+    testList = new aronnax.OrderedList();
+  });
+  describe('length', function() {
+    beforeEach(function() {
+      testList = new aronnax.OrderedList();
+    });
+    it('should return 0 for an empty list', function() {
+      expect(testList.length()).toEqual(0);
+    });
+    it('should return 1 for when one item is added', function() {
+      testList.add('testItemA');
+      expect(testList.length()).toEqual(1);
+    });
+    it('should return 3 for when three items are added', function() {
+      testList.add('testItemA');
+      testList.add('testItemB');
+      testList.add('testItemC');
+      var actual = testList.length();
+      expect(actual).toEqual(3);
+    });
+  });
+  describe('add', function() {
+    beforeEach(function() {
+      testList = new aronnax.OrderedList();
+    });
+    it('should only add data that is an item or string', function() {
+      var actual = testList.add(['arrayValue']);
+      expect(actual).toBe(false);
+    });
+    it('should add an item to the list', function() {
+      testList.add(1);
+      var actual = testList.length();
+      expect(actual).toEqual(1);
+    });
+    it('should keep the list in order', function() {
+      testList.add(2);
+      testList.add(3);
+      testList.add(1);
+      var expected = '1,2,3';
+      var actual = testList.toString();
+      expect(actual).toEqual(expected);
+    });
+  });
+
+  describe('remove', function() {
+    beforeEach(function() {
+      testList = new aronnax.OrderedList();
+      testList.add('testItemA');
+      testList.add('testItemB');
+    });
+    it('should remove the item when given an index into the list', function() {
+      testList.remove(0);
+      var actual = testList.search('testItemB');
+      expect(actual).toBe(false);
+    });
+    it('should remove the item when given the actual node', function() {
+      var nodeToRemove = testList.find('testItemB');
+      testList.remove(nodeToRemove);
+      var actual = testList.search('testItem');
+      expect(actual).toBe(false);
+    });
+    it('will set the removed nodes prev and next to null', function() {
+      var nodeToRemove = testList.find('testItemB'),
+          removedNode = testList.remove(nodeToRemove);
+
+      expect(removedNode.get('next')).toBe(null);
+      expect(removedNode.get('prev')).toBe(null);
+    });
+    it('will return false when it cant find the node to be removed', function() {
+      var removedNode = testList.remove('testItemX');
+      expect(removedNode).toBe(false);
+    });
+    it('will work on a list of only one item', function() {
+      testList.remove(1);
+      var removedNode = testList.remove(0);
+      expect(removedNode.get('data')).toEqual('testItemA');
+    });
+  });
+
+  describe('search', function() {
+    it('should return true if its in the list', function() {
+      testList.add('testItemA');
+      testList.add('testItemB');
+      testList.add('testItemC');
+      testList.add('testItemD');
+      testList.add('testItemE');
+      expect(testList.search('testItemC')).toBe(true);
+      expect(testList.search('testItemA')).toBe(true);
+      expect(testList.search('testItemD')).toBe(true);
+      expect(testList.search('testItemE')).toBe(true);
+    });
+    it('should return false if its not in the list', function() {
+      testList.add('testItemA');
+      testList.add('testItemB');
+      testList.add('testItemC');
+      expect(testList.search('testItemX')).toBe(false);
+    });
+  });
+
+  describe('length', function() {
+    beforeEach(function() {
+      testList = new aronnax.OrderedList();
+    });
+    it('should return 0 for an empty list', function() {
+      expect(testList.length()).toEqual(0);
+    });
+    it('should return 1 for when one item is added', function() {
+      testList.add('testItemA');
+      expect(testList.length()).toEqual(1);
+    });
+    it('should return 3 for when three items are added', function() {
+      testList.add('testItemA');
+      testList.add('testItemB');
+      testList.add('testItemC');
+      var actual = testList.length();
+      expect(actual).toEqual(3);
+    });
+  });
+
+  describe('find', function() {
+    it('should get the item if its in the list', function() {
+      testList.add('testItemA');
+      testList.add('testItemB');
+      var expected = 'testItemA';
+      var actual = testList.find('testItemA').get('data');
+      expect(actual).toEqual(expected);
+    });
+  });
+
+  describe('index', function() {
+    it('should return the correct object given the index', function() {
+      testList.add('testItemC');
+      testList.add('testItemB');
+      testList.add('testItemA');
+      expect(testList.index(0).get('data')).toBe('testItemA');
+      expect(testList.index(1).get('data')).toBe('testItemB');
+      expect(testList.index(2).get('data')).toBe('testItemC');
+    });
+  });
+
+  describe('indexOf', function() {
+    it('should return the index of the data given', function() {
+      testList.add('testItemB');
+      testList.add('testItemA');
+      testList.add('testItemC');
+      expect(testList.indexOf('testItemA')).toEqual(0);
+      expect(testList.indexOf('testItemB')).toBe(1);
+      expect(testList.indexOf('testItemC')).toBe(2);
+    });
+  });
+
+  describe('last', function() {
+    it('should return the last node in the list', function() {
+      testList.add('testItemA');
+      testList.add('testItemB');
+      expect(testList.last().get('data')).toEqual('testItemB');
+    });
+  });
+
+  describe('toArray', function() {
+    it('should return an array', function() {
+      var actual = testList.toArray();
+      expect(actual).toEqual([]);
+    });
+    it('should return all data in the array', function() {
+      testList.add('testItemA');
+      var actual = testList.toArray();
+      expect(actual).toEqual(['testItemA']);
+    });
+  });
+
+  describe('toString', function() {
+    it('should return a string representation of the list data', function() {
+      testList.add('testItemA');
+      testList.add('testItemB');
+      var expected = 'testItemA,testItemB';
+      var actual = testList.toString();
+      expect(actual).toEqual(expected);
+    });
+  });
 });

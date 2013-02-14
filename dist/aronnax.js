@@ -1742,7 +1742,7 @@ aronnax.UnorderedList.prototype.remove = function(item) {
     node = this.find(item);
   }
 
-  if (node !== null) {
+  if (node) {
     var prevNode = node.get('prev'),
         nextNode = node.get('next');
 
@@ -1890,7 +1890,7 @@ aronnax.UnorderedList.prototype.toArray = function() {
 };
 
 /**
- * Returns tthe list as an string of comma-separated values
+ * Returns The list as an string of comma-separated values
  * @returns {String} The linked list as a sring
  */
 aronnax.UnorderedList.prototype.toString = function() {
@@ -1899,7 +1899,224 @@ aronnax.UnorderedList.prototype.toString = function() {
 
   return string;
 };
-// Copyright 2009 The Closure Library Authors. All Rights Reserved.
+
+
+/**
+ * An ordered linked list
+ * @class
+ * @constuctor
+ * @this aronnax.OrderedList
+ */
+aronnax.OrderedList = function() {
+  /** @lends OrderedList.prototype */
+  /**
+  * The start of the list, the first object to reference
+  * @instance
+  * @protected
+  * @type {Object}
+  */
+  this._head = null;
+};
+
+/**
+ * Adds a new item to the list in order
+ * @param {Number|String} data A number or string to store
+ * @return {aronnax.LinkedListNode} The new node just added
+ */
+aronnax.OrderedList.prototype.add = function(data) {
+  if (typeof data !== 'number' && typeof data !== 'string') {
+    // aronnax.log.error('Ordered list data needs to be a number or string');
+    return false;
+  }
+
+  var node = new aronnax.LinkedListNode(data),
+      current = this._head,
+      prev = null,
+      stop = false;
+
+  while (current !== null && !stop) {
+    if (current.get('data') > data) {
+      stop = true;
+    }
+    else {
+      prev = current;
+      current = current.get('next');
+    }
+  }
+
+  if (prev === null) {
+    node.set('next', this._head);
+    node.set('prev', null);
+    this._head = node;
+  }
+  else {
+    node.set('next', current);
+    prev.set('next', node);
+  }
+  return node;
+};
+
+/**
+ * Returns whether the list is empty or not
+ * @return {Boolean} Whether the list was empty or not
+ */
+aronnax.OrderedList.prototype.isEmpty = function() {
+  return aronnax.UnorderedList.prototype.isEmpty.call(this);
+};
+
+/**
+ * Returns if the node is in the list
+ * @param item The item being searched for
+ * @returns {Boolean} If the node is in the list
+ */
+aronnax.OrderedList.prototype.search = function(item, arr_split) {
+  var arr = [],
+      midpoint;
+
+  if (arr_split) {
+    arr = arr_split;
+  }
+  else {
+    arr = this.toFullArray();
+  }
+
+  if (arr.length === 0) {
+    return false;
+  }
+
+  midpoint = parseInt(arr.length / 2, 10);
+  if (arr[midpoint].get('data') === item) {
+    return true;
+  }
+  else {
+    if (item < arr[midpoint].get('data')) {
+      return this.search(item, arr.slice(0, midpoint));
+    }
+    else {
+      return this.search(item, arr.slice(midpoint + 1));
+    }
+  }
+};
+
+/**
+ * Returns the node if its in the list
+ * @param item The item being searched for
+ * @returns {aronnax.LinkedListNode} The node
+ */
+aronnax.OrderedList.prototype.find = function(item, arr_split) {
+  var arr = [],
+      midpoint;
+
+  if (arr_split) {
+    arr = arr_split;
+  }
+  else {
+    arr = this.toFullArray();
+  }
+
+  if (arr.length === 0) {
+    return false;
+  }
+
+  midpoint = parseInt(arr.length / 2, 10);
+  if (arr[midpoint].get('data') === item) {
+    return arr[midpoint];
+  }
+  else {
+    if (item < arr[midpoint].get('data')) {
+      return this.find(item, arr.slice(0, midpoint));
+    }
+    else {
+      return this.find(item, arr.slice(midpoint + 1));
+    }
+  }
+};
+
+/**
+ * An array of the list with the whole node object
+ * @return {Array} An array of nodes
+ */
+aronnax.OrderedList.prototype.toFullArray = function() {
+  var current = this._head,
+      array = [];
+
+  while(current !== null) {
+    array.push(current);
+    current = current.get('next');
+  }
+
+  return array;
+};
+
+/**
+ * Removes a linked list node from the list. Can do so with an index, the data
+ * contained in the node, or the node itself. This function will not take care
+ * of any object deletion, its assumed whatever called the function can do that.
+ * @param {Number|Object|aronnax.LinkedListNode} item The item being removed can
+ * be an index into the list, that data in the node, or the node itself.
+ * @return {aronnax.LinkedListNode} The new node just removed.
+ */
+aronnax.OrderedList.prototype.remove = function(item) {
+  return aronnax.UnorderedList.prototype.remove.call(this, item);
+};
+
+/**
+ * Returns the size of the list
+ * @return {Number} length
+ */
+aronnax.OrderedList.prototype.length = function() {
+  return aronnax.UnorderedList.prototype.length.call(this);
+};
+
+/**
+ * Returns whether the list is empty or not
+ * @return {Boolean} Whether the list was empty or not
+ */
+aronnax.OrderedList.prototype.isEmpty = function(idx) {
+  return aronnax.UnorderedList.prototype.isEmpty.call(this, idx);
+};
+
+/**
+ * Return the node's data at a certain index in the list
+ * @param {Number} idx The index into the list
+ * @returns {aronnax.LinkedListNode} The linked list node's data
+ */
+aronnax.OrderedList.prototype.index = function(idx) {
+  return aronnax.UnorderedList.prototype.index.call(this, idx);
+};
+
+/**
+ * Return the index of the list
+ * @param item The item being found
+ * @returns {Number} The index of the item in the list
+ */
+aronnax.OrderedList.prototype.indexOf = function(item) {
+  return aronnax.UnorderedList.prototype.indexOf.call(this, item);
+};
+
+/**
+ * Returns the last item in the list
+ * @returns {aronnax.LinkedListNode} The last node
+ */
+aronnax.OrderedList.prototype.last = function() {
+  return aronnax.UnorderedList.prototype.last.call(this);
+};
+
+/**
+ * Returns tthe list as an array
+ * @returns {Array} The linked list as an array in same order
+ */
+aronnax.OrderedList.prototype.toArray = function() {
+  return aronnax.UnorderedList.prototype.toArray.call(this);
+};
+
+/**
+ * Returns The list as an string of comma-separated values
+ * @returns {String} The linked list as a sring
+ */
+aronnax.OrderedList.prototype.toString = function() {
+  return aronnax.UnorderedList.prototype.toString.call(this);
+};// Copyright 2009 The Closure Library Authors. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
