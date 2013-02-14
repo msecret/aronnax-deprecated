@@ -104,8 +104,9 @@ describe('aronnax.UnorderedList', function() {
       testList.append('testItemB');
     });
     it('should remove the item when given an index into the list', function() {
-      testList.remove(1);
-      var actual = testList.search('testItemB');
+      testList.append('testItemC');
+      testList.remove(0);
+      var actual = testList.search('testItemA');
       expect(actual).toBe(false);
     });
     it('should remove the item when given data in the node', function() {
@@ -248,6 +249,7 @@ describe('aronnax.OrderedList', function() {
   beforeEach(function() {
     testList = new aronnax.OrderedList();
   });
+
   describe('length', function() {
     beforeEach(function() {
       testList = new aronnax.OrderedList();
@@ -267,6 +269,7 @@ describe('aronnax.OrderedList', function() {
       expect(actual).toEqual(3);
     });
   });
+
   describe('add', function() {
     beforeEach(function() {
       testList = new aronnax.OrderedList();
@@ -295,16 +298,22 @@ describe('aronnax.OrderedList', function() {
       testList = new aronnax.OrderedList();
       testList.add('testItemA');
       testList.add('testItemB');
+      testList.add('testItemC');
     });
     it('should remove the item when given an index into the list', function() {
-      testList.remove(0);
-      var actual = testList.search('testItemB');
+      testList.remove(2);
+      var actual = testList.search('testItemC');
       expect(actual).toBe(false);
     });
     it('should remove the item when given the actual node', function() {
       var nodeToRemove = testList.find('testItemB');
       testList.remove(nodeToRemove);
-      var actual = testList.search('testItem');
+      var actual = testList.search('testItemB');
+      expect(actual).toBe(false);
+    });
+    it('should revmove the item given the node data', function() {
+      testList.remove('testItemB').get('data');
+      var actual = testList.search('testItemB');
       expect(actual).toBe(false);
     });
     it('will set the removed nodes prev and next to null', function() {
@@ -369,9 +378,8 @@ describe('aronnax.OrderedList', function() {
     it('should get the item if its in the list', function() {
       testList.add('testItemA');
       testList.add('testItemB');
-      var expected = 'testItemA';
-      var actual = testList.find('testItemA').get('data');
-      expect(actual).toEqual(expected);
+      expect(testList.find('testItemA').get('data')).toEqual('testItemA');
+      expect(testList.find('testItemB').get('data')).toEqual('testItemB');
     });
   });
 

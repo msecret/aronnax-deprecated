@@ -124,6 +124,9 @@ aronnax.UnorderedList.prototype.remove = function(item) {
     if (prevNode !== null) {
       prevNode.set('next', nextNode);
     }
+    else {
+      this._head = nextNode;
+    }
     if (nextNode !== null) {
       nextNode.set('prev', prevNode);
     }
@@ -275,6 +278,39 @@ aronnax.UnorderedList.prototype.toString = function() {
   return string;
 };
 
+/**
+ * Returns The list as a more full string with the next and prev references
+ * @returns {String} The linked list as a sring
+ */
+aronnax.UnorderedList.prototype.toFullString = function() {
+  var current = this._head,
+      string = '';
+
+  while(current !== null) {
+    var prev = current.get('prev');
+    var next = current.get('next');
+    if (prev === null) {
+      prev = 'null';
+    }
+    else {
+      prev = prev.get('data');
+    }
+    if (next === null) {
+      next = 'null';
+    }
+    else {
+      next = next.get('data');
+    }
+    string += "{"+ current.get('data') +
+      " : prev=" + prev +
+      " : next=" + next +
+    "}";
+    current = current.get('next');
+  }
+
+  return string;
+};
+
 
 /**
  * An ordered linked list
@@ -326,6 +362,7 @@ aronnax.OrderedList.prototype.add = function(data) {
   }
   else {
     node.set('next', current);
+    node.set('prev', prev);
     prev.set('next', node);
   }
   return node;
@@ -421,6 +458,14 @@ aronnax.OrderedList.prototype.toFullArray = function() {
   }
 
   return array;
+};
+
+/**
+ * Returns The list as a more full string with the next and prev references
+ * @returns {String} The linked list as a sring
+ */
+aronnax.OrderedList.prototype.toFullString = function() {
+  return aronnax.UnorderedList.prototype.toFullString.call(this);
 };
 
 /**

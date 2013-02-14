@@ -1,4 +1,4 @@
-Compilation generated on Wed Feb 13 2013 23:21:34 GMT-0800 (PST)
+Compilation generated on Thu Feb 14 2013 10:20:14 GMT-0800 (PST)
 Copyright (C) 2013 Marco Segreto 
 Compilation report: 
 
@@ -42,19 +42,19 @@ dist/aronnax.js:1684: WARNING - Parse error. illegal use of unknown JSDoc tag "i
   * @instance
     ^
 
-dist/aronnax.js:1907: WARNING - Parse error. illegal use of unknown JSDoc tag "constuctor"; ignoring it
+dist/aronnax.js:1943: WARNING - Parse error. illegal use of unknown JSDoc tag "constuctor"; ignoring it
  * @constuctor
    ^
 
-dist/aronnax.js:1914: WARNING - Parse error. illegal use of unknown JSDoc tag "instance"; ignoring it
+dist/aronnax.js:1950: WARNING - Parse error. illegal use of unknown JSDoc tag "instance"; ignoring it
   * @instance
     ^
 
-dist/aronnax.js:10412: WARNING - Parse error. illegal use of unknown JSDoc tag "file"; ignoring it
+dist/aronnax.js:10457: WARNING - Parse error. illegal use of unknown JSDoc tag "file"; ignoring it
  * @file Holds the main class
    ^
 
-dist/aronnax.js:10427: WARNING - Parse error. illegal use of unknown JSDoc tag "exports"; ignoring it
+dist/aronnax.js:10472: WARNING - Parse error. illegal use of unknown JSDoc tag "exports"; ignoring it
   @exports aronnax/main
   ^
 
