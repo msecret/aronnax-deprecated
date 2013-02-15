@@ -1,4 +1,4 @@
-Compilation generated on Thu Feb 14 2013 10:20:14 GMT-0800 (PST)
+Compilation generated on Thu Feb 14 2013 22:03:29 GMT-0800 (PST)
 Copyright (C) 2013 Marco Segreto 
 Compilation report: 
 
@@ -60,5 +60,5 @@ dist/aronnax.js:10472: WARNING - Parse error. illegal use of unknown JSDoc tag "
 
 0 error(s), 14 warning(s)
 
-Compiled size:	[32m2.26[39m kb 	([32m2315[39m bytes)
-GZipped size:	[32m1.13[39m kb 	([32m1162[39m bytes) -49.81%
+Compiled size:	[32m3.04[39m kb 	([32m3116[39m bytes)
+GZipped size:	[32m1.30[39m kb 	([32m1333[39m bytes) -57.22%

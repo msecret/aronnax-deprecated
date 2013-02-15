@@ -70,6 +70,7 @@ module.exports = function(grunt) {
         closureCompiler: 'build/closure-compiler/compiler.jar',
         js: '<config:concat.dist.dest>',
         output_file: 'dist/aronnax.min.js',
+        report_file: 'dist/aronnax-report.txt',
         checkModified: false,
         options: {
           compilation_level: 'ADVANCED_OPTIMIZATIONS',
