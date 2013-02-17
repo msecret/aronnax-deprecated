@@ -50,6 +50,7 @@ module.exports = function(grunt) {
         compile: false,
         root: [
           'src',
+          'lib/*.js',
           'lib/closure-library/closure',
           'lib/closure-library/third_party/closure'
         ]

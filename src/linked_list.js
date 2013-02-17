@@ -7,8 +7,9 @@
  * @file Holds the linked list and node classes
  */
 
-goog.provide('aronnax.UnorderedList');
 goog.provide('aronnax.LinkedListNode');
+goog.provide('aronnax.UnorderedList');
+goog.provide('aronnax.OrderedList');
 goog.require('aronnax.accessor');
 
 
