@@ -18,6 +18,7 @@ goog.require('aronnax.accessor');
 goog.require('aronnax.LinkedListNode');
 goog.require('aronnax.UnorderedList');
 goog.require('aronnax.OrderedList');
+goog.require('aronnax.base');
 
 
 /**

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Mixin: accessor</title>
+    <title>JSDoc: Class: base</title>
     
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Mixin: accessor</h1>
+    <h1 class="page-title">Class: base</h1>
     
     
 
@@ -29,7 +29,7 @@
     <h2>
         <span class="ancestors"><a href="aronnax.html">aronnax</a>.</span>
     
-    accessor
+    base
     </h2>
     
 </header>  
@@ -40,10 +40,77 @@
     
     
         
-            <div class="description">A mixin class for adding accessor methods to a classes properties.</div>
+<dt>
+    <h4 class="name" id="base"><span class="type-signature"></span>new base<span class="signature">(className)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        A base class that assigns unique ids to objects
+    </div>
+    
+
+    
+    
+    
+        <h5>This:</h5>
+        <ul><li><a href="aronnax.base.html">aronnax.base</a></li></ul>
+    
+    
+    
+        <h5>Parameters:</h5>
         
-        
-        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>className</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">The name of the class being created</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
 <dl class="details">
     
         
@@ -66,7 +133,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="accessor.js.html">accessor.js</a>, line 16
+        <a href="base.js.html">base.js</a>, line 20
     </li></ul></dd>
     
     
@@ -77,8 +144,16 @@
     
 </dl>
 
-        
-        
+    
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
     
     </div>
     
@@ -93,32 +168,20 @@
     
     
     
-    
-    
-        <h3 class="subsection-title">Methods</h3>
+        <h3 class="subsection-title">Members</h3>
         
         <dl>
             
 <dt>
-    <h4 class="name" id="attrs"><span class="type-signature">&lt;static> </span>attrs<span class="signature">()</span><span class="type-signature"> &rarr; {Object}</span></h4>
+    <h4 class="name" id="_class"><span class="type-signature">&lt;protected> </span>_class<span class="type-signature"> :String</span></h4>
     
     
 </dt>
 <dd>
     
-    
     <div class="description">
-        Returns all the attributes as an object
+        The name of the class
     </div>
-    
-
-    
-    
-    
-        <h5>This:</h5>
-        <ul><li><a href="aronnax.accessor.html">aronnax.accessor</a></li></ul>
-    
-    
     
     
     
@@ -144,7 +207,172 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="accessor.js.html">accessor.js</a>, line 69
+        <a href="base.js.html">base.js</a>, line 27
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="uniqueID"><span class="type-signature"></span>uniqueID<span class="type-signature"> :String</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        The full unique id of the object. A string in the form of className:id.
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="base.js.html">base.js</a>, line 41
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        </dl>
+    
+    
+    
+        <h3 class="subsection-title">Methods</h3>
+        
+        <dl>
+            
+<dt>
+    <h4 class="name" id="getTotalObjects"><span class="type-signature">&lt;static> </span>getTotalObjects<span class="signature">(className)</span><span class="type-signature"> &rarr; {Number}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Returns the total number of objects for a givn class
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>className</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Sting</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">The name of the class</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="base.js.html">base.js</a>, line 59
     </li></ul></dd>
     
     
@@ -165,7 +393,7 @@
     
             
 <div class="param-desc">
-    All the attributes of the object
+    The total number of initialized objects of a class
 </div>
 
 
@@ -176,7 +404,7 @@
 	</dt>
 	<dd>
 		
-<span class="param-type">Object</span>
+<span class="param-type">Number</span>
 
 
 	</dd>
@@ -190,7 +418,7 @@
         
             
 <dt>
-    <h4 class="name" id="get"><span class="type-signature">&lt;static> </span>get<span class="signature">(attr)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="toString"><span class="type-signature"></span>toString<span class="signature">()</span><span class="type-signature"> &rarr; {String}</span></h4>
     
     
 </dt>
@@ -198,65 +426,14 @@
     
     
     <div class="description">
-        Gets the attribute in the object
+        Returns a string represnation of the current object
     </div>
     
 
     
     
     
-        <h5>This:</h5>
-        <ul><li><a href="aronnax.accessor.html">aronnax.accessor</a></li></ul>
     
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>attr</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-            
-            
-            
-            
-            
-            <td class="description last">The attribute on the object you want to get</td>
-        </tr>
-	
-	
-	</tbody>
-</table>
     
     
     
@@ -282,7 +459,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="accessor.js.html">accessor.js</a>, line 23
+        <a href="base.js.html">base.js</a>, line 50
     </li></ul></dd>
     
     
@@ -302,173 +479,21 @@
     <h5>Returns:</h5>
     
             
-<div class="param-desc">
-    The attribute of the object
-</div>
 
 
-
-        
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <h4 class="name" id="set"><span class="type-signature">&lt;static> </span>set<span class="signature">(key, <span class="optional">value</span>)</span><span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        Sets the attribute, either with a key and value as params or as one param
-with key values pairs.
-    </div>
-    
-
-    
-    
-    
-        <h5>This:</h5>
-        <ul><li><a href="aronnax.accessor.html">aronnax.accessor</a></li></ul>
-    
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params">
-    <thead>
-	<tr>
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
 		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		<th>Argument</th>
-		
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>key</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-|
-
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-            
-            
-                <td class="attributes">
-                
-                    
-                
-                </td>
-            
-            
-            
-            
-            <td class="description last">Either a key to set or a full object of key
-value pairs you want to set</td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>value</code></td>
-            
-            
-            <td class="type">
-            
-                
 <span class="param-type">String</span>
 
 
-            
-            </td>
-            
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-                    
-                
-                </td>
-            
-            
-            
-            
-            <td class="description last">The value you want to set on the key</td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="accessor.js.html">accessor.js</a>, line 41
-    </li></ul></dd>
-    
-    
-    
-    
-    
-    
-    
+	</dd>
 </dl>
 
-    
-    
-    
-    
-    
-    
+        
     
     
 </dd>

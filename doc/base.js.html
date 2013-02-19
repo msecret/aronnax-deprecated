@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: main.js</title>
+    <title>JSDoc: Source: base.js</title>
     
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Source: main.js</h1>
+    <h1 class="page-title">Source: base.js</h1>
     
     
 
@@ -31,32 +31,67 @@
  */
 
 /**
- * @file Holds the main class
+ * @file Holds the base class
  */
+
+goog.provide('aronnax.base');
+
+var baseCount = {};
 
 /**
- * Main aronnax namespace
- * @namespace aronnax
+ * A base class that assigns unique ids to objects
+ * @class
+ * @this aronnax.base
+ * @param {String} className The name of the class being created
  */
+aronnax.base = function(className) {
+  /**
+  * The name of the class
+  * @type String
+  * @instance
+  * @protected
+  */
+  this._class = className;
 
-goog.provide('aronnax.main');
-goog.require('goog.dom');
-goog.require('aronnax.accessor');
-goog.require('aronnax.LinkedListNode');
-goog.require('aronnax.UnorderedList');
-goog.require('aronnax.OrderedList');
-goog.require('aronnax.base');
+  var currentClassCount = baseCount[this._class];
 
-
-/**
-  Initialization for aronnax engine
-  @exports aronnax/main
- */
-aronnax.main = function( appTitle, parent ){
-  console.log('Aronnax initialized');
+  if (currentClassCount === undefined) {
+    currentClassCount = 0;
+    baseCount[this._class] = currentClassCount;
+  }
+  this._objectId = currentClassCount;
+  /**
+  * The full unique id of the object. A string in the form of className:id.
+  * @type String
+  * @instance
+  */
+  this.uniqueID = this._class + ':' + this._objectId;
+  baseCount[this._class] += 1;
 };
 
-goog.exportSymbol('aronnax.main', aronnax.main);</code></pre>
+
+/**
+ * Returns a string represnation of the current object
+ * @return {String}
+ */
+aronnax.base.prototype.toString = function() {
+  return this._class + ':' + this._objectId;
+};
+
+/**
+ * Returns the total number of objects for a givn class
+ * @param {Sting} className The name of the class
+ * @return {Number} The total number of initialized objects of a class
+ */
+aronnax.base.getTotalObjects = function(className) {
+  return baseCount[className];
+};
+
+aronnax.base.resetAll = function() {
+  baseCount = {};
+};
+
+</code></pre>
         </article>
     </section>
 
