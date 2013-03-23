@@ -25,6 +25,10 @@ describe('aronnax.accessor', function() {
       var actual = accessor.get('testAttr');
       expect(actual).toBeFalsy();
     });
+    it('will return the default value if given', function() {
+      var actual = accessor.get('testAttr', 'testDefault');
+      expect(actual).toEqual('testDefault');  
+    }); 
   });
 
   describe('set', function() {
