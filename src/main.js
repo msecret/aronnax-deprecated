@@ -16,18 +16,18 @@ goog.provide('aronnax.main');
 goog.require('goog.dom');
 goog.require('aronnax.accessor');
 goog.require('aronnax.Logger');
+goog.require('aronnax.base');
 goog.require('aronnax.LinkedListNode');
 goog.require('aronnax.UnorderedList');
 goog.require('aronnax.OrderedList');
-goog.require('aronnax.base');
-
 
 /**
   Initialization for aronnax engine
   @exports aronnax/main
  */
 aronnax.main = function( appTitle, parent ){
-  console.log('Aronnax initialized');
+  var _log = aronnax.Logger.getLog('main');
+  _log.log('Aronnax initialized');
 };
 
 goog.exportSymbol('aronnax.main', aronnax.main);

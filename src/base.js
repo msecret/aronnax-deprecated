@@ -8,8 +8,12 @@
  */
 
 goog.provide('aronnax.base');
+goog.require('aronnax.Logger');
+
+(function(goog, aronnax) {
 
 var baseCount = {};
+var _log = aronnax.Logger.getLog('base');
 
 /**
  * A base class that assigns unique ids to objects
@@ -44,7 +48,7 @@ aronnax.base = function(className) {
 
 
 /**
- * Returns a string represnation of the current object
+ * Returns a string representation of the current object
  * @return {String}
  */
 aronnax.base.prototype.toString = function() {
@@ -63,4 +67,6 @@ aronnax.base.getTotalObjects = function(className) {
 aronnax.base.resetAll = function() {
   baseCount = {};
 };
+
+})(goog, aronnax);
 

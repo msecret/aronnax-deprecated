@@ -2327,12 +2327,12 @@ aronnax.Logger.prototype._write = function(type, message) {
   // TODO replace with globals for environments
   switch (aronnax.Logger.settings.environment) {
     case 'staging':
-      window.console[type](err.message);
+      window.console[type](this.name+ ':' +err.message);
       break;
     case 'production':
       break;
     default:
-      window.console[type](err.message);
+      window.console[type](this.name+ ':' +err.message);
       break;
   }
 };
@@ -2421,8 +2421,12 @@ goog.provide('aronnax.LinkedListNode');
 goog.provide('aronnax.UnorderedList');
 goog.provide('aronnax.OrderedList');
 goog.require('aronnax.accessor');
+goog.require('aronnax.Logger');
 
+(function(goog, aronnax) {
 
+var _log = aronnax.Logger.getLog('linked_list');
+  
 /**
  * A single node for a linked list
  * @class
@@ -2947,7 +2951,10 @@ aronnax.OrderedList.prototype.toArray = function() {
  */
 aronnax.OrderedList.prototype.toString = function() {
   return aronnax.UnorderedList.prototype.toString.call(this);
-};/*
+};
+
+})(goog, aronnax);
+/*
  * Copyright (C) 2013 Marco Segreto
  * vim: set et ts=2 sw=2 tw=80:
  */
@@ -2957,8 +2964,12 @@ aronnax.OrderedList.prototype.toString = function() {
  */
 
 goog.provide('aronnax.base');
+goog.require('aronnax.Logger');
+
+(function(goog, aronnax) {
 
 var baseCount = {};
+var _log = aronnax.Logger.getLog('base');
 
 /**
  * A base class that assigns unique ids to objects
@@ -2993,7 +3004,7 @@ aronnax.base = function(className) {
 
 
 /**
- * Returns a string represnation of the current object
+ * Returns a string representation of the current object
  * @return {String}
  */
 aronnax.base.prototype.toString = function() {
@@ -3012,6 +3023,8 @@ aronnax.base.getTotalObjects = function(className) {
 aronnax.base.resetAll = function() {
   baseCount = {};
 };
+
+})(goog, aronnax);
 
 // Copyright 2009 The Closure Library Authors. All Rights Reserved.
 //
@@ -10683,18 +10696,18 @@ goog.provide('aronnax.main');
 goog.require('goog.dom');
 goog.require('aronnax.accessor');
 goog.require('aronnax.Logger');
+goog.require('aronnax.base');
 goog.require('aronnax.LinkedListNode');
 goog.require('aronnax.UnorderedList');
 goog.require('aronnax.OrderedList');
-goog.require('aronnax.base');
-
 
 /**
   Initialization for aronnax engine
   @exports aronnax/main
  */
 aronnax.main = function( appTitle, parent ){
-  console.log('Aronnax initialized');
+  var _log = aronnax.Logger.getLog('main');
+  _log.log('Aronnax initialized');
 };
 
 goog.exportSymbol('aronnax.main', aronnax.main);

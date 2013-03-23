@@ -17,8 +17,7 @@ module.exports = function(grunt) {
     jasmine : {
       src : [
         'lib/closure-library/closure/goog/base.js',
-        'dist/deps.js',
-        'src/*.js'
+        'dist/deps.js'
       ],
       specs : 'test/*.js'
     },

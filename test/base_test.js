@@ -3,9 +3,12 @@
  * vim: set et ts=2 sw=2 tw=80:
  */
 
+goog.require('aronnax.main');
+
 describe('aronnax.base', function() {
   var testInstance, TestClass;
   beforeEach(function() {
+    goog.require('aronnax.main');
     aronnax.base.resetAll();
     TestClass = function() {
       goog.base(this, 'TestClass');

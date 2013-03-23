@@ -11,8 +11,12 @@ goog.provide('aronnax.LinkedListNode');
 goog.provide('aronnax.UnorderedList');
 goog.provide('aronnax.OrderedList');
 goog.require('aronnax.accessor');
+goog.require('aronnax.Logger');
 
+(function(goog, aronnax) {
 
+var _log = aronnax.Logger.getLog('linked_list');
+  
 /**
  * A single node for a linked list
  * @class
@@ -538,3 +542,5 @@ aronnax.OrderedList.prototype.toArray = function() {
 aronnax.OrderedList.prototype.toString = function() {
   return aronnax.UnorderedList.prototype.toString.call(this);
 };
+
+})(goog, aronnax);

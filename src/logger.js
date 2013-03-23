@@ -65,12 +65,12 @@ aronnax.Logger.prototype._write = function(type, message) {
   // TODO replace with globals for environments
   switch (aronnax.Logger.settings.environment) {
     case 'staging':
-      window.console[type](err.message);
+      window.console[type](this.name+ ':' +err.message);
       break;
     case 'production':
       break;
     default:
-      window.console[type](err.message);
+      window.console[type](this.name+ ':' +err.message);
       break;
   }
 };
