@@ -1,76 +1,92 @@
-Compilation generated on Mon Feb 18 2013 16:36:44 GMT-0800 (PST)
+Compilation generated on Sat Mar 23 2013 12:22:40 GMT-0700 (PDT)
 Copyright (C) 2013 Marco Segreto 
 Compilation report: 
 
-dist/aronnax.js:1555: WARNING - Parse error. illegal use of unknown JSDoc tag "file"; ignoring it
+dist/aronnax.js:2190: WARNING - Parse error. illegal use of unknown JSDoc tag "file"; ignoring it
  * @file Holds the accessor mixin class
    ^
 
-dist/aronnax.js:1562: WARNING - Parse error. illegal use of unknown JSDoc tag "mixin"; ignoring it
+dist/aronnax.js:2197: WARNING - Parse error. illegal use of unknown JSDoc tag "mixin"; ignoring it
  * @mixin
    ^
 
-dist/aronnax.js:1632: WARNING - Parse error. illegal use of unknown JSDoc tag "file"; ignoring it
- * @file Holds the linked list and node classes
+dist/aronnax.js:2269: WARNING - Parse error. illegal use of unknown JSDoc tag "file"; ignoring it
+ * @file Holds the logging classes
    ^
 
-dist/aronnax.js:1644: WARNING - Parse error. illegal use of unknown JSDoc tag "constuctor"; ignoring it
+dist/aronnax.js:2282: WARNING - Parse error. illegal use of unknown JSDoc tag "constuctor"; ignoring it
  * @constuctor
    ^
 
-dist/aronnax.js:1646: WARNING - Parse error. illegal use of unknown JSDoc tag "mixes"; ignoring it
+dist/aronnax.js:2284: WARNING - Parse error. illegal use of unknown JSDoc tag "mixes"; ignoring it
  * @mixes aronnax.accessor
    ^
 
-dist/aronnax.js:1652: WARNING - Parse error. illegal use of unknown JSDoc tag "instance"; ignoring it
+dist/aronnax.js:2291: WARNING - Parse error. illegal use of unknown JSDoc tag "instance"; ignoring it
    * @instance
      ^
 
-dist/aronnax.js:1659: WARNING - Parse error. illegal use of unknown JSDoc tag "instance"; ignoring it
-   * @instance
-     ^
+dist/aronnax.js:2390: WARNING - Parse error. illegal use of unknown JSDoc tag "file"; ignoring it
+ * @file Holds the linked list and node classes
+   ^
 
-dist/aronnax.js:1666: WARNING - Parse error. illegal use of unknown JSDoc tag "instance"; ignoring it
-   * @instance
-     ^
-
-dist/aronnax.js:1678: WARNING - Parse error. illegal use of unknown JSDoc tag "constuctor"; ignoring it
+dist/aronnax.js:2402: WARNING - Parse error. illegal use of unknown JSDoc tag "constuctor"; ignoring it
  * @constuctor
    ^
 
-dist/aronnax.js:1685: WARNING - Parse error. illegal use of unknown JSDoc tag "instance"; ignoring it
-  * @instance
-    ^
+dist/aronnax.js:2404: WARNING - Parse error. illegal use of unknown JSDoc tag "mixes"; ignoring it
+ * @mixes aronnax.accessor
+   ^
 
-dist/aronnax.js:1944: WARNING - Parse error. illegal use of unknown JSDoc tag "constuctor"; ignoring it
+dist/aronnax.js:2410: WARNING - Parse error. illegal use of unknown JSDoc tag "instance"; ignoring it
+   * @instance
+     ^
+
+dist/aronnax.js:2417: WARNING - Parse error. illegal use of unknown JSDoc tag "instance"; ignoring it
+   * @instance
+     ^
+
+dist/aronnax.js:2424: WARNING - Parse error. illegal use of unknown JSDoc tag "instance"; ignoring it
+   * @instance
+     ^
+
+dist/aronnax.js:2436: WARNING - Parse error. illegal use of unknown JSDoc tag "constuctor"; ignoring it
  * @constuctor
    ^
 
-dist/aronnax.js:1951: WARNING - Parse error. illegal use of unknown JSDoc tag "instance"; ignoring it
+dist/aronnax.js:2443: WARNING - Parse error. illegal use of unknown JSDoc tag "instance"; ignoring it
   * @instance
     ^
 
-dist/aronnax.js:2171: WARNING - Parse error. illegal use of unknown JSDoc tag "file"; ignoring it
+dist/aronnax.js:2702: WARNING - Parse error. illegal use of unknown JSDoc tag "constuctor"; ignoring it
+ * @constuctor
+   ^
+
+dist/aronnax.js:2709: WARNING - Parse error. illegal use of unknown JSDoc tag "instance"; ignoring it
+  * @instance
+    ^
+
+dist/aronnax.js:2929: WARNING - Parse error. illegal use of unknown JSDoc tag "file"; ignoring it
  * @file Holds the base class
    ^
 
-dist/aronnax.js:2188: WARNING - Parse error. illegal use of unknown JSDoc tag "instance"; ignoring it
+dist/aronnax.js:2946: WARNING - Parse error. illegal use of unknown JSDoc tag "instance"; ignoring it
   * @instance
     ^
 
-dist/aronnax.js:2203: WARNING - Parse error. illegal use of unknown JSDoc tag "instance"; ignoring it
+dist/aronnax.js:2961: WARNING - Parse error. illegal use of unknown JSDoc tag "instance"; ignoring it
   * @instance
     ^
 
-dist/aronnax.js:10524: WARNING - Parse error. illegal use of unknown JSDoc tag "file"; ignoring it
+dist/aronnax.js:10647: WARNING - Parse error. illegal use of unknown JSDoc tag "file"; ignoring it
  * @file Holds the main class
    ^
 
-dist/aronnax.js:10543: WARNING - Parse error. illegal use of unknown JSDoc tag "exports"; ignoring it
+dist/aronnax.js:10667: WARNING - Parse error. illegal use of unknown JSDoc tag "exports"; ignoring it
   @exports aronnax/main
   ^
 
-0 error(s), 17 warning(s)
+0 error(s), 21 warning(s)
 
-Compiled size:	[32m2.26[39m kb 	([32m2315[39m bytes)
-GZipped size:	[32m1.13[39m kb 	([32m1162[39m bytes) -49.81%
+Compiled size:	[32m2.87[39m kb 	([32m2936[39m bytes)
+GZipped size:	[32m1.39[39m kb 	([32m1421[39m bytes) -51.60%

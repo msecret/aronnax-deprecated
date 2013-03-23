@@ -15,6 +15,7 @@
 goog.provide('aronnax.main');
 goog.require('goog.dom');
 goog.require('aronnax.accessor');
+goog.require('aronnax.Logger');
 goog.require('aronnax.LinkedListNode');
 goog.require('aronnax.UnorderedList');
 goog.require('aronnax.OrderedList');
