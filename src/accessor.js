@@ -20,7 +20,7 @@ aronnax.accessor = {
    * @param {String} attr The attribute on the object you want to get
    * @return The attribute of the object
    */
-  get: function(attr) {
+  get: function(attr, defaultValue) {
     for(var prop in this) {
       if (this.hasOwnProperty(prop)) {
         if (prop === attr) {
@@ -28,6 +28,7 @@ aronnax.accessor = {
         }
       }
     }
+    return defaultValue;
   },
 
   /**
