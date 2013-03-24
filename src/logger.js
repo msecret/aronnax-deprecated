@@ -31,6 +31,7 @@ aronnax.Logger = function(name) {
    * @default window.location.hostname
    */
   this.name = name || window.location.hostname;
+  aronnax.logs.push(this);
 };
 goog.mixin(aronnax.Logger.prototype, aronnax.accessor);
 
