@@ -61,6 +61,49 @@ describe('aronnax.Pool', function() {
     });
   });
 
+  describe('acquirePool', function() {
+    var testClassName = 'testClass';
+    it('should create a new pool of name if not created yet', function() {
+      var pool = aronnax.Pool.acquirePool(testClassName);
+      var actual = pool.get('className');
+      expect(actual).toEqual(testClassName);
+    });
+    it('should get the pool if already created', function() {
+      var pool = aronnax.Pool.createPool(testClassName);
+      var gottenPool = aronnax.Pool.acquirePool(testClassName);
+      expect(gottenPool).toBe(pool);
+    });
+  });
+
+  describe('acquire', function() {
+    function TestClass() {}
+    it('should return an empty object from a custom class', function() {
+      var actual = aronnax.Pool.acquire(TestClass);
+      expect(actual).toEqual({});
+    });
+    it('should return an empty object from Object class', function() {
+      var actual = aronnax.Pool.acquire(Object);
+      expect(actual).toEqual({});
+    });
+    it('should return an empty array from Array class', function() {
+      var actual = aronnax.Pool.acquire(Array);
+      expect(actual).toEqual([]);
+    });
+    it('should return an empty  function from Function class', function() {
+      var actual = aronnax.Pool.acquire(Function);
+      expect(typeof actual).toEqual('function');
+    });
+  });
+
+  describe('acquireMember', function() {
+    var testClassName = 'testClass';
+    it('should return an empty member', function() {
+      var pool = aronnax.Pool.acquirePool(testClassName);
+      var actual = pool.acquireMember();
+      expect(actual).toEqual({});
+    });
+  });
+
 });
 
 describe('aronnax.Pooled', function() {

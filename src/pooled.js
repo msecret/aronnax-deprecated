@@ -97,7 +97,7 @@ aronnax.Pool.prototype.expandPool = function(byAmount) {
  * Aquires a member from the free pool 
  * @return {Object|Array|Function} The empty member returned from the pool
  */
-aronnax.Pool.prototype.aquire = function() {
+aronnax.Pool.prototype.acquireMember = function() {
   if (this.freePool.length <= 0) {
     this.expandPool();
   }
@@ -124,10 +124,10 @@ aronnax.Pool.totalPools = 0;
  * @param {Sting} className The name of the class
  * @return {arronax.Pool} The pool of the class type 
  */
-aronnax.Pool.aquirePool = function(className) {
+aronnax.Pool.acquirePool = function(className) {
   var pool = aronnax.Pool.pools[className];
   if (!pool) {
-    pool = aronnax.Pool.createNewPool(className);
+    pool = aronnax.Pool.createPool(className);
   }
 
   return pool;
@@ -148,19 +148,22 @@ aronnax.Pool.createPool = function(className, initialSize) {
 };
 
 /**
- * Aquires a free member from the pool. Maps directly to the aquire pool method
- * and then the Pool.aquire method. Uses a non-standard Function.name property
+ * Aquires a free member from the pool. Maps directly to the acquire pool method
+ * and then the Pool.acquire method. Uses a non-standard Function.name property
  * to obtain the class name. 
  * @static
  * @param {Object|Array|Function} classMember The object being fetch from pool
  * @return {Object|Array|Function} The object being return from the pool
  */
-aronnax.Pool.aquire = function(classMember) {
-  var pool = aronnax.Pool.aquirePool(classMember.name);
-  return pool.aquire();
+aronnax.Pool.acquire = function(classMember) {
+  var className = classMember.name;
+  if (typeof className !== 'string') {
+    _log.error('Aquired Pool class not a string');
+  }
+  var pool = aronnax.Pool.acquirePool(className);
+
+  return pool.acquireMember();
 };
-
-
 
 
 /**
@@ -175,7 +178,7 @@ aronnax.Pooled = function() {
 
 aronnax.Pooled.make = function(params) {
   // Get empty pooled member of certain type
-  var member = aronnax.Pool.aquire(this);
+  var member = aronnax.Pool.acquire(this);
   // Call the create method on it to put in props, if it has them
   // member = member.parent.create();
   // Fill in prototype
