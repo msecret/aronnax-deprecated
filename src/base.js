@@ -21,6 +21,7 @@ var _log = aronnax.Logger.getLog('base');
  * @this aronnax.base
  * @param {String} className The name of the class being created
  */
+// TODO this should be capitalized, its not a mixin
 aronnax.base = function(className) {
   /**
   * The name of the class

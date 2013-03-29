@@ -4,5 +4,5 @@ goog.addDependency('../../../../src/accessor.js', ['aronnax.accessor'], []);
 goog.addDependency('../../../../src/base.js', ['aronnax.base'], ['aronnax.Logger']);
 goog.addDependency('../../../../src/linked_list.js', ['aronnax.LinkedListNode', 'aronnax.OrderedList', 'aronnax.UnorderedList'], ['aronnax.Logger', 'aronnax.accessor']);
 goog.addDependency('../../../../src/logger.js', ['aronnax.Logger'], ['aronnax.accessor', 'goog.object']);
-goog.addDependency('../../../../src/main.js', ['aronnax.main'], ['aronnax.LinkedListNode', 'aronnax.Logger', 'aronnax.OrderedList', 'aronnax.UnorderedList', 'aronnax.accessor', 'aronnax.base', 'goog.dom']);
-goog.addDependency('../../../../src/pooled.js', ['aronnax.Pooled'], ['aronnax.Logger', 'aronnax.accessor']);
+goog.addDependency('../../../../src/main.js', ['aronnax.main'], ['aronnax.LinkedListNode', 'aronnax.Logger', 'aronnax.OrderedList', 'aronnax.Pool', 'aronnax.UnorderedList', 'aronnax.accessor', 'aronnax.base', 'goog.dom']);
+goog.addDependency('../../../../src/pooled.js', ['aronnax.Pool', 'aronnax.Pooled'], ['aronnax.Logger', 'aronnax.accessor']);

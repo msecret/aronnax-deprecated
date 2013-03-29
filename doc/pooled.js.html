@@ -34,13 +34,162 @@
  * @file Holds the pooled class 
  */
 
+goog.provide('aronnax.Pool');
 goog.provide('aronnax.Pooled');
 goog.require('aronnax.accessor');
 goog.require('aronnax.Logger');
 
 (function(goog, aronnax) {
 
+
+/**
+ * A local log 
+ * @private
+ * @type aronnax.Logger
+ */
 var _log = aronnax.Logger.getLog('pooled');
+
+/**
+ * Creates a member of a certain type by looking at the passed in class name. 
+ * @private
+ * @param {String} className The name of the class
+ * @return {Object|Array|Function} The member of a certain type
+ */
+var _createMember = function(className) {
+  var toreturn = null;
+  switch(className) {
+    case 'Array':
+      toreturn = [];
+      break;
+    case 'Function':
+      toreturn = function() {};
+      break;
+    default:
+    case 'Object':
+      toreturn = {};
+      break;
+  }
+
+  return toreturn;
+};
+
+/** 
+ * A class that holds and works with the actual pool of objects 
+ * @class
+ * @constuctor
+ * @this aronnax.Pooled
+ * @mixes aronnax.accessor
+ */
+aronnax.Pool = function(className, initialSize) {
+  var amount = initialSize || aronnax.config.INITIAL_POOL_SIZE;
+  /**
+   * The current pool of active members, a hashtable 
+  * @type Hashtable
+  * @instance
+  */
+  this.activePool = new Hashtable();
+  /**
+  * The free pool of members 
+  * @type Array
+  * @instance
+  */
+  this.freePool = [];
+  /**
+  * The class name of the member pool 
+  * @type String
+  * @instance
+  */
+  this.className = className;
+
+  // Setup initial pool
+  this.expandPool(amount);
+};
+goog.mixin(aronnax.Pool.prototype, aronnax.accessor);
+
+/** 
+ * Expand the free pool array by a certain amount 
+ * @param {Number} byAmount The amount to expand the pool by
+ */
+aronnax.Pool.prototype.expandPool = function(byAmount) {
+  var i = 0,
+      amount = byAmount || aronnax.config.POOL_EXPAND_AMOUNT;
+ 
+  for ( ; i &lt; amount; i++) {
+    var item = _createMember(this.className);
+    this.freePool.push(item);
+  }
+};
+
+/** 
+ * Aquires a member from the free pool 
+ * @return {Object|Array|Function} The empty member returned from the pool
+ */
+aronnax.Pool.prototype.aquire = function() {
+  if (this.freePool.length &lt;= 0) {
+    this.expandPool();
+  }
+  return this.freePool.pop();  
+};
+
+/**
+ * All the current pools, as a hash with the class type as the key.
+ * @static
+ * @type aronnax.Pool
+ */
+aronnax.Pool.pools = {};
+
+/**
+ * Count of the current total pools 
+ * @static
+ * @type Number 
+ */
+aronnax.Pool.totalPools = 0;
+
+/**
+ * Gets the pool of the class type, creating one if it doesn't exists 
+ * @static
+ * @param {Sting} className The name of the class
+ * @return {arronax.Pool} The pool of the class type 
+ */
+aronnax.Pool.aquirePool = function(className) {
+  var pool = aronnax.Pool.pools[className];
+  if (!pool) {
+    pool = aronnax.Pool.createNewPool(className);
+  }
+
+  return pool;
+};
+
+/**
+ * Creates a new pool of a certain type 
+ * @static
+ * @param {Sting} className The name of the class
+ * @param {Number} initialSize The initial size to make the free pool
+ * @return {arronax.Pool} The new pool of the class type
+ */
+aronnax.Pool.createPool = function(className, initialSize) {
+  var pool = new aronnax.Pool(className, initialSize);
+  aronnax.Pool.pools[className] = pool;
+  aronnax.Pool.totalPools += 1;
+  return pool;
+};
+
+/**
+ * Aquires a free member from the pool. Maps directly to the aquire pool method
+ * and then the Pool.aquire method. Uses a non-standard Function.name property
+ * to obtain the class name. 
+ * @static
+ * @param {Object|Array|Function} classMember The object being fetch from pool
+ * @return {Object|Array|Function} The object being return from the pool
+ */
+aronnax.Pool.aquire = function(classMember) {
+  var pool = aronnax.Pool.aquirePool(classMember.name);
+  return pool.aquire();
+};
+
+
+
+
 /**
  * A class that provides object pooling 
  * @class
@@ -49,6 +198,14 @@ var _log = aronnax.Logger.getLog('pooled');
  * @mixes aronnax.accessor
  */
 aronnax.Pooled = function() {
+};
+
+aronnax.Pooled.make = function(params) {
+  // Get empty pooled member of certain type
+  var member = aronnax.Pool.aquire(this);
+  // Call the create method on it to put in props, if it has them
+  // member = member.parent.create();
+  // Fill in prototype
 };
 
 })(goog, aronnax);
@@ -62,13 +219,13 @@ aronnax.Pooled = function() {
 </div>
 
 <nav>
-    <h2><a href="index.html">Index</a></h2><h3>Modules</h3><ul><li><a href="fb2aa7c6aa.html">aronnax/main</a></li></ul><h3>Classes</h3><ul><li><a href="aronnax.base.html">base</a></li><li><a href="aronnax.LinkedListNode.html">LinkedListNode</a></li><li><a href="aronnax.Logger.html">Logger</a></li><li><a href="aronnax.OrderedList.html">OrderedList</a></li><li><a href="aronnax.Pooled.html">Pooled</a></li><li><a href="aronnax.UnorderedList.html">UnorderedList</a></li></ul><h3>Namespaces</h3><ul><li><a href="aronnax.html">aronnax</a></li></ul><h3>Mixins</h3><ul><li><a href="aronnax.accessor.html">accessor</a></li></ul>
+    <h2><a href="index.html">Index</a></h2><h3>Modules</h3><ul><li><a href="fb2aa7c6aa.html">aronnax/main</a></li></ul><h3>Classes</h3><ul><li><a href="aronnax.base.html">base</a></li><li><a href="aronnax.LinkedListNode.html">LinkedListNode</a></li><li><a href="aronnax.Logger.html">Logger</a></li><li><a href="aronnax.OrderedList.html">OrderedList</a></li><li><a href="aronnax.Pool.html">Pool</a></li><li><a href="aronnax.Pooled.html">Pooled</a></li><li><a href="aronnax.UnorderedList.html">UnorderedList</a></li></ul><h3>Namespaces</h3><ul><li><a href="aronnax.html">aronnax</a></li></ul><h3>Mixins</h3><ul><li><a href="aronnax.accessor.html">accessor</a></li></ul>
 </nav>
 
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Sat Mar 23 2013 13:16:13 GMT-0700 (PDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Thu Mar 28 2013 20:39:53 GMT-0700 (PDT)
 </footer>
 
 <script> prettyPrint(); </script>

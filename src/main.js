@@ -20,6 +20,13 @@ goog.require('aronnax.base');
 goog.require('aronnax.LinkedListNode');
 goog.require('aronnax.UnorderedList');
 goog.require('aronnax.OrderedList');
+goog.require('aronnax.Pool');
+
+aronnax.config = {
+  ENVS: ['test', 'stage', 'prod'],
+  ENV: 'test',
+  INITIAL_POOL_SIZE: 50
+};
 
 /**
   Initialization for aronnax engine
