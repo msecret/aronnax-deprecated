@@ -107,5 +107,5 @@ describe('aronnax.Pool', function() {
 });
 
 describe('aronnax.Pooled', function() {
-
+  
 });
