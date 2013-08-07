@@ -87,6 +87,7 @@ module.exports = function(grunt) {
         src: 'src/**/*.js',
         options: {
           specs: 'test/**/*_test.js',
+          helpers: 'lib/components/*.js',
           template: require('grunt-template-jasmine-requirejs'),
           templateOptions: {
             requireConfigFile: 'build/dev.build.js'
@@ -223,7 +224,6 @@ module.exports = function(grunt) {
   grunt.registerTask('banner', 'usebanner');
   grunt.registerTask('doc', 'amd-doc');
 
-  grunt.registerTask('default', ['lint', 'concat', 'compile',
-      'connect', 'test', 'doc']);
+  grunt.registerTask('default', ['lint', 'concat', 'compile', 'test', 'doc']);
 
 };
