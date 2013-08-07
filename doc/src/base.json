@@ -1,0 +1,418 @@
+[
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        129,
+        149
+      ],
+      "filename": "base.js",
+      "lineno": 7,
+      "path": "src",
+      "code": {
+        "id": "astnode220424415",
+        "name": "initializing",
+        "type": "FALSE",
+        "node": "Object",
+        "value": "false"
+      }
+    },
+    "undocumented": true,
+    "name": "initializing",
+    "kind": "member",
+    "memberof": "<anonymous>",
+    "longname": "<anonymous>~initializing",
+    "scope": "inner"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        159,
+        218
+      ],
+      "filename": "base.js",
+      "lineno": 8,
+      "path": "src",
+      "code": {
+        "id": "astnode248521228",
+        "name": "fnTest",
+        "type": "HOOK",
+        "node": "Object",
+        "value": "HOOK"
+      }
+    },
+    "undocumented": true,
+    "name": "fnTest",
+    "kind": "member",
+    "memberof": "<anonymous>",
+    "longname": "<anonymous>~fnTest",
+    "scope": "inner"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        273,
+        298
+      ],
+      "filename": "base.js",
+      "lineno": 11,
+      "path": "src",
+      "code": {
+        "id": "astnode176065613",
+        "name": "this.Class",
+        "type": "FUNCTION",
+        "node": "Object",
+        "value": "FUNCTION",
+        "paramnames": []
+      }
+    },
+    "undocumented": true,
+    "name": "Class",
+    "kind": "function",
+    "longname": "Class",
+    "scope": "global"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        357,
+        1897
+      ],
+      "filename": "base.js",
+      "lineno": 14,
+      "path": "src",
+      "code": {
+        "id": "astnode1115600610",
+        "name": "Class.extend",
+        "type": "FUNCTION",
+        "node": "Object",
+        "value": "FUNCTION",
+        "paramnames": [
+          "prop"
+        ]
+      },
+      "vars": {
+        "_super": false,
+        "prototype": false,
+        "name": false,
+        "": false,
+        "Class": false
+      }
+    },
+    "undocumented": true,
+    "name": "extend",
+    "kind": "function",
+    "memberof": "Class",
+    "longname": "Class.extend",
+    "scope": "static"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        397,
+        420
+      ],
+      "filename": "base.js",
+      "lineno": 15,
+      "path": "src",
+      "code": {
+        "id": "astnode1877445782",
+        "name": "_super",
+        "type": "GETPROP",
+        "node": "Object",
+        "value": "this.prototype"
+      }
+    },
+    "undocumented": true,
+    "name": "_super",
+    "kind": "member",
+    "memberof": "Class.extend",
+    "longname": "Class.extend~_super",
+    "scope": "inner"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        529,
+        548
+      ],
+      "filename": "base.js",
+      "lineno": 19,
+      "path": "src",
+      "code": {
+        "id": "astnode1274367071",
+        "name": "initializing",
+        "type": "TRUE",
+        "node": "Object",
+        "funcscope": "<anonymous>",
+        "value": "true"
+      }
+    },
+    "undocumented": true,
+    "name": "initializing",
+    "kind": "member",
+    "longname": "<anonymous>~initializing",
+    "memberof": "<anonymous>",
+    "scope": "inner"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        586,
+        606
+      ],
+      "filename": "base.js",
+      "lineno": 21,
+      "path": "src",
+      "code": {
+        "id": "astnode181720683",
+        "name": "initializing",
+        "type": "FALSE",
+        "node": "Object",
+        "funcscope": "<anonymous>",
+        "value": "false"
+      }
+    },
+    "undocumented": true,
+    "name": "initializing",
+    "kind": "member",
+    "longname": "<anonymous>~initializing",
+    "memberof": "<anonymous>",
+    "scope": "inner"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        677,
+        681
+      ],
+      "filename": "base.js",
+      "lineno": 24,
+      "path": "src",
+      "code": {
+        "id": "astnode1778276127",
+        "name": "name",
+        "type": "undefined",
+        "node": "Object",
+        "value": "name"
+      }
+    },
+    "undocumented": true,
+    "name": "name",
+    "kind": "member",
+    "memberof": "Class.extend",
+    "longname": "Class.extend~name",
+    "scope": "inner"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        756,
+        1405
+      ],
+      "filename": "base.js",
+      "lineno": 26,
+      "path": "src",
+      "code": {
+        "id": "astnode525855306",
+        "name": "prototype[name]",
+        "type": "HOOK",
+        "node": "Object",
+        "funcscope": "Class.extend",
+        "value": "HOOK"
+      }
+    },
+    "undocumented": true,
+    "name": "[name]",
+    "kind": "member",
+    "longname": "Class.extend~#[name]",
+    "memberof": "Class.extend~",
+    "scope": "instance"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        955,
+        972
+      ],
+      "filename": "base.js",
+      "lineno": 30,
+      "path": "src",
+      "code": {
+        "id": "astnode1624207630",
+        "name": "tmp",
+        "type": "GETPROP",
+        "node": "Object",
+        "value": "this._super"
+      }
+    },
+    "undocumented": true,
+    "name": "tmp",
+    "kind": "member",
+    "memberof": "<anonymous>",
+    "longname": "<anonymous>~tmp",
+    "scope": "inner"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        1091,
+        1117
+      ],
+      "filename": "base.js",
+      "lineno": 34,
+      "path": "src",
+      "code": {
+        "id": "astnode1301353792",
+        "name": "this._super",
+        "type": "GETELEM",
+        "node": "Object",
+        "value": "_super[name]"
+      }
+    },
+    "undocumented": true,
+    "name": "_super",
+    "kind": "member",
+    "memberof": "Class",
+    "longname": "Class#_super",
+    "scope": "instance"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        1254,
+        1285
+      ],
+      "filename": "base.js",
+      "lineno": 38,
+      "path": "src",
+      "code": {
+        "id": "astnode1184537445",
+        "name": "ret",
+        "type": "CALL",
+        "node": "Object",
+        "value": "CALL"
+      }
+    },
+    "undocumented": true,
+    "name": "ret",
+    "kind": "member",
+    "memberof": "<anonymous>",
+    "longname": "<anonymous>~ret",
+    "scope": "inner"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        1299,
+        1316
+      ],
+      "filename": "base.js",
+      "lineno": 39,
+      "path": "src",
+      "code": {
+        "id": "astnode1048095360",
+        "name": "this._super",
+        "type": "NAME",
+        "node": "Object",
+        "value": "tmp"
+      }
+    },
+    "undocumented": true,
+    "name": "_super",
+    "kind": "member",
+    "memberof": "Class",
+    "longname": "Class#_super",
+    "scope": "instance"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        1453,
+        1621
+      ],
+      "filename": "base.js",
+      "lineno": 48,
+      "path": "src",
+      "code": {
+        "id": "astnode896607825",
+        "name": "Class",
+        "type": "function",
+        "node": "Object",
+        "funcscope": "Class.extend",
+        "paramnames": []
+      }
+    },
+    "undocumented": true,
+    "name": "Class",
+    "kind": "function",
+    "memberof": "Class.extend",
+    "longname": "Class.extend~Class",
+    "scope": "inner"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        1762,
+        1797
+      ],
+      "filename": "base.js",
+      "lineno": 58,
+      "path": "src",
+      "code": {
+        "id": "astnode1014593217",
+        "name": "Class.prototype.constructor",
+        "type": "NAME",
+        "node": "Object",
+        "funcscope": "Class.extend",
+        "value": "Class"
+      }
+    },
+    "undocumented": true,
+    "name": "constructor",
+    "kind": "member",
+    "longname": "Class.extend~Class#constructor",
+    "memberof": "Class.extend~Class",
+    "scope": "instance"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        1842,
+        1873
+      ],
+      "filename": "base.js",
+      "lineno": 61,
+      "path": "src",
+      "code": {
+        "id": "astnode1349006843",
+        "name": "Class.extend",
+        "type": "GETPROP",
+        "node": "Object",
+        "funcscope": "Class.extend",
+        "value": "arguments.callee"
+      }
+    },
+    "undocumented": true,
+    "name": "extend",
+    "kind": "member",
+    "longname": "Class.extend~Class.extend",
+    "memberof": "Class.extend~Class",
+    "scope": "static"
+  }
+]

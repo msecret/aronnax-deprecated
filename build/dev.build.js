@@ -13,11 +13,10 @@
   generateSourceMaps: true,
   locale: 'en-us',
   logLevel: 0,
-  name: 'main',
   optimize: 'uglify',
   optimizeCss: 'none',
   paths: {
-    'main': 'src/main'
+    'aronnax': 'src'
   },
   useStrict: true,
 
@@ -27,6 +26,6 @@
     indent: 2,
     max_line_length: 1000,
     no_mangle: true,
-    toplevel: true,
+    toplevel: true
   }
 })

@@ -15,7 +15,10 @@ module.exports = function(grunt) {
     requirejs: {
       compile: {
         options: {
-          name: 'src/main',
+          paths: {
+            'aronnax': 'src'
+          },
+          name: 'aronnax/main',
           mainConfigFile: 'build/dev.build.js',
           out: 'dist/<%= pkg.name %>.dev.min.js',
           wrap: {
@@ -27,7 +30,10 @@ module.exports = function(grunt) {
       },
       concat: {
         options: {
-          name: 'src/main',
+          paths: {
+            'aronnax': 'src'
+          },
+          name: 'aronnax/main',
           mainConfigFile: 'build/dev.build.js',
           out: 'dist/<%= pkg.name %>.dev.js',
           optimize: 'none',
@@ -84,13 +90,19 @@ module.exports = function(grunt) {
     clean: ['src', 'test'],
     jasmine: {
       test: {
-        src: 'src/**/*.js',
         options: {
           specs: 'test/**/*_test.js',
-          helpers: 'lib/components/*.js',
+          helpers: ['lib/components/*.js'],
+          keepRunner: true,
           template: require('grunt-template-jasmine-requirejs'),
           templateOptions: {
-            requireConfigFile: 'build/dev.build.js'
+            requireConfigFile: 'build/dev.build.js',
+            requireConfig: {
+              paths: {
+                'aronnax': 'src'
+              },
+              name: 'aronnax/main'
+            }
           }
         }
       }
@@ -189,20 +201,21 @@ module.exports = function(grunt) {
         // environments
         browser: true,
         devel: true,
-        node: true
+        node: true,
+
+        globals: {
+          afterEach: true,
+          aronnax: true,
+          beforeEach : true,
+          Benchmark: true,
+          describe : true,
+          expect : true,
+          goog: true,
+          jasemine: true,
+          module: true,
+          it : true
+        }
       },
-      globals: {
-        afterEach: false,
-        aronnax: false,
-        beforeEach : false,
-        Benchmark: false,
-        describe : false,
-        expect : false,
-        goog: false,
-        jasemine: false,
-        module: false,
-        it : false
-      }
     }
   });
 

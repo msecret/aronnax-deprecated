@@ -1,16 +1,9 @@
 // Copyright (c) 2013
 // All Rights Reserved
-// aronnax - v0.1.1
-// https://github.com/msecret/aronnax 
-// 2013-08-06
-// Licensed MIT 
-
-// Copyright (c) 2013
-// All Rights Reserved
 // https://github.com/msecret/aronnax
 // Licensed MIT
 
-define('aronnax/base',[],function () {
+define(function () {
     var initializing = false,
         fnTest = /xyz/.test(function(){xyz;}) ? /\b_super\b/ : /.*/;
 
@@ -70,14 +63,3 @@ define('aronnax/base',[],function () {
     return Class;
   };
 });
-
-// Copyright (c) 2013
-// All Rights Reserved
-// https://github.com/msecret/aronnax
-// Licensed MIT
-
-require(['aronnax/base'], function(base) {
-  console.log('init');
-});
-
-define("aronnax/main", function(){});

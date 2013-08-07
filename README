@@ -1,12 +1,20 @@
-
 Aronnax
 
 A JavaScript game engine that isn't necessarily more special then the rest.
 
 Includes object pooling.
 
+Includes class system.
+
 Requirements:
-- Phantom.js
-- grunt.js
+- nodejs
+- npm
+- gruntjs
+
+Other dependencies solved through build process.
+
 
 To build:
+1. npm install
+2. bower install
+3. grunt
