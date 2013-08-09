@@ -2,7 +2,7 @@
 // All Rights Reserved
 // aronnax - v0.1.1
 // https://github.com/msecret/aronnax 
-// 2013-08-08
+// 2013-08-09
 // Licensed MIT 
 
 //     Underscore.js 1.5.1
@@ -1270,6 +1270,9 @@ define('aronnax/Base',
     var Base = {
       create: function(obj, props) {
         var o = Object.create(obj);
+
+        // TODO wrap init function so that it does its stuff then returns the
+        // object to allow for chaining: ie Base.create(thing).init();
 
         _.extend(o, props);
 

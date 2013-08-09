@@ -4,8 +4,8 @@
 // Licensed MIT
 
 define('aronnax/Logger',
-  ['underscore', 'aronnax/Base'],
-  function(_, Base) {
+  ['underscore', 'aronnax/Base', 'deps/logWriter'],
+  function(_, Base, logWriter) {
 
     var Log = {
       init: function(name) {
@@ -116,12 +116,12 @@ define('aronnax/Logger',
       // TODO replace with globals for environments
       switch (Logger.settings.environment) {
         case 'staging':
-          window.console[type](this.name+ ':' +err.message);
+          logWriter[type](this.name+ ':' +err.message);
           break;
         case 'production':
           break;
         default:
-          window.console[type](this.name+ ':' +err.message);
+          logWriter[type](this.name+ ':' +err.message);
           break;
       }
     }

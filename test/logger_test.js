@@ -48,3 +48,24 @@ describe('aronnax.Logger', function() {
     });
   });
 });
+
+describe('aronnax.Log', function() {
+  var Logger;
+
+  beforeEach(function() {
+    var flag = false;
+
+    require(['aronnax/Logger'], function(_Logger) {
+      Logger = _Logger;
+      flag = true;
+    });
+
+    waitsFor(function() {
+      return flag;
+    });
+  });
+
+  describe('log', function() {
+    it
+  });
+});

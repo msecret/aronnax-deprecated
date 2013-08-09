@@ -14,11 +14,12 @@ module.exports = function(grunt) {
     },
     requirejs: {
       options: {
-        mainConfigFile: "build/config.js",
+        mainConfigFile: "build/dev.build.js",
         name: 'aronnax/main',
         paths: {
           'aronnax': 'src',
-          'underscore': 'lib/components/underscore/underscore'
+          'underscore': 'lib/components/underscore/underscore',
+          'deps/logWriter': 'src/deps/console'
         },
         shim: {
           'underscore': {
@@ -105,7 +106,8 @@ module.exports = function(grunt) {
               name: 'aronnax/main',
               paths: {
                 'aronnax': 'src',
-                'underscore': 'lib/components/underscore/underscore'
+                'underscore': 'lib/components/underscore/underscore',
+                'deps/logWriter': 'src/deps/console'
               },
               shim: {
                 'underscore': {
