@@ -109,17 +109,18 @@ define('aronnax/Logger',
        */
       getLog: function(name) {
         var i = 0,
-            ilen = this.logs.length;
+            ilen = this.logs.length,
+            log;
 
         for( ; i < ilen; i++) {
-          var log = this.logs[i];
+          log = this.logs[i];
           // TODO accessor switch
           if (log.name === name) {
             return log;
           }
         }
 
-        var log = Base.create(Log);
+        log = Base.create(Log);
         log.init(name);
 
         return log;

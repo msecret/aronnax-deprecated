@@ -1,6 +1,8 @@
 {
   "src/main.js": "8c5058abcda433ff0b8dc76f6b0d1877",
-  "src/base.js": "9b37a7e2593d0e30530510b46a2af0cf",
+  "src/base.js": "393d29451a6648304142ec77cee988fc",
   "src/pool.js": "563f175f459842b1a5bb77384ba62cf6",
-  "src/pooled.js": "4f87644875ea77abc910fc4f2b433e97"
+  "src/pooled.js": "4f87644875ea77abc910fc4f2b433e97",
+  "src/deps/console.js": "6d3b43ccee2adf4595aeb7853bf14374",
+  "src/logger.js": "fafc683655207a7e2ab6ab93dfe927e6"
 }

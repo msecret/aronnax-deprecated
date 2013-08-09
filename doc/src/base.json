@@ -4,13 +4,13 @@
     "meta": {
       "range": [
         165,
-        308
+        458
       ],
       "filename": "base.js",
       "lineno": 9,
       "path": "src",
       "code": {
-        "id": "astnode533000440",
+        "id": "astnode92361528",
         "name": "Base",
         "type": "OBJECTLIT",
         "node": "Object",
@@ -29,13 +29,13 @@
     "meta": {
       "range": [
         180,
-        302
+        452
       ],
       "filename": "base.js",
       "lineno": 10,
       "path": "src",
       "code": {
-        "id": "astnode2057870563",
+        "id": "astnode248521228",
         "name": "create",
         "type": "FUNCTION",
         "node": "Object",
@@ -67,7 +67,7 @@
       "lineno": 11,
       "path": "src",
       "code": {
-        "id": "astnode1720854532",
+        "id": "astnode171454744",
         "name": "o",
         "type": "CALL",
         "node": "Object",

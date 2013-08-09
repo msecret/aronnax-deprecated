@@ -43,7 +43,7 @@ describe('aronnax.Logger', function() {
       var log2 = Logger.getLog('testLog2');
       expect(Logger.logs.length).toEqual(2);
 
-      var log1 = Logger.getLog('testLog1');
+      var log3 = Logger.getLog('testLog1');
       expect(Logger.logs.length).toEqual(2);
     });
   });
@@ -73,11 +73,11 @@ describe('aronnax.Log', function() {
       Logger = _Logger;
       logWriter = _logWriter;
       testLog =  Logger.getLog('test log');
-      Logger.logWriter = logWriter
+      Logger.logWriter = logWriter;
       sinon.spy(Logger.logWriter, 'log');
       sinon.spy(Logger.logWriter, 'error');
       sinon.spy(Logger.logWriter, 'warn');
-      Logger.settings.environment = 'staging'
+      Logger.settings.environment = 'staging';
 
       flag = true;
     });
@@ -111,7 +111,7 @@ describe('aronnax.Log', function() {
 
     it('does not call the log function in production environemnts', function() {
       testLog.log('test message');
-      Logger.settings.environment = 'production'
+      Logger.settings.environment = 'production';
       testLog.log('test message');
 
       expect(Logger.logWriter.log).toHaveBeenCalledOnce();

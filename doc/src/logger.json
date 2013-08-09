@@ -1,0 +1,695 @@
+[
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        220,
+        2237
+      ],
+      "filename": "logger.js",
+      "lineno": 10,
+      "path": "src",
+      "code": {
+        "id": "astnode1908393212",
+        "name": "Log",
+        "type": "OBJECTLIT",
+        "node": "Object",
+        "value": "OBJECTLIT"
+      }
+    },
+    "undocumented": true,
+    "name": "Log",
+    "kind": "member",
+    "memberof": "<anonymous>",
+    "longname": "<anonymous>~Log",
+    "scope": "inner"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        234,
+        493
+      ],
+      "filename": "logger.js",
+      "lineno": 11,
+      "path": "src",
+      "code": {
+        "id": "astnode1154920537",
+        "name": "init",
+        "type": "FUNCTION",
+        "node": "Object",
+        "value": "FUNCTION",
+        "paramnames": [
+          "name"
+        ]
+      }
+    },
+    "undocumented": true,
+    "name": "init",
+    "kind": "function",
+    "memberof": "<anonymous>~Log",
+    "scope": "static",
+    "longname": "<anonymous>~Log.init"
+  },
+  {
+    "comment": "/**\n         * The name of the log\n         * @instance\n         * @protected\n         * @default window.location.hostname\n         */",
+    "meta": {
+      "range": [
+        408,
+        452
+      ],
+      "filename": "logger.js",
+      "lineno": 18,
+      "path": "src",
+      "code": {
+        "id": "astnode904935057",
+        "name": "this.name",
+        "type": "OR",
+        "node": "Object",
+        "value": "OR"
+      }
+    },
+    "description": "The name of the log",
+    "tags": [
+      {
+        "originalTitle": "scope",
+        "title": "scope",
+        "text": "instance",
+        "value": "instance"
+      }
+    ],
+    "scope": "instance",
+    "access": "protected",
+    "defaultvalue": "window.location.hostname",
+    "name": "name",
+    "kind": "member",
+    "memberof": "<anonymous>~Log",
+    "longname": "<anonymous>~Log#name"
+  },
+  {
+    "comment": "/**\n       * Logging message as the \"log\" type of message\n       * @param {String|Object} message The message to log, as a string or an object\n       * with different parameters\n       */",
+    "meta": {
+      "range": [
+        697,
+        766
+      ],
+      "filename": "logger.js",
+      "lineno": 28,
+      "path": "src",
+      "code": {
+        "id": "astnode665861146",
+        "name": "log",
+        "type": "FUNCTION",
+        "node": "Object",
+        "value": "FUNCTION",
+        "paramnames": [
+          "message"
+        ]
+      }
+    },
+    "description": "Logging message as the \"log\" type of message",
+    "params": [
+      {
+        "type": {
+          "names": [
+            "String",
+            "Object"
+          ]
+        },
+        "optional": null,
+        "nullable": null,
+        "variable": null,
+        "defaultvalue": "undef",
+        "description": "The message to log, as a string or an object\nwith different parameters",
+        "name": "message"
+      }
+    ],
+    "name": "log",
+    "kind": "function",
+    "memberof": "<anonymous>~Log",
+    "scope": "static",
+    "longname": "<anonymous>~Log.log"
+  },
+  {
+    "comment": "/**\n       * Logging message as the \"warn\" type of message\n       * @param {String|Object} message The message to log, as a string or an object\n       * with different parameters\n       */",
+    "meta": {
+      "range": [
+        970,
+        1041
+      ],
+      "filename": "logger.js",
+      "lineno": 37,
+      "path": "src",
+      "code": {
+        "id": "astnode1260987126",
+        "name": "warn",
+        "type": "FUNCTION",
+        "node": "Object",
+        "value": "FUNCTION",
+        "paramnames": [
+          "message"
+        ]
+      }
+    },
+    "description": "Logging message as the \"warn\" type of message",
+    "params": [
+      {
+        "type": {
+          "names": [
+            "String",
+            "Object"
+          ]
+        },
+        "optional": null,
+        "nullable": null,
+        "variable": null,
+        "defaultvalue": "undef",
+        "description": "The message to log, as a string or an object\nwith different parameters",
+        "name": "message"
+      }
+    ],
+    "name": "warn",
+    "kind": "function",
+    "memberof": "<anonymous>~Log",
+    "scope": "static",
+    "longname": "<anonymous>~Log.warn"
+  },
+  {
+    "comment": "/**\n       * Logging message as the \"error\" type of message\n       * @param {String|Object} message The message to log, as a string or an object\n       * with different parameters\n       */",
+    "meta": {
+      "range": [
+        1246,
+        1319
+      ],
+      "filename": "logger.js",
+      "lineno": 46,
+      "path": "src",
+      "code": {
+        "id": "astnode846275759",
+        "name": "error",
+        "type": "FUNCTION",
+        "node": "Object",
+        "value": "FUNCTION",
+        "paramnames": [
+          "message"
+        ]
+      }
+    },
+    "description": "Logging message as the \"error\" type of message",
+    "params": [
+      {
+        "type": {
+          "names": [
+            "String",
+            "Object"
+          ]
+        },
+        "optional": null,
+        "nullable": null,
+        "variable": null,
+        "defaultvalue": "undef",
+        "description": "The message to log, as a string or an object\nwith different parameters",
+        "name": "message"
+      }
+    ],
+    "name": "error",
+    "kind": "function",
+    "memberof": "<anonymous>~Log",
+    "scope": "static",
+    "longname": "<anonymous>~Log.error"
+  },
+  {
+    "comment": "/**\n       * Log an error or message\n       * @protected\n       * @param {String} type The type of log message, defaults to error,\n       * warning and debug.\n       * @param {String|Object} message The message to log, as a string or an object\n       * with different parameters\n       */",
+    "meta": {
+      "range": [
+        1623,
+        2230
+      ],
+      "filename": "logger.js",
+      "lineno": 58,
+      "path": "src",
+      "code": {
+        "id": "astnode1092998686",
+        "name": "_write",
+        "type": "FUNCTION",
+        "node": "Object",
+        "value": "FUNCTION",
+        "paramnames": [
+          "type",
+          "message"
+        ]
+      },
+      "vars": {
+        "err": false
+      }
+    },
+    "description": "Log an error or message",
+    "access": "protected",
+    "params": [
+      {
+        "type": {
+          "names": [
+            "String"
+          ]
+        },
+        "optional": null,
+        "nullable": null,
+        "variable": null,
+        "defaultvalue": "undef",
+        "description": "The type of log message, defaults to error,\nwarning and debug.",
+        "name": "type"
+      },
+      {
+        "type": {
+          "names": [
+            "String",
+            "Object"
+          ]
+        },
+        "optional": null,
+        "nullable": null,
+        "variable": null,
+        "defaultvalue": "undef",
+        "description": "The message to log, as a string or an object\nwith different parameters",
+        "name": "message"
+      }
+    ],
+    "name": "_write",
+    "kind": "function",
+    "memberof": "<anonymous>~Log",
+    "scope": "static",
+    "longname": "<anonymous>~Log._write"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        1669,
+        1677
+      ],
+      "filename": "logger.js",
+      "lineno": 59,
+      "path": "src",
+      "code": {
+        "id": "astnode1129698211",
+        "name": "err",
+        "type": "OBJECTLIT",
+        "node": "Object",
+        "value": "OBJECTLIT"
+      }
+    },
+    "undocumented": true,
+    "name": "err",
+    "kind": "member",
+    "memberof": "<anonymous>~Log._write",
+    "longname": "<anonymous>~Log._write~err",
+    "scope": "inner"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        1688,
+        1703
+      ],
+      "filename": "logger.js",
+      "lineno": 61,
+      "path": "src",
+      "code": {
+        "id": "astnode2027722598",
+        "name": "err.type",
+        "type": "NAME",
+        "node": "Object",
+        "funcscope": "<anonymous>~Log._write",
+        "value": "type"
+      }
+    },
+    "undocumented": true,
+    "name": "type",
+    "kind": "member",
+    "longname": "<anonymous>~Log._write~err.type",
+    "memberof": "<anonymous>~Log._write~err",
+    "scope": "static"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        1758,
+        1779
+      ],
+      "filename": "logger.js",
+      "lineno": 63,
+      "path": "src",
+      "code": {
+        "id": "astnode621221153",
+        "name": "err.message",
+        "type": "NAME",
+        "node": "Object",
+        "funcscope": "<anonymous>~Log._write",
+        "value": "message"
+      }
+    },
+    "undocumented": true,
+    "name": "message",
+    "kind": "member",
+    "longname": "<anonymous>~Log._write~err.message",
+    "memberof": "<anonymous>~Log._write~err",
+    "scope": "static"
+  },
+  {
+    "comment": "/**\n     * A logging instance to log errors\n     * @class\n     * @constuctor\n     * @this aronnax.Logger\n     * @mixes aronnax.accessor\n     * @param name The name given to the particular log, sent to the server\n     */",
+    "meta": {
+      "range": [
+        2472,
+        3285
+      ],
+      "filename": "logger.js",
+      "lineno": 92,
+      "path": "src",
+      "code": {
+        "id": "astnode1110828771",
+        "name": "Logger",
+        "type": "OBJECTLIT",
+        "node": "Object",
+        "value": "OBJECTLIT"
+      }
+    },
+    "description": "A logging instance to log errors",
+    "kind": "class",
+    "tags": [
+      {
+        "originalTitle": "constuctor",
+        "title": "constuctor",
+        "text": ""
+      }
+    ],
+    "see": [],
+    "this": "aronnax.Logger",
+    "mixes": [
+      "aronnax.accessor"
+    ],
+    "params": [
+      {
+        "description": "The name given to the particular log, sent to the server",
+        "name": "name"
+      }
+    ],
+    "name": "Logger",
+    "memberof": "<anonymous>",
+    "longname": "<anonymous>~Logger",
+    "scope": "inner"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        2490,
+        2498
+      ],
+      "filename": "logger.js",
+      "lineno": 94,
+      "path": "src",
+      "code": {
+        "id": "astnode1210375805",
+        "name": "logs",
+        "type": "ARRAYLIT",
+        "node": "Object",
+        "value": "ARRAYLIT"
+      }
+    },
+    "undocumented": true,
+    "name": "logs",
+    "kind": "member",
+    "memberof": "<anonymous>~Logger",
+    "scope": "static",
+    "longname": "<anonymous>~Logger.logs"
+  },
+  {
+    "comment": "/**\n       * Settings for the logger\n       */",
+    "meta": {
+      "range": [
+        2560,
+        2699
+      ],
+      "filename": "logger.js",
+      "lineno": 99,
+      "path": "src",
+      "code": {
+        "id": "astnode245022965",
+        "name": "settings",
+        "type": "OBJECTLIT",
+        "node": "Object",
+        "value": "OBJECTLIT"
+      }
+    },
+    "description": "Settings for the logger",
+    "name": "settings",
+    "kind": "member",
+    "memberof": "<anonymous>~Logger",
+    "scope": "static",
+    "longname": "<anonymous>~Logger.settings"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        2623,
+        2645
+      ],
+      "filename": "logger.js",
+      "lineno": 101,
+      "path": "src",
+      "code": {
+        "id": "astnode1847652919",
+        "name": "environment",
+        "type": "STRING",
+        "node": "Object",
+        "value": "staging"
+      }
+    },
+    "undocumented": true,
+    "name": "environment",
+    "kind": "member",
+    "memberof": "<anonymous>~Logger.settings",
+    "scope": "static",
+    "longname": "<anonymous>~Logger.settings.environment"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        2655,
+        2691
+      ],
+      "filename": "logger.js",
+      "lineno": 102,
+      "path": "src",
+      "code": {
+        "id": "astnode475720665",
+        "name": "errorTypes",
+        "type": "ARRAYLIT",
+        "node": "Object",
+        "value": "ARRAYLIT"
+      }
+    },
+    "undocumented": true,
+    "name": "errorTypes",
+    "kind": "member",
+    "memberof": "<anonymous>~Logger.settings",
+    "scope": "static",
+    "longname": "<anonymous>~Logger.settings.errorTypes"
+  },
+  {
+    "comment": "/**\n       * Will get the logging instance by name, creating a new one if it doesn't\n       * exist\n       * @param name Name of the log being accessed, or created\n       */",
+    "meta": {
+      "range": [
+        2888,
+        3249
+      ],
+      "filename": "logger.js",
+      "lineno": 110,
+      "path": "src",
+      "code": {
+        "id": "astnode103285717",
+        "name": "getLog",
+        "type": "FUNCTION",
+        "node": "Object",
+        "value": "FUNCTION",
+        "paramnames": [
+          "name"
+        ]
+      },
+      "vars": {
+        "i": false,
+        "ilen": false,
+        "log": false
+      }
+    },
+    "description": "Will get the logging instance by name, creating a new one if it doesn't\nexist",
+    "params": [
+      {
+        "description": "Name of the log being accessed, or created",
+        "name": "name"
+      }
+    ],
+    "name": "getLog",
+    "kind": "function",
+    "memberof": "<anonymous>~Logger",
+    "scope": "static",
+    "longname": "<anonymous>~Logger.getLog"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        2925,
+        2930
+      ],
+      "filename": "logger.js",
+      "lineno": 111,
+      "path": "src",
+      "code": {
+        "id": "astnode1188918692",
+        "name": "i",
+        "type": "NUMBER",
+        "node": "Object",
+        "value": "0"
+      }
+    },
+    "undocumented": true,
+    "name": "i",
+    "kind": "member",
+    "memberof": "<anonymous>~Logger.getLog",
+    "longname": "<anonymous>~Logger.getLog~i",
+    "scope": "inner"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        2944,
+        2967
+      ],
+      "filename": "logger.js",
+      "lineno": 112,
+      "path": "src",
+      "code": {
+        "id": "astnode95626791",
+        "name": "ilen",
+        "type": "GETPROP",
+        "node": "Object",
+        "value": "this.logs.length"
+      }
+    },
+    "undocumented": true,
+    "name": "ilen",
+    "kind": "member",
+    "memberof": "<anonymous>~Logger.getLog",
+    "longname": "<anonymous>~Logger.getLog~ilen",
+    "scope": "inner"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        2981,
+        2984
+      ],
+      "filename": "logger.js",
+      "lineno": 113,
+      "path": "src",
+      "code": {
+        "id": "astnode1235595167",
+        "name": "log",
+        "type": "undefined",
+        "node": "Object",
+        "value": "log"
+      }
+    },
+    "undocumented": true,
+    "name": "log",
+    "kind": "member",
+    "memberof": "<anonymous>~Logger.getLog",
+    "longname": "<anonymous>~Logger.getLog~log",
+    "scope": "inner"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        3029,
+        3047
+      ],
+      "filename": "logger.js",
+      "lineno": 116,
+      "path": "src",
+      "code": {
+        "id": "astnode1465481229",
+        "name": "log",
+        "type": "GETELEM",
+        "node": "Object",
+        "funcscope": "<anonymous>~Logger.getLog",
+        "value": "this.logs[i]"
+      }
+    },
+    "undocumented": true,
+    "name": "log",
+    "kind": "member",
+    "longname": "<anonymous>~Logger.getLog~log",
+    "memberof": "<anonymous>~Logger.getLog",
+    "scope": "inner"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        3173,
+        3195
+      ],
+      "filename": "logger.js",
+      "lineno": 123,
+      "path": "src",
+      "code": {
+        "id": "astnode449507565",
+        "name": "log",
+        "type": "CALL",
+        "node": "Object",
+        "funcscope": "<anonymous>~Logger.getLog",
+        "value": "CALL"
+      }
+    },
+    "undocumented": true,
+    "name": "log",
+    "kind": "member",
+    "longname": "<anonymous>~Logger.getLog~log",
+    "memberof": "<anonymous>~Logger.getLog",
+    "scope": "inner"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        3258,
+        3279
+      ],
+      "filename": "logger.js",
+      "lineno": 129,
+      "path": "src",
+      "code": {
+        "id": "astnode1032788969",
+        "name": "logWriter",
+        "type": "NAME",
+        "node": "Object",
+        "value": "_logWriter"
+      }
+    },
+    "undocumented": true,
+    "name": "logWriter",
+    "kind": "member",
+    "memberof": "<anonymous>~Logger",
+    "scope": "static",
+    "longname": "<anonymous>~Logger.logWriter"
+  }
+]

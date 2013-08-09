@@ -97,8 +97,8 @@ module.exports = function(grunt) {
       test: {
         options: {
           specs: 'test/**/*_test.js',
-r         helpers: ['lib/components/*.js',
-            'lib/components/sinon/lib/sinon.js',
+          helpers: ['lib/components/*.js',
+            'lib/components/sinonjs/sinon.js',
             'lib/components/jasmine-sinon/lib/jasmine-sinon.js'
           ],
           keepRunner: true,
@@ -230,6 +230,7 @@ r         helpers: ['lib/components/*.js',
           goog: true,
           require: true,
           jasemine: true,
+          sinon: true,
           module: true,
           waitsFor: true,
           it : true
