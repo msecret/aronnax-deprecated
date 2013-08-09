@@ -56,6 +56,7 @@ describe('aronnax.Base', function() {
           testCreatedObj = Base.create(testObj, testProps);
 
       expect(testCreatedObj.testProp).toBeDefined();
+      expect(testCreatedObj.testProp).toEqual(testValue);
     });
   });
 });
