@@ -3,7 +3,7 @@
 // https://github.com/msecret/aronnax
 // Licensed MIT
 
-define('aronnax/logWriter',
+define('deps/logWriter',
   function() {
     return window.console;
 });

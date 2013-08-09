@@ -5,7 +5,7 @@
 
 define('aronnax/Logger',
   ['underscore', 'aronnax/Base', 'deps/logWriter'],
-  function(_, Base, logWriter) {
+  function(_, Base, _logWriter) {
 
     var Log = {
       init: function(name) {
@@ -26,16 +26,16 @@ define('aronnax/Logger',
        * with different parameters
        */
       log: function(message) {
-        _write('log', message);
+        this._write('log', message);
       },
 
       /**
-       * Logging message as the "warning" type of message
+       * Logging message as the "warn" type of message
        * @param {String|Object} message The message to log, as a string or an object
        * with different parameters
        */
-      warning: function(message) {
-        _write('warning', message);
+      warn: function(message) {
+        this._write('warn', message);
       },
 
       /**
@@ -44,7 +44,39 @@ define('aronnax/Logger',
        * with different parameters
        */
       error: function(message) {
-        _write('error', message);
+        this._write('error', message);
+      },
+
+      /**
+       * Log an error or message
+       * @protected
+       * @param {String} type The type of log message, defaults to error,
+       * warning and debug.
+       * @param {String|Object} message The message to log, as a string or an object
+       * with different parameters
+       */
+      _write: function(type, message) {
+        var err = {};
+
+        err.type = type;
+        if (typeof message === 'string') {
+          err.message = message;
+        }
+        else {
+          _.extend(err, message);
+        }
+
+        // TODO replace with globals for environments
+        switch (Logger.settings.environment) {
+          case 'staging':
+            Logger.logWriter[type](this.name+ ':' +err.message);
+            break;
+          case 'production':
+            break;
+          default:
+            Logger.logWriter[type](this.name+ ':' +err.message);
+            break;
+        }
       }
 
     };
@@ -91,40 +123,10 @@ define('aronnax/Logger',
         log.init(name);
 
         return log;
-      }
+      },
+
+      logWriter: _logWriter
     };
-
-    /**
-     * Log an error or message
-     * @protected
-     * @param {String} type The type of log message, defaults to error,
-     * warning and debug.
-     * @param {String|Object} message The message to log, as a string or an object
-     * with different parameters
-     */
-    function _write(type, message) {
-      var err = {};
-
-      err.type = type;
-      if (typeof message === 'string') {
-        err.message = message;
-      }
-      else {
-        _.extend(err, message);
-      }
-
-      // TODO replace with globals for environments
-      switch (Logger.settings.environment) {
-        case 'staging':
-          logWriter[type](this.name+ ':' +err.message);
-          break;
-        case 'production':
-          break;
-        default:
-          logWriter[type](this.name+ ':' +err.message);
-          break;
-      }
-    }
 
     return Logger;
 });

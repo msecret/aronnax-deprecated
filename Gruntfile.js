@@ -97,7 +97,10 @@ module.exports = function(grunt) {
       test: {
         options: {
           specs: 'test/**/*_test.js',
-          helpers: ['lib/components/*.js'],
+r         helpers: ['lib/components/*.js',
+            'lib/components/sinon/lib/sinon.js',
+            'lib/components/jasmine-sinon/lib/jasmine-sinon.js'
+          ],
           keepRunner: true,
           template: require('grunt-template-jasmine-requirejs'),
           templateOptions: {
