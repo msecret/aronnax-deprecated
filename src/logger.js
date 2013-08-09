@@ -4,50 +4,8 @@
 // Licensed MIT
 
 define('aronnax/Logger',
-  ['underscore', 'aronnax/base'],
+  ['underscore', 'aronnax/Base'],
   function(_, Base) {
-
-    /**
-     * A logging instance to log errors
-     * @class
-     * @constuctor
-     * @this aronnax.Logger
-     * @mixes aronnax.accessor
-     * @param name The name given to the particular log, sent to the server
-     */
-    var Logger = {
-
-      logs: [],
-
-      /**
-       * Settings for the logger
-       */
-      settings: {
-        // TODO replace with global config
-        environment: 'staging',
-        errorTypes: ['log', 'warn', 'error']
-      },
-
-      /**
-       * Will get the logging instance by name, creating a new one if it doesn't
-       * exist
-       * @param name Name of the log being accessed, or created
-       */
-      getLog: function(name) {
-        var i = 0,
-            ilen = this.logs;
-
-        for( ; i < ilen; i++) {
-          var log = this.logs[i];
-          if (log.get('name') === name) {
-            return log;
-          }
-        }
-
-        return Base.create(Logger)
-          .init(name);
-      }
-    };
 
     var Log = {
       init: function(name) {
@@ -92,6 +50,51 @@ define('aronnax/Logger',
     };
 
     /**
+     * A logging instance to log errors
+     * @class
+     * @constuctor
+     * @this aronnax.Logger
+     * @mixes aronnax.accessor
+     * @param name The name given to the particular log, sent to the server
+     */
+    var Logger = {
+
+      logs: [],
+
+      /**
+       * Settings for the logger
+       */
+      settings: {
+        // TODO replace with global config
+        environment: 'staging',
+        errorTypes: ['log', 'warn', 'error']
+      },
+
+      /**
+       * Will get the logging instance by name, creating a new one if it doesn't
+       * exist
+       * @param name Name of the log being accessed, or created
+       */
+      getLog: function(name) {
+        var i = 0,
+            ilen = this.logs.length;
+
+        for( ; i < ilen; i++) {
+          var log = this.logs[i];
+          // TODO accessor switch
+          if (log.name === name) {
+            return log;
+          }
+        }
+
+        var log = Base.create(Log);
+        log.init(name);
+
+        return log;
+      }
+    };
+
+    /**
      * Log an error or message
      * @protected
      * @param {String} type The type of log message, defaults to error,
@@ -122,4 +125,6 @@ define('aronnax/Logger',
           break;
       }
     }
+
+    return Logger;
 });

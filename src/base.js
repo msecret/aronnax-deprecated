@@ -10,6 +10,9 @@ define('aronnax/Base',
       create: function(obj, props) {
         var o = Object.create(obj);
 
+        // TODO wrap init function so that it does its stuff then returns the
+        // object to allow for chaining: ie Base.create(thing).init();
+
         _.extend(o, props);
 
         return o;
