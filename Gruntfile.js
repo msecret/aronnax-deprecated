@@ -13,13 +13,22 @@ module.exports = function(grunt) {
               "// Licensed <%= _.pluck(pkg.licenses, 'type').join(', ') %> \n"
     },
     requirejs: {
+      options: {
+        mainConfigFile: "build/config.js",
+        name: 'aronnax/main',
+        paths: {
+          'aronnax': 'src',
+          'underscore': 'lib/components/underscore/underscore'
+        },
+        shim: {
+          'underscore': {
+            deps: [],
+            exports: '_'
+          }
+        }
+      },
       compile: {
         options: {
-          paths: {
-            'aronnax': 'src'
-          },
-          name: 'aronnax/main',
-          mainConfigFile: 'build/dev.build.js',
           out: 'dist/<%= pkg.name %>.dev.min.js',
           wrap: {
             start: "<%= pkg.author.name %>" +
@@ -30,11 +39,6 @@ module.exports = function(grunt) {
       },
       concat: {
         options: {
-          paths: {
-            'aronnax': 'src'
-          },
-          name: 'aronnax/main',
-          mainConfigFile: 'build/dev.build.js',
           out: 'dist/<%= pkg.name %>.dev.js',
           optimize: 'none',
           wrap: {
@@ -98,10 +102,17 @@ module.exports = function(grunt) {
           templateOptions: {
             requireConfigFile: 'build/dev.build.js',
             requireConfig: {
+              name: 'aronnax/main',
               paths: {
-                'aronnax': 'src'
+                'aronnax': 'src',
+                'underscore': 'lib/components/underscore/underscore'
               },
-              name: 'aronnax/main'
+              shim: {
+                'underscore': {
+                  deps: [],
+                  exports: '_'
+                }
+              }
             }
           }
         }
@@ -207,12 +218,15 @@ module.exports = function(grunt) {
           afterEach: true,
           aronnax: true,
           beforeEach : true,
+          define: true,
           Benchmark: true,
           describe : true,
           expect : true,
           goog: true,
+          require: true,
           jasemine: true,
           module: true,
+          waitsFor: true,
           it : true
         }
       },

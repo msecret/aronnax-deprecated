@@ -1,0 +1,244 @@
+[
+  {
+    "comment": "/**\n * @file Holds the pool static class and the pooled class to make an object\n * pooled.\n */",
+    "meta": {
+      "filename": "pooled.js",
+      "lineno": 6,
+      "path": "src",
+      "code": {}
+    },
+    "name": "src/pooled.js",
+    "kind": "file",
+    "description": "Holds the pool static class and the pooled class to make an object\npooled.",
+    "preserveName": true,
+    "longname": "src/pooled.js"
+  },
+  {
+    "comment": "/**\n     * A class that provides object pooling\n     * @class\n     * @mixes aronnax.accessor\n     */",
+    "meta": {
+      "range": [
+        373,
+        946
+      ],
+      "filename": "pooled.js",
+      "lineno": 19,
+      "path": "src",
+      "code": {
+        "id": "astnode885516455",
+        "name": "Pooled",
+        "type": "OBJECTLIT",
+        "node": "Object",
+        "value": "OBJECTLIT"
+      }
+    },
+    "description": "A class that provides object pooling",
+    "kind": "class",
+    "mixes": [
+      "aronnax.accessor"
+    ],
+    "name": "Pooled",
+    "memberof": "<anonymous>",
+    "longname": "<anonymous>~Pooled",
+    "scope": "inner"
+  },
+  {
+    "comment": "/**\n       * function that gets a free object from the pool and returns it after\n       * created.\n       * @return {Object|Array|Function} The object being return from the pool\n       */",
+    "meta": {
+      "range": [
+        585,
+        901
+      ],
+      "filename": "pooled.js",
+      "lineno": 26,
+      "path": "src",
+      "code": {
+        "id": "astnode1836265170",
+        "name": "make",
+        "type": "FUNCTION",
+        "node": "Object",
+        "value": "FUNCTION",
+        "paramnames": []
+      },
+      "vars": {
+        "f": false,
+        "key": false
+      }
+    },
+    "description": "function that gets a free object from the pool and returns it after\ncreated.",
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "Object",
+            "Array",
+            "Function"
+          ]
+        },
+        "optional": null,
+        "nullable": null,
+        "variable": null,
+        "defaultvalue": "undef",
+        "description": "The object being return from the pool"
+      }
+    ],
+    "name": "make",
+    "kind": "function",
+    "memberof": "<anonymous>~Pooled",
+    "scope": "static",
+    "longname": "<anonymous>~Pooled.make"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        616,
+        638
+      ],
+      "filename": "pooled.js",
+      "lineno": 27,
+      "path": "src",
+      "code": {
+        "id": "astnode1945910404",
+        "name": "f",
+        "type": "CALL",
+        "node": "Object",
+        "value": "CALL"
+      }
+    },
+    "undocumented": true,
+    "name": "f",
+    "kind": "member",
+    "memberof": "<anonymous>~Pooled.make",
+    "longname": "<anonymous>~Pooled.make~f",
+    "scope": "inner"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        652,
+        655
+      ],
+      "filename": "pooled.js",
+      "lineno": 28,
+      "path": "src",
+      "code": {
+        "id": "astnode1086224071",
+        "name": "key",
+        "type": "undefined",
+        "node": "Object",
+        "value": "key"
+      }
+    },
+    "undocumented": true,
+    "name": "key",
+    "kind": "member",
+    "memberof": "<anonymous>~Pooled.make",
+    "longname": "<anonymous>~Pooled.make~key",
+    "scope": "inner"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        666,
+        672
+      ],
+      "filename": "pooled.js",
+      "lineno": 30,
+      "path": "src",
+      "code": {
+        "id": "astnode993374707",
+        "name": "f",
+        "type": "OBJECTLIT",
+        "node": "Object",
+        "funcscope": "<anonymous>~Pooled.make",
+        "value": "OBJECTLIT"
+      }
+    },
+    "undocumented": true,
+    "name": "f",
+    "kind": "member",
+    "longname": "<anonymous>~Pooled.make~f",
+    "memberof": "<anonymous>~Pooled.make",
+    "scope": "inner"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        757,
+        775
+      ],
+      "filename": "pooled.js",
+      "lineno": 34,
+      "path": "src",
+      "code": {
+        "id": "astnode780638304",
+        "name": "f[key]",
+        "type": "GETELEM",
+        "node": "Object",
+        "funcscope": "<anonymous>~Pooled.make",
+        "value": "this[key]"
+      }
+    },
+    "undocumented": true,
+    "name": "f[key]",
+    "kind": "member",
+    "longname": "<anonymous>~Pooled.make~f[key]",
+    "memberof": "<anonymous>~Pooled.make",
+    "scope": "inner"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        808,
+        834
+      ],
+      "filename": "pooled.js",
+      "lineno": 38,
+      "path": "src",
+      "code": {
+        "id": "astnode454631513",
+        "name": "f.release",
+        "type": "GETPROP",
+        "node": "Object",
+        "funcscope": "<anonymous>~Pooled.make",
+        "value": "Pooled.release"
+      }
+    },
+    "undocumented": true,
+    "name": "release",
+    "kind": "member",
+    "longname": "<anonymous>~Pooled.make~f.release",
+    "memberof": "<anonymous>~Pooled.make~f",
+    "scope": "static"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        910,
+        940
+      ],
+      "filename": "pooled.js",
+      "lineno": 44,
+      "path": "src",
+      "code": {
+        "id": "astnode756258843",
+        "name": "release",
+        "type": "FUNCTION",
+        "node": "Object",
+        "value": "FUNCTION",
+        "paramnames": []
+      }
+    },
+    "undocumented": true,
+    "name": "release",
+    "kind": "function",
+    "memberof": "<anonymous>~Pooled",
+    "scope": "static",
+    "longname": "<anonymous>~Pooled.release"
+  }
+]

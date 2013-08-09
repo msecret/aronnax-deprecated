@@ -16,7 +16,14 @@
   optimize: 'uglify',
   optimizeCss: 'none',
   paths: {
-    'aronnax': 'src'
+    'aronnax': 'src',
+    'underscore': 'lib/components/underscore/index'
+  },
+  shim: {
+    'underscore': {
+      deps: [],
+      exports: '_'
+    }
   },
   useStrict: true,
 

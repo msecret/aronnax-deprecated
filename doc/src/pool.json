@@ -1,0 +1,967 @@
+[
+  {
+    "comment": "/**\n * @file Holds the pool static class and the pooled class to make an object\n * pooled.\n */",
+    "meta": {
+      "filename": "pool.js",
+      "lineno": 6,
+      "path": "src",
+      "code": {}
+    },
+    "name": "src/pool.js",
+    "kind": "file",
+    "description": "Holds the pool static class and the pooled class to make an object\npooled.",
+    "preserveName": true,
+    "longname": "src/pool.js"
+  },
+  {
+    "comment": "/**\n     * Creates a member of a certain type by looking at the passed in class name.\n     * @private\n     * @param {String} className The name of the class\n     * @return {Object|Array|Function} The member of a certain type\n     */",
+    "meta": {
+      "range": [
+        480,
+        808
+      ],
+      "filename": "pool.js",
+      "lineno": 20,
+      "path": "src",
+      "code": {
+        "id": "astnode918808619",
+        "name": "_createMember",
+        "type": "FUNCTION",
+        "node": "Object",
+        "value": "FUNCTION",
+        "paramnames": [
+          "className"
+        ]
+      },
+      "vars": {
+        "toreturn": false,
+        "": false
+      }
+    },
+    "description": "Creates a member of a certain type by looking at the passed in class name.",
+    "access": "private",
+    "params": [
+      {
+        "type": {
+          "names": [
+            "String"
+          ]
+        },
+        "optional": null,
+        "nullable": null,
+        "variable": null,
+        "defaultvalue": "undef",
+        "description": "The name of the class",
+        "name": "className"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "Object",
+            "Array",
+            "Function"
+          ]
+        },
+        "optional": null,
+        "nullable": null,
+        "variable": null,
+        "defaultvalue": "undef",
+        "description": "The member of a certain type"
+      }
+    ],
+    "name": "_createMember",
+    "kind": "function",
+    "memberof": "<anonymous>",
+    "longname": "<anonymous>~_createMember",
+    "scope": "inner"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        528,
+        543
+      ],
+      "filename": "pool.js",
+      "lineno": 21,
+      "path": "src",
+      "code": {
+        "id": "astnode1009611840",
+        "name": "toreturn",
+        "type": "NULL",
+        "node": "Object",
+        "value": "NULL"
+      }
+    },
+    "undocumented": true,
+    "name": "toreturn",
+    "kind": "member",
+    "memberof": "<anonymous>~_createMember",
+    "longname": "<anonymous>~_createMember~toreturn",
+    "scope": "inner"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        603,
+        616
+      ],
+      "filename": "pool.js",
+      "lineno": 24,
+      "path": "src",
+      "code": {
+        "id": "astnode1156207713",
+        "name": "toreturn",
+        "type": "ARRAYLIT",
+        "node": "Object",
+        "funcscope": "<anonymous>~_createMember",
+        "value": "ARRAYLIT"
+      }
+    },
+    "undocumented": true,
+    "name": "toreturn",
+    "kind": "member",
+    "longname": "<anonymous>~_createMember~toreturn",
+    "memberof": "<anonymous>~_createMember",
+    "scope": "inner"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        670,
+        694
+      ],
+      "filename": "pool.js",
+      "lineno": 27,
+      "path": "src",
+      "code": {
+        "id": "astnode211225614",
+        "name": "toreturn",
+        "type": "FUNCTION",
+        "node": "Object",
+        "funcscope": "<anonymous>~_createMember",
+        "value": "FUNCTION",
+        "paramnames": []
+      }
+    },
+    "undocumented": true,
+    "name": "toreturn",
+    "kind": "function",
+    "longname": "<anonymous>~_createMember~toreturn",
+    "memberof": "<anonymous>~_createMember",
+    "scope": "inner"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        763,
+        776
+      ],
+      "filename": "pool.js",
+      "lineno": 31,
+      "path": "src",
+      "code": {
+        "id": "astnode262666716",
+        "name": "toreturn",
+        "type": "OBJECTLIT",
+        "node": "Object",
+        "funcscope": "<anonymous>~_createMember",
+        "value": "OBJECTLIT"
+      }
+    },
+    "undocumented": true,
+    "name": "toreturn",
+    "kind": "member",
+    "longname": "<anonymous>~_createMember~toreturn",
+    "memberof": "<anonymous>~_createMember",
+    "scope": "inner"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        819,
+        2053
+      ],
+      "filename": "pool.js",
+      "lineno": 36,
+      "path": "src",
+      "code": {
+        "id": "astnode956289333",
+        "name": "PoolPrototype",
+        "type": "OBJECTLIT",
+        "node": "Object",
+        "value": "OBJECTLIT"
+      }
+    },
+    "undocumented": true,
+    "name": "PoolPrototype",
+    "kind": "member",
+    "memberof": "<anonymous>",
+    "longname": "<anonymous>~PoolPrototype",
+    "scope": "inner"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        843,
+        1306
+      ],
+      "filename": "pool.js",
+      "lineno": 37,
+      "path": "src",
+      "code": {
+        "id": "astnode1476875516",
+        "name": "init",
+        "type": "FUNCTION",
+        "node": "Object",
+        "value": "FUNCTION",
+        "paramnames": [
+          "className",
+          "initialSize"
+        ]
+      }
+    },
+    "undocumented": true,
+    "name": "init",
+    "kind": "function",
+    "memberof": "<anonymous>~PoolPrototype",
+    "scope": "static",
+    "longname": "<anonymous>~PoolPrototype.init"
+  },
+  {
+    "comment": "/**\n        * The current pool of active members, a hashtable\n        * @instance\n        */",
+    "meta": {
+      "range": [
+        993,
+        1013
+      ],
+      "filename": "pool.js",
+      "lineno": 42,
+      "path": "src",
+      "code": {
+        "id": "astnode1583634598",
+        "name": "this.activePool",
+        "type": "OBJECTLIT",
+        "node": "Object",
+        "value": "OBJECTLIT"
+      }
+    },
+    "description": "The current pool of active members, a hashtable",
+    "tags": [
+      {
+        "originalTitle": "scope",
+        "title": "scope",
+        "text": "instance",
+        "value": "instance"
+      }
+    ],
+    "scope": "instance",
+    "name": "activePool",
+    "kind": "member",
+    "memberof": "<anonymous>~PoolPrototype",
+    "longname": "<anonymous>~PoolPrototype#activePool"
+  },
+  {
+    "comment": "/**\n         * The free pool of members\n         * @type Array\n         * @instance\n         */",
+    "meta": {
+      "range": [
+        1128,
+        1146
+      ],
+      "filename": "pool.js",
+      "lineno": 49,
+      "path": "src",
+      "code": {
+        "id": "astnode625430085",
+        "name": "this.freePool",
+        "type": "ARRAYLIT",
+        "node": "Object",
+        "value": "ARRAYLIT"
+      }
+    },
+    "description": "The free pool of members",
+    "type": {
+      "names": [
+        "Array"
+      ]
+    },
+    "tags": [
+      {
+        "originalTitle": "scope",
+        "title": "scope",
+        "text": "instance",
+        "value": "instance"
+      }
+    ],
+    "scope": "instance",
+    "name": "freePool",
+    "kind": "member",
+    "memberof": "<anonymous>~PoolPrototype",
+    "longname": "<anonymous>~PoolPrototype#freePool"
+  },
+  {
+    "comment": "/**\n         * The class name of the member pool\n         * @type String\n         * @instance\n         */",
+    "meta": {
+      "range": [
+        1271,
+        1297
+      ],
+      "filename": "pool.js",
+      "lineno": 56,
+      "path": "src",
+      "code": {
+        "id": "astnode2134908200",
+        "name": "this.className",
+        "type": "NAME",
+        "node": "Object",
+        "value": "className"
+      }
+    },
+    "description": "The class name of the member pool",
+    "type": {
+      "names": [
+        "String"
+      ]
+    },
+    "tags": [
+      {
+        "originalTitle": "scope",
+        "title": "scope",
+        "text": "instance",
+        "value": "instance"
+      }
+    ],
+    "scope": "instance",
+    "name": "className",
+    "kind": "member",
+    "memberof": "<anonymous>~PoolPrototype",
+    "longname": "<anonymous>~PoolPrototype#className"
+  },
+  {
+    "comment": "/**\n       * Expand the free pool array by a certain amount\n       * @param {Number} byAmount The amount to expand the pool by\n       */",
+    "meta": {
+      "range": [
+        1458,
+        1740
+      ],
+      "filename": "pool.js",
+      "lineno": 63,
+      "path": "src",
+      "code": {
+        "id": "astnode1109622806",
+        "name": "expandPool",
+        "type": "FUNCTION",
+        "node": "Object",
+        "value": "FUNCTION",
+        "paramnames": [
+          "byAmount"
+        ]
+      },
+      "vars": {
+        "i": false,
+        "amount": false,
+        "item": false
+      }
+    },
+    "description": "Expand the free pool array by a certain amount",
+    "params": [
+      {
+        "type": {
+          "names": [
+            "Number"
+          ]
+        },
+        "optional": null,
+        "nullable": null,
+        "variable": null,
+        "defaultvalue": "undef",
+        "description": "The amount to expand the pool by",
+        "name": "byAmount"
+      }
+    ],
+    "name": "expandPool",
+    "kind": "function",
+    "memberof": "<anonymous>~PoolPrototype",
+    "scope": "static",
+    "longname": "<anonymous>~PoolPrototype.expandPool"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        1502,
+        1507
+      ],
+      "filename": "pool.js",
+      "lineno": 64,
+      "path": "src",
+      "code": {
+        "id": "astnode1980322208",
+        "name": "i",
+        "type": "NUMBER",
+        "node": "Object",
+        "value": "0"
+      }
+    },
+    "undocumented": true,
+    "name": "i",
+    "kind": "member",
+    "memberof": "<anonymous>~PoolPrototype.expandPool",
+    "longname": "<anonymous>~PoolPrototype.expandPool~i",
+    "scope": "inner"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        1574,
+        1597
+      ],
+      "filename": "pool.js",
+      "lineno": 66,
+      "path": "src",
+      "code": {
+        "id": "astnode2023202663",
+        "name": "amount",
+        "type": "OR",
+        "node": "Object",
+        "value": "OR"
+      }
+    },
+    "undocumented": true,
+    "name": "amount",
+    "kind": "member",
+    "memberof": "<anonymous>~PoolPrototype.expandPool",
+    "longname": "<anonymous>~PoolPrototype.expandPool~amount",
+    "scope": "inner"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        1649,
+        1685
+      ],
+      "filename": "pool.js",
+      "lineno": 69,
+      "path": "src",
+      "code": {
+        "id": "astnode1055389419",
+        "name": "item",
+        "type": "CALL",
+        "node": "Object",
+        "value": "CALL"
+      }
+    },
+    "undocumented": true,
+    "name": "item",
+    "kind": "member",
+    "memberof": "<anonymous>~PoolPrototype.expandPool",
+    "longname": "<anonymous>~PoolPrototype.expandPool~item",
+    "scope": "inner"
+  },
+  {
+    "comment": "/**\n       * Aquires a member from the free pool\n       * @return {Object|Array|Function} The empty member returned from the pool\n       */",
+    "meta": {
+      "range": [
+        1895,
+        2046
+      ],
+      "filename": "pool.js",
+      "lineno": 78,
+      "path": "src",
+      "code": {
+        "id": "astnode1728641248",
+        "name": "acquireMember",
+        "type": "FUNCTION",
+        "node": "Object",
+        "value": "FUNCTION",
+        "paramnames": []
+      }
+    },
+    "description": "Aquires a member from the free pool",
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "Object",
+            "Array",
+            "Function"
+          ]
+        },
+        "optional": null,
+        "nullable": null,
+        "variable": null,
+        "defaultvalue": "undef",
+        "description": "The empty member returned from the pool"
+      }
+    ],
+    "name": "acquireMember",
+    "kind": "function",
+    "memberof": "<anonymous>~PoolPrototype",
+    "scope": "static",
+    "longname": "<anonymous>~PoolPrototype.acquireMember"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        2064,
+        2099
+      ],
+      "filename": "pool.js",
+      "lineno": 87,
+      "path": "src",
+      "code": {
+        "id": "astnode1604848362",
+        "name": "Pool",
+        "type": "CALL",
+        "node": "Object",
+        "value": "CALL"
+      }
+    },
+    "undocumented": true,
+    "name": "Pool",
+    "kind": "member",
+    "memberof": "<anonymous>",
+    "longname": "<anonymous>~Pool",
+    "scope": "inner"
+  },
+  {
+    "comment": "/**\n     * All the current pools, as a hash with the class type as the key.\n     * @static\n     * @type aronnax.Pool\n     */",
+    "meta": {
+      "range": [
+        2235,
+        2250
+      ],
+      "filename": "pool.js",
+      "lineno": 94,
+      "path": "src",
+      "code": {
+        "id": "astnode1381221365",
+        "name": "Pool.pools",
+        "type": "OBJECTLIT",
+        "node": "Object",
+        "funcscope": "<anonymous>",
+        "value": "OBJECTLIT"
+      }
+    },
+    "description": "All the current pools, as a hash with the class type as the key.",
+    "tags": [
+      {
+        "originalTitle": "scope",
+        "title": "scope",
+        "text": "static",
+        "value": "static"
+      }
+    ],
+    "scope": "static",
+    "type": {
+      "names": [
+        "aronnax.Pool"
+      ]
+    },
+    "name": "pools",
+    "kind": "member",
+    "longname": "<anonymous>~Pool.pools",
+    "memberof": "<anonymous>~Pool"
+  },
+  {
+    "comment": "/**\n     * Count of the current total pools\n     * @static\n     * @type Number\n     */",
+    "meta": {
+      "range": [
+        2348,
+        2367
+      ],
+      "filename": "pool.js",
+      "lineno": 101,
+      "path": "src",
+      "code": {
+        "id": "astnode1124183187",
+        "name": "Pool.totalPools",
+        "type": "NUMBER",
+        "node": "Object",
+        "funcscope": "<anonymous>",
+        "value": "0"
+      }
+    },
+    "description": "Count of the current total pools",
+    "tags": [
+      {
+        "originalTitle": "scope",
+        "title": "scope",
+        "text": "static",
+        "value": "static"
+      }
+    ],
+    "scope": "static",
+    "type": {
+      "names": [
+        "Number"
+      ]
+    },
+    "name": "totalPools",
+    "kind": "member",
+    "longname": "<anonymous>~Pool.totalPools",
+    "memberof": "<anonymous>~Pool"
+  },
+  {
+    "comment": "/**\n     * Gets the pool of the class type, creating one if it doesn't exists\n     * @static\n     * @param {Sting} className The name of the class\n     * @return {arronax.Pool} The pool of the class type\n     */",
+    "meta": {
+      "range": [
+        2590,
+        2766
+      ],
+      "filename": "pool.js",
+      "lineno": 109,
+      "path": "src",
+      "code": {
+        "id": "astnode471102698",
+        "name": "Pool.acquirePool",
+        "type": "FUNCTION",
+        "node": "Object",
+        "funcscope": "<anonymous>",
+        "value": "FUNCTION",
+        "paramnames": [
+          "className"
+        ]
+      },
+      "vars": {
+        "pool": false
+      }
+    },
+    "description": "Gets the pool of the class type, creating one if it doesn't exists",
+    "tags": [
+      {
+        "originalTitle": "scope",
+        "title": "scope",
+        "text": "static",
+        "value": "static"
+      }
+    ],
+    "scope": "static",
+    "params": [
+      {
+        "type": {
+          "names": [
+            "Sting"
+          ]
+        },
+        "optional": null,
+        "nullable": null,
+        "variable": null,
+        "defaultvalue": "undef",
+        "description": "The name of the class",
+        "name": "className"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "arronax.Pool"
+          ]
+        },
+        "optional": null,
+        "nullable": null,
+        "variable": null,
+        "defaultvalue": "undef",
+        "description": "The pool of the class type"
+      }
+    ],
+    "name": "acquirePool",
+    "kind": "function",
+    "longname": "<anonymous>~Pool.acquirePool",
+    "memberof": "<anonymous>~Pool"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        2641,
+        2669
+      ],
+      "filename": "pool.js",
+      "lineno": 110,
+      "path": "src",
+      "code": {
+        "id": "astnode1952576819",
+        "name": "pool",
+        "type": "GETELEM",
+        "node": "Object",
+        "value": "this.pools[className]"
+      }
+    },
+    "undocumented": true,
+    "name": "pool",
+    "kind": "member",
+    "memberof": "<anonymous>~Pool.acquirePool",
+    "longname": "<anonymous>~Pool.acquirePool~pool",
+    "scope": "inner"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        2698,
+        2731
+      ],
+      "filename": "pool.js",
+      "lineno": 112,
+      "path": "src",
+      "code": {
+        "id": "astnode1342217997",
+        "name": "pool",
+        "type": "CALL",
+        "node": "Object",
+        "funcscope": "<anonymous>~Pool.acquirePool",
+        "value": "CALL"
+      }
+    },
+    "undocumented": true,
+    "name": "pool",
+    "kind": "member",
+    "longname": "<anonymous>~Pool.acquirePool~pool",
+    "memberof": "<anonymous>~Pool.acquirePool",
+    "scope": "inner"
+  },
+  {
+    "comment": "/**\n     * Aquires a free member from the pool. Maps directly to the acquire\n     * pool methodand then the Pool.acquire method. Uses a non-standard\n     * Function.name property to obtain the class name.\n     * @static\n     * @param {Object|Array|Function} classMember The object being fetch from\n     * pool\n     * @return {Object|Array|Function} The object being return from the pool\n     */",
+    "meta": {
+      "range": [
+        3172,
+        3467
+      ],
+      "filename": "pool.js",
+      "lineno": 127,
+      "path": "src",
+      "code": {
+        "id": "astnode846275759",
+        "name": "Pool.acquire",
+        "type": "FUNCTION",
+        "node": "Object",
+        "funcscope": "<anonymous>",
+        "value": "FUNCTION",
+        "paramnames": [
+          "classMember"
+        ]
+      },
+      "vars": {
+        "className": false,
+        "pool": false
+      }
+    },
+    "description": "Aquires a free member from the pool. Maps directly to the acquire\npool methodand then the Pool.acquire method. Uses a non-standard\nFunction.name property to obtain the class name.",
+    "tags": [
+      {
+        "originalTitle": "scope",
+        "title": "scope",
+        "text": "static",
+        "value": "static"
+      }
+    ],
+    "scope": "static",
+    "params": [
+      {
+        "type": {
+          "names": [
+            "Object",
+            "Array",
+            "Function"
+          ]
+        },
+        "optional": null,
+        "nullable": null,
+        "variable": null,
+        "defaultvalue": "undef",
+        "description": "The object being fetch from\npool",
+        "name": "classMember"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "Object",
+            "Array",
+            "Function"
+          ]
+        },
+        "optional": null,
+        "nullable": null,
+        "variable": null,
+        "defaultvalue": "undef",
+        "description": "The object being return from the pool"
+      }
+    ],
+    "name": "acquire",
+    "kind": "function",
+    "longname": "<anonymous>~Pool.acquire",
+    "memberof": "<anonymous>~Pool"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        3221,
+        3254
+      ],
+      "filename": "pool.js",
+      "lineno": 128,
+      "path": "src",
+      "code": {
+        "id": "astnode453799164",
+        "name": "className",
+        "type": "GETPROP",
+        "node": "Object",
+        "value": "classMember.className"
+      }
+    },
+    "undocumented": true,
+    "name": "className",
+    "kind": "member",
+    "memberof": "<anonymous>~Pool.acquire",
+    "longname": "<anonymous>~Pool.acquire~className",
+    "scope": "inner"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        3390,
+        3424
+      ],
+      "filename": "pool.js",
+      "lineno": 133,
+      "path": "src",
+      "code": {
+        "id": "astnode630883350",
+        "name": "pool",
+        "type": "CALL",
+        "node": "Object",
+        "value": "CALL"
+      }
+    },
+    "undocumented": true,
+    "name": "pool",
+    "kind": "member",
+    "memberof": "<anonymous>~Pool.acquire",
+    "longname": "<anonymous>~Pool.acquire~pool",
+    "scope": "inner"
+  },
+  {
+    "comment": "/**\n     * Creates a new pool of a certain type\n     * @static\n     * @param {Sting} className The name of the class\n     * @param {Number} initialSize The initial size to make the free pool\n     * @return {arronax.Pool} The new pool of the class type\n     */",
+    "meta": {
+      "range": [
+        3739,
+        3924
+      ],
+      "filename": "pool.js",
+      "lineno": 146,
+      "path": "src",
+      "code": {
+        "id": "astnode934909150",
+        "name": "Pool.createPool",
+        "type": "FUNCTION",
+        "node": "Object",
+        "funcscope": "<anonymous>",
+        "value": "FUNCTION",
+        "paramnames": [
+          "className",
+          "initialSize"
+        ]
+      },
+      "vars": {
+        "pool": false
+      }
+    },
+    "description": "Creates a new pool of a certain type",
+    "tags": [
+      {
+        "originalTitle": "scope",
+        "title": "scope",
+        "text": "static",
+        "value": "static"
+      }
+    ],
+    "scope": "static",
+    "params": [
+      {
+        "type": {
+          "names": [
+            "Sting"
+          ]
+        },
+        "optional": null,
+        "nullable": null,
+        "variable": null,
+        "defaultvalue": "undef",
+        "description": "The name of the class",
+        "name": "className"
+      },
+      {
+        "type": {
+          "names": [
+            "Number"
+          ]
+        },
+        "optional": null,
+        "nullable": null,
+        "variable": null,
+        "defaultvalue": "undef",
+        "description": "The initial size to make the free pool",
+        "name": "initialSize"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "arronax.Pool"
+          ]
+        },
+        "optional": null,
+        "nullable": null,
+        "variable": null,
+        "defaultvalue": "undef",
+        "description": "The new pool of the class type"
+      }
+    ],
+    "name": "createPool",
+    "kind": "function",
+    "longname": "<anonymous>~Pool.createPool",
+    "memberof": "<anonymous>~Pool"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        3802,
+        3828
+      ],
+      "filename": "pool.js",
+      "lineno": 147,
+      "path": "src",
+      "code": {
+        "id": "astnode2112994712",
+        "name": "pool",
+        "type": "CALL",
+        "node": "Object",
+        "value": "CALL"
+      }
+    },
+    "undocumented": true,
+    "name": "pool",
+    "kind": "member",
+    "memberof": "<anonymous>~Pool.createPool",
+    "longname": "<anonymous>~Pool.createPool~pool",
+    "scope": "inner"
+  }
+]
