@@ -29,12 +29,10 @@ define('aronnax/Base',
        * @returns {Object} The newly created instance.
        */
       create: function(obj, props) {
-        var o = Object.create(obj);
+        var o = Object.create(obj, props);
 
         // TODO wrap init function so that it does its stuff then returns the
         // object to allow for chaining: ie Base.create(thing).init();
-
-        _.extend(o, props);
 
         return o;
       }
