@@ -144,6 +144,10 @@ module.exports = function(grunt) {
           cache: 'doc/cache',
           mixin: 'doc/mixin',
           repoview: 'https://github.com/msecret/aronnax/src',
+          requirejs: {
+            mainConfigFile: "build/dev.build.js",
+            name: 'aronnax/main'
+          },
           types: (function() {
             var types = [];
 

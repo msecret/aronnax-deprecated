@@ -4,24 +4,22 @@
 // Licensed MIT
 
 /**
- * @file Holds the pool static class and the pooled class to make an object
- * pooled.
+ * @file Holds the pooled object
  */
 
 define('aronnax/Pooled',
   ['aronnax/Pool'],
   function(Pool) {
-    /**
-     * A class that provides object pooling
-     * @class
-     * @mixes aronnax.accessor
-     */
+
+   /**
+    * An object the provides pooling functionality
+    * @exports aronnax/Pooled
+    */
     var Pooled = {
 
       /**
-       * function that gets a free object from the pool and returns it after
-       * created.
-       * @return {Object|Array|Function} The object being return from the pool
+       * Gets a free object from the pool, enhances it and then returns it.
+       * @return {Object|Array|Function} The object being returned from the pool
        */
       make: function() {
         var f = Pool.acquire(this),
@@ -41,6 +39,9 @@ define('aronnax/Pooled',
         return f;
       },
 
+      /**
+       * Releases a used object, cleans it, and returns it to the free pool.
+       */
       release: function() {
 
       }

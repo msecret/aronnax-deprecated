@@ -1,41 +1,71 @@
 [
   {
-    "comment": "",
+    "comment": "/**\n * @file Holds the Base object\n */",
+    "meta": {
+      "filename": "base.js",
+      "lineno": 6,
+      "path": "src",
+      "code": {}
+    },
+    "name": "src/base.js",
+    "kind": "file",
+    "description": "Holds the Base object",
+    "preserveName": true,
+    "longname": "src/base.js"
+  },
+  {
+    "comment": "/**\n* A base object to inherit from the provide a shared object to inherit\n* from.\n* @module aronnax.Base\n*/",
+    "meta": {
+      "filename": "base.js",
+      "lineno": 8,
+      "path": "src",
+      "code": {}
+    },
+    "description": "A base object to inherit from the provide a shared object to inherit\nfrom.",
+    "kind": "module",
+    "name": "Base",
+    "memberof": "aronnax",
+    "longname": "aronnax.module:Base",
+    "scope": "static"
+  },
+  {
+    "comment": "/**\n    * A base object to inherit from the provide a shared object to inherit\n    * from.\n    * @exports aronnax.Base\n    */",
     "meta": {
       "range": [
-        165,
-        458
+        444,
+        996
       ],
       "filename": "base.js",
-      "lineno": 9,
+      "lineno": 24,
       "path": "src",
       "code": {
-        "id": "astnode92361528",
+        "id": "astnode1701693537",
         "name": "Base",
         "type": "OBJECTLIT",
         "node": "Object",
         "value": "OBJECTLIT"
       }
     },
-    "undocumented": true,
+    "description": "A base object to inherit from the provide a shared object to inherit\nfrom.",
+    "alias": "aronnax.Base",
+    "kind": "module",
     "name": "Base",
-    "kind": "member",
-    "memberof": "<anonymous>",
-    "longname": "<anonymous>~Base",
-    "scope": "inner"
+    "memberof": "aronnax",
+    "longname": "aronnax.module:Base",
+    "scope": "static"
   },
   {
-    "comment": "",
+    "comment": "/**\n       * Creates a new object, maps to Object.create.\n       * @param {Object} obj The object to inherit from\n       * @param {Object} props Properties to add to the inherited object.\n       * @returns {Object} The newly created instance.\n       */",
     "meta": {
       "range": [
-        180,
-        452
+        718,
+        990
       ],
       "filename": "base.js",
-      "lineno": 10,
+      "lineno": 31,
       "path": "src",
       "code": {
-        "id": "astnode248521228",
+        "id": "astnode1352126502",
         "name": "create",
         "type": "FUNCTION",
         "node": "Object",
@@ -49,25 +79,67 @@
         "o": false
       }
     },
-    "undocumented": true,
+    "description": "Creates a new object, maps to Object.create.",
+    "params": [
+      {
+        "type": {
+          "names": [
+            "Object"
+          ]
+        },
+        "optional": null,
+        "nullable": null,
+        "variable": null,
+        "defaultvalue": "undef",
+        "description": "The object to inherit from",
+        "name": "obj"
+      },
+      {
+        "type": {
+          "names": [
+            "Object"
+          ]
+        },
+        "optional": null,
+        "nullable": null,
+        "variable": null,
+        "defaultvalue": "undef",
+        "description": "Properties to add to the inherited object.",
+        "name": "props"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "Object"
+          ]
+        },
+        "optional": null,
+        "nullable": null,
+        "variable": null,
+        "defaultvalue": "undef",
+        "description": "The newly created instance."
+      }
+    ],
     "name": "create",
     "kind": "function",
-    "memberof": "<anonymous>~Base",
+    "memberof": "aronnax.module:Base",
     "scope": "static",
-    "longname": "<anonymous>~Base.create"
+    "longname": "aronnax.module:Base.create"
   },
   {
     "comment": "",
     "meta": {
       "range": [
-        223,
-        245
+        761,
+        783
       ],
       "filename": "base.js",
-      "lineno": 11,
+      "lineno": 32,
       "path": "src",
       "code": {
-        "id": "astnode171454744",
+        "id": "astnode219730313",
         "name": "o",
         "type": "CALL",
         "node": "Object",
@@ -77,8 +149,8 @@
     "undocumented": true,
     "name": "o",
     "kind": "member",
-    "memberof": "<anonymous>~Base.create",
-    "longname": "<anonymous>~Base.create~o",
+    "memberof": "aronnax.module:Base.create",
+    "longname": "aronnax.module:Base.create~o",
     "scope": "inner"
   }
 ]

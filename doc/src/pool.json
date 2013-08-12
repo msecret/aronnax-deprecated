@@ -24,7 +24,7 @@
       "lineno": 20,
       "path": "src",
       "code": {
-        "id": "astnode918808619",
+        "id": "astnode756258843",
         "name": "_createMember",
         "type": "FUNCTION",
         "node": "Object",
@@ -88,7 +88,7 @@
       "lineno": 21,
       "path": "src",
       "code": {
-        "id": "astnode1009611840",
+        "id": "astnode1013462002",
         "name": "toreturn",
         "type": "NULL",
         "node": "Object",
@@ -113,7 +113,7 @@
       "lineno": 24,
       "path": "src",
       "code": {
-        "id": "astnode1156207713",
+        "id": "astnode1188918692",
         "name": "toreturn",
         "type": "ARRAYLIT",
         "node": "Object",
@@ -139,7 +139,7 @@
       "lineno": 27,
       "path": "src",
       "code": {
-        "id": "astnode211225614",
+        "id": "astnode713732239",
         "name": "toreturn",
         "type": "FUNCTION",
         "node": "Object",
@@ -166,7 +166,7 @@
       "lineno": 31,
       "path": "src",
       "code": {
-        "id": "astnode262666716",
+        "id": "astnode881708381",
         "name": "toreturn",
         "type": "OBJECTLIT",
         "node": "Object",
@@ -192,7 +192,7 @@
       "lineno": 36,
       "path": "src",
       "code": {
-        "id": "astnode956289333",
+        "id": "astnode660493198",
         "name": "PoolPrototype",
         "type": "OBJECTLIT",
         "node": "Object",
@@ -217,7 +217,7 @@
       "lineno": 37,
       "path": "src",
       "code": {
-        "id": "astnode1476875516",
+        "id": "astnode748454644",
         "name": "init",
         "type": "FUNCTION",
         "node": "Object",
@@ -246,7 +246,7 @@
       "lineno": 42,
       "path": "src",
       "code": {
-        "id": "astnode1583634598",
+        "id": "astnode449507565",
         "name": "this.activePool",
         "type": "OBJECTLIT",
         "node": "Object",
@@ -279,7 +279,7 @@
       "lineno": 49,
       "path": "src",
       "code": {
-        "id": "astnode625430085",
+        "id": "astnode1833350875",
         "name": "this.freePool",
         "type": "ARRAYLIT",
         "node": "Object",
@@ -317,7 +317,7 @@
       "lineno": 56,
       "path": "src",
       "code": {
-        "id": "astnode2134908200",
+        "id": "astnode2121366929",
         "name": "this.className",
         "type": "NAME",
         "node": "Object",
@@ -355,7 +355,7 @@
       "lineno": 63,
       "path": "src",
       "code": {
-        "id": "astnode1109622806",
+        "id": "astnode1461837610",
         "name": "expandPool",
         "type": "FUNCTION",
         "node": "Object",
@@ -403,7 +403,7 @@
       "lineno": 64,
       "path": "src",
       "code": {
-        "id": "astnode1980322208",
+        "id": "astnode1812245295",
         "name": "i",
         "type": "NUMBER",
         "node": "Object",
@@ -428,7 +428,7 @@
       "lineno": 66,
       "path": "src",
       "code": {
-        "id": "astnode2023202663",
+        "id": "astnode1351626789",
         "name": "amount",
         "type": "OR",
         "node": "Object",
@@ -453,7 +453,7 @@
       "lineno": 69,
       "path": "src",
       "code": {
-        "id": "astnode1055389419",
+        "id": "astnode472682755",
         "name": "item",
         "type": "CALL",
         "node": "Object",
@@ -478,7 +478,7 @@
       "lineno": 78,
       "path": "src",
       "code": {
-        "id": "astnode1728641248",
+        "id": "astnode1377851222",
         "name": "acquireMember",
         "type": "FUNCTION",
         "node": "Object",
@@ -520,7 +520,7 @@
       "lineno": 87,
       "path": "src",
       "code": {
-        "id": "astnode1604848362",
+        "id": "astnode283980484",
         "name": "Pool",
         "type": "CALL",
         "node": "Object",
@@ -545,7 +545,7 @@
       "lineno": 94,
       "path": "src",
       "code": {
-        "id": "astnode1381221365",
+        "id": "astnode966979630",
         "name": "Pool.pools",
         "type": "OBJECTLIT",
         "node": "Object",
@@ -584,7 +584,7 @@
       "lineno": 101,
       "path": "src",
       "code": {
-        "id": "astnode1124183187",
+        "id": "astnode1894475752",
         "name": "Pool.totalPools",
         "type": "NUMBER",
         "node": "Object",
@@ -623,7 +623,7 @@
       "lineno": 109,
       "path": "src",
       "code": {
-        "id": "astnode471102698",
+        "id": "astnode2105903776",
         "name": "Pool.acquirePool",
         "type": "FUNCTION",
         "node": "Object",
@@ -692,7 +692,7 @@
       "lineno": 110,
       "path": "src",
       "code": {
-        "id": "astnode1952576819",
+        "id": "astnode160094946",
         "name": "pool",
         "type": "GETELEM",
         "node": "Object",
@@ -717,7 +717,7 @@
       "lineno": 112,
       "path": "src",
       "code": {
-        "id": "astnode1342217997",
+        "id": "astnode192714409",
         "name": "pool",
         "type": "CALL",
         "node": "Object",
@@ -743,7 +743,7 @@
       "lineno": 127,
       "path": "src",
       "code": {
-        "id": "astnode846275759",
+        "id": "astnode223489506",
         "name": "Pool.acquire",
         "type": "FUNCTION",
         "node": "Object",
@@ -817,7 +817,7 @@
       "lineno": 128,
       "path": "src",
       "code": {
-        "id": "astnode453799164",
+        "id": "astnode404454518",
         "name": "className",
         "type": "GETPROP",
         "node": "Object",
@@ -842,7 +842,7 @@
       "lineno": 133,
       "path": "src",
       "code": {
-        "id": "astnode630883350",
+        "id": "astnode1508028338",
         "name": "pool",
         "type": "CALL",
         "node": "Object",
@@ -867,7 +867,7 @@
       "lineno": 146,
       "path": "src",
       "code": {
-        "id": "astnode934909150",
+        "id": "astnode81035498",
         "name": "Pool.createPool",
         "type": "FUNCTION",
         "node": "Object",
@@ -950,7 +950,7 @@
       "lineno": 147,
       "path": "src",
       "code": {
-        "id": "astnode2112994712",
+        "id": "astnode862814614",
         "name": "pool",
         "type": "CALL",
         "node": "Object",

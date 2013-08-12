@@ -3,16 +3,26 @@
 // https://github.com/msecret/aronnax
 // Licensed MIT
 
+/**
+ * @file Holds the logger object
+ */
+
 define('aronnax/Logger',
   ['underscore', 'aronnax/Base', 'deps/logWriter'],
   function(_, Base, _logWriter) {
 
+   /**
+    * A log which will provide logging capabilities
+    */
     var Log = {
+
+      /**
+       * Initializes the log.
+       */
       init: function(name) {
         /**
          * The name of the log
          * @instance
-         * @protected
          * @default window.location.hostname
          */
         this.name = name || window.location.hostname;
@@ -22,8 +32,8 @@ define('aronnax/Logger',
 
       /**
        * Logging message as the "log" type of message
-       * @param {String|Object} message The message to log, as a string or an object
-       * with different parameters
+       * @param {String|Object} message The message to log, as a string or an
+       * object with different parameters
        */
       log: function(message) {
         this._write('log', message);
@@ -31,8 +41,8 @@ define('aronnax/Logger',
 
       /**
        * Logging message as the "warn" type of message
-       * @param {String|Object} message The message to log, as a string or an object
-       * with different parameters
+       * @param {String|Object} message The message to log, as a string or an
+       * object with different parameters
        */
       warn: function(message) {
         this._write('warn', message);
@@ -40,15 +50,15 @@ define('aronnax/Logger',
 
       /**
        * Logging message as the "error" type of message
-       * @param {String|Object} message The message to log, as a string or an object
-       * with different parameters
+       * @param {String|Object} message The message to log, as a string or an
+       * object with different parameters
        */
       error: function(message) {
         this._write('error', message);
       },
 
       /**
-       * Log an error or message
+       * Log an error or message, intermediate function
        * @protected
        * @param {String} type The type of log message, defaults to error,
        * warning and debug.
@@ -82,15 +92,14 @@ define('aronnax/Logger',
     };
 
     /**
-     * A logging instance to log errors
-     * @class
-     * @constuctor
-     * @this aronnax.Logger
-     * @mixes aronnax.accessor
-     * @param name The name given to the particular log, sent to the server
+     * An interface to control logs.
+     * @exports aronnax/Logger
      */
     var Logger = {
 
+      /**
+       * List of currently active logs.
+       */
       logs: [],
 
       /**
@@ -105,7 +114,10 @@ define('aronnax/Logger',
       /**
        * Will get the logging instance by name, creating a new one if it doesn't
        * exist
+       * @static
        * @param name Name of the log being accessed, or created
+       * @returns {aronnax/Log} The log instance being requested, either new
+       * or one already created.
        */
       getLog: function(name) {
         var i = 0,
@@ -126,6 +138,10 @@ define('aronnax/Logger',
         return log;
       },
 
+      /**
+       * The object responsible for actually writing the log, such as
+       * window.console
+       */
       logWriter: _logWriter
     };
 

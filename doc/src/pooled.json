@@ -1,6 +1,6 @@
 [
   {
-    "comment": "/**\n * @file Holds the pool static class and the pooled class to make an object\n * pooled.\n */",
+    "comment": "/**\n * @file Holds the pooled object\n */",
     "meta": {
       "filename": "pooled.js",
       "lineno": 6,
@@ -9,50 +9,47 @@
     },
     "name": "src/pooled.js",
     "kind": "file",
-    "description": "Holds the pool static class and the pooled class to make an object\npooled.",
+    "description": "Holds the pooled object",
     "preserveName": true,
     "longname": "src/pooled.js"
   },
   {
-    "comment": "/**\n     * A class that provides object pooling\n     * @class\n     * @mixes aronnax.accessor\n     */",
+    "comment": "/**\n    * An object the provides pooling functionality\n    * @exports aronnax/Pooled\n    */",
     "meta": {
       "range": [
-        373,
-        946
+        310,
+        963
       ],
       "filename": "pooled.js",
-      "lineno": 19,
+      "lineno": 18,
       "path": "src",
       "code": {
-        "id": "astnode885516455",
+        "id": "astnode871992664",
         "name": "Pooled",
         "type": "OBJECTLIT",
         "node": "Object",
         "value": "OBJECTLIT"
       }
     },
-    "description": "A class that provides object pooling",
-    "kind": "class",
-    "mixes": [
-      "aronnax.accessor"
-    ],
-    "name": "Pooled",
-    "memberof": "<anonymous>",
-    "longname": "<anonymous>~Pooled",
-    "scope": "inner"
+    "description": "An object the provides pooling functionality",
+    "alias": "aronnax/Pooled",
+    "kind": "module",
+    "name": "aronnax/Pooled",
+    "longname": "module:aronnax/Pooled",
+    "scope": "global"
   },
   {
-    "comment": "/**\n       * function that gets a free object from the pool and returns it after\n       * created.\n       * @return {Object|Array|Function} The object being return from the pool\n       */",
+    "comment": "/**\n       * Gets a free object from the pool, enhances it and then returns it.\n       * @return {Object|Array|Function} The object being returned from the pool\n       */",
     "meta": {
       "range": [
-        585,
-        901
+        505,
+        821
       ],
       "filename": "pooled.js",
-      "lineno": 26,
+      "lineno": 24,
       "path": "src",
       "code": {
-        "id": "astnode1836265170",
+        "id": "astnode643444394",
         "name": "make",
         "type": "FUNCTION",
         "node": "Object",
@@ -64,7 +61,7 @@
         "key": false
       }
     },
-    "description": "function that gets a free object from the pool and returns it after\ncreated.",
+    "description": "Gets a free object from the pool, enhances it and then returns it.",
     "returns": [
       {
         "type": {
@@ -78,27 +75,27 @@
         "nullable": null,
         "variable": null,
         "defaultvalue": "undef",
-        "description": "The object being return from the pool"
+        "description": "The object being returned from the pool"
       }
     ],
     "name": "make",
     "kind": "function",
-    "memberof": "<anonymous>~Pooled",
+    "memberof": "module:aronnax/Pooled",
     "scope": "static",
-    "longname": "<anonymous>~Pooled.make"
+    "longname": "module:aronnax/Pooled.make"
   },
   {
     "comment": "",
     "meta": {
       "range": [
-        616,
-        638
+        536,
+        558
       ],
       "filename": "pooled.js",
-      "lineno": 27,
+      "lineno": 25,
       "path": "src",
       "code": {
-        "id": "astnode1945910404",
+        "id": "astnode415546420",
         "name": "f",
         "type": "CALL",
         "node": "Object",
@@ -108,22 +105,22 @@
     "undocumented": true,
     "name": "f",
     "kind": "member",
-    "memberof": "<anonymous>~Pooled.make",
-    "longname": "<anonymous>~Pooled.make~f",
+    "memberof": "module:aronnax/Pooled.make",
+    "longname": "module:aronnax/Pooled.make~f",
     "scope": "inner"
   },
   {
     "comment": "",
     "meta": {
       "range": [
-        652,
-        655
+        572,
+        575
       ],
       "filename": "pooled.js",
-      "lineno": 28,
+      "lineno": 26,
       "path": "src",
       "code": {
-        "id": "astnode1086224071",
+        "id": "astnode2056454348",
         "name": "key",
         "type": "undefined",
         "node": "Object",
@@ -133,100 +130,100 @@
     "undocumented": true,
     "name": "key",
     "kind": "member",
-    "memberof": "<anonymous>~Pooled.make",
-    "longname": "<anonymous>~Pooled.make~key",
+    "memberof": "module:aronnax/Pooled.make",
+    "longname": "module:aronnax/Pooled.make~key",
     "scope": "inner"
   },
   {
     "comment": "",
     "meta": {
       "range": [
-        666,
-        672
+        586,
+        592
       ],
       "filename": "pooled.js",
-      "lineno": 30,
+      "lineno": 28,
       "path": "src",
       "code": {
-        "id": "astnode993374707",
+        "id": "astnode758742620",
         "name": "f",
         "type": "OBJECTLIT",
         "node": "Object",
-        "funcscope": "<anonymous>~Pooled.make",
+        "funcscope": "module:aronnax/Pooled.make",
         "value": "OBJECTLIT"
       }
     },
     "undocumented": true,
     "name": "f",
     "kind": "member",
-    "longname": "<anonymous>~Pooled.make~f",
-    "memberof": "<anonymous>~Pooled.make",
+    "longname": "module:aronnax/Pooled.make~f",
+    "memberof": "module:aronnax/Pooled.make",
     "scope": "inner"
   },
   {
     "comment": "",
     "meta": {
       "range": [
-        757,
-        775
+        677,
+        695
       ],
       "filename": "pooled.js",
-      "lineno": 34,
+      "lineno": 32,
       "path": "src",
       "code": {
-        "id": "astnode780638304",
+        "id": "astnode1629818866",
         "name": "f[key]",
         "type": "GETELEM",
         "node": "Object",
-        "funcscope": "<anonymous>~Pooled.make",
+        "funcscope": "module:aronnax/Pooled.make",
         "value": "this[key]"
       }
     },
     "undocumented": true,
     "name": "f[key]",
     "kind": "member",
-    "longname": "<anonymous>~Pooled.make~f[key]",
-    "memberof": "<anonymous>~Pooled.make",
+    "longname": "module:aronnax/Pooled.make~f[key]",
+    "memberof": "module:aronnax/Pooled.make",
     "scope": "inner"
   },
   {
     "comment": "",
     "meta": {
       "range": [
-        808,
-        834
+        728,
+        754
       ],
       "filename": "pooled.js",
-      "lineno": 38,
+      "lineno": 36,
       "path": "src",
       "code": {
-        "id": "astnode454631513",
+        "id": "astnode780553795",
         "name": "f.release",
         "type": "GETPROP",
         "node": "Object",
-        "funcscope": "<anonymous>~Pooled.make",
+        "funcscope": "module:aronnax/Pooled.make",
         "value": "Pooled.release"
       }
     },
     "undocumented": true,
     "name": "release",
     "kind": "member",
-    "longname": "<anonymous>~Pooled.make~f.release",
-    "memberof": "<anonymous>~Pooled.make~f",
+    "longname": "module:aronnax/Pooled.make~f.release",
+    "memberof": "module:aronnax/Pooled.make~f",
     "scope": "static"
   },
   {
-    "comment": "",
+    "comment": "/**\n       * Releases a used object, cleans it, and returns it to the free pool.\n       */",
     "meta": {
       "range": [
-        910,
-        940
+        927,
+        957
       ],
       "filename": "pooled.js",
-      "lineno": 44,
+      "lineno": 45,
       "path": "src",
       "code": {
-        "id": "astnode756258843",
+        "id": "astnode1635375188",
         "name": "release",
         "type": "FUNCTION",
         "node": "Object",
@@ -234,11 +231,11 @@
         "paramnames": []
       }
     },
-    "undocumented": true,
+    "description": "Releases a used object, cleans it, and returns it to the free pool.",
     "name": "release",
     "kind": "function",
-    "memberof": "<anonymous>~Pooled",
+    "memberof": "module:aronnax/Pooled",
     "scope": "static",
-    "longname": "<anonymous>~Pooled.release"
+    "longname": "module:aronnax/Pooled.release"
   }
 ]

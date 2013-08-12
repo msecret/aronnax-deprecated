@@ -2,7 +2,7 @@
 // All Rights Reserved
 // aronnax - v0.1.1
 // https://github.com/msecret/aronnax 
-// 2013-08-09
+// 2013-08-11
 // Licensed MIT 
 
 //     Underscore.js 1.5.1
@@ -1264,10 +1264,26 @@ define("underscore", (function (global) {
 // https://github.com/msecret/aronnax
 // Licensed MIT
 
+/**
+ * @file Holds the Base object
+ */
+
 define('aronnax/Base',
   ['underscore'],
   function(_) {
+
+   /**
+    * A base object to inherit from the provide a shared object to inherit
+    * from.
+    * @exports aronnax.Base
+    */
     var Base = {
+      /**
+       * Creates a new object, maps to Object.create.
+       * @param {Object} obj The object to inherit from
+       * @param {Object} props Properties to add to the inherited object.
+       * @returns {Object} The newly created instance.
+       */
       create: function(obj, props) {
         var o = Object.create(obj);
 
@@ -1445,24 +1461,22 @@ define('aronnax/Pool',
 // Licensed MIT
 
 /**
- * @file Holds the pool static class and the pooled class to make an object
- * pooled.
+ * @file Holds the pooled object
  */
 
 define('aronnax/Pooled',
   ['aronnax/Pool'],
   function(Pool) {
-    /**
-     * A class that provides object pooling
-     * @class
-     * @mixes aronnax.accessor
-     */
+
+   /**
+    * An object the provides pooling functionality
+    * @exports aronnax/Pooled
+    */
     var Pooled = {
 
       /**
-       * function that gets a free object from the pool and returns it after
-       * created.
-       * @return {Object|Array|Function} The object being return from the pool
+       * Gets a free object from the pool, enhances it and then returns it.
+       * @return {Object|Array|Function} The object being returned from the pool
        */
       make: function() {
         var f = Pool.acquire(this),
@@ -1482,6 +1496,9 @@ define('aronnax/Pooled',
         return f;
       },
 
+      /**
+       * Releases a used object, cleans it, and returns it to the free pool.
+       */
       release: function() {
 
       }
