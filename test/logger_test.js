@@ -6,6 +6,15 @@
 describe('aronnax.Logger', function() {
   var Logger;
 
+  // Set up mock logger
+  define('deps/logWriter', function() {
+    return {
+      log: function(msg) { return; },
+      warn: function(msg) { return; },
+      error: function(msg) { return; }
+    }
+  });
+
   beforeEach(function() {
     var flag = false;
 
@@ -49,18 +58,6 @@ describe('aronnax.Logger', function() {
   });
 });
 
-// Function under test
-function once(fn) {
-    var returnValue, called = false;
-    return function () {
-        if (!called) {
-            called = true;
-            returnValue = fn.apply(this, arguments);
-        }
-        return returnValue;
-    };
-}
-
 describe('aronnax.Log', function() {
   var Logger,
       logWriter,
@@ -73,10 +70,10 @@ describe('aronnax.Log', function() {
       Logger = _Logger;
       logWriter = _logWriter;
       testLog =  Logger.getLog('test log');
-      Logger.logWriter = logWriter;
-      sinon.spy(Logger.logWriter, 'log');
-      sinon.spy(Logger.logWriter, 'error');
-      sinon.spy(Logger.logWriter, 'warn');
+      testLog._logWriter = logWriter;
+      sinon.spy(testLog._logWriter, 'log');
+      sinon.spy(testLog._logWriter, 'error');
+      sinon.spy(testLog._logWriter, 'warn');
       Logger.settings.environment = 'staging';
 
       flag = true;
@@ -88,16 +85,16 @@ describe('aronnax.Log', function() {
   });
 
   afterEach(function() {
-    Logger.logWriter.log.restore();
-    Logger.logWriter.error.restore();
-    Logger.logWriter.warn.restore();
+    testLog._logWriter.log.restore();
+    testLog._logWriter.error.restore();
+    testLog._logWriter.warn.restore();
   });
 
   describe('log', function() {
     it('calls logWriter when calling log method', function() {
       testLog.log('test message');
 
-      expect(Logger.logWriter.log).toHaveBeenCalledOnce();
+      expect(testLog._logWriter.log).toHaveBeenCalledOnce();
     });
 
     it('calls the log function with the log name and message', function() {
@@ -106,7 +103,7 @@ describe('aronnax.Log', function() {
 
       testLog.log(testMessage);
 
-      expect(Logger.logWriter.log).toHaveBeenCalledWith(expected);
+      expect(testLog._logWriter.log).toHaveBeenCalledWith(expected);
     });
 
     it('does not call the log function in production environemnts', function() {
@@ -114,15 +111,15 @@ describe('aronnax.Log', function() {
       Logger.settings.environment = 'production';
       testLog.log('test message');
 
-      expect(Logger.logWriter.log).toHaveBeenCalledOnce();
+      expect(testLog._logWriter.log).toHaveBeenCalledOnce();
     });
 
     it('calls the various logging functions', function() {
       testLog.error('test log error');
       testLog.warn('warning log error');
 
-      expect(Logger.logWriter.error).toHaveBeenCalledOnce();
-      expect(Logger.logWriter.warn).toHaveBeenCalledOnce();
+      expect(testLog._logWriter.error).toHaveBeenCalledOnce();
+      expect(testLog._logWriter.warn).toHaveBeenCalledOnce();
     });
   });
 });

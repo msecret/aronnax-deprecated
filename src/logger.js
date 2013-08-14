@@ -9,7 +9,7 @@
 
 define('aronnax/Logger',
   ['underscore', 'aronnax/Base', 'deps/logWriter'],
-  function(_, Base, _logWriter) {
+  function(_, Base, logWriterObject) {
 
    /**
     * A log which will provide logging capabilities
@@ -19,13 +19,19 @@ define('aronnax/Logger',
       /**
        * Initializes the log.
        */
-      init: function(name) {
+      init: function(name, logWriter) {
         /**
          * The name of the log
          * @instance
          * @default window.location.hostname
          */
         this.name = name || window.location.hostname;
+
+        /**
+         * The object responsible for writing the log, such as console.
+         * @instance
+         */
+        this._logWriter = logWriter
         Logger.logs.push(this);
       },
 
@@ -79,12 +85,12 @@ define('aronnax/Logger',
         // TODO replace with globals for environments
         switch (Logger.settings.environment) {
           case 'staging':
-            Logger.logWriter[type](this.name+ ':' +err.message);
+            this._logWriter[type](this.name+ ':' +err.message);
             break;
           case 'production':
             break;
           default:
-            Logger.logWriter[type](this.name+ ':' +err.message);
+            this._logWriter[type](this.name+ ':' +err.message);
             break;
         }
       }
@@ -133,16 +139,10 @@ define('aronnax/Logger',
         }
 
         log = Base.create(Log);
-        log.init(name);
+        log.init(name, logWriterObject);
 
         return log;
-      },
-
-      /**
-       * The object responsible for actually writing the log, such as
-       * window.console
-       */
-      logWriter: _logWriter
+      }
     };
 
     return Logger;
