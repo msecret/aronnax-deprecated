@@ -33,7 +33,9 @@ describe('aronnax.Base', function() {
     it('should not set the prototype props when passing in null object',
         function() {
       var testValue = 5,
-          testProps = {testProp: testValue},
+          testProps = {testProp: {
+            value: testValue
+          }},
           testCreatedObj = Base.create(null, testProps);
 
       expect(testCreatedObj.prototype).toBeUndefined();
@@ -42,7 +44,9 @@ describe('aronnax.Base', function() {
     it('should set the props object on the main object when passing in a null' +
         'object', function() {
       var testValue = 5,
-          testProps = {testProp: testValue},
+          testProps = {testProp: {
+            value: testValue
+          }},
           testCreatedObj = Base.create(null, testProps);
 
       expect(testCreatedObj.testProp).toBeDefined();
@@ -51,12 +55,25 @@ describe('aronnax.Base', function() {
 
     it('should return an object that inherits from one passed in', function() {
       var testValue = 4,
-          testObj = {testProp: testValue},
-          testProps = {testProp: testValue},
-          testCreatedObj = Base.create(testObj, testProps);
+          testObj = {prop: 'value'},
+          testProp = {testProp: {
+            value: testValue
+          }},
+          testCreatedObj = Base.create(testObj, testProp);
 
       expect(testCreatedObj.testProp).toBeDefined();
       expect(testCreatedObj.testProp).toEqual(testValue);
+    });
+    it('should set new object instances to have correct prototype', function() {
+      var testBaseObj = {testProp1: 1};
+
+      var r = Base.create(testBaseObj, {
+        testProp2: {
+          value: 2
+        }
+      });
+
+      var s = Base.create(r);
     });
   });
 });
