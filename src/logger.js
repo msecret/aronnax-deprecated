@@ -31,7 +31,7 @@ define('aronnax/Logger',
          * The object responsible for writing the log, such as console.
          * @instance
          */
-        this._logWriter = logWriter
+        this._logWriter = logWriter;
         Logger.logs.push(this);
       },
 

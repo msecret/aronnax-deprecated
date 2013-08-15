@@ -12,7 +12,7 @@ describe('aronnax.Logger', function() {
       log: function(msg) { return; },
       warn: function(msg) { return; },
       error: function(msg) { return; }
-    }
+    };
   });
 
   beforeEach(function() {
