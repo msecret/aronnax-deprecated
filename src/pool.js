@@ -9,7 +9,11 @@
  */
 
 define('aronnax/Pool',
-  function() {
+  ['aronnax/Base', 'aronnax/Logger'],
+  function(Base, Logger) {
+    "use strict";
+
+    var _log = Logger.getLog('aronnax.Pool');
 
     /**
      * Creates a member of a certain type by looking at the passed in class name.
@@ -17,43 +21,50 @@ define('aronnax/Pool',
      * @param {String} className The name of the class
      * @return {Object|Array|Function} The member of a certain type
      */
-    var _createMember = function(className) {
-      var toreturn = null;
+    function _createMember(className) {
+      /*jshint validthis:true */
+      var toreturn;
       switch(className) {
-        case 'Array':
+        case 'array':
           toreturn = [];
           break;
-        case 'Function':
+        case 'function':
           toreturn = function() {};
           break;
-        default:
-        case 'Object':
+        case 'Base':
+        case 'object':
           toreturn = {};
           break;
+        default:
+          toreturn = Object.create(this.basePrototype);
+          break;
       }
-    };
 
-    var PoolPrototype = {
-      init: function(className, initialSize) {
-        /**
-        * The current pool of active members, a hashtable
-        * @instance
-        */
-        this.activePool = {};
+      return toreturn;
+    }
 
-        /**
-         * The free pool of members
-         * @type Array
-         * @instance
-         */
+    var PoolPrototype = Base.create(null, 'Pool', {
+      /**
+      * The current pool of active members, a hashtable
+      * @type Object
+      */
+      activePool: {
+        writable: true
+      },
+      freePool: {
+        writable: true
+      },
+
+      basePrototype: {
+        configurable: true,
+        writable: true
+      },
+      init: function(initialSize, basePrototype) {
         this.freePool = [];
+        this.activePool = [];
+        this.basePrototype = basePrototype;
 
-        /**
-         * The class name of the member pool
-         * @type String
-         * @instance
-         */
-        this.className = className;
+        this.expandPool(initialSize);
       },
 
       /**
@@ -66,7 +77,7 @@ define('aronnax/Pool',
             amount = byAmount || 12;
 
         for ( ; i < amount; i++) {
-          var item = _createMember(this.className);
+          var item = _createMember.call(this, this.className);
           this.freePool.push(item);
         }
       },
@@ -82,10 +93,10 @@ define('aronnax/Pool',
         return this.freePool.pop();
       }
 
-    };
+    });
 
-    var Pool = Object.create(PoolPrototype);
-
+    // TODO return this into regular way.
+    var Pool = {};
     /**
      * All the current pools, as a hash with the class type as the key.
      * @static
@@ -106,10 +117,10 @@ define('aronnax/Pool',
      * @param {Sting} className The name of the class
      * @return {arronax.Pool} The pool of the class type
      */
-    Pool.acquirePool = function(className) {
+    Pool.acquirePool = function(className, objPrototype) {
       var pool = this.pools[className];
       if (!pool) {
-        pool = this.createPool(className);
+        pool = this.createPool(className, objPrototype);
       }
 
       return pool;
@@ -127,10 +138,10 @@ define('aronnax/Pool',
     Pool.acquire = function(classMember) {
       var className = classMember.className;
       if (typeof className !== 'string') {
-        //_log.error('Aquired Pool class not a string');
+        _log.error('Aquired Pool class not a string');
         return;
       }
-      var pool = this.acquirePool(className);
+      var pool = this.acquirePool(className, classMember);
 
       return pool.acquireMember();
     };
@@ -143,9 +154,9 @@ define('aronnax/Pool',
      * @param {Number} initialSize The initial size to make the free pool
      * @return {arronax.Pool} The new pool of the class type
      */
-    Pool.createPool = function(className, initialSize) {
-      var pool = Object.create(Pool);
-      pool.init(className, initialSize);
+    Pool.createPool = function(className, objPrototype, initialSize) {
+      var pool = Object.create(PoolPrototype);
+      pool.init(initialSize, objPrototype);
 
       this.totalPools += 1;
       return pool;

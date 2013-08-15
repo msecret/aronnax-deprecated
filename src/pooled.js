@@ -8,14 +8,14 @@
  */
 
 define('aronnax/Pooled',
-  ['aronnax/Pool'],
-  function(Pool) {
+  ['aronnax/Base', 'aronnax/Pool'],
+  function(Base, Pool) {
 
    /**
     * An object the provides pooling functionality
     * @exports aronnax/Pooled
     */
-    var Pooled = {
+    var Pooled = Base.create(null, 'Pooled', {
 
       /**
        * Gets a free object from the pool, enhances it and then returns it.
@@ -24,17 +24,6 @@ define('aronnax/Pooled',
       make: function() {
         var f = Pool.acquire(this),
             key;
-
-        f = {};
-
-        for (key in this) {
-          if (this.hasOwnProperty(key)) {
-            f[key] = this[key];
-          }
-        }
-
-        f.release = Pooled.release;
-        this.init.apply(f, arguments);
 
         return f;
       },
@@ -45,7 +34,7 @@ define('aronnax/Pooled',
       release: function() {
 
       }
-    };
+    });
 
     return Pooled;
 });

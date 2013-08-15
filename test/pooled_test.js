@@ -4,12 +4,14 @@
 // Licensed MIT
 
 describe('aronnax.Pooled', function() {
-  var Pooled;
+  var Base,
+      Pooled;
 
   beforeEach(function() {
     var flag = false;
 
-    require(['aronnax/Pooled'], function(_Pooled) {
+    require(['aronnax/Base', 'aronnax/Pooled'], function(_Base, _Pooled) {
+      Base = _Base;
       Pooled = _Pooled;
       flag = true;
     });
@@ -18,36 +20,70 @@ describe('aronnax.Pooled', function() {
       return flag;
     });
   });
-  describe('initialize', function() {
-
-    it('should be defined', function() {
-      expect(Pooled).toBeDefined();
-    });
+  describe('init', function() {
 
     it('should have correct methods', function() {
       expect(Pooled.make).toBeDefined();
+    });
+
+    it('should have the correct class name', function() {
+      expect(Pooled.className).toBeDefined();
+      expect(Pooled.className).toEqual('Pooled');
     });
   });
 
   describe('make', function() {
     var TestO = {};
+
     beforeEach(function() {
-      TestO = Object.create(Pooled);
-      TestO.className = 'TestO';
-      TestO.init = function(x) {
-        this.x = x;
-      };
+      TestO = Base.create(Pooled, 'TestO', {
+        prop1: {
+          value: 1
+        },
+        propFunc: function() { }
+      });
     });
 
     it('should have the make function on inherited objects', function() {
       expect(TestO.make).toBeDefined();
     });
 
-    // TODO use spy here
-    it('should invoke the init method on make', function() {
-      var s = TestO.make(3);
-      expect(s.x).toBe(3);
+    it('should return an object on make when its an object', function() {
+      var testI = TestO.make();
+
+      expect(typeof testI).toEqual('object');
     });
+
+    it('should inherit any properties of the base object', function() {
+      var testProperties = {
+        testProp1: {
+          value: 1
+        },
+        testFunc1: function() { return 1; }
+      },
+        testBase = Base.create(Pooled, 'testBase', testProperties);
+
+      var testI = testBase.make();
+
+      expect(testI.testProp1).toBeDefined();
+      expect(testI.testProp1).toEqual(1);
+      expect(testI.testFunc1).toBeDefined();
+      expect(testI.testFunc1()).toEqual(1);
+    });
+
+    it('should have the name of the base object', function() {
+      var testI = TestO.make();
+
+      expect(testI.className).toEqual('TestO');
+    });
+
+    it('should have a release function', function() {
+      var testI = TestO.make();
+
+      expect(testI.release).toBeDefined();
+      expect(typeof testI.release).toEqual('function');
+    });
+
   });
 
 });
