@@ -25,16 +25,32 @@ define('aronnax/Base',
       /**
        * Creates a new object, maps to Object.create.
        * @param {Object} obj The object to inherit from
+       * @param {String} name The name of the object.
        * @param {Object} props Properties to add to the inherited object.
        * @returns {Object} The newly created instance.
        */
-      create: function(obj, props, name) {
-        var o = Object.create(obj, props);
+      create: function(obj, name, props) {
+        var o = Object.create(obj),
+            prop,
+            key;
+
         Object.defineProperty(o, "className",
           { value : name || 'Base',
             configurable: false,
             enumerable: false,
             writable: false });
+
+        for (key in props) {
+          prop = props[key];
+          if (props.hasOwnProperty(key)) {
+            if (typeof prop === 'function') {
+              o[key] = prop;
+            }
+            else {
+              Object.defineProperty(o, key, prop);
+            }
+          }
+        }
 
         // TODO wrap init function so that it does its stuff then returns the
         // object to allow for chaining: ie Base.create(thing).init();

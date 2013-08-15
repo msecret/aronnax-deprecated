@@ -36,7 +36,7 @@ describe('aronnax.Base', function() {
           testProps = {testProp: {
             value: testValue
           }},
-          testCreatedObj = Base.create(null, testProps);
+          testCreatedObj = Base.create(null, null, testProps);
 
       expect(testCreatedObj.prototype).toBeUndefined();
     });
@@ -47,7 +47,7 @@ describe('aronnax.Base', function() {
           testProps = {testProp: {
             value: testValue
           }},
-          testCreatedObj = Base.create(null, testProps);
+          testCreatedObj = Base.create(null, null, testProps);
 
       expect(testCreatedObj.testProp).toBeDefined();
       expect(testCreatedObj.testProp).toEqual(testValue);
@@ -59,7 +59,7 @@ describe('aronnax.Base', function() {
           testProp = {testProp: {
             value: testValue
           }},
-          testCreatedObj = Base.create(testObj, testProp);
+          testCreatedObj = Base.create(testObj, null, testProp);
 
       expect(testCreatedObj.testProp).toBeDefined();
       expect(testCreatedObj.testProp).toEqual(testValue);
@@ -67,13 +67,48 @@ describe('aronnax.Base', function() {
     it('should set new object instances to have correct prototype', function() {
       var testBaseObj = {testProp1: 1};
 
-      var r = Base.create(testBaseObj, {
+      var r = Base.create(testBaseObj, 'testClass', {
         testProp2: {
           value: 2
         }
       });
 
       var s = Base.create(r);
+    });
+    it('should extend functions when they are passed in', function() {
+      var testBaseObj = {testProp1: 1},
+          testFunc = function testFunction() { };
+
+      var ex = Base.create(testBaseObj, 'testInherited', {
+        testFunc: testFunc
+      });
+
+      expect(ex.testFunc).toBeDefined();
+      expect(ex.testFunc).toBeDefined();
+      expect(typeof ex.testFunc).toEqual('function');
+      expect(ex.testFunc).toEqual(testFunc);
+    });
+    it('should still extend properties when passing in functions', function() {
+      var testBaseObj = {testProp1: 1},
+          testFunc = function() {},
+          testProp = {value: 'testProp'};
+
+      var ex = Base.create(testBaseObj, 'testInherited', {
+        'testFunc': testFunc,
+        'testProp': testProp
+      });
+
+      expect(ex.testFunc).toBeDefined();
+      expect(ex.testProp).toBeDefined();
+    });
+    it('should keep the same properites when extended from', function() {
+
+    });
+    it('should define the className as a property', function() {
+      var testBaseObj = Base.create(null, 'testName1');
+
+      expect(testBaseObj.className).toBeDefined();
+      expect(testBaseObj.className).toEqual('testName1');
     });
   });
 });
