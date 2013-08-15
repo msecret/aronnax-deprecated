@@ -15,6 +15,7 @@
 define('aronnax/Base',
   ['underscore'],
   function(_) {
+    "use strict";
 
    /**
     * A base object to inherit from the provide a shared object to inherit

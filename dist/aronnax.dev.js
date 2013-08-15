@@ -1276,6 +1276,7 @@ define("underscore", (function (global) {
 define('aronnax/Base',
   ['underscore'],
   function(_) {
+    
 
    /**
     * A base object to inherit from the provide a shared object to inherit

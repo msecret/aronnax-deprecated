@@ -32,14 +32,14 @@
     "comment": "/**\n    * A base object to inherit from the provide a shared object to inherit\n    * from.\n    * @exports aronnax.Base\n    */",
     "meta": {
       "range": [
-        444,
-        1538
+        462,
+        1556
       ],
       "filename": "base.js",
-      "lineno": 24,
+      "lineno": 25,
       "path": "src",
       "code": {
-        "id": "astnode1115600610",
+        "id": "astnode1369543768",
         "name": "Base",
         "type": "OBJECTLIT",
         "node": "Object",
@@ -58,14 +58,14 @@
     "comment": "/**\n       * Creates a new object, maps to Object.create.\n       * @param {Object} obj The object to inherit from\n       * @param {String} name The name of the object.\n       * @param {Object} props Properties to add to the inherited object.\n       * @returns {Object} The newly created instance.\n       */",
     "meta": {
       "range": [
-        772,
-        1532
+        790,
+        1550
       ],
       "filename": "base.js",
-      "lineno": 32,
+      "lineno": 33,
       "path": "src",
       "code": {
-        "id": "astnode1172733546",
+        "id": "astnode648734830",
         "name": "create",
         "type": "FUNCTION",
         "node": "Object",
@@ -148,14 +148,14 @@
     "comment": "",
     "meta": {
       "range": [
-        821,
-        843
+        839,
+        861
       ],
       "filename": "base.js",
-      "lineno": 33,
+      "lineno": 34,
       "path": "src",
       "code": {
-        "id": "astnode1274367071",
+        "id": "astnode1115600610",
         "name": "o",
         "type": "CALL",
         "node": "Object",
@@ -173,14 +173,14 @@
     "comment": "",
     "meta": {
       "range": [
-        857,
-        861
+        875,
+        879
       ],
       "filename": "base.js",
-      "lineno": 34,
+      "lineno": 35,
       "path": "src",
       "code": {
-        "id": "astnode500470343",
+        "id": "astnode773149104",
         "name": "prop",
         "type": "undefined",
         "node": "Object",
@@ -198,14 +198,14 @@
     "comment": "",
     "meta": {
       "range": [
-        875,
-        878
+        893,
+        896
       ],
       "filename": "base.js",
-      "lineno": 35,
+      "lineno": 36,
       "path": "src",
       "code": {
-        "id": "astnode1506858075",
+        "id": "astnode1254032703",
         "name": "key",
         "type": "undefined",
         "node": "Object",
@@ -223,14 +223,14 @@
     "comment": "",
     "meta": {
       "range": [
-        939,
-        961
+        957,
+        979
       ],
       "filename": "base.js",
-      "lineno": 38,
+      "lineno": 39,
       "path": "src",
       "code": {
-        "id": "astnode563848768",
+        "id": "astnode1274367071",
         "name": "value",
         "type": "OR",
         "node": "Object",
@@ -256,14 +256,14 @@
     "comment": "",
     "meta": {
       "range": [
-        975,
-        994
+        993,
+        1012
       ],
       "filename": "base.js",
-      "lineno": 39,
+      "lineno": 40,
       "path": "src",
       "code": {
-        "id": "astnode29876954",
+        "id": "astnode596347156",
         "name": "configurable",
         "type": "FALSE",
         "node": "Object",
@@ -289,14 +289,14 @@
     "comment": "",
     "meta": {
       "range": [
-        1008,
-        1025
+        1026,
+        1043
       ],
       "filename": "base.js",
-      "lineno": 40,
+      "lineno": 41,
       "path": "src",
       "code": {
-        "id": "astnode525855306",
+        "id": "astnode1805440858",
         "name": "enumerable",
         "type": "FALSE",
         "node": "Object",
@@ -322,14 +322,14 @@
     "comment": "",
     "meta": {
       "range": [
-        1039,
-        1054
+        1057,
+        1072
       ],
       "filename": "base.js",
-      "lineno": 41,
+      "lineno": 42,
       "path": "src",
       "code": {
-        "id": "astnode1008341913",
+        "id": "astnode1506858075",
         "name": "writable",
         "type": "FALSE",
         "node": "Object",
@@ -355,14 +355,14 @@
     "comment": "",
     "meta": {
       "range": [
-        1099,
-        1116
+        1117,
+        1134
       ],
       "filename": "base.js",
-      "lineno": 44,
+      "lineno": 45,
       "path": "src",
       "code": {
-        "id": "astnode567038057",
+        "id": "astnode1409073314",
         "name": "prop",
         "type": "GETELEM",
         "node": "Object",
@@ -389,14 +389,14 @@
     "comment": "",
     "meta": {
       "range": [
-        1221,
-        1234
+        1239,
+        1252
       ],
       "filename": "base.js",
-      "lineno": 47,
+      "lineno": 48,
       "path": "src",
       "code": {
-        "id": "astnode631120219",
+        "id": "astnode141106670",
         "name": "o[key]",
         "type": "NAME",
         "node": "Object",

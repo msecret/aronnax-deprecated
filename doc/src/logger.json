@@ -17,14 +17,14 @@
     "comment": "/**\n    * A log which will provide logging capabilities\n    */",
     "meta": {
       "range": [
-        333,
-        2566
+        351,
+        2584
       ],
       "filename": "logger.js",
-      "lineno": 17,
+      "lineno": 18,
       "path": "src",
       "code": {
-        "id": "astnode956289333",
+        "id": "astnode31447144",
         "name": "Log",
         "type": "OBJECTLIT",
         "node": "Object",
@@ -42,14 +42,14 @@
     "comment": "/**\n       * Initializes the log.\n       */",
     "meta": {
       "range": [
-        398,
-        801
+        416,
+        819
       ],
       "filename": "logger.js",
-      "lineno": 22,
+      "lineno": 23,
       "path": "src",
       "code": {
-        "id": "astnode1476875516",
+        "id": "astnode1643210767",
         "name": "init",
         "type": "FUNCTION",
         "node": "Object",
@@ -71,14 +71,14 @@
     "comment": "/**\n         * The name of the log\n         * @instance\n         * @default window.location.hostname\n         */",
     "meta": {
       "range": [
-        561,
-        605
+        579,
+        623
       ],
       "filename": "logger.js",
-      "lineno": 28,
+      "lineno": 29,
       "path": "src",
       "code": {
-        "id": "astnode625430085",
+        "id": "astnode1090658100",
         "name": "this.name",
         "type": "OR",
         "node": "Object",
@@ -105,14 +105,14 @@
     "comment": "/**\n         * The object responsible for writing the log, such as console.\n         * @instance\n         */",
     "meta": {
       "range": [
-        733,
-        760
+        751,
+        778
       ],
       "filename": "logger.js",
-      "lineno": 34,
+      "lineno": 35,
       "path": "src",
       "code": {
-        "id": "astnode41000735",
+        "id": "astnode202783062",
         "name": "this._logWriter",
         "type": "NAME",
         "node": "Object",
@@ -138,14 +138,14 @@
     "comment": "/**\n       * Logging message as the \"log\" type of message\n       * @param {String|Object} message The message to log, as a string or an\n       * object with different parameters\n       */",
     "meta": {
       "range": [
-        1005,
-        1074
+        1023,
+        1092
       ],
       "filename": "logger.js",
-      "lineno": 44,
+      "lineno": 45,
       "path": "src",
       "code": {
-        "id": "astnode2134908200",
+        "id": "astnode962885593",
         "name": "log",
         "type": "FUNCTION",
         "node": "Object",
@@ -182,14 +182,14 @@
     "comment": "/**\n       * Logging message as the \"warn\" type of message\n       * @param {String|Object} message The message to log, as a string or an\n       * object with different parameters\n       */",
     "meta": {
       "range": [
-        1278,
-        1349
+        1296,
+        1367
       ],
       "filename": "logger.js",
-      "lineno": 53,
+      "lineno": 54,
       "path": "src",
       "code": {
-        "id": "astnode1809441479",
+        "id": "astnode701343131",
         "name": "warn",
         "type": "FUNCTION",
         "node": "Object",
@@ -226,14 +226,14 @@
     "comment": "/**\n       * Logging message as the \"error\" type of message\n       * @param {String|Object} message The message to log, as a string or an\n       * object with different parameters\n       */",
     "meta": {
       "range": [
-        1554,
-        1627
+        1572,
+        1645
       ],
       "filename": "logger.js",
-      "lineno": 62,
+      "lineno": 63,
       "path": "src",
       "code": {
-        "id": "astnode1980322208",
+        "id": "astnode389001391",
         "name": "error",
         "type": "FUNCTION",
         "node": "Object",
@@ -270,14 +270,14 @@
     "comment": "/**\n       * Log an error or message, intermediate function\n       * @protected\n       * @param {String} type The type of log message, defaults to error,\n       * warning and debug.\n       * @param {String|Object} message The message to log, as a string or an object\n       * with different parameters\n       */",
     "meta": {
       "range": [
-        1954,
-        2559
+        1972,
+        2577
       ],
       "filename": "logger.js",
-      "lineno": 74,
+      "lineno": 75,
       "path": "src",
       "code": {
-        "id": "astnode109760451",
+        "id": "astnode1195622205",
         "name": "_write",
         "type": "FUNCTION",
         "node": "Object",
@@ -332,14 +332,14 @@
     "comment": "",
     "meta": {
       "range": [
-        2000,
-        2008
+        2018,
+        2026
       ],
       "filename": "logger.js",
-      "lineno": 75,
+      "lineno": 76,
       "path": "src",
       "code": {
-        "id": "astnode2040402337",
+        "id": "astnode645437545",
         "name": "err",
         "type": "OBJECTLIT",
         "node": "Object",
@@ -357,14 +357,14 @@
     "comment": "",
     "meta": {
       "range": [
-        2019,
-        2034
+        2037,
+        2052
       ],
       "filename": "logger.js",
-      "lineno": 77,
+      "lineno": 78,
       "path": "src",
       "code": {
-        "id": "astnode550579946",
+        "id": "astnode314598317",
         "name": "err.type",
         "type": "NAME",
         "node": "Object",
@@ -383,14 +383,14 @@
     "comment": "",
     "meta": {
       "range": [
-        2089,
-        2110
+        2107,
+        2128
       ],
       "filename": "logger.js",
-      "lineno": 79,
+      "lineno": 80,
       "path": "src",
       "code": {
-        "id": "astnode1862524560",
+        "id": "astnode1277634913",
         "name": "err.message",
         "type": "NAME",
         "node": "Object",
@@ -409,14 +409,14 @@
     "comment": "/**\n     * An interface to control logs.\n     * @exports aronnax/Logger\n     */",
     "meta": {
       "range": [
-        2661,
-        3648
+        2679,
+        3666
       ],
       "filename": "logger.js",
-      "lineno": 104,
+      "lineno": 105,
       "path": "src",
       "code": {
-        "id": "astnode372984606",
+        "id": "astnode2093454036",
         "name": "Logger",
         "type": "OBJECTLIT",
         "node": "Object",
@@ -434,14 +434,14 @@
     "comment": "/**\n       * List of currently active logs.\n       */",
     "meta": {
       "range": [
-        2739,
-        2747
+        2757,
+        2765
       ],
       "filename": "logger.js",
-      "lineno": 109,
+      "lineno": 110,
       "path": "src",
       "code": {
-        "id": "astnode1604848362",
+        "id": "astnode1690235745",
         "name": "logs",
         "type": "ARRAYLIT",
         "node": "Object",
@@ -459,14 +459,14 @@
     "comment": "/**\n       * Settings for the logger\n       */",
     "meta": {
       "range": [
-        2809,
-        2948
+        2827,
+        2966
       ],
       "filename": "logger.js",
-      "lineno": 114,
+      "lineno": 115,
       "path": "src",
       "code": {
-        "id": "astnode1809605797",
+        "id": "astnode725455968",
         "name": "settings",
         "type": "OBJECTLIT",
         "node": "Object",
@@ -484,14 +484,14 @@
     "comment": "",
     "meta": {
       "range": [
-        2872,
-        2894
+        2890,
+        2912
       ],
       "filename": "logger.js",
-      "lineno": 116,
+      "lineno": 117,
       "path": "src",
       "code": {
-        "id": "astnode2036741132",
+        "id": "astnode914784201",
         "name": "environment",
         "type": "STRING",
         "node": "Object",
@@ -509,14 +509,14 @@
     "comment": "",
     "meta": {
       "range": [
-        2904,
-        2940
+        2922,
+        2958
       ],
       "filename": "logger.js",
-      "lineno": 117,
+      "lineno": 118,
       "path": "src",
       "code": {
-        "id": "astnode585697603",
+        "id": "astnode2009037603",
         "name": "errorTypes",
         "type": "ARRAYLIT",
         "node": "Object",
@@ -534,14 +534,14 @@
     "comment": "/**\n       * Will get the logging instance by name, creating a new one if it doesn't\n       * exist\n       * @static\n       * @param name Name of the log being accessed, or created\n       * @returns {aronnax/Log} The log instance being requested, either new\n       * or one already created.\n       */",
     "meta": {
       "range": [
-        3264,
-        3642
+        3282,
+        3660
       ],
       "filename": "logger.js",
-      "lineno": 128,
+      "lineno": 129,
       "path": "src",
       "code": {
-        "id": "astnode471102698",
+        "id": "astnode1277899933",
         "name": "getLog",
         "type": "FUNCTION",
         "node": "Object",
@@ -595,14 +595,14 @@
     "comment": "",
     "meta": {
       "range": [
-        3301,
-        3306
+        3319,
+        3324
       ],
       "filename": "logger.js",
-      "lineno": 129,
+      "lineno": 130,
       "path": "src",
       "code": {
-        "id": "astnode925668695",
+        "id": "astnode1156207713",
         "name": "i",
         "type": "NUMBER",
         "node": "Object",
@@ -620,14 +620,14 @@
     "comment": "",
     "meta": {
       "range": [
-        3320,
-        3343
+        3338,
+        3361
       ],
       "filename": "logger.js",
-      "lineno": 130,
+      "lineno": 131,
       "path": "src",
       "code": {
-        "id": "astnode1141024511",
+        "id": "astnode1086084502",
         "name": "ilen",
         "type": "GETPROP",
         "node": "Object",
@@ -645,14 +645,14 @@
     "comment": "",
     "meta": {
       "range": [
-        3357,
-        3360
+        3375,
+        3378
       ],
       "filename": "logger.js",
-      "lineno": 131,
+      "lineno": 132,
       "path": "src",
       "code": {
-        "id": "astnode1069531064",
+        "id": "astnode1560601227",
         "name": "log",
         "type": "undefined",
         "node": "Object",
@@ -670,14 +670,14 @@
     "comment": "",
     "meta": {
       "range": [
-        3405,
-        3423
+        3423,
+        3441
       ],
       "filename": "logger.js",
-      "lineno": 134,
+      "lineno": 135,
       "path": "src",
       "code": {
-        "id": "astnode630883350",
+        "id": "astnode1381791540",
         "name": "log",
         "type": "GETELEM",
         "node": "Object",
@@ -696,14 +696,14 @@
     "comment": "",
     "meta": {
       "range": [
-        3549,
-        3571
+        3567,
+        3589
       ],
       "filename": "logger.js",
-      "lineno": 141,
+      "lineno": 142,
       "path": "src",
       "code": {
-        "id": "astnode2027722598",
+        "id": "astnode1692369893",
         "name": "log",
         "type": "CALL",
         "node": "Object",

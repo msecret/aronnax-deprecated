@@ -10,6 +10,7 @@
 define('aronnax/Logger',
   ['underscore', 'aronnax/Base', 'deps/logWriter'],
   function(_, Base, logWriterObject) {
+    "use strict";
 
    /**
     * A log which will provide logging capabilities
