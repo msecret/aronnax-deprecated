@@ -15,7 +15,7 @@ define('aronnax/Logger',
    /**
     * A log which will provide logging capabilities
     */
-    var Log = {
+    var Log = Base.create(null, 'Log', {
 
       /**
        * Initializes the log.
@@ -95,8 +95,7 @@ define('aronnax/Logger',
             break;
         }
       }
-
-    };
+    });
 
     /**
      * An interface to control logs.
