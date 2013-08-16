@@ -90,7 +90,9 @@ define('aronnax/Pool',
         if (this.freePool.length <= 0) {
           this.expandPool();
         }
-        return this.freePool.pop();
+        var member = this.freePool.pop();
+        this.activePool.push(member);
+        return member;
       }
 
     });
@@ -138,8 +140,19 @@ define('aronnax/Pool',
     Pool.acquire = function(classMember) {
       var className = classMember.className;
       if (typeof className !== 'string') {
-        _log.error('Aquired Pool class not a string');
-        return;
+        if (window.toString.call(classMember) === '[object Array]') {
+          className = 'array';
+        }
+        else if (typeof classMember === 'function') {
+          className = 'function';
+        }
+        else if (typeof classMember === 'object') {
+          className = 'object';
+        }
+        else {
+          _log.error('Aquired Pool class not a string');
+          throw new Error('Aquired Pool class not a string');
+        }
       }
       var pool = this.acquirePool(className, classMember);
 
@@ -159,6 +172,7 @@ define('aronnax/Pool',
       pool.init(initialSize, objPrototype);
 
       this.totalPools += 1;
+      this.pools[className] = pool;
       return pool;
     };
 
