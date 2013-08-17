@@ -14,21 +14,46 @@
     "longname": "src/pool.js"
   },
   {
+    "comment": "",
+    "meta": {
+      "range": [
+        362,
+        398
+      ],
+      "filename": "pool.js",
+      "lineno": 17,
+      "path": "src",
+      "code": {
+        "id": "astnode1809605797",
+        "name": "_log",
+        "type": "CALL",
+        "node": "Object",
+        "value": "CALL"
+      }
+    },
+    "undocumented": true,
+    "name": "_log",
+    "kind": "member",
+    "memberof": "<anonymous>",
+    "longname": "<anonymous>~_log",
+    "scope": "inner"
+  },
+  {
     "comment": "/**\n     * Creates a member of a certain type by looking at the passed in class name.\n     * @private\n     * @param {String} className The name of the class\n     * @return {Object|Array|Function} The member of a certain type\n     */",
     "meta": {
       "range": [
-        480,
-        808
+        642,
+        1112
       ],
       "filename": "pool.js",
-      "lineno": 20,
+      "lineno": 25,
       "path": "src",
       "code": {
-        "id": "astnode756258843",
+        "id": "astnode2036741132",
         "name": "_createMember",
-        "type": "FUNCTION",
+        "type": "function",
         "node": "Object",
-        "value": "FUNCTION",
+        "funcscope": "<anonymous>",
         "paramnames": [
           "className"
         ]
@@ -81,18 +106,18 @@
     "comment": "",
     "meta": {
       "range": [
-        528,
-        543
+        721,
+        729
       ],
       "filename": "pool.js",
-      "lineno": 21,
+      "lineno": 27,
       "path": "src",
       "code": {
-        "id": "astnode1013462002",
+        "id": "astnode618872344",
         "name": "toreturn",
-        "type": "NULL",
+        "type": "undefined",
         "node": "Object",
-        "value": "NULL"
+        "value": "toreturn"
       }
     },
     "undocumented": true,
@@ -106,14 +131,14 @@
     "comment": "",
     "meta": {
       "range": [
-        603,
-        616
+        789,
+        802
       ],
       "filename": "pool.js",
-      "lineno": 24,
+      "lineno": 30,
       "path": "src",
       "code": {
-        "id": "astnode1188918692",
+        "id": "astnode585697603",
         "name": "toreturn",
         "type": "ARRAYLIT",
         "node": "Object",
@@ -132,14 +157,14 @@
     "comment": "",
     "meta": {
       "range": [
-        670,
-        694
+        856,
+        880
       ],
       "filename": "pool.js",
-      "lineno": 27,
+      "lineno": 33,
       "path": "src",
       "code": {
-        "id": "astnode713732239",
+        "id": "astnode50838797",
         "name": "toreturn",
         "type": "FUNCTION",
         "node": "Object",
@@ -159,14 +184,14 @@
     "comment": "",
     "meta": {
       "range": [
-        763,
-        776
+        953,
+        966
       ],
       "filename": "pool.js",
-      "lineno": 31,
+      "lineno": 37,
       "path": "src",
       "code": {
-        "id": "astnode881708381",
+        "id": "astnode1489647491",
         "name": "toreturn",
         "type": "OBJECTLIT",
         "node": "Object",
@@ -185,18 +210,44 @@
     "comment": "",
     "meta": {
       "range": [
-        819,
-        2053
+        1012,
+        1056
       ],
       "filename": "pool.js",
-      "lineno": 36,
+      "lineno": 40,
       "path": "src",
       "code": {
-        "id": "astnode660493198",
-        "name": "PoolPrototype",
-        "type": "OBJECTLIT",
+        "id": "astnode572487432",
+        "name": "toreturn",
+        "type": "CALL",
         "node": "Object",
-        "value": "OBJECTLIT"
+        "funcscope": "<anonymous>~_createMember",
+        "value": "CALL"
+      }
+    },
+    "undocumented": true,
+    "name": "toreturn",
+    "kind": "member",
+    "longname": "<anonymous>~_createMember~toreturn",
+    "memberof": "<anonymous>~_createMember",
+    "scope": "inner"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        1122,
+        2446
+      ],
+      "filename": "pool.js",
+      "lineno": 47,
+      "path": "src",
+      "code": {
+        "id": "astnode630883350",
+        "name": "PoolPrototype",
+        "type": "CALL",
+        "node": "Object",
+        "value": "CALL"
       }
     },
     "undocumented": true,
@@ -207,155 +258,294 @@
     "scope": "inner"
   },
   {
-    "comment": "",
+    "comment": "/**\n      * The current pool of active members, a hashtable\n      * @type Object\n      */",
     "meta": {
       "range": [
-        843,
-        1306
+        1268,
+        1312
       ],
       "filename": "pool.js",
-      "lineno": 37,
+      "lineno": 52,
       "path": "src",
       "code": {
-        "id": "astnode748454644",
-        "name": "init",
-        "type": "FUNCTION",
-        "node": "Object",
-        "value": "FUNCTION",
-        "paramnames": [
-          "className",
-          "initialSize"
-        ]
-      }
-    },
-    "undocumented": true,
-    "name": "init",
-    "kind": "function",
-    "memberof": "<anonymous>~PoolPrototype",
-    "scope": "static",
-    "longname": "<anonymous>~PoolPrototype.init"
-  },
-  {
-    "comment": "/**\n        * The current pool of active members, a hashtable\n        * @instance\n        */",
-    "meta": {
-      "range": [
-        993,
-        1013
-      ],
-      "filename": "pool.js",
-      "lineno": 42,
-      "path": "src",
-      "code": {
-        "id": "astnode449507565",
-        "name": "this.activePool",
+        "id": "astnode934909150",
+        "name": "activePool",
         "type": "OBJECTLIT",
         "node": "Object",
         "value": "OBJECTLIT"
       }
     },
     "description": "The current pool of active members, a hashtable",
-    "tags": [
-      {
-        "originalTitle": "scope",
-        "title": "scope",
-        "text": "instance",
-        "value": "instance"
-      }
-    ],
-    "scope": "instance",
+    "type": {
+      "names": [
+        "Object"
+      ]
+    },
     "name": "activePool",
     "kind": "member",
-    "memberof": "<anonymous>~PoolPrototype",
-    "longname": "<anonymous>~PoolPrototype#activePool"
+    "longname": "activePool",
+    "scope": "global"
   },
   {
-    "comment": "/**\n         * The free pool of members\n         * @type Array\n         * @instance\n         */",
+    "comment": "",
     "meta": {
       "range": [
-        1128,
-        1146
+        1290,
+        1304
       ],
       "filename": "pool.js",
-      "lineno": 49,
+      "lineno": 53,
       "path": "src",
       "code": {
-        "id": "astnode1833350875",
+        "id": "astnode1092714087",
+        "name": "writable",
+        "type": "TRUE",
+        "node": "Object",
+        "value": "true"
+      }
+    },
+    "undocumented": true,
+    "name": "writable",
+    "kind": "member",
+    "memberof": "activePool",
+    "scope": "static",
+    "longname": "activePool.writable"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        1320,
+        1362
+      ],
+      "filename": "pool.js",
+      "lineno": 55,
+      "path": "src",
+      "code": {
+        "id": "astnode165054145",
+        "name": "freePool",
+        "type": "OBJECTLIT",
+        "node": "Object",
+        "value": "OBJECTLIT"
+      }
+    },
+    "undocumented": true,
+    "name": "freePool",
+    "kind": "member",
+    "longname": "freePool",
+    "scope": "global"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        1340,
+        1354
+      ],
+      "filename": "pool.js",
+      "lineno": 56,
+      "path": "src",
+      "code": {
+        "id": "astnode337501626",
+        "name": "writable",
+        "type": "TRUE",
+        "node": "Object",
+        "value": "true"
+      }
+    },
+    "undocumented": true,
+    "name": "writable",
+    "kind": "member",
+    "memberof": "freePool",
+    "scope": "static",
+    "longname": "freePool.writable"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        1371,
+        1446
+      ],
+      "filename": "pool.js",
+      "lineno": 59,
+      "path": "src",
+      "code": {
+        "id": "astnode813385475",
+        "name": "basePrototype",
+        "type": "OBJECTLIT",
+        "node": "Object",
+        "value": "OBJECTLIT"
+      }
+    },
+    "undocumented": true,
+    "name": "basePrototype",
+    "kind": "member",
+    "longname": "basePrototype",
+    "scope": "global"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        1396,
+        1414
+      ],
+      "filename": "pool.js",
+      "lineno": 60,
+      "path": "src",
+      "code": {
+        "id": "astnode887699865",
+        "name": "configurable",
+        "type": "TRUE",
+        "node": "Object",
+        "value": "true"
+      }
+    },
+    "undocumented": true,
+    "name": "configurable",
+    "kind": "member",
+    "memberof": "basePrototype",
+    "scope": "static",
+    "longname": "basePrototype.configurable"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        1424,
+        1438
+      ],
+      "filename": "pool.js",
+      "lineno": 61,
+      "path": "src",
+      "code": {
+        "id": "astnode1668782213",
+        "name": "writable",
+        "type": "TRUE",
+        "node": "Object",
+        "value": "true"
+      }
+    },
+    "undocumented": true,
+    "name": "writable",
+    "kind": "member",
+    "memberof": "basePrototype",
+    "scope": "static",
+    "longname": "basePrototype.writable"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        1454,
+        1647
+      ],
+      "filename": "pool.js",
+      "lineno": 63,
+      "path": "src",
+      "code": {
+        "id": "astnode409478150",
+        "name": "init",
+        "type": "FUNCTION",
+        "node": "Object",
+        "value": "FUNCTION",
+        "paramnames": [
+          "initialSize",
+          "basePrototype"
+        ]
+      }
+    },
+    "undocumented": true,
+    "name": "init",
+    "kind": "function",
+    "longname": "init",
+    "scope": "global"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        1507,
+        1525
+      ],
+      "filename": "pool.js",
+      "lineno": 64,
+      "path": "src",
+      "code": {
+        "id": "astnode1110828771",
         "name": "this.freePool",
         "type": "ARRAYLIT",
         "node": "Object",
         "value": "ARRAYLIT"
       }
     },
-    "description": "The free pool of members",
-    "type": {
-      "names": [
-        "Array"
-      ]
-    },
-    "tags": [
-      {
-        "originalTitle": "scope",
-        "title": "scope",
-        "text": "instance",
-        "value": "instance"
-      }
-    ],
-    "scope": "instance",
+    "undocumented": true,
     "name": "freePool",
     "kind": "member",
-    "memberof": "<anonymous>~PoolPrototype",
-    "longname": "<anonymous>~PoolPrototype#freePool"
+    "longname": "freePool",
+    "scope": "global"
   },
   {
-    "comment": "/**\n         * The class name of the member pool\n         * @type String\n         * @instance\n         */",
+    "comment": "",
     "meta": {
       "range": [
-        1271,
-        1297
+        1535,
+        1555
       ],
       "filename": "pool.js",
-      "lineno": 56,
+      "lineno": 65,
       "path": "src",
       "code": {
-        "id": "astnode2121366929",
-        "name": "this.className",
+        "id": "astnode891136526",
+        "name": "this.activePool",
+        "type": "ARRAYLIT",
+        "node": "Object",
+        "value": "ARRAYLIT"
+      }
+    },
+    "undocumented": true,
+    "name": "activePool",
+    "kind": "member",
+    "longname": "activePool",
+    "scope": "global"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        1565,
+        1599
+      ],
+      "filename": "pool.js",
+      "lineno": 66,
+      "path": "src",
+      "code": {
+        "id": "astnode1210375805",
+        "name": "this.basePrototype",
         "type": "NAME",
         "node": "Object",
-        "value": "className"
+        "value": "basePrototype"
       }
     },
-    "description": "The class name of the member pool",
-    "type": {
-      "names": [
-        "String"
-      ]
-    },
-    "tags": [
-      {
-        "originalTitle": "scope",
-        "title": "scope",
-        "text": "instance",
-        "value": "instance"
-      }
-    ],
-    "scope": "instance",
-    "name": "className",
+    "undocumented": true,
+    "name": "basePrototype",
     "kind": "member",
-    "memberof": "<anonymous>~PoolPrototype",
-    "longname": "<anonymous>~PoolPrototype#className"
+    "longname": "basePrototype",
+    "scope": "global"
   },
   {
     "comment": "/**\n       * Expand the free pool array by a certain amount\n       * @param {Number} byAmount The amount to expand the pool by\n       */",
     "meta": {
       "range": [
-        1458,
-        1740
+        1799,
+        2065
       ],
       "filename": "pool.js",
-      "lineno": 63,
+      "lineno": 75,
       "path": "src",
       "code": {
-        "id": "astnode1461837610",
+        "id": "astnode889074013",
         "name": "expandPool",
         "type": "FUNCTION",
         "node": "Object",
@@ -388,22 +578,21 @@
     ],
     "name": "expandPool",
     "kind": "function",
-    "memberof": "<anonymous>~PoolPrototype",
-    "scope": "static",
-    "longname": "<anonymous>~PoolPrototype.expandPool"
+    "longname": "expandPool",
+    "scope": "global"
   },
   {
     "comment": "",
     "meta": {
       "range": [
-        1502,
-        1507
+        1843,
+        1848
       ],
       "filename": "pool.js",
-      "lineno": 64,
+      "lineno": 76,
       "path": "src",
       "code": {
-        "id": "astnode1812245295",
+        "id": "astnode355598874",
         "name": "i",
         "type": "NUMBER",
         "node": "Object",
@@ -413,22 +602,22 @@
     "undocumented": true,
     "name": "i",
     "kind": "member",
-    "memberof": "<anonymous>~PoolPrototype.expandPool",
-    "longname": "<anonymous>~PoolPrototype.expandPool~i",
+    "memberof": "expandPool",
+    "longname": "expandPool~i",
     "scope": "inner"
   },
   {
     "comment": "",
     "meta": {
       "range": [
-        1574,
-        1597
+        1862,
+        1911
       ],
       "filename": "pool.js",
-      "lineno": 66,
+      "lineno": 77,
       "path": "src",
       "code": {
-        "id": "astnode1351626789",
+        "id": "astnode756258843",
         "name": "amount",
         "type": "OR",
         "node": "Object",
@@ -438,22 +627,22 @@
     "undocumented": true,
     "name": "amount",
     "kind": "member",
-    "memberof": "<anonymous>~PoolPrototype.expandPool",
-    "longname": "<anonymous>~PoolPrototype.expandPool~amount",
+    "memberof": "expandPool",
+    "longname": "expandPool~amount",
     "scope": "inner"
   },
   {
     "comment": "",
     "meta": {
       "range": [
-        1649,
-        1685
+        1963,
+        2010
       ],
       "filename": "pool.js",
-      "lineno": 69,
+      "lineno": 80,
       "path": "src",
       "code": {
-        "id": "astnode472682755",
+        "id": "astnode1013462002",
         "name": "item",
         "type": "CALL",
         "node": "Object",
@@ -463,27 +652,30 @@
     "undocumented": true,
     "name": "item",
     "kind": "member",
-    "memberof": "<anonymous>~PoolPrototype.expandPool",
-    "longname": "<anonymous>~PoolPrototype.expandPool~item",
+    "memberof": "expandPool",
+    "longname": "expandPool~item",
     "scope": "inner"
   },
   {
     "comment": "/**\n       * Aquires a member from the free pool\n       * @return {Object|Array|Function} The empty member returned from the pool\n       */",
     "meta": {
       "range": [
-        1895,
-        2046
+        2220,
+        2438
       ],
       "filename": "pool.js",
-      "lineno": 78,
+      "lineno": 89,
       "path": "src",
       "code": {
-        "id": "astnode1377851222",
+        "id": "astnode236706648",
         "name": "acquireMember",
         "type": "FUNCTION",
         "node": "Object",
         "value": "FUNCTION",
         "paramnames": []
+      },
+      "vars": {
+        "member": false
       }
     },
     "description": "Aquires a member from the free pool",
@@ -505,26 +697,50 @@
     ],
     "name": "acquireMember",
     "kind": "function",
-    "memberof": "<anonymous>~PoolPrototype",
-    "scope": "static",
-    "longname": "<anonymous>~PoolPrototype.acquireMember"
+    "longname": "acquireMember",
+    "scope": "global"
   },
   {
     "comment": "",
     "meta": {
       "range": [
-        2064,
-        2099
+        2340,
+        2368
       ],
       "filename": "pool.js",
-      "lineno": 87,
+      "lineno": 93,
       "path": "src",
       "code": {
-        "id": "astnode283980484",
-        "name": "Pool",
+        "id": "astnode713732239",
+        "name": "member",
         "type": "CALL",
         "node": "Object",
         "value": "CALL"
+      }
+    },
+    "undocumented": true,
+    "name": "member",
+    "kind": "member",
+    "memberof": "acquireMember",
+    "longname": "acquireMember~member",
+    "scope": "inner"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        2499,
+        2508
+      ],
+      "filename": "pool.js",
+      "lineno": 101,
+      "path": "src",
+      "code": {
+        "id": "astnode95626791",
+        "name": "Pool",
+        "type": "OBJECTLIT",
+        "node": "Object",
+        "value": "OBJECTLIT"
       }
     },
     "undocumented": true,
@@ -538,14 +754,14 @@
     "comment": "/**\n     * All the current pools, as a hash with the class type as the key.\n     * @static\n     * @type aronnax.Pool\n     */",
     "meta": {
       "range": [
-        2235,
-        2250
+        2643,
+        2658
       ],
       "filename": "pool.js",
-      "lineno": 94,
+      "lineno": 107,
       "path": "src",
       "code": {
-        "id": "astnode966979630",
+        "id": "astnode660493198",
         "name": "Pool.pools",
         "type": "OBJECTLIT",
         "node": "Object",
@@ -577,14 +793,14 @@
     "comment": "/**\n     * Count of the current total pools\n     * @static\n     * @type Number\n     */",
     "meta": {
       "range": [
-        2348,
-        2367
+        2756,
+        2775
       ],
       "filename": "pool.js",
-      "lineno": 101,
+      "lineno": 114,
       "path": "src",
       "code": {
-        "id": "astnode1894475752",
+        "id": "astnode853068360",
         "name": "Pool.totalPools",
         "type": "NUMBER",
         "node": "Object",
@@ -616,21 +832,22 @@
     "comment": "/**\n     * Gets the pool of the class type, creating one if it doesn't exists\n     * @static\n     * @param {Sting} className The name of the class\n     * @return {arronax.Pool} The pool of the class type\n     */",
     "meta": {
       "range": [
-        2590,
-        2766
+        2998,
+        3202
       ],
       "filename": "pool.js",
-      "lineno": 109,
+      "lineno": 122,
       "path": "src",
       "code": {
-        "id": "astnode2105903776",
+        "id": "astnode26174809",
         "name": "Pool.acquirePool",
         "type": "FUNCTION",
         "node": "Object",
         "funcscope": "<anonymous>",
         "value": "FUNCTION",
         "paramnames": [
-          "className"
+          "className",
+          "objPrototype"
         ]
       },
       "vars": {
@@ -685,14 +902,14 @@
     "comment": "",
     "meta": {
       "range": [
-        2641,
-        2669
+        3063,
+        3091
       ],
       "filename": "pool.js",
-      "lineno": 110,
+      "lineno": 123,
       "path": "src",
       "code": {
-        "id": "astnode160094946",
+        "id": "astnode1812245295",
         "name": "pool",
         "type": "GETELEM",
         "node": "Object",
@@ -710,14 +927,14 @@
     "comment": "",
     "meta": {
       "range": [
-        2698,
-        2731
+        3120,
+        3167
       ],
       "filename": "pool.js",
-      "lineno": 112,
+      "lineno": 125,
       "path": "src",
       "code": {
-        "id": "astnode192714409",
+        "id": "astnode1454189616",
         "name": "pool",
         "type": "CALL",
         "node": "Object",
@@ -736,14 +953,14 @@
     "comment": "/**\n     * Aquires a free member from the pool. Maps directly to the acquire\n     * pool methodand then the Pool.acquire method. Uses a non-standard\n     * Function.name property to obtain the class name.\n     * @static\n     * @param {Object|Array|Function} classMember The object being fetch from\n     * pool\n     * @return {Object|Array|Function} The object being return from the pool\n     */",
     "meta": {
       "range": [
-        3172,
-        3467
+        3608,
+        4290
       ],
       "filename": "pool.js",
-      "lineno": 127,
+      "lineno": 140,
       "path": "src",
       "code": {
-        "id": "astnode223489506",
+        "id": "astnode709424757",
         "name": "Pool.acquire",
         "type": "FUNCTION",
         "node": "Object",
@@ -810,14 +1027,14 @@
     "comment": "",
     "meta": {
       "range": [
-        3221,
-        3254
+        3657,
+        3690
       ],
       "filename": "pool.js",
-      "lineno": 128,
+      "lineno": 141,
       "path": "src",
       "code": {
-        "id": "astnode404454518",
+        "id": "astnode2015820261",
         "name": "className",
         "type": "GETPROP",
         "node": "Object",
@@ -835,14 +1052,92 @@
     "comment": "",
     "meta": {
       "range": [
-        3390,
-        3424
+        3815,
+        3834
       ],
       "filename": "pool.js",
-      "lineno": 133,
+      "lineno": 144,
       "path": "src",
       "code": {
-        "id": "astnode1508028338",
+        "id": "astnode915085903",
+        "name": "className",
+        "type": "STRING",
+        "node": "Object",
+        "funcscope": "<anonymous>~Pool.acquire",
+        "value": "array"
+      }
+    },
+    "undocumented": true,
+    "name": "className",
+    "kind": "member",
+    "longname": "<anonymous>~Pool.acquire~className",
+    "memberof": "<anonymous>~Pool.acquire",
+    "scope": "inner"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        3910,
+        3932
+      ],
+      "filename": "pool.js",
+      "lineno": 147,
+      "path": "src",
+      "code": {
+        "id": "astnode1229322553",
+        "name": "className",
+        "type": "STRING",
+        "node": "Object",
+        "funcscope": "<anonymous>~Pool.acquire",
+        "value": "function"
+      }
+    },
+    "undocumented": true,
+    "name": "className",
+    "kind": "member",
+    "longname": "<anonymous>~Pool.acquire~className",
+    "memberof": "<anonymous>~Pool.acquire",
+    "scope": "inner"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        4006,
+        4026
+      ],
+      "filename": "pool.js",
+      "lineno": 150,
+      "path": "src",
+      "code": {
+        "id": "astnode1591684408",
+        "name": "className",
+        "type": "STRING",
+        "node": "Object",
+        "funcscope": "<anonymous>~Pool.acquire",
+        "value": "object"
+      }
+    },
+    "undocumented": true,
+    "name": "className",
+    "kind": "member",
+    "longname": "<anonymous>~Pool.acquire~className",
+    "memberof": "<anonymous>~Pool.acquire",
+    "scope": "inner"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        4200,
+        4247
+      ],
+      "filename": "pool.js",
+      "lineno": 157,
+      "path": "src",
+      "code": {
+        "id": "astnode1894475752",
         "name": "pool",
         "type": "CALL",
         "node": "Object",
@@ -860,14 +1155,14 @@
     "comment": "/**\n     * Creates a new pool of a certain type\n     * @static\n     * @param {Sting} className The name of the class\n     * @param {Number} initialSize The initial size to make the free pool\n     * @return {arronax.Pool} The new pool of the class type\n     */",
     "meta": {
       "range": [
-        3739,
-        3924
+        4562,
+        4809
       ],
       "filename": "pool.js",
-      "lineno": 146,
+      "lineno": 170,
       "path": "src",
       "code": {
-        "id": "astnode81035498",
+        "id": "astnode233950198",
         "name": "Pool.createPool",
         "type": "FUNCTION",
         "node": "Object",
@@ -875,6 +1170,7 @@
         "value": "FUNCTION",
         "paramnames": [
           "className",
+          "objPrototype",
           "initialSize"
         ]
       },
@@ -943,14 +1239,14 @@
     "comment": "",
     "meta": {
       "range": [
-        3802,
-        3828
+        4639,
+        4674
       ],
       "filename": "pool.js",
-      "lineno": 147,
+      "lineno": 171,
       "path": "src",
       "code": {
-        "id": "astnode862814614",
+        "id": "astnode1583515396",
         "name": "pool",
         "type": "CALL",
         "node": "Object",
@@ -963,5 +1259,30 @@
     "memberof": "<anonymous>~Pool.createPool",
     "longname": "<anonymous>~Pool.createPool~pool",
     "scope": "inner"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        4755,
+        4783
+      ],
+      "filename": "pool.js",
+      "lineno": 175,
+      "path": "src",
+      "code": {
+        "id": "astnode1461341140",
+        "name": "this.pools[className]",
+        "type": "NAME",
+        "node": "Object",
+        "value": "pool"
+      }
+    },
+    "undocumented": true,
+    "name": "pools[className]",
+    "kind": "member",
+    "memberof": "<anonymous>~Pool",
+    "longname": "<anonymous>~Pool#pools[className]",
+    "scope": "instance"
   }
 ]

@@ -1,0 +1,3 @@
+[submodule "node_modules/grunt-js_config"]
+	path = node_modules/grunt-js_config
+	url = https://github.com/msecret/grunt-global-config.git

@@ -2,7 +2,7 @@
 // All Rights Reserved
 // aronnax - v0.1.1
 // https://github.com/msecret/aronnax 
-// 2013-08-14
+// 2013-08-16
 // Licensed MIT 
 
 //     Underscore.js 1.5.1
@@ -1329,13 +1329,184 @@ define('aronnax/Base',
 // https://github.com/msecret/aronnax
 // Licensed MIT
 
+define('deps/logWriter',
+  [],function() {
+    return window.console;
+});
+
+// Copyright (c) 2013
+// All Rights Reserved
+// https://github.com/msecret/aronnax
+// Licensed MIT
+
+/**
+ * @file Holds the logger object
+ */
+
+define('aronnax/Logger',
+  ['underscore', 'aronnax/Base', 'deps/logWriter'],
+  function(_, Base, logWriterObject) {
+    
+
+   /**
+    * A log which will provide logging capabilities
+    */
+    var Log = Base.create(null, 'Log', {
+
+      /**
+       * Initializes the log.
+       */
+      init: function(name, logWriter) {
+        /**
+         * The name of the log
+         * @instance
+         * @default window.location.hostname
+         */
+        this.name = name || window.location.hostname;
+
+        /**
+         * The object responsible for writing the log, such as console.
+         * @instance
+         */
+        this._logWriter = logWriter;
+        Logger.logs.push(this);
+      },
+
+
+      /**
+       * Logging message as the "log" type of message
+       * @param {String|Object} message The message to log, as a string or an
+       * object with different parameters
+       */
+      log: function(message) {
+        this._write('log', message);
+      },
+
+      /**
+       * Logging message as the "warn" type of message
+       * @param {String|Object} message The message to log, as a string or an
+       * object with different parameters
+       */
+      warn: function(message) {
+        this._write('warn', message);
+      },
+
+      /**
+       * Logging message as the "error" type of message
+       * @param {String|Object} message The message to log, as a string or an
+       * object with different parameters
+       */
+      error: function(message) {
+        this._write('error', message);
+      },
+
+      /**
+       * Log an error or message, intermediate function
+       * @protected
+       * @param {String} type The type of log message, defaults to error,
+       * warning and debug.
+       * @param {String|Object} message The message to log, as a string or an object
+       * with different parameters
+       */
+      _write: function(type, message) {
+        var err = {};
+
+        err.type = type;
+        if (typeof message === 'string') {
+          err.message = message;
+        }
+        else {
+          _.extend(err, message);
+        }
+
+        // TODO replace with globals for environments
+        switch (Logger.settings.environment) {
+          case 'staging':
+            this._logWriter[type](this.name+ ':' +err.message);
+            break;
+          case 'production':
+            break;
+          default:
+            this._logWriter[type](this.name+ ':' +err.message);
+            break;
+        }
+      }
+    });
+
+    /**
+     * An interface to control logs.
+     * @exports aronnax/Logger
+     */
+    var Logger = {
+
+      /**
+       * List of currently active logs.
+       */
+      logs: [],
+
+      /**
+       * Settings for the logger
+       */
+      settings: {
+        // TODO replace with global config
+        environment: 'staging',
+        errorTypes: ['log', 'warn', 'error']
+      },
+
+      /**
+       * Will get the logging instance by name, creating a new one if it doesn't
+       * exist
+       * @static
+       * @param name Name of the log being accessed, or created
+       * @returns {aronnax/Log} The log instance being requested, either new
+       * or one already created.
+       */
+      getLog: function(name) {
+        var i = 0,
+            ilen = this.logs.length,
+            log;
+
+        for( ; i < ilen; i++) {
+          log = this.logs[i];
+          // TODO accessor switch
+          if (log.name === name) {
+            return log;
+          }
+        }
+
+        log = Base.create(Log);
+        log.init(name, logWriterObject);
+
+        return log;
+      }
+    };
+
+    return Logger;
+});
+
+define('aronnax/Config', [],function() { 
+
+var Config = {"initialPoolSizeAmount":12};
+return Config;
+});
+
+// Copyright (c) 2013
+// All Rights Reserved
+// https://github.com/msecret/aronnax
+// Licensed MIT
+
 /**
  * @file Holds the pool static class and the pooled class to make an object
  * pooled.
  */
 
 define('aronnax/Pool',
-  [],function() {
+  ['aronnax/Base', 'aronnax/Logger', 'aronnax/Config'],
+  function(Base, Logger, config) {
+    
+    console.log(config);
+
+    var _log = Logger.getLog('aronnax.Pool');
 
     /**
      * Creates a member of a certain type by looking at the passed in class name.
@@ -1343,43 +1514,50 @@ define('aronnax/Pool',
      * @param {String} className The name of the class
      * @return {Object|Array|Function} The member of a certain type
      */
-    var _createMember = function(className) {
-      var toreturn = null;
+    function _createMember(className) {
+      /*jshint validthis:true */
+      var toreturn;
       switch(className) {
-        case 'Array':
+        case 'array':
           toreturn = [];
           break;
-        case 'Function':
+        case 'function':
           toreturn = function() {};
           break;
-        default:
-        case 'Object':
+        case 'Base':
+        case 'object':
           toreturn = {};
           break;
+        default:
+          toreturn = Object.create(this.basePrototype);
+          break;
       }
-    };
 
-    var PoolPrototype = {
-      init: function(className, initialSize) {
-        /**
-        * The current pool of active members, a hashtable
-        * @instance
-        */
-        this.activePool = {};
+      return toreturn;
+    }
 
-        /**
-         * The free pool of members
-         * @type Array
-         * @instance
-         */
+    var PoolPrototype = Base.create(null, 'Pool', {
+      /**
+      * The current pool of active members, a hashtable
+      * @type Object
+      */
+      activePool: {
+        writable: true
+      },
+      freePool: {
+        writable: true
+      },
+
+      basePrototype: {
+        configurable: true,
+        writable: true
+      },
+      init: function(initialSize, basePrototype) {
         this.freePool = [];
+        this.activePool = [];
+        this.basePrototype = basePrototype;
 
-        /**
-         * The class name of the member pool
-         * @type String
-         * @instance
-         */
-        this.className = className;
+        this.expandPool(initialSize);
       },
 
       /**
@@ -1388,11 +1566,10 @@ define('aronnax/Pool',
        */
       expandPool:function(byAmount) {
         var i = 0,
-            // TODO replace magic number with config
-            amount = byAmount || 12;
+            amount = byAmount || config.initialPoolSizeAmount;
 
         for ( ; i < amount; i++) {
-          var item = _createMember(this.className);
+          var item = _createMember.call(this, this.className);
           this.freePool.push(item);
         }
       },
@@ -1405,13 +1582,15 @@ define('aronnax/Pool',
         if (this.freePool.length <= 0) {
           this.expandPool();
         }
-        return this.freePool.pop();
+        var member = this.freePool.pop();
+        this.activePool.push(member);
+        return member;
       }
 
-    };
+    });
 
-    var Pool = Object.create(PoolPrototype);
-
+    // TODO return this into regular way.
+    var Pool = {};
     /**
      * All the current pools, as a hash with the class type as the key.
      * @static
@@ -1432,10 +1611,10 @@ define('aronnax/Pool',
      * @param {Sting} className The name of the class
      * @return {arronax.Pool} The pool of the class type
      */
-    Pool.acquirePool = function(className) {
+    Pool.acquirePool = function(className, objPrototype) {
       var pool = this.pools[className];
       if (!pool) {
-        pool = this.createPool(className);
+        pool = this.createPool(className, objPrototype);
       }
 
       return pool;
@@ -1453,10 +1632,21 @@ define('aronnax/Pool',
     Pool.acquire = function(classMember) {
       var className = classMember.className;
       if (typeof className !== 'string') {
-        //_log.error('Aquired Pool class not a string');
-        return;
+        if (window.toString.call(classMember) === '[object Array]') {
+          className = 'array';
+        }
+        else if (typeof classMember === 'function') {
+          className = 'function';
+        }
+        else if (typeof classMember === 'object') {
+          className = 'object';
+        }
+        else {
+          _log.error('Aquired Pool class not a string');
+          throw new Error('Aquired Pool class not a string');
+        }
       }
-      var pool = this.acquirePool(className);
+      var pool = this.acquirePool(className, classMember);
 
       return pool.acquireMember();
     };
@@ -1469,11 +1659,12 @@ define('aronnax/Pool',
      * @param {Number} initialSize The initial size to make the free pool
      * @return {arronax.Pool} The new pool of the class type
      */
-    Pool.createPool = function(className, initialSize) {
-      var pool = Object.create(Pool);
-      pool.init(className, initialSize);
+    Pool.createPool = function(className, objPrototype, initialSize) {
+      var pool = Object.create(PoolPrototype);
+      pool.init(initialSize, objPrototype);
 
       this.totalPools += 1;
+      this.pools[className] = pool;
       return pool;
     };
 
@@ -1490,14 +1681,14 @@ define('aronnax/Pool',
  */
 
 define('aronnax/Pooled',
-  ['aronnax/Pool'],
-  function(Pool) {
+  ['aronnax/Base', 'aronnax/Pool'],
+  function(Base, Pool) {
 
    /**
     * An object the provides pooling functionality
     * @exports aronnax/Pooled
     */
-    var Pooled = {
+    var Pooled = Base.create(null, 'Pooled', {
 
       /**
        * Gets a free object from the pool, enhances it and then returns it.
@@ -1506,17 +1697,6 @@ define('aronnax/Pooled',
       make: function() {
         var f = Pool.acquire(this),
             key;
-
-        f = {};
-
-        for (key in this) {
-          if (this.hasOwnProperty(key)) {
-            f[key] = this[key];
-          }
-        }
-
-        f.release = Pooled.release;
-        this.init.apply(f, arguments);
 
         return f;
       },
@@ -1527,7 +1707,7 @@ define('aronnax/Pooled',
       release: function() {
 
       }
-    };
+    });
 
     return Pooled;
 });

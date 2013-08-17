@@ -93,6 +93,15 @@ module.exports = function(grunt) {
       }
     },
     clean: ['src', 'test'],
+    config: {
+      files: {
+        src: 'build/dev.config.json',
+        dest: 'src/config.js'
+      },
+      options: {
+        module: 'aronnax/Config'
+      }
+    },
     jasmine: {
       test: {
         options: {
@@ -252,6 +261,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-amd-doc');
   grunt.loadNpmTasks('grunt-banner');
   grunt.loadNpmTasks('grunt-closure-tools');
+  grunt.loadNpmTasks('grunt-global-config');
 
   // Default task(s).
   grunt.registerTask('lint', 'jshint');

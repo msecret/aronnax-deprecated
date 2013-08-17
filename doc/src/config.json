@@ -1,0 +1,52 @@
+[
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        57,
+        94
+      ],
+      "filename": "config.js",
+      "lineno": 3,
+      "path": "src",
+      "code": {
+        "id": "astnode1235930463",
+        "name": "Config",
+        "type": "OBJECTLIT",
+        "node": "Object",
+        "value": "OBJECTLIT"
+      }
+    },
+    "undocumented": true,
+    "name": "Config",
+    "kind": "member",
+    "memberof": "<anonymous>",
+    "longname": "<anonymous>~Config",
+    "scope": "inner"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        67,
+        93
+      ],
+      "filename": "config.js",
+      "lineno": 3,
+      "path": "src",
+      "code": {
+        "id": "astnode1939520811",
+        "name": "initialPoolSizeAmount",
+        "type": "NUMBER",
+        "node": "Object",
+        "value": "12"
+      }
+    },
+    "undocumented": true,
+    "name": "initialPoolSizeAmount",
+    "kind": "member",
+    "memberof": "<anonymous>~Config",
+    "scope": "static",
+    "longname": "<anonymous>~Config.initialPoolSizeAmount"
+  }
+]

@@ -9,9 +9,10 @@
  */
 
 define('aronnax/Pool',
-  ['aronnax/Base', 'aronnax/Logger'],
-  function(Base, Logger) {
+  ['aronnax/Base', 'aronnax/Logger', 'aronnax/Config'],
+  function(Base, Logger, config) {
     "use strict";
+    console.log(config);
 
     var _log = Logger.getLog('aronnax.Pool');
 
@@ -73,8 +74,7 @@ define('aronnax/Pool',
        */
       expandPool:function(byAmount) {
         var i = 0,
-            // TODO replace magic number with config
-            amount = byAmount || 12;
+            amount = byAmount || config.initialPoolSizeAmount;
 
         for ( ; i < amount; i++) {
           var item = _createMember.call(this, this.className);
