@@ -12,7 +12,6 @@ define('aronnax/Pool',
   ['aronnax/Base', 'aronnax/Logger', 'aronnax/Config'],
   function(Base, Logger, config) {
     "use strict";
-    console.log(config);
 
     var _log = Logger.getLog('aronnax.Pool');
 
