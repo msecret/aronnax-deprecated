@@ -7,15 +7,16 @@
  * @file Holds the Store object
  */
 
-/**
-* A Store that uses hashing
-* @module aronnax.Store
-*/
-
 define('aronnax/Store',
   ['underscore', 'aronnax/Base'],
   function(_, Base) {
 
+    /**
+     * Takes any object and creates a string representation of it.
+     * @private
+     * @param {Object|Array|Function} obj The object to stringify
+     * @returns {String} The string representation of the object.
+     */
     function objectToString(obj) {
       if (_.isArray(obj)) {
         return obj.join('*');
@@ -31,21 +32,42 @@ define('aronnax/Store',
       }
     }
 
+    /**
+     * A Store that uses hashing
+     * @module aronnax/Store
+     * @exports aronnax/Store
+    */
     var Store = Base.create(null, 'Store', {
 
+      /**
+       * The actual data store structure, as a hash.
+       * @protected
+       */
       _dataStore: {
         writable: true,
         value: {}
       },
 
+      /**
+       * The accessible data store.
+       * @type Object
+       */
       store: {
         get: function() { return this._dataStore; }
       },
 
+      /**
+       * Initializes the store
+       */
       init: function() {
         this._dataStore = {};
       },
 
+      /**
+       * Will add a new item to the store, either ID'ed or not
+       * @param {Object|Array|Function} item The item to add
+       * @returns {Object|Array|Function} The item passed in.
+       */
       put: function(item) {
         var stringObjectValue;
 
@@ -66,6 +88,11 @@ define('aronnax/Store',
         return item;
       },
 
+      /**
+       * Will get the passed in object from the store.
+       * @param {Object|Array|Function} item The item to add
+       * @returns {Object|Array|Function} The item passed in.
+       */
       get: function(item) {
         var stringObjectValue;
 

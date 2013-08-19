@@ -38,10 +38,6 @@ describe('aronnax.Store', function() {
     });
   });
 
-  describe('put', function() {
-
-  });
-
   describe('stringify', function() {
     it('should stringy an array by concatting all values', function() {
       var testArray = ['value1', 'value2'],
