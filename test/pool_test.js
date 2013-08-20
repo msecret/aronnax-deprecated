@@ -170,9 +170,7 @@ describe('aronnax.Pool', function() {
 
         expect(testPool.activePool).toBeDefined();
         expect(testPool.freePool).toBeDefined();
-        expect(testPool.activePool).toBeArray();
         expect(testPool.freePool).toBeArray();
-        expect(testPool.activePool.length).toEqual(0);
       });
 
       it('should set its base prototype as the object passed in', function() {
@@ -235,9 +233,9 @@ describe('aronnax.Pool', function() {
       it('should add the member to the active pool', function() {
         var testPool = Pool.createPool(testObj.className, testObj, 1);
 
-        expect(testPool.activePool.length).toEqual(0);
+        expect(_.keys(testPool.activePool).length).toEqual(0);
         testPool.acquireMember();
-        expect(testPool.activePool.length).toEqual(1);
+        expect(_.keys(testPool.activePool)).toBeDefined();
       });
     });
   });

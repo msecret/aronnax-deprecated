@@ -9,8 +9,8 @@
  */
 
 define('aronnax/Pool',
-  ['aronnax/Base', 'aronnax/Logger', 'aronnax/Config'],
-  function(Base, Logger, config) {
+  ['aronnax/Base', 'aronnax/Logger', 'aronnax/Config', 'aronnax/Store'],
+  function(Base, Logger, config, Store) {
     "use strict";
 
     var _log = Logger.getLog('aronnax.Pool');
@@ -45,23 +45,30 @@ define('aronnax/Pool',
 
     var PoolPrototype = Base.create(null, 'Pool', {
       /**
-      * The current pool of active members, a hashtable
+      * The current pool of active members, a store
       * @type Object
       */
       activePool: {
         writable: true
       },
+      /**
+      * A free pool of objects ready to be used
+      * @type Array
+      */
       freePool: {
         writable: true
       },
-
+      /**
+      * The base prototype to use when creating new objects for the pool
+      * @type Object
+      */
       basePrototype: {
         configurable: true,
         writable: true
       },
       init: function(initialSize, basePrototype) {
         this.freePool = [];
-        this.activePool = [];
+        this.activePool = Object.create(Store);
         this.basePrototype = basePrototype;
 
         this.expandPool(initialSize);
@@ -90,7 +97,7 @@ define('aronnax/Pool',
           this.expandPool();
         }
         var member = this.freePool.pop();
-        this.activePool.push(member);
+        this.activePool.put(member);
         return member;
       }
 

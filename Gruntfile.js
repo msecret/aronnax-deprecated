@@ -246,7 +246,8 @@ module.exports = function(grunt) {
           sinon: true,
           module: true,
           waitsFor: true,
-          it : true
+          it : true,
+          _: true
         }
       },
     }

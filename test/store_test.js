@@ -213,7 +213,7 @@ describe('aronnax.Store', function() {
     it('should remove a found IDd item from the store', function() {
       var testObj = {
         id: 1
-      }
+      };
 
       store.put(testObj);
       expect(store.get(testObj)).toBe(testObj);
