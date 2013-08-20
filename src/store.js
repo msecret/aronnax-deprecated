@@ -104,12 +104,38 @@ define('aronnax/Store',
           if (!this._dataStore[stringObjectValue]) {
             return;
           }
-          return this._dataStore[stringObjectValue].pop();
+          return this._dataStore[stringObjectValue][0];
         }
       },
 
+      /**
+       * Creates a string representation of an object
+       * @param {Array|Object|Funciton} item The item to stringify
+       * @returns {String} The string representation
+       */
       stringify: function(item) {
         return objectToString(item);
+      },
+
+      /**
+       * Removes an item from the data store, if it is found.
+       * @param {Object|Array|Function} item The item to remove
+       * @returns {Undefined}
+       */
+      // TODO Parts of this just reuse the gets functionality
+      remove: function(item) {
+        var existingItem = this.get(item),
+            stringObjectValue;
+
+        if (existingItem) {
+          if (item.id) {
+            delete this._dataStore[item.id];
+          }
+          else {
+            stringObjectValue = this.stringify(item);
+            this._dataStore[stringObjectValue].pop();
+          }
+        }
       }
     });
 

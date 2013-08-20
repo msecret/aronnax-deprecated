@@ -209,5 +209,53 @@ describe('aronnax.Store', function() {
     });
   });
 
+  describe('remove', function() {
+    it('should remove a found IDd item from the store', function() {
+      var testObj = {
+        id: 1
+      }
+
+      store.put(testObj);
+      expect(store.get(testObj)).toBe(testObj);
+      expect(store.store[1]).toBe(testObj);
+
+      store.remove(testObj);
+      expect(store.get(testObj)).toBeUndefined();
+      expect(store.store[1]).toBeUndefined();
+    });
+    it('should remove a found non IDd item from the store', function() {
+      var testArr1 = ['sdf'],
+          testArr2 = ['sdfg'];
+
+      store.put(testArr1);
+      expect(store.get(testArr1)).toBe(testArr1);
+      store.put(testArr2);
+      expect(store.get(testArr2)).toBe(testArr2);
+
+      store.remove(testArr1);
+      expect(store.get(testArr1)).toBeUndefined();
+      expect(store.get(testArr2)).toBe(testArr2);
+
+      store.remove(testArr2);
+      expect(store.get(testArr2)).toBeUndefined();
+    });
+    it('should remove one item from a non IDd item when there are multiple',
+        function() {
+      var testArr1 = ['asd'],
+          testArr2 = ['asd'],
+          arrStr = store.stringify(testArr1);
+
+      store.put(testArr1);
+      store.put(testArr2);
+
+      expect(store.store[arrStr].length).toEqual(2);
+
+      store.remove(testArr1);
+      expect(store.store[arrStr].length).toEqual(1);
+
+      store.remove(testArr2);
+      expect(store.store[arrStr].length).toEqual(0);
+    });
+  });
 
 });
