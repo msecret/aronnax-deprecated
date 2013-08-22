@@ -77,12 +77,15 @@ describe('aronnax.Pooled', function() {
       expect(testI.className).toEqual('TestO');
     });
 
-    it('should have a release function', function() {
+    it('should have a free function', function() {
       var testI = TestO.make();
 
-      expect(testI.release).toBeDefined();
-      expect(typeof testI.release).toEqual('function');
+      expect(testI.free).toBeDefined();
+      expect(typeof testI.free).toEqual('function');
     });
+  });
+
+  describe('free', function() {
 
   });
 

@@ -76,6 +76,25 @@ describe('aronnax.Pool', function() {
     });
   });
 
+  describe('release', function() {
+    it('should remove the member from the active pool and add to the free pool',
+        function() {
+      var testObj = {
+            id: 1,
+            className: 'testObjct'
+          },
+          testInst,
+          testPool;
+
+      testInst = Pool.acquire(testObj);
+      testPool = Pool.acquirePool(testObj.className, testObj);
+      expect(testPool.freePool.length).toEqual(11);
+
+      Pool.release(testObj);
+      expect(testPool.freePool.length).toEqual(12);
+    });
+  });
+
   describe('acquirePool', function() {
     var testObj;
     beforeEach(function() {
@@ -233,9 +252,28 @@ describe('aronnax.Pool', function() {
       it('should add the member to the active pool', function() {
         var testPool = Pool.createPool(testObj.className, testObj, 1);
 
-        expect(_.keys(testPool.activePool).length).toEqual(0);
+        expect(_.size(testPool.activePool._dataStore)).toEqual(0);
         testPool.acquireMember();
-        expect(_.keys(testPool.activePool)).toBeDefined();
+        expect(_.size(testPool.activePool._dataStore)).toEqual(1);
+      });
+    });
+
+    describe('releaseMember', function() {
+      it('should add a member to the free list and remove from the active list',
+          function() {
+        var testObj = {
+              id: 1,
+              className: 'testObj'
+            },
+            testPool = Pool.createPool(testObj.className, testObj, 10);
+
+        var s = testPool.acquireMember();
+        expect(testPool.freePool.length).toEqual(9);
+        expect(_.size(testPool.activePool.store)).toEqual(1);
+
+        testPool.releaseMember(s);
+        expect(testPool.freePool.length).toEqual(10);
+        expect(_.size(testPool.activePool._dataStore)).toEqual(0);
       });
     });
   });

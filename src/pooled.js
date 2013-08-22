@@ -31,8 +31,8 @@ define('aronnax/Pooled',
       /**
        * Releases a used object, cleans it, and returns it to the free pool.
        */
-      release: function() {
-
+      free: function() {
+        Pool.release(this);
       }
     });
 

@@ -40,15 +40,6 @@ define('aronnax/Store',
     var Store = Base.create(null, 'Store', {
 
       /**
-       * The actual data store structure, as a hash.
-       * @protected
-       */
-      _dataStore: {
-        writable: true,
-        value: {}
-      },
-
-      /**
        * The accessible data store.
        * @type Object
        */
@@ -70,7 +61,6 @@ define('aronnax/Store',
        */
       put: function(item) {
         var stringObjectValue;
-
         if (item.id) {
           if (this._dataStore[item.id]) {
             throw new Error('Object key collision occurred, cannot store key');
@@ -133,7 +123,7 @@ define('aronnax/Store',
           }
           else {
             stringObjectValue = this.stringify(item);
-            this._dataStore[stringObjectValue].pop();
+            return this._dataStore[stringObjectValue].pop();
           }
         }
       }
