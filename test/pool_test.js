@@ -93,6 +93,23 @@ describe('aronnax.Pool', function() {
       Pool.release(testObj);
       expect(testPool.freePool.length).toEqual(12);
     });
+    it('should call the releaseMember function on the correct class', function() {
+      var testObj = {
+            id: 1,
+            className: 'testObjct'
+          },
+          testInst,
+          testPool;
+
+      testInst = Pool.acquire(testObj);
+      testPool = Pool.acquirePool(testObj.className, testObj);
+      sinon.spy(testPool, 'releaseMember');
+      Pool.release(testObj);
+
+      expect(testPool.releaseMember).toHaveBeenCalledOnce();
+
+      testPool.releaseMember.restore();
+    });
   });
 
   describe('acquirePool', function() {
@@ -274,6 +291,21 @@ describe('aronnax.Pool', function() {
         testPool.releaseMember(s);
         expect(testPool.freePool.length).toEqual(10);
         expect(_.size(testPool.activePool._dataStore)).toEqual(0);
+      });
+      it('should throw and error if the member doesn\'t exist yet', function() {
+        var testObj = {
+              id: 1,
+              className: 'testObjct'
+            },
+            testInst,
+            testPool,
+            stub;
+
+        testPool = Pool.acquirePool(testObj.className, testObj);
+        stub = sinon.stub(testPool, 'releaseMember');
+        expect(stub.withArgs(testObj).throws('Error')).toBeTruthy();
+
+        testPool.releaseMember.restore();
       });
     });
   });

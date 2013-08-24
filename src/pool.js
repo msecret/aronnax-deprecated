@@ -68,14 +68,7 @@ define('aronnax/Pool',
       freePool: {
         writable: true
       },
-      /**
-      * The base prototype to use when creating new objects for the pool
-      * @type Object
-      */
-      basePrototype: {
-        configurable: true,
-        writable: true
-      },
+
       init: function(initialSize, basePrototype) {
         this.freePool = [];
         this.activePool = Object.create(Store);
