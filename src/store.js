@@ -48,6 +48,14 @@ define('aronnax/Store',
       },
 
       /**
+       * The current amount of objects in the store
+       * @type Number
+       */
+      length: {
+        get: function() { return _.size(this._dataStore); }
+      },
+
+      /**
        * Initializes the store
        */
       init: function() {

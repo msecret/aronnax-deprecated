@@ -258,4 +258,41 @@ describe('aronnax.Store', function() {
     });
   });
 
+  describe('length', function() {
+    it('should start out at zero', function() {
+      expect(store.length).toEqual(0);
+    });
+    it('should return the amount of objects in the store when added', function() {
+      var testObj1 = {
+            id: 1
+          },
+          testObj2 = {
+            id: 2
+          };
+
+      store.put(testObj1);
+      expect(store.length).toEqual(1);
+      store.put(testObj2);
+      expect(store.length).toEqual(2);
+    });
+    it('should return the amount of objects in the store when removed',
+        function() {
+      var testObj1 = {
+            id: 1
+          },
+          testObj2 = {
+            id: 2
+          };
+
+      store.put(testObj1);
+      store.put(testObj2);
+      expect(store.length).toEqual(2);
+
+      store.remove(testObj1);
+      expect(store.length).toEqual(1);
+      store.remove(testObj2);
+      expect(store.length).toEqual(0);
+    });
+  });
+
 });
