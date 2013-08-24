@@ -17,6 +17,18 @@ define('aronnax/Base',
   function(_) {
     "use strict";
 
+    var nextId = 0;
+
+    var classIds = {};
+
+    function nextClassId(className) {
+      if (!classIds[className]) {
+        classIds[className] = 0;
+      }
+
+      return classIds[className]++;
+    };
+
    /**
     * A base object to inherit from the provide a shared object to inherit
     * from.
@@ -55,6 +67,26 @@ define('aronnax/Base',
 
         // TODO wrap init function so that it does its stuff then returns the
         // object to allow for chaining: ie Base.create(thing).init();
+
+        return o;
+      },
+
+      /**
+       * Will create the object and provide id and classIds for it.
+       * @param {Object} obj The object to create and ID.
+       * @returns {Object} The object created.
+       */
+      construct: function(obj) {
+        var o = Object.create(obj, {
+          'id': {
+            writable: false,
+            value: nextId++
+          },
+          'classId': {
+            writable: false,
+            value: nextClassId(obj.className)
+          }
+        });
 
         return o;
       }

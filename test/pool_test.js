@@ -80,8 +80,7 @@ describe('aronnax.Pool', function() {
     it('should remove the member from the active pool and add to the free pool',
         function() {
       var testObj = {
-            id: 1,
-            className: 'testObjct'
+            className: 'POOPOPOP'
           },
           testInst,
           testPool;
@@ -90,12 +89,11 @@ describe('aronnax.Pool', function() {
       testPool = Pool.acquirePool(testObj.className, testObj);
       expect(testPool.freePool.length).toEqual(11);
 
-      Pool.release(testObj);
+      Pool.release(testInst);
       expect(testPool.freePool.length).toEqual(12);
     });
     it('should call the releaseMember function on the correct class', function() {
       var testObj = {
-            id: 1,
             className: 'testObjct'
           },
           testInst,
@@ -104,7 +102,7 @@ describe('aronnax.Pool', function() {
       testInst = Pool.acquire(testObj);
       testPool = Pool.acquirePool(testObj.className, testObj);
       sinon.spy(testPool, 'releaseMember');
-      Pool.release(testObj);
+      Pool.release(testInst);
 
       expect(testPool.releaseMember).toHaveBeenCalledOnce();
 

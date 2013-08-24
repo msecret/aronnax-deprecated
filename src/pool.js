@@ -37,7 +37,7 @@ define('aronnax/Pool',
           toreturn = {};
           break;
         default:
-          toreturn = Object.create(this.basePrototype);
+          toreturn = Base.construct(this.basePrototype);
           break;
       }
 
