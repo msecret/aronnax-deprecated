@@ -53,7 +53,7 @@ define('aronnax/Pool',
       }
     };
 
-    var PoolPrototype = Base.create(null, 'Pool', {
+    var PoolPrototype = Base.create(Object.prototype, 'Pool', {
       /**
       * The current pool of active members, a store
       * @type Object

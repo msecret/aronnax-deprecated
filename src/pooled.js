@@ -15,7 +15,7 @@ define('aronnax/Pooled',
     * An object the provides pooling functionality
     * @exports aronnax/Pooled
     */
-    var Pooled = Base.create(null, 'Pooled', {
+    var Pooled = Base.create({}, 'Pooled', {
 
       /**
        * Gets a free object from the pool, enhances it and then returns it.
@@ -33,6 +33,7 @@ define('aronnax/Pooled',
        */
       free: function() {
         Pool.release(this);
+        return undefined;
       }
     });
 

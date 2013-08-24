@@ -86,7 +86,24 @@ describe('aronnax.Pooled', function() {
   });
 
   describe('free', function() {
+    var TestO = {};
 
+    beforeEach(function() {
+      TestO = Base.create(Pooled, 'TestO', {
+        prop1: {
+          value: 1
+        },
+        propFunc: function() { }
+      });
+    });
+
+    it('should set the object to instance of null', function() {
+      var testI = TestO.make();
+
+      testI.free();
+      // TODO this doesn't work yet
+      // expect(testI).toBe(null);
+    });
   });
 
 });
