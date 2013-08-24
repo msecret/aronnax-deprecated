@@ -79,10 +79,12 @@ define('aronnax/Base',
       construct: function(obj) {
         var o = Object.create(obj, {
           'id': {
+            enumerable: false,
             writable: false,
             value: nextId++
           },
           'classId': {
+            enumerable: false,
             writable: false,
             value: nextClassId(obj.className)
           }
