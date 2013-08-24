@@ -103,32 +103,41 @@ module.exports = function(grunt) {
       }
     },
     jasmine: {
-      test: {
-        options: {
-          specs: 'test/**/*_test.js',
-          helpers: ['lib/components/*.js',
-            'lib/components/sinonjs/sinon.js',
-            'lib/components/jasmine-sinon/lib/jasmine-sinon.js'
-          ],
-          keepRunner: true,
-          template: require('grunt-template-jasmine-requirejs'),
-          templateOptions: {
-            requireConfigFile: 'build/dev.build.js',
-            requireConfig: {
-              name: 'aronnax/main',
-              paths: {
-                'aronnax': 'src',
-                'underscore': 'lib/components/underscore/underscore',
-                'deps/logWriter': 'src/deps/console'
-              },
-              shim: {
-                'underscore': {
-                  deps: [],
-                  exports: '_'
-                }
+      options: {
+        specs: 'test/**/*_test.js',
+        helpers: ['lib/components/*.js',
+          'lib/components/sinonjs/sinon.js',
+          'lib/components/jasmine-sinon/lib/jasmine-sinon.js'
+        ],
+        keepRunner: true,
+        template: require('grunt-template-jasmine-requirejs'),
+        templateOptions: {
+          requireConfigFile: 'build/dev.build.js',
+          requireConfig: {
+            name: 'aronnax/main',
+            paths: {
+              'aronnax': 'src',
+              'underscore': 'lib/components/underscore/underscore',
+              'deps/logWriter': 'src/deps/console'
+            },
+            shim: {
+              'underscore': {
+                deps: [],
+                exports: '_'
               }
             }
           }
+        }
+      },
+      integration: {
+        options: {
+          outfile: '_IntegrationsRunner.html',
+          specs: 'test/**/*_integrationtest.js'
+        }
+      },
+      test: {
+        options: {
+          specs: 'test/**/*_test.js'
         }
       }
     },
@@ -268,7 +277,8 @@ module.exports = function(grunt) {
   grunt.registerTask('lint', 'jshint');
   grunt.registerTask('concat', 'requirejs:concat');
   grunt.registerTask('compile', 'requirejs:compile');
-  grunt.registerTask('test', 'jasmine');
+  grunt.registerTask('test', 'jasmine:test');
+  grunt.registerTask('integration', 'jasmine:integration');
   grunt.registerTask('banner', 'usebanner');
   grunt.registerTask('doc', 'amd-doc');
 

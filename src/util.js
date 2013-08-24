@@ -23,7 +23,10 @@ define('aronnax/util',
 
       for (key in object) {
         if (object.hasOwnProperty(key)) {
-          delete object[key];
+          // Ensures only writable properties are deleted.
+          try {
+            delete object[key];
+          } catch (e) { }
         }
       }
     }

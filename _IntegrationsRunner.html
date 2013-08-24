@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Jasmine Spec Runner</title>
+
+  
+  <link rel="stylesheet" type="text/css" href=".grunt/grunt-contrib-jasmine/jasmine.css">
+  
+
+  <script src=".grunt/grunt-contrib-jasmine/require.js"></script>
+  <script>
+    require.onError = function(error) {
+      var message = error.requireType + ': ';
+      if (error.requireType === 'scripterror' || error.requireType === 'notloaded' && error.requireModules) {
+        message += 'Illegal path or script error: ' + '[\'' + error.requireModules.join("', '") + '\']';
+      } else {
+        message += error.message;
+      }
+
+      throw Error(message);
+    };
+  </script>
+
+  
+  
+  <script src=".grunt/grunt-contrib-jasmine/jasmine.js"></script>
+  
+  <script src=".grunt/grunt-contrib-jasmine/jasmine-html.js"></script>
+  
+  <script src="lib/components/sinonjs/sinon.js"></script>
+  
+  <script src="lib/components/jasmine-sinon/lib/jasmine-sinon.js"></script>
+  
+  
+
+  <script>
+    
+
+    
+      require.config({
+  "name": "aronnax/main",
+  "paths": {
+    "aronnax": "src",
+    "underscore": "lib/components/underscore/underscore",
+    "deps/logWriter": "src/deps/console"
+  },
+  "shim": {
+    "underscore": {
+      "deps": [],
+      "exports": "_"
+    }
+  }
+});
+    
+  </script>
+
+  <script>
+    function launchTest() {
+    require([
+      
+    ],
+    function(){
+      require(['test/pooled_integrationtest.js','.grunt/grunt-contrib-jasmine/reporter.js'], function(){
+        require(['.grunt/grunt-contrib-jasmine/jasmine-helper.js'], function(){
+          // good to go! Our tests should already be running.
+        })
+      })
+    }
+    )
+  }
+  </script>
+
+  
+  <script>
+  launchTest();
+  </script>
+  
+</head>
+<body>
+</body>
+</html>

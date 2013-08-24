@@ -125,6 +125,7 @@ define('aronnax/Store',
             stringObjectValue = this.stringify(item);
             return this._dataStore[stringObjectValue].pop();
           }
+          return existingItem;
         }
       }
     });
