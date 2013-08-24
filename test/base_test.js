@@ -110,6 +110,43 @@ describe('aronnax.Base', function() {
       expect(testBaseObj.className).toBeDefined();
       expect(testBaseObj.className).toEqual('testName1');
     });
+    it('should provide an id for objects created with prototypes of original',
+        function() {
+      var testPrototype = Base.create(Object.prototype, 'testClass'),
+          testInst1 = Object.create(testPrototype),
+          testInst2 = Object.create(testPrototype),
+          testInst3 = Object.create(testPrototype),
+          testInst4 = Object.create(testPrototype);
+
+      testInst1.init();
+      testInst2.init();
+      testInst3.init();
+      testInst4.init();
+
+      expect(testInst1.id).toBeDefined();
+      expect(testInst1.id).toEqual(0);
+      expect(testInst2.id).toEqual(1);
+      expect(testInst4.id).toEqual(3);
+    });
+    it('should set a specific id just for the class', function() {
+      var testPrototype1 = Base.create(Object.prototype, 'testClass1'),
+          testPrototype2 = Base.create(Object.prototype, 'testClass2'),
+          testInst1 = Object.create(testPrototype1),
+          testInst2 = Object.create(testPrototype1),
+          testInst3 = Object.create(testPrototype2),
+          testInst4 = Object.create(testPrototype2);
+
+      testInst1.init();
+      testInst2.init();
+      testInst3.init();
+      testInst4.init();
+
+      expect(testInst1.classId).toBeDefined();
+      expect(testInst1.classId).toEqual(0);
+      expect(testInst2.classId).toEqual(1);
+      expect(testInst3.classId).toEqual(0);
+      expect(testInst4.classId).toEqual(1);
+    });
   });
 });
 

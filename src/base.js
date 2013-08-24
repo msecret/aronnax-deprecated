@@ -17,6 +17,18 @@ define('aronnax/Base',
   function(_) {
     "use strict";
 
+    var nextId = 0;
+
+    var classIds = {};
+
+    function nextClassId(className) {
+      if (!classIds[className]) {
+        classIds[className] = 0;
+      }
+
+      return classIds[className]++;
+    };
+
    /**
     * A base object to inherit from the provide a shared object to inherit
     * from.
@@ -33,7 +45,8 @@ define('aronnax/Base',
       create: function(obj, name, props) {
         var o = Object.create(obj),
             prop,
-            key;
+            key,
+            originalInit;
 
         Object.defineProperty(o, "className",
           { value : name || 'Base',
@@ -51,6 +64,15 @@ define('aronnax/Base',
               Object.defineProperty(o, key, prop);
             }
           }
+        }
+
+        // Wrap init function so it ids the object with AOP.
+        originalInit = o.init || function() {};
+        o.init = function() {
+          this.id = nextId++;
+          this.classId = nextClassId(this.className);
+
+          return originalInit.apply(this, arguments);
         }
 
         // TODO wrap init function so that it does its stuff then returns the
