@@ -9,8 +9,9 @@
  */
 
 define('aronnax/Pool',
-  ['aronnax/Base', 'aronnax/Logger', 'aronnax/Config', 'aronnax/Store'],
-  function(Base, Logger, config, Store) {
+  ['aronnax/Base', 'aronnax/Logger', 'aronnax/util', 'aronnax/Config',
+      'aronnax/Store'],
+  function(Base, Logger, util, config, Store) {
     "use strict";
 
     var _log = Logger.getLog('aronnax.Pool');
@@ -42,16 +43,6 @@ define('aronnax/Pool',
 
       return toreturn;
     }
-
-    function clear(obj) {
-      var key;
-
-      for (key in obj) {
-        if (obj.hasOwnProperty(key)) {
-          delete obj[key];
-        }
-      }
-    };
 
     var PoolPrototype = Base.create(Object.prototype, 'Pool', {
       /**
@@ -119,7 +110,7 @@ define('aronnax/Pool',
         }
 
         released = this.activePool.remove(member);
-        clear(released);
+        util.cleanAnything(released);
         this.freePool.push(released);
       }
 
