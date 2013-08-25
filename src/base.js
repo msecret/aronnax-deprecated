@@ -77,7 +77,8 @@ define('aronnax/Base',
        * @returns {Object} The object created.
        */
       construct: function(obj) {
-        var o = Object.create(obj, {
+        var classId = nextClassId(obj.className),
+          o = Object.create(obj, {
           'id': {
             enumerable: false,
             writable: false,
@@ -86,7 +87,7 @@ define('aronnax/Base',
           'classId': {
             enumerable: false,
             writable: false,
-            value: nextClassId(obj.className)
+            value: classId
           }
         });
 

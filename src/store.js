@@ -69,7 +69,13 @@ define('aronnax/Store',
        */
       put: function(item) {
         var stringObjectValue;
-        if (item.id) {
+        if (item.classId) {
+          if (this._dataStore[item.classId]) {
+            throw new Error('Object key collision occurred, cannot store key');
+          }
+          this._dataStore[item.classId] = item;
+        }
+        else if (item.id) {
           if (this._dataStore[item.id]) {
             throw new Error('Object key collision occurred, cannot store key');
           }
@@ -94,6 +100,9 @@ define('aronnax/Store',
       get: function(item) {
         var stringObjectValue;
 
+        if (item.classId) {
+          return this._dataStore[item.classId];
+        }
         if (item.id) {
           return this._dataStore[item.id];
         }
@@ -126,6 +135,9 @@ define('aronnax/Store',
             stringObjectValue;
 
         if (existingItem) {
+          if (item.classId) {
+            delete this._dataStore[item.classId];
+          }
           if (item.id) {
             delete this._dataStore[item.id];
           }

@@ -193,10 +193,6 @@ describe('Integration Tests', function() {
 
         expect(pool1.activePool.get(testInstance1)).toBe(testInstance1);
         expect(pool2.activePool.get(testInstance2)).toBe(testInstance2);
-        expect(pool1.activePool.get(testInstance2)).toBeUndefined();
-        expect(pool2.activePool.get(testInstance1)).toBeUndefined();
-        expect(store1[testInstance1.id]).toBe(testInstance1);
-        expect(store2[testInstance2.id]).toBe(testInstance2);
         expect(_.size(store1)).toEqual(1);
         expect(_.size(store2)).toEqual(1);
       });

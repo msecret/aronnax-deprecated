@@ -80,6 +80,7 @@ describe('aronnax.Pool', function() {
     it('should remove the member from the active pool and add to the free pool',
         function() {
       var testObj = {
+            classId: 1,
             className: 'POOPOPOP'
           },
           testInst,
@@ -277,7 +278,6 @@ describe('aronnax.Pool', function() {
       it('should add a member to the free list and remove from the active list',
           function() {
         var testObj = {
-              id: 1,
               className: 'testObj'
             },
             testPool = Pool.createPool(testObj.className, testObj, 10);
@@ -288,7 +288,7 @@ describe('aronnax.Pool', function() {
 
         testPool.releaseMember(s);
         expect(testPool.freePool.length).toEqual(10);
-        expect(_.size(testPool.activePool._dataStore)).toEqual(0);
+        expect(testPool.activePool.length).toEqual(0);
       });
       it('should throw and error if the member doesn\'t exist yet', function() {
         var testObj = {
