@@ -148,6 +148,18 @@ define('aronnax/Pool',
     };
 
     /**
+     * Will get the pool from the current pools by looking up the classname
+     * on the object prototype.
+     * @param {Object|Array|Function} objPrototype The prototype of the pool
+     * being searched for.
+     * @returns {Object} The Pool object.
+     */
+    Pool.getPool = function(objPrototype) {
+      var className = this.getClassName(objPrototype);
+      return this.pools[className];
+    };
+
+    /**
      * Gets the class name of the member, whether Based or not
      * @param {Object|Array|Function} classMember The member to get name of
      * @returns {String} The name of the member

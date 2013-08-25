@@ -106,5 +106,18 @@ describe('aronnax.Pooled', function() {
     });
   });
 
+  describe('pool', function() {
+    it('should get the pool of the current prototype', function() {
+      var TestO = Base.create(Pooled, 'TestO', {
+            prop1: {
+              value: 1
+            },
+          }),
+          testInstance = TestO.make();
+
+      expect(testInstance.pool).toBeDefined();
+    });
+  });
+
 });
 

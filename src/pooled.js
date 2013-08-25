@@ -34,6 +34,16 @@ define('aronnax/Pooled',
       free: function() {
         Pool.release(this);
         return undefined;
+      },
+
+      /**
+       * The current Pool object for this object prototype
+       */
+      pool: {
+        get: function() {
+          var pool = Pool.getPool(this);
+          return pool;
+        }
       }
     });
 

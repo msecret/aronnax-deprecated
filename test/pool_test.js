@@ -184,6 +184,32 @@ describe('aronnax.Pool', function() {
     });
   });
 
+  describe('getPool', function() {
+    it('should return the pool of an object if already created', function() {
+      var testObj = {
+            className: 'TestDoop'
+          },
+          testPool,
+          actual;
+
+      testPool = Pool.createPool('TestDoop', testObj, 15);
+
+      actual = Pool.getPool(testObj);
+
+      expect(actual).toBe(testPool);
+    });
+    it('should return undefined when the pool is not created', function() {
+      var testObj = {
+            className: 'TestDoop'
+          },
+          actual;
+
+      actual = Pool.getPool(testObj);
+
+      expect(actual).toBeUndefined();
+    });
+  });
+
   describe('PoolPrototype', function() {
     var testObj;
     beforeEach(function() {
