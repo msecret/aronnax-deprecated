@@ -195,12 +195,15 @@ define('aronnax/Pool',
      * @return {Object|Array|Function} The object being return from the pool
      */
     Pool.acquire = function(classMember) {
+      var className,
+          pool;
+
       try {
-        var className = this.getClassName(classMember);
+        className = this.getClassName(classMember);
       } catch (e) {
         throw new Error(e);
       }
-      var pool = this.acquirePool(className, classMember);
+      pool = this.acquirePool(className, classMember);
 
       return pool.acquireMember();
     };

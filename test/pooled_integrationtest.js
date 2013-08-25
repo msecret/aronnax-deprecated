@@ -94,7 +94,7 @@ describe('Integration Tests', function() {
         expect(currentPool.freePool.length).toEqual(11);
       });
       it('can be freed and the pools maintain', function() {
-        var testInstance = Test.make()
+        var testInstance = Test.make(),
             currentPool = Pool.pools[Test.className],
             store = currentPool.activePool.store;
 
