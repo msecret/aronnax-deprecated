@@ -8,8 +8,8 @@
  */
 
 define('aronnax/Logger',
-  ['underscore', 'aronnax/Base', 'deps/logWriter'],
-  function(_, Base, logWriterObject) {
+  ['underscore', 'aronnax/Base', 'aronnax/Config', 'deps/logWriter'],
+  function(_, Base, config, logWriterObject) {
     "use strict";
 
    /**
@@ -112,8 +112,7 @@ define('aronnax/Logger',
        * Settings for the logger
        */
       settings: {
-        // TODO replace with global config
-        environment: 'staging',
+        environment: config.env,
         errorTypes: ['log', 'warn', 'error']
       },
 
