@@ -60,6 +60,23 @@ define('aronnax/Pool',
         writable: true
       },
 
+      /**
+       * The amount of objects free in the pool that are ready for use.
+       * @type Number
+       */
+      totalObjectsFree: {
+        get: function() { return this.freePool.length; }
+      },
+
+      /**
+       * The amount of objects that are in the active pool and are considered
+       * to be in active use.
+       * @type Number
+       */
+      totalObjectsActive: {
+        get: function() { return this.activePool.length; }
+      },
+
       init: function(initialSize, basePrototype) {
         this.freePool = [];
         this.activePool = Object.create(Store);
