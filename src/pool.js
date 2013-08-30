@@ -134,124 +134,124 @@ define('aronnax/Pool',
     });
 
     // TODO return this into regular way.
-    var Pool = {};
-    /**
-     * All the current pools, as a hash with the class type as the key.
-     * @static
-     * @type aronnax.Pool
-     */
-    Pool.pools = {};
+    var Pool = {
+      /**
+       * All the current pools, as a hash with the class type as the key.
+       * @static
+       * @type aronnax.Pool
+       */
+      pools: {},
 
-    /**
-     * Count of the current total pools
-     * @static
-     * @type Number
-     */
-    Pool.totalPools = 0;
+      /**
+       * Count of the current total pools
+       * @static
+       * @type Number
+       */
+      totalPools: 0,
 
-    /**
-     * Gets the pool of the class type, creating one if it doesn't exists
-     * @static
-     * @param {Sting} className The name of the class
-     * @return {arronax.Pool} The pool of the class type
-     */
-    Pool.acquirePool = function(className, objPrototype) {
-      var pool = this.pools[className];
-      if (!pool) {
-        pool = this.createPool(className, objPrototype);
-      }
-
-      return pool;
-    };
-
-    /**
-     * Will get the pool from the current pools by looking up the classname
-     * on the object prototype.
-     * @param {Object|Array|Function} objPrototype The prototype of the pool
-     * being searched for.
-     * @returns {Object} The Pool object.
-     */
-    Pool.getPool = function(objPrototype) {
-      var className = this.getClassName(objPrototype);
-      return this.pools[className];
-    };
-
-    /**
-     * Gets the class name of the member, whether Based or not
-     * @param {Object|Array|Function} classMember The member to get name of
-     * @returns {String} The name of the member
-     */
-    Pool.getClassName = function(classMember) {
-      var className = classMember.className;
-      if (typeof className !== 'string') {
-        if (window.toString.call(classMember) === '[object Array]') {
-          className = 'array';
+      /**
+       * Gets the pool of the class type, creating one if it doesn't exists
+       * @static
+       * @param {Sting} className The name of the class
+       * @return {arronax.Pool} The pool of the class type
+       */
+      acquirePool: function(className, objPrototype) {
+        var pool = this.pools[className];
+        if (!pool) {
+          pool = this.createPool(className, objPrototype);
         }
-        else if (typeof classMember === 'function') {
-          className = 'function';
+
+        return pool;
+      },
+
+      /**
+       * Will get the pool from the current pools by looking up the classname
+       * on the object prototype.
+       * @param {Object|Array|Function} objPrototype The prototype of the pool
+       * being searched for.
+       * @returns {Object} The Pool object.
+       */
+      getPool: function(objPrototype) {
+        var className = this.getClassName(objPrototype);
+        return this.pools[className];
+      },
+
+      /**
+       * Gets the class name of the member, whether Based or not
+       * @param {Object|Array|Function} classMember The member to get name of
+       * @returns {String} The name of the member
+       */
+      getClassName: function(classMember) {
+        var className = classMember.className;
+        if (typeof className !== 'string') {
+          if (window.toString.call(classMember) === '[object Array]') {
+            className = 'array';
+          }
+          else if (typeof classMember === 'function') {
+            className = 'function';
+          }
+          else if (typeof classMember === 'object') {
+            className = 'object';
+          }
+          else {
+            _log.error('Aquired Pool class not a string');
+            throw new Error('Aquired Pool class not a string');
+          }
         }
-        else if (typeof classMember === 'object') {
-          className = 'object';
+        return className;
+      },
+
+      /**
+       * Aquires a free member from the pool. Maps directly to the acquire
+       * pool methodand then the Pool.acquire method. Uses a non-standard
+       * Function.name property to obtain the class name.
+       * @static
+       * @param {Object|Array|Function} classMember The object being fetch from
+       * pool
+       * @return {Object|Array|Function} The object being return from the pool
+       */
+      acquire: function(classMember) {
+        var className,
+            pool;
+
+        try {
+          className = this.getClassName(classMember);
+        } catch (e) {
+          throw new Error(e);
         }
-        else {
-          _log.error('Aquired Pool class not a string');
-          throw new Error('Aquired Pool class not a string');
+        pool = this.acquirePool(className, classMember);
+
+        return pool.acquireMember();
+      },
+
+      /**
+       * Releases a member back to the free pool, removing from inactive pool.
+       * @param {Object|Array|Function} classMember The object to release
+       */
+      release: function(classMember) {
+        var className = this.getClassName(classMember),
+            pool = this.acquirePool(className);
+
+        if (pool) {
+          pool.releaseMember(classMember);
         }
+      },
+
+      /**
+       * Creates a new pool of a certain type
+       * @static
+       * @param {Sting} className The name of the class
+       * @param {Number} initialSize The initial size to make the free pool
+       * @return {arronax.Pool} The new pool of the class type
+       */
+      createPool: function(className, objPrototype, initialSize) {
+        var pool = Object.create(PoolPrototype);
+        pool.init(initialSize, objPrototype);
+
+        this.totalPools += 1;
+        this.pools[className] = pool;
+        return pool;
       }
-
-      return className;
-    };
-
-    /**
-     * Aquires a free member from the pool. Maps directly to the acquire
-     * pool methodand then the Pool.acquire method. Uses a non-standard
-     * Function.name property to obtain the class name.
-     * @static
-     * @param {Object|Array|Function} classMember The object being fetch from
-     * pool
-     * @return {Object|Array|Function} The object being return from the pool
-     */
-    Pool.acquire = function(classMember) {
-      var className,
-          pool;
-
-      try {
-        className = this.getClassName(classMember);
-      } catch (e) {
-        throw new Error(e);
-      }
-      pool = this.acquirePool(className, classMember);
-
-      return pool.acquireMember();
-    };
-
-    /**
-     * Releases a member back to the free pool, removing from inactive pool.
-     * @param {Object|Array|Function} classMember The object to release
-     */
-    Pool.release = function(classMember) {
-      var className = this.getClassName(classMember),
-          pool = this.acquirePool(className);
-
-      if (pool) {
-        pool.releaseMember(classMember);
-      }
-    };
-
-    /**
-     * Creates a new pool of a certain type
-     * @static
-     * @param {Sting} className The name of the class
-     * @param {Number} initialSize The initial size to make the free pool
-     * @return {arronax.Pool} The new pool of the class type
-     */
-    Pool.createPool = function(className, objPrototype, initialSize) {
-      var pool = Object.create(PoolPrototype);
-      pool.init(initialSize, objPrototype);
-
-      this.totalPools += 1;
-      this.pools[className] = pool;
-      return pool;
     };
 
     return Pool;
