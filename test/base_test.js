@@ -27,7 +27,7 @@ describe('aronnax.Base', function() {
 
     it('should return a new object', function() {
       var testCreatedObj = Base.create(null);
-      expect(typeof testCreatedObj).toBe('object');
+      expect(testCreatedObj).toBeAnObject();
     });
 
     it('should not set the prototype props when passing in null object',
@@ -74,7 +74,7 @@ describe('aronnax.Base', function() {
 
       expect(testChildObj.testFunc).toBeDefined();
       expect(testChildObj.testFunc).toBeDefined();
-      expect(typeof testChildObj.testFunc).toEqual('function');
+      expect(testChildObj.testFunc).toBeAFunction();
       expect(testChildObj.testFunc).toEqual(testFunc);
     });
 

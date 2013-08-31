@@ -77,7 +77,7 @@ define('aronnax/Pool',
         get: function() { return this.activePool.length; }
       },
 
-      init: function(initialSize, basePrototype) {
+      init: function(initialSize, basePrototype, className) {
         this.freePool = [];
         this.activePool = Object.create(Store);
         this.activePool.init();
@@ -282,7 +282,11 @@ define('aronnax/Pool',
        */
       createPool: function(className, objPrototype, initialSize) {
         var pool = Object.create(PoolPrototype);
-        pool.init(initialSize, objPrototype);
+        // overwrite class name to the actual class name, not Pool
+        Object.defineProperty(pool, 'className', {
+          value: className
+        });
+        pool.init(initialSize, objPrototype, className);
 
         this.totalPools += 1;
         this.pools[className] = pool;

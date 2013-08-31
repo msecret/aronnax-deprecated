@@ -9,11 +9,6 @@ describe('aronnax.Store', function() {
 
   beforeEach(function() {
     var flag = false;
-    this.addMatchers({
-      toBeArray: function(expected) {
-        return this.actual instanceof Array;
-      }
-    });
 
     require(['aronnax/Store'], function(_Store) {
       Store = _Store;
@@ -33,7 +28,7 @@ describe('aronnax.Store', function() {
 
       expect(store._dataStore).toBeDefined();
       expect(store.store).toBeDefined();
-      expect(typeof store.store).toEqual('object');
+      expect(store.store).toBeAnObject();
     });
   });
 
@@ -108,7 +103,7 @@ describe('aronnax.Store', function() {
       stringedArray = store.stringify(testArray);
       storeArray = store.store[stringedArray];
 
-      expect(storeArray).toBeArray();
+      expect(storeArray).toBeAnArray();
       expect(storeArray.length).toEqual(1);
     });
 

@@ -52,7 +52,7 @@ describe('aronnax.Pooled', function() {
     it('should return an object on make when its an object', function() {
       var testInst = TestProto.make();
 
-      expect(typeof testInst).toEqual('object');
+      expect(testInst).toBeAnObject();
     });
 
     it('should inherit any properties of the base object', function() {
@@ -81,7 +81,7 @@ describe('aronnax.Pooled', function() {
       var testInst = TestProto.make();
 
       expect(testInst.free).toBeDefined();
-      expect(typeof testInst.free).toEqual('function');
+      expect(testInst.free).toBeAFunction();
     });
   });
 

@@ -30,7 +30,7 @@ describe('aronnax.Pool', function() {
   describe('getTotalActiveObjects', function() {
     it('should total number of active objects across all pools', function() {
       var testPool;
-      expect(typeof Pool.totalActiveObjects).toEqual('number');
+      expect(Pool.totalActiveObjects).toBeANumber();
       expect(Pool.totalActiveObjects).toEqual(0);
 
       testPool = Pool.createPool('testClass', {}, 15);
@@ -57,7 +57,7 @@ describe('aronnax.Pool', function() {
   describe('getTotalFreeObjects', function() {
     it('should total number of free objects across all pools', function() {
       var testPool;
-      expect(typeof Pool.totalFreeObjects).toEqual('number');
+      expect(Pool.totalFreeObjects).toBeANumber();
       expect(Pool.totalFreeObjects).toEqual(0);
 
       testPool = Pool.createPool('testClass', {}, 15);
@@ -87,7 +87,7 @@ describe('aronnax.Pool', function() {
           testInst = Pool.acquire(testProto);
 
       expect(testInst).toBeDefined();
-      expect(typeof testInst).toEqual('object');
+      expect(testInst).toBeAnObject();
     });
 
     it('should return an object with the correct properties', function() {
@@ -95,7 +95,7 @@ describe('aronnax.Pool', function() {
           testInst = Pool.acquire(testProto);
 
       expect(testInst.testProp).toBeDefined();
-      expect(typeof testInst.testProp).toEqual('number');
+      expect(testInst.testProp).toBeANumber();
       expect(testInst.testProp).toEqual(1);
     });
 
@@ -109,7 +109,7 @@ describe('aronnax.Pool', function() {
     it('should return an array when an array is passed in', function() {
       var testInst = Pool.acquire(Array.prototype);
 
-      expect(testInst instanceof Array).toBeTruthy();
+      expect(testInst).toBeAnArray();
       expect(testInst.length).toEqual(0);
       expect(testInst.sort).toBeDefined();
     });
@@ -117,7 +117,7 @@ describe('aronnax.Pool', function() {
     it('should return an object when an object is passed in', function() {
       var testInst = Pool.acquire(Object.prototype);
 
-      expect(typeof testInst).toEqual('object');
+      expect(testInst).toBeAnObject();
     });
 
     it('should throw an error when an object without className is passed in',
@@ -169,11 +169,6 @@ describe('aronnax.Pool', function() {
   describe('acquirePool', function() {
     var testProto;
     beforeEach(function() {
-      this.addMatchers({
-        toBeArray: function(expected) {
-          return this.actual instanceof Array;
-        }
-      });
       testProto = Base.create(null, 'testProto', {
         testProp: {
           value: 1
@@ -185,7 +180,7 @@ describe('aronnax.Pool', function() {
       var testPool = Pool.acquirePool(testProto.className, testProto);
 
       expect(testPool).toBeDefined();
-      expect(typeof testPool).toEqual('object');
+      expect(testPool).toBeAnObject();
       expect(testPool.activePool).toBeDefined();
       expect(testPool.freePool).toBeDefined();
     });
@@ -213,11 +208,6 @@ describe('aronnax.Pool', function() {
   describe('createPool', function() {
     var testProto;
     beforeEach(function() {
-      this.addMatchers({
-        toBeArray: function(expected) {
-          return this.actual instanceof Array;
-        }
-      });
       testProto = Base.create(null, 'testProto', {
         testProp: {
           value: 1
@@ -277,11 +267,6 @@ describe('aronnax.Pool', function() {
   describe('PoolPrototype', function() {
     var testProto;
     beforeEach(function() {
-      this.addMatchers({
-        toBeArray: function(expected) {
-          return this.actual instanceof Array;
-        }
-      });
       testProto = Base.create(null, 'testProto', {
         testProp: {
           value: 1
@@ -295,7 +280,7 @@ describe('aronnax.Pool', function() {
 
         expect(testPool.activePool).toBeDefined();
         expect(testPool.freePool).toBeDefined();
-        expect(testPool.freePool).toBeArray();
+        expect(testPool.freePool).toBeAnArray();
       });
 
       it('should set its base prototype as the object passed in', function() {
@@ -332,7 +317,7 @@ describe('aronnax.Pool', function() {
             testInst = testPool.acquireMember();
 
         expect(testInst).toBeDefined();
-        expect(typeof testInst).toEqual('object');
+        expect(testInst).toBeAnObject();
         expect(testInst.className).toEqual(testProto.className);
       });
 

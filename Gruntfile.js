@@ -107,7 +107,9 @@ module.exports = function(grunt) {
         specs: 'test/**/*_test.js',
         helpers: ['lib/components/*.js',
           'lib/components/sinonjs/sinon.js',
-          'lib/components/jasmine-sinon/lib/jasmine-sinon.js'
+          'lib/components/jasmine-sinon/lib/jasmine-sinon.js',
+          'lib/components/underscore/underscore.js',
+          'test/matchers.js'
         ],
         keepRunner: true,
         template: require('grunt-template-jasmine-requirejs'),
