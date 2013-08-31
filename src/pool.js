@@ -204,6 +204,7 @@ define('aronnax/Pool',
        * on the object prototype.
        * @param {Object|Array|Function} objPrototype The prototype of the pool
        * being searched for.
+       * @param {String} poolClassName The name of the pool class
        * @returns {Object} The Pool object.
        */
       getPool: function(objPrototype, poolClassName) {

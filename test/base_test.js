@@ -81,7 +81,7 @@ describe('aronnax.Base', function() {
     it('should still extend properties when passing in functions', function() {
       var testBaseObj = {testProp1: 1},
           testFunc = function() {},
-          testProp = {value: 'testProp'};
+          testProp = {value: 'testProp'},
           testChildObj = Base.create(testBaseObj, 'testInherited', {
             'testFunc': testFunc,
             'testProp': testProp
