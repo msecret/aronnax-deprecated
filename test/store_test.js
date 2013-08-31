@@ -28,7 +28,6 @@ describe('aronnax.Store', function() {
   });
 
   describe('init', function() {
-
     it('should create a private dataStore property', function() {
       store.init();
 
@@ -41,46 +40,49 @@ describe('aronnax.Store', function() {
   describe('stringify', function() {
     it('should stringy an array by concatting all values', function() {
       var testArray = ['value1', 'value2'],
-          actual = store.stringify(testArray);
+          stringedArray = store.stringify(testArray);
 
-      expect(actual).toEqual('value1*value2');
+      expect(stringedArray).toEqual('value1*value2');
     });
 
     it('should stringify a function by compiling a string of it', function() {
       var testFunction = function(arg1) { return arg1; },
-          actual = store.stringify(testFunction);
+          stringedFunc = store.stringify(testFunction);
 
-      expect(actual).toEqual('function (arg1) { return arg1; }');
+      expect(stringedFunc).toEqual('function (arg1) { return arg1; }');
     });
+
     it('should stringify an object by JSON stringifying it', function() {
       var testObj = {'testProp1': 1},
-          actual = store.stringify(testObj);
+          sttingedObj = store.stringify(testObj);
 
-      expect(actual).toEqual(JSON.stringify(testObj));
+      expect(sttingedObj).toEqual(JSON.stringify(testObj));
     });
   });
 
   describe('put', function() {
     it('should return the item put in', function() {
       var testObj = { },
-          actual;
+          storeItem;
 
-      actual = store.put(testObj);
+      storeItem = store.put(testObj);
 
-      expect(actual).toBe(testObj);
+      expect(storeItem).toBe(testObj);
     });
+
     it('should put an IDd object into the data store by id', function() {
       var testObj = {
-        id: 1,
-        testProp: 'test'
-      },
-          actual;
+            id: 1,
+            testProp: 'test'
+          },
+          storeItem;
 
       store.put(testObj);
-      actual = store.store[1];
+      storeItem = store.store[1];
 
-      expect(actual).toBe(testObj);
+      expect(storeItem).toBe(testObj);
     });
+
     it('should throw a key collision error if two objects with the same id' +
         'are stored', function() {
       var testObj = {
@@ -96,67 +98,72 @@ describe('aronnax.Store', function() {
 
       store.put.restore();
     });
+
     it('should put a non IDd object with an array', function() {
       var testArray = ['sdf'],
-          actual,
+          storeArray,
           stringedArray;
 
       store.put(testArray);
       stringedArray = store.stringify(testArray);
-      actual = store.store[stringedArray];
+      storeArray = store.store[stringedArray];
 
-      expect(actual).toBeArray();
-      expect(actual.length).toEqual(1);
+      expect(storeArray).toBeArray();
+      expect(storeArray.length).toEqual(1);
     });
+
     it('should put a non IDd object onto the array', function() {
       var testArray = ['sdf'],
-          actual,
+          storeArray,
           stringedArray;
 
       store.put(testArray);
       stringedArray = store.stringify(testArray);
-      actual = store.store[stringedArray][0];
+      storeArray = store.store[stringedArray][0];
 
-      expect(actual).toEqual(testArray);
+      expect(storeArray).toEqual(testArray);
     });
+
     it('should push objects that are equal onto the array', function() {
       var testArray = ['sdf'],
-          actual,
+          testVal,
           stringedArray;
 
       store.put(testArray);
       stringedArray = store.stringify(testArray);
-      actual = store.store[stringedArray][0];
+      testVal = store.store[stringedArray][0];
 
-      expect(actual).toEqual(testArray);
+      expect(testVal).toEqual(testArray);
 
       store.put(testArray);
       stringedArray = store.stringify(testArray);
-      actual = store.store[stringedArray][1];
+      testVal = store.store[stringedArray][1];
 
-      expect(actual).toEqual(testArray);
+      expect(testVal).toEqual(testArray);
     });
+
     it('should put a non IDd function onto the array', function() {
       var testFunction = function moon() { return 1; },
-          actual,
+          storeResult,
           stringedFunc;
 
       store.put(testFunction);
       stringedFunc = store.stringify(testFunction);
-      actual = store.store[stringedFunc][0];
+      storeResult = store.store[stringedFunc][0];
 
-      expect(actual).toEqual(testFunction);
+      expect(storeResult).toEqual(testFunction);
     });
+
     it('should put a non IDd object onto the array', function() {
       var testObject = {'test': 'testa'},
-          actual,
+          storeResult,
           stringedObject;
 
       store.put(testObject);
       stringedObject = store.stringify(testObject);
-      actual = store.store[stringedObject][0];
+      storeResult = store.store[stringedObject][0];
 
-      expect(actual).toEqual(testObject);
+      expect(storeResult).toEqual(testObject);
 
     });
   });
@@ -183,15 +190,17 @@ describe('aronnax.Store', function() {
       expect(store.get(testObj1)).toBe(testObj1);
       expect(store.get(testObj2)).toBe(testObj2);
     });
+
     it('should return nothing for an IDd object not in the store', function() {
       var testObj1 = {
             id: 1
           },
-          actual;
+          storeResult;
 
-      actual = store.get(testObj1);
-      expect(actual).toBeUndefined();
+      storeResult = store.get(testObj1);
+      expect(storeResult).toBeUndefined();
     });
+
     it('should get a non IDd object thats in the store', function() {
       var testArray1 = ['moon'],
           testArray2 = ['soom'];
@@ -202,6 +211,7 @@ describe('aronnax.Store', function() {
       expect(store.get(testArray1)).toBe(testArray1);
       expect(store.get(testArray2)).toBe(testArray2);
     });
+
     it('should return none for a non IDd object not in the store', function() {
       var testArray1 = ['moon'];
 
@@ -223,6 +233,7 @@ describe('aronnax.Store', function() {
       expect(store.get(testObj)).toBeUndefined();
       expect(store.store[1]).toBeUndefined();
     });
+
     it('should remove a found non IDd item from the store', function() {
       var testArr1 = ['sdf'],
           testArr2 = ['sdfg'];
@@ -239,6 +250,7 @@ describe('aronnax.Store', function() {
       store.remove(testArr2);
       expect(store.get(testArr2)).toBeUndefined();
     });
+
     it('should remove one item from a non IDd item when there are multiple',
         function() {
       var testArr1 = ['asd'],
@@ -262,6 +274,7 @@ describe('aronnax.Store', function() {
     it('should start out at zero', function() {
       expect(store.length).toEqual(0);
     });
+
     it('should return the amount of objects in the store when added', function() {
       var testObj1 = {
             id: 1
@@ -275,6 +288,7 @@ describe('aronnax.Store', function() {
       store.put(testObj2);
       expect(store.length).toEqual(2);
     });
+
     it('should return the amount of objects in the store when removed',
         function() {
       var testObj1 = {
@@ -294,5 +308,4 @@ describe('aronnax.Store', function() {
       expect(store.length).toEqual(0);
     });
   });
-
 });

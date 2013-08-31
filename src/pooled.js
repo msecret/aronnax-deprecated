@@ -40,6 +40,7 @@ define('aronnax/Pooled',
        * The current Pool object for this object prototype
        */
       pool: {
+        // TODO is it possible to cache this?
         get: function() {
           var pool = Pool.getPool(this);
           return pool;

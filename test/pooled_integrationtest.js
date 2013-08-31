@@ -13,10 +13,10 @@ describe('Integration Tests', function() {
     var flag = false;
 
     require(['underscore', 'aronnax/Base', 'aronnax/Pooled', 'aronnax/Pool'],
-        function(underscore, _Base, _Pooled, _Pool) {
-      Base = _Base;
-      Pooled = _Pooled;
-      Pool = _Pool;
+        function(underscore, __Base, __Pooled, __Pool) {
+      Base = __Base;
+      Pooled = __Pooled;
+      Pool = __Pool;
       _ = underscore;
       flag = true;
     });

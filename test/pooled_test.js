@@ -10,9 +10,9 @@ describe('aronnax.Pooled', function() {
   beforeEach(function() {
     var flag = false;
 
-    require(['aronnax/Base', 'aronnax/Pooled'], function(_Base, _Pooled) {
-      Base = _Base;
-      Pooled = _Pooled;
+    require(['aronnax/Base', 'aronnax/Pooled'], function(__Base, __Pooled) {
+      Base = __Base;
+      Pooled = __Pooled;
       flag = true;
     });
 
@@ -24,6 +24,7 @@ describe('aronnax.Pooled', function() {
 
     it('should have correct methods', function() {
       expect(Pooled.make).toBeDefined();
+      expect(Pooled.free).toBeDefined();
     });
 
     it('should have the correct class name', function() {
@@ -33,10 +34,10 @@ describe('aronnax.Pooled', function() {
   });
 
   describe('make', function() {
-    var TestO = {};
+    var TestProto = {};
 
     beforeEach(function() {
-      TestO = Base.create(Pooled, 'TestO', {
+      TestProto = Base.create(Pooled, 'TestProto', {
         prop1: {
           value: 1
         },
@@ -45,51 +46,50 @@ describe('aronnax.Pooled', function() {
     });
 
     it('should have the make function on inherited objects', function() {
-      expect(TestO.make).toBeDefined();
+      expect(TestProto.make).toBeDefined();
     });
 
     it('should return an object on make when its an object', function() {
-      var testI = TestO.make();
+      var testInst = TestProto.make();
 
-      expect(typeof testI).toEqual('object');
+      expect(typeof testInst).toEqual('object');
     });
 
     it('should inherit any properties of the base object', function() {
       var testProperties = {
         testProp1: {
           value: 1
+          },
+          testFunc1: function() { return 1; }
         },
-        testFunc1: function() { return 1; }
-      },
-        testBase = Base.create(Pooled, 'testBase', testProperties);
+        testBase = Base.create(Pooled, 'testBase', testProperties),
+        testInst = testBase.make();
 
-      var testI = testBase.make();
-
-      expect(testI.testProp1).toBeDefined();
-      expect(testI.testProp1).toEqual(1);
-      expect(testI.testFunc1).toBeDefined();
-      expect(testI.testFunc1()).toEqual(1);
+      expect(testInst.testProp1).toBeDefined();
+      expect(testInst.testProp1).toEqual(1);
+      expect(testInst.testFunc1).toBeDefined();
+      expect(testInst.testFunc1()).toEqual(1);
     });
 
     it('should have the name of the base object', function() {
-      var testI = TestO.make();
+      var testInst = TestProto.make();
 
-      expect(testI.className).toEqual('TestO');
+      expect(testInst.className).toEqual('TestProto');
     });
 
     it('should have a free function', function() {
-      var testI = TestO.make();
+      var testInst = TestProto.make();
 
-      expect(testI.free).toBeDefined();
-      expect(typeof testI.free).toEqual('function');
+      expect(testInst.free).toBeDefined();
+      expect(typeof testInst.free).toEqual('function');
     });
   });
 
   describe('free', function() {
-    var TestO = {};
+    var TestProto = {};
 
     beforeEach(function() {
-      TestO = Base.create(Pooled, 'TestO', {
+      TestProto = Base.create(Pooled, 'TestProto', {
         prop1: {
           value: 1
         },
@@ -98,9 +98,9 @@ describe('aronnax.Pooled', function() {
     });
 
     it('should set the object to instance of null', function() {
-      var testI = TestO.make();
+      var testInst = TestProto.make();
 
-      testI.free();
+      testInst.free();
       // TODO this doesn't work yet
       // expect(testI).toBe(null);
     });
@@ -108,14 +108,14 @@ describe('aronnax.Pooled', function() {
 
   describe('pool', function() {
     it('should get the pool of the current prototype', function() {
-      var TestO = Base.create(Pooled, 'TestO', {
+      var TestProto = Base.create(Pooled, 'TestProto', {
             prop1: {
               value: 1
             },
           }),
-          testInstance = TestO.make();
+          testInst = TestProto.make();
 
-      expect(testInstance.pool).toBeDefined();
+      expect(testInst.pool).toBeDefined();
     });
   });
 

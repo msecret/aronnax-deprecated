@@ -12,10 +12,10 @@ describe('aronnax.Pool', function() {
     var flag = false;
 
     require(['aronnax/Base', 'aronnax/Pool', 'aronnax/Pooled'],
-        function(_Base, _Pool, _Pooled) {
-      Base = _Base;
-      Pool = _Pool;
-      Pooled = _Pooled;
+        function(__Base, __Pool, __Pooled) {
+      Base = __Base;
+      Pool = __Pool;
+      Pooled = __Pooled;
       flag = true;
     });
 
@@ -39,6 +39,7 @@ describe('aronnax.Pool', function() {
       testPool.acquireMember();
       expect(Pool.totalActiveObjects).toEqual(1);
     });
+
     it('should count the total number even with multiple pools', function() {
       var testPool1,
           testPool2;
@@ -65,6 +66,7 @@ describe('aronnax.Pool', function() {
       testPool.acquireMember();
       expect(Pool.totalFreeObjects).toEqual(14);
     });
+
     it('should count the total number even with multiple pools', function() {
       var testPool1,
           testPool2;
@@ -81,49 +83,49 @@ describe('aronnax.Pool', function() {
   });
   describe('acquire', function() {
     it('should return an object', function() {
-      var testO = Base.create(null, 'testO'),
-          testI = Pool.acquire(testO);
+      var testProto = Base.create(null, 'testProto'),
+          testInst = Pool.acquire(testProto);
 
-      expect(testI).toBeDefined();
-      expect(typeof testI).toEqual('object');
+      expect(testInst).toBeDefined();
+      expect(typeof testInst).toEqual('object');
     });
 
     it('should return an object with the correct properties', function() {
-      var testO = Base.create(null, 'testO', { testProp: { value: 1 } }),
-          testI = Pool.acquire(testO);
+      var testProto = Base.create(null, 'testO', { testProp: { value: 1 } }),
+          testInst = Pool.acquire(testProto);
 
-      expect(testI.testProp).toBeDefined();
-      expect(typeof testI.testProp).toEqual('number');
-      expect(testI.testProp).toEqual(1);
+      expect(testInst.testProp).toBeDefined();
+      expect(typeof testInst.testProp).toEqual('number');
+      expect(testInst.testProp).toEqual(1);
     });
 
     it('should return an object with the correct classname', function() {
-      var testO = Base.create(null, 'testO'),
-          testI = Pool.acquire(testO);
+      var testProto = Base.create(null, 'testProto'),
+          testInst = Pool.acquire(testProto);
 
-      expect(testI.className).toEqual('testO');
+      expect(testInst.className).toEqual('testProto');
     });
 
     it('should return an array when an array is passed in', function() {
-      var testO = Pool.acquire(Array.prototype);
+      var testInst = Pool.acquire(Array.prototype);
 
-      expect(testO instanceof Array).toBeTruthy();
-      expect(testO.length).toEqual(0);
-      expect(testO.sort).toBeDefined();
+      expect(testInst instanceof Array).toBeTruthy();
+      expect(testInst.length).toEqual(0);
+      expect(testInst.sort).toBeDefined();
     });
 
     it('should return an object when an object is passed in', function() {
-      var testO = Pool.acquire(Object.prototype);
+      var testInst = Pool.acquire(Object.prototype);
 
-      expect(typeof testO).toEqual('object');
+      expect(typeof testInst).toEqual('object');
     });
 
     it('should throw an error when an object without className is passed in',
         function() {
       var stub = sinon.stub(Pool, 'acquire'),
-          testO = { testProp: 1 };
+          testProto = { testProp: 1 };
 
-      expect(stub.withArgs(testO).throws('Error')).toBeTruthy();
+      expect(stub.withArgs(testProto).throws('Error')).toBeTruthy();
       Pool.acquire.restore();
     });
   });
@@ -131,29 +133,30 @@ describe('aronnax.Pool', function() {
   describe('release', function() {
     it('should remove the member from the active pool and add to the free pool',
         function() {
-      var testObj = {
+      var testProto = {
             classId: 1,
-            className: 'POOPOPOP'
+            className: 'testProto'
           },
           testInst,
           testPool;
 
-      testInst = Pool.acquire(testObj);
-      testPool = Pool.acquirePool(testObj.className, testObj);
+      testInst = Pool.acquire(testProto);
+      testPool = Pool.acquirePool(testProto.className, testProto);
       expect(testPool.freePool.length).toEqual(11);
 
       Pool.release(testInst);
       expect(testPool.freePool.length).toEqual(12);
     });
+
     it('should call the releaseMember function on the correct class', function() {
-      var testObj = {
-            className: 'testObjct'
+      var testProto = {
+            className: 'testProto'
           },
           testInst,
           testPool;
 
-      testInst = Pool.acquire(testObj);
-      testPool = Pool.acquirePool(testObj.className, testObj);
+      testInst = Pool.acquire(testProto);
+      testPool = Pool.acquirePool(testProto.className, testProto);
       sinon.spy(testPool, 'releaseMember');
       Pool.release(testInst);
 
@@ -164,21 +167,22 @@ describe('aronnax.Pool', function() {
   });
 
   describe('acquirePool', function() {
-    var testObj;
+    var testProto;
     beforeEach(function() {
       this.addMatchers({
         toBeArray: function(expected) {
           return this.actual instanceof Array;
         }
       });
-      testObj = Base.create(null, 'testObj', {
+      testProto = Base.create(null, 'testProto', {
         testProp: {
           value: 1
         }
       });
     });
+
     it('should return a Pool object', function() {
-      var testPool = Pool.acquirePool(testObj.className, testObj);
+      var testPool = Pool.acquirePool(testProto.className, testProto);
 
       expect(testPool).toBeDefined();
       expect(typeof testPool).toEqual('object');
@@ -187,29 +191,34 @@ describe('aronnax.Pool', function() {
     });
 
     it('should create a new pool if none found', function() {
+      var testPool;
+
       expect(Pool.totalPools).toEqual(0);
-      var testPool = Pool.acquirePool(testObj.className, testObj);
+      testPool = Pool.acquirePool(testProto.className, testProto);
       expect(Pool.totalPools).toEqual(1);
     });
 
     it('should return the same Pool if already created', function() {
+      var testPool1,
+          testPool2;
+
       expect(Pool.totalPools).toEqual(0);
-      var testPool1 = Pool.acquirePool(testObj.className, testObj);
+      testPool1 = Pool.acquirePool(testProto.className, testProto);
       expect(Pool.totalPools).toEqual(1);
-      var testPool2 = Pool.acquirePool(testObj.className, testObj);
+      testPool2 = Pool.acquirePool(testProto.className, testProto);
       expect(Pool.totalPools).toEqual(1);
     });
   });
 
   describe('createPool', function() {
-    var testObj;
+    var testProto;
     beforeEach(function() {
       this.addMatchers({
         toBeArray: function(expected) {
           return this.actual instanceof Array;
         }
       });
-      testObj = Base.create(null, 'testObj', {
+      testProto = Base.create(null, 'testProto', {
         testProp: {
           value: 1
         }
@@ -217,20 +226,22 @@ describe('aronnax.Pool', function() {
     });
 
     it('should update the pools object with the new pool', function() {
-        var testPool = Pool.createPool(testObj.className, testObj, 15);
+      var testPool = Pool.createPool(testProto.className, testProto, 15);
 
-      expect(Pool.pools[testObj.className]).toBeDefined();
+      expect(Pool.pools[testProto.className]).toBeDefined();
     });
 
     it('should update the total Pools count', function() {
+      var testPool;
+
       expect(Pool.totalPools).toEqual(0);
-      var testPool = Pool.createPool(testObj.className, testObj);
+      testPool = Pool.createPool(testProto.className, testProto);
       expect(Pool.totalPools).toEqual(1);
     });
 
     it('will create a pool of initial size passed in', function() {
         var testSize = 25,
-            testPool = Pool.createPool(testObj.className, testObj, testSize);
+            testPool = Pool.createPool(testProto.className, testProto, testSize);
 
         expect(testPool.freePool.length).toEqual(testSize);
     });
@@ -238,39 +249,40 @@ describe('aronnax.Pool', function() {
 
   describe('getPool', function() {
     it('should return the pool of an object if already created', function() {
-      var testObj = {
-            className: 'TestDoop'
+      var testProto = {
+            className: 'testProto'
           },
           testPool,
-          actual;
+          actualPool;
 
-      testPool = Pool.createPool('TestDoop', testObj, 15);
+      testPool = Pool.createPool('testProto', testProto, 15);
 
-      actual = Pool.getPool(testObj);
+      actualPool = Pool.getPool(testProto);
 
-      expect(actual).toBe(testPool);
+      expect(actualPool).toBe(testPool);
     });
+
     it('should return undefined when the pool is not created', function() {
-      var testObj = {
-            className: 'TestDoop'
+      var testProto = {
+            className: 'testProto'
           },
-          actual;
+          actualPool;
 
-      actual = Pool.getPool(testObj);
+      actualPool = Pool.getPool(testProto);
 
-      expect(actual).toBeUndefined();
+      expect(actualPool).toBeUndefined();
     });
   });
 
   describe('PoolPrototype', function() {
-    var testObj;
+    var testProto;
     beforeEach(function() {
       this.addMatchers({
         toBeArray: function(expected) {
           return this.actual instanceof Array;
         }
       });
-      testObj = Base.create(null, 'testObj', {
+      testProto = Base.create(null, 'testProto', {
         testProp: {
           value: 1
         }
@@ -279,7 +291,7 @@ describe('aronnax.Pool', function() {
     describe('init', function() {
 
       it('should set the active and free pools to empty arrays', function() {
-        var testPool = Pool.createPool(testObj.className, testObj, 15);
+        var testPool = Pool.createPool(testProto.className, testProto, 15);
 
         expect(testPool.activePool).toBeDefined();
         expect(testPool.freePool).toBeDefined();
@@ -287,15 +299,15 @@ describe('aronnax.Pool', function() {
       });
 
       it('should set its base prototype as the object passed in', function() {
-        var testPool = Pool.acquirePool(testObj.className, testObj);
+        var testPool = Pool.acquirePool(testProto.className, testProto);
 
-        expect(testPool.basePrototype).toBe(testObj);
+        expect(testPool.basePrototype).toBe(testProto);
       });
     });
 
     describe('expandPool', function() {
       it('should expand the pool by the amount passed in', function() {
-        var testPool = Pool.createPool(testObj.className, testObj, 1);
+        var testPool = Pool.createPool(testProto.className, testProto, 1);
 
         expect(testPool.freePool.length).toEqual(1);
         testPool.expandPool(9);
@@ -305,7 +317,7 @@ describe('aronnax.Pool', function() {
       // TODO this should use the config object
       it('should expand the pool by a default if not amount is passed in',
           function() {
-        var testPool = Pool.createPool(testObj.className, testObj, 1),
+        var testPool = Pool.createPool(testProto.className, testProto, 1),
             configAmount = 12;
 
         expect(testPool.freePool.length).toEqual(1);
@@ -316,17 +328,16 @@ describe('aronnax.Pool', function() {
 
     describe('acquireMember', function() {
       it('should return the object passed in', function() {
-        var testPool = Pool.createPool(testObj.className, testObj, 10);
+        var testPool = Pool.createPool(testProto.className, testProto, 10),
+            testInst = testPool.acquireMember();
 
-        var s = testPool.acquireMember();
-
-        expect(s).toBeDefined();
-        expect(typeof s).toEqual('object');
-        expect(s.className).toEqual(testObj.className);
+        expect(testInst).toBeDefined();
+        expect(typeof testInst).toEqual('object');
+        expect(testInst.className).toEqual(testProto.className);
       });
 
       it('should expland the pool if it gets down to 0 members', function() {
-        var testPool = Pool.createPool(testObj.className, testObj, 1);
+        var testPool = Pool.createPool(testProto.className, testProto, 1);
 
         expect(testPool.freePool.length).toEqual(1);
         testPool.acquireMember();
@@ -336,7 +347,7 @@ describe('aronnax.Pool', function() {
       });
 
       it('should remove the member from the free pool', function() {
-        var testPool = Pool.createPool(testObj.className, testObj, 1);
+        var testPool = Pool.createPool(testProto.className, testProto, 1);
 
         expect(testPool.freePool.length).toEqual(1);
         testPool.acquireMember();
@@ -344,7 +355,7 @@ describe('aronnax.Pool', function() {
       });
 
       it('should add the member to the active pool', function() {
-        var testPool = Pool.createPool(testObj.className, testObj, 1);
+        var testPool = Pool.createPool(testProto.className, testProto, 1);
 
         expect(testPool.activePool.length).toEqual(0);
         testPool.acquireMember();
@@ -355,10 +366,10 @@ describe('aronnax.Pool', function() {
     describe('releaseMember', function() {
       it('should add a member to the free list and remove from the active list',
           function() {
-        var testObj = {
-              className: 'testObj'
+        var testProto = {
+              className: 'testProto'
             },
-            testPool = Pool.createPool(testObj.className, testObj, 10);
+            testPool = Pool.createPool(testProto.className, testProto, 10);
 
         var s = testPool.acquireMember();
         expect(testPool.freePool.length).toEqual(9);
@@ -368,18 +379,19 @@ describe('aronnax.Pool', function() {
         expect(testPool.freePool.length).toEqual(10);
         expect(testPool.activePool.length).toEqual(0);
       });
+
       it('should throw and error if the member doesn\'t exist yet', function() {
-        var testObj = {
+        var testProto = {
               id: 1,
-              className: 'testObjct'
+              className: 'testProto'
             },
             testInst,
             testPool,
             stub;
 
-        testPool = Pool.acquirePool(testObj.className, testObj);
+        testPool = Pool.acquirePool(testProto.className, testProto);
         stub = sinon.stub(testPool, 'releaseMember');
-        expect(stub.withArgs(testObj).throws('Error')).toBeTruthy();
+        expect(stub.withArgs(testProto).throws('Error')).toBeTruthy();
 
         testPool.releaseMember.restore();
       });

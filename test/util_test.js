@@ -10,8 +10,8 @@ describe('aronnax.util', function() {
     var flag = false;
 
     require(['aronnax/util'],
-        function(_util) {
-      util = _util;
+        function(__util) {
+      util = __util;
       flag = true;
     });
 
@@ -21,7 +21,7 @@ describe('aronnax.util', function() {
   });
 
   describe('cleanAnything', function() {
-    it('should remove all immediate properties from and object', function() {
+    it('should remove all immediate properties from an object', function() {
       var testObj = {
             id:  3,
             testProp: 'test'
@@ -33,6 +33,7 @@ describe('aronnax.util', function() {
       expect(testObj.id).toBeUndefined();
       expect(testObj.testProp).toBeUndefined();
     });
+
     it('should  not clear an objects prototype properties', function() {
       var testPrototype = {
             testProp1: 1
@@ -49,6 +50,7 @@ describe('aronnax.util', function() {
       expect(testObj.testProp1).toBeDefined();
       expect(testObj.testProp1).toEqual(1);
     });
+
     it('should clear all keys of an array', function() {
       var testArray = [1,2,4,'test'];
 

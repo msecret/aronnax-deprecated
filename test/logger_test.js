@@ -18,8 +18,8 @@ describe('aronnax.Logger', function() {
   beforeEach(function() {
     var flag = false;
 
-    require(['aronnax/Logger'], function(_Logger) {
-      Logger = _Logger;
+    require(['aronnax/Logger'], function(__Logger) {
+      Logger = __Logger;
       flag = true;
     });
 
@@ -31,28 +31,33 @@ describe('aronnax.Logger', function() {
   describe('getLog', function() {
     it('should create a new log with specified name if it doesnt exist',
         function() {
-      var actual = Logger.getLog('newTestLog').name;
-      var expected = 'newTestLog';
-      expect(actual).toEqual(expected);
+      var actualName = Logger.getLog('newTestLog').name,
+          expectedName = 'newTestLog';
+
+      expect(actualName).toEqual(expectedName);
     });
 
     it('should get the log of name when it exists', function() {
-      var actual = Logger.getLog('testLog').name;
-      var expected = 'testLog';
-      expect(actual).toEqual(expected);
+      var actualName = Logger.getLog('testLog').name,
+          expectedName = 'testLog';
+
+      expect(actualName).toEqual(expectedName);
     });
 
     it('should not create a new log if it already exists', function() {
+      var log1,
+          log2,
+          log3;
       // Manually ensure there are no logs
       Logger.logs.length = 0;
 
-      var log1 = Logger.getLog('testLog1');
+      log1 = Logger.getLog('testLog1');
       expect(Logger.logs.length).toEqual(1);
 
-      var log2 = Logger.getLog('testLog2');
+      log2 = Logger.getLog('testLog2');
       expect(Logger.logs.length).toEqual(2);
 
-      var log3 = Logger.getLog('testLog1');
+      log3 = Logger.getLog('testLog1');
       expect(Logger.logs.length).toEqual(2);
     });
   });
@@ -66,9 +71,9 @@ describe('aronnax.Log', function() {
   beforeEach(function() {
     var flag = false;
 
-    require(['aronnax/Logger', 'deps/logWriter'], function(_Logger, _logWriter) {
-      Logger = _Logger;
-      logWriter = _logWriter;
+    require(['aronnax/Logger', 'deps/logWriter'], function(__Logger, __logWriter) {
+      Logger = __Logger;
+      logWriter = __logWriter;
       testLog =  Logger.getLog('test log');
       testLog._logWriter = logWriter;
       sinon.spy(testLog._logWriter, 'log');
@@ -99,11 +104,11 @@ describe('aronnax.Log', function() {
 
     it('calls the log function with the log name and message', function() {
       var testMessage = 'test message',
-          expected = testLog.name + ':' + testMessage;
+          expectedMessage = testLog.name + ':' + testMessage;
 
       testLog.log(testMessage);
 
-      expect(testLog._logWriter.log).toHaveBeenCalledWith(expected);
+      expect(testLog._logWriter.log).toHaveBeenCalledWith(expectedMessage);
     });
 
     it('does not call the log function in production environemnts', function() {
