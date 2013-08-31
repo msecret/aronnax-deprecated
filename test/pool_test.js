@@ -346,9 +346,9 @@ describe('aronnax.Pool', function() {
       it('should add the member to the active pool', function() {
         var testPool = Pool.createPool(testObj.className, testObj, 1);
 
-        expect(_.size(testPool.activePool._dataStore)).toEqual(0);
+        expect(testPool.activePool.length).toEqual(0);
         testPool.acquireMember();
-        expect(_.size(testPool.activePool._dataStore)).toEqual(1);
+        expect(testPool.activePool.length).toEqual(1);
       });
     });
 
