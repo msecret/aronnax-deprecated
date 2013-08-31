@@ -27,6 +27,58 @@ describe('aronnax.Pool', function() {
     Pool.pools = {};
     Pool.totalPools = 0;
   });
+  describe('getTotalActiveObjects', function() {
+    it('should total number of active objects across all pools', function() {
+      var testPool;
+      expect(typeof Pool.totalActiveObjects).toEqual('number');
+      expect(Pool.totalActiveObjects).toEqual(0);
+
+      testPool = Pool.createPool('testClass', {}, 15);
+      expect(Pool.totalActiveObjects).toEqual(0);
+
+      testPool.acquireMember();
+      expect(Pool.totalActiveObjects).toEqual(1);
+    });
+    it('should count the total number even with multiple pools', function() {
+      var testPool1,
+          testPool2;
+
+      testPool1 = Pool.createPool('testPool1', {}, 15);
+      testPool2 = Pool.createPool('testPool2', {}, 15);
+      expect(Pool.totalActiveObjects).toEqual(0);
+
+      testPool1.acquireMember();
+      expect(Pool.totalActiveObjects).toEqual(1);
+      testPool2.acquireMember();
+      expect(Pool.totalActiveObjects).toEqual(2);
+    });
+  });
+  describe('getTotalFreeObjects', function() {
+    it('should total number of free objects across all pools', function() {
+      var testPool;
+      expect(typeof Pool.totalFreeObjects).toEqual('number');
+      expect(Pool.totalFreeObjects).toEqual(0);
+
+      testPool = Pool.createPool('testClass', {}, 15);
+      expect(Pool.totalFreeObjects).toEqual(15);
+
+      testPool.acquireMember();
+      expect(Pool.totalFreeObjects).toEqual(14);
+    });
+    it('should count the total number even with multiple pools', function() {
+      var testPool1,
+          testPool2;
+
+      testPool1 = Pool.createPool('testPool1', {}, 15);
+      testPool2 = Pool.createPool('testPool2', {}, 15);
+      expect(Pool.totalFreeObjects).toEqual(30);
+
+      testPool1.acquireMember();
+      expect(Pool.totalFreeObjects).toEqual(29);
+      testPool2.acquireMember();
+      expect(Pool.totalFreeObjects).toEqual(28);
+    });
+  });
   describe('acquire', function() {
     it('should return an object', function() {
       var testO = Base.create(null, 'testO'),

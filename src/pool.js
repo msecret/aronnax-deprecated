@@ -150,6 +150,41 @@ define('aronnax/Pool',
       totalPools: 0,
 
       /**
+       * Returns the total amount of active objects in all the pools
+       * @type Number
+       */
+      get totalActiveObjects() {
+        var total = 0,
+            className,
+            pool;
+
+        for (className in this.pools) {
+          pool = this.pools[className];
+          total += pool.totalObjectsActive;
+        }
+
+        return total;
+      },
+
+      /**
+       * Returns the total amount of free objects in all the pools
+       * @type Number
+       */
+      get totalFreeObjects() {
+        var total = 0,
+            className,
+            pool;
+
+        for (className in this.pools) {
+          pool = this.pools[className];
+          total += pool.totalObjectsFree;
+        }
+
+        return total;
+
+      },
+
+      /**
        * Gets the pool of the class type, creating one if it doesn't exists
        * @static
        * @param {Sting} className The name of the class
