@@ -191,7 +191,7 @@ define('aronnax/Pool',
        * @return {arronax.Pool} The pool of the class type
        */
       acquirePool: function(className, objPrototype) {
-        var pool = this.pools[className];
+        var pool = this.getPool(objPrototype, className);
         if (!pool) {
           pool = this.createPool(className, objPrototype);
         }
@@ -206,8 +206,8 @@ define('aronnax/Pool',
        * being searched for.
        * @returns {Object} The Pool object.
        */
-      getPool: function(objPrototype) {
-        var className = this.getClassName(objPrototype);
+      getPool: function(objPrototype, poolClassName) {
+        var className = poolClassName || this.getClassName(objPrototype);
         return this.pools[className];
       },
 
