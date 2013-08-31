@@ -15,7 +15,7 @@ define('aronnax/Logger',
    /**
     * A log which will provide logging capabilities
     */
-    var Log = Base.create(null, 'Log', {
+    var Log = Base.create(Object.prototype, 'Log', {
 
       /**
        * Initializes the log.

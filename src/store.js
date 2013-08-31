@@ -37,7 +37,7 @@ define('aronnax/Store',
      * @module aronnax/Store
      * @exports aronnax/Store
     */
-    var Store = Base.create(null, 'Store', {
+    var Store = Base.create(Object.prototype, 'Store', {
 
       /**
        * The accessible data store.
