@@ -13,8 +13,8 @@ beforeEach(function() {
       var notText = this.isNot ? " not" : "";
 
       this.message = function () {
-        return "Expected " + actual + notText + " to be an array" ;
-      }
+        return "Expected " + this.actual + notText + " to be an array" ;
+      };
 
       return _.isArray(this.actual);
     },
@@ -22,24 +22,24 @@ beforeEach(function() {
       var notText = this.isNot ? " not" : "";
 
       this.message = function () {
-        return "Expected " + actual + notText + " to be a number" ;
-      }
+        return "Expected " + this.actual + notText + " to be a number" ;
+      };
       return typeof this.actual === 'number';
     },
     toBeAFunction: function(expected) {
       var notText = this.isNot ? " not" : "";
 
       this.message = function () {
-        return "Expected " + actual + notText + " to be a function" ;
-      }
+        return "Expected " + this.actual + notText + " to be a function" ;
+      };
       return _.isFunction(this.actual);
     },
     toBeAnObject: function(expected) {
       var notText = this.isNot ? " not" : "";
 
       this.message = function () {
-        return "Expected " + actual + notText + " to be an object" ;
-      }
+        return "Expected " + this.actual + notText + " to be an object" ;
+      };
       return _.isObject(this.actual);
     }
   };
