@@ -9,7 +9,7 @@ Includes class system.
 Requirements:
 - nodejs
 - npm
-- gruntjs
+- phantomjs 1.9.x
 
 Other dependencies solved through build process.
 
