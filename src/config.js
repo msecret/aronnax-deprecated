@@ -1,5 +1,5 @@
 define('aronnax/Config', function() { 
 'use strict';
-var Config = {"initialPoolSizeAmount":12};
+var Config = {"env":"dev","initialPoolSizeAmount":12,"fps":60};
 return Config;
 });
