@@ -24,7 +24,8 @@ define('aronnax/Core',
        * @type Number
        */
       fps: {
-        value: config.fps || 60
+        value: config.fps || 60,
+        writable: false
       },
       /**
        * The number of milliseconds for each frame should be based on
@@ -32,7 +33,8 @@ define('aronnax/Core',
        * @type Number
        */
       millisecondsPerFrame: {
-        value: 1000 / config.fps
+        value: 1000 / config.fps,
+        writable: false
       },
       /**
        * The number of milliseconds for each frame should be based on

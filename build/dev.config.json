@@ -1,5 +1,5 @@
 {
   "env": "dev",
-  "initialPoolSizeAmount": 12,
-  "fps": 60
+  "fps": 60,
+  "initialPoolSizeAmount": 12
 }
