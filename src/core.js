@@ -18,23 +18,32 @@ define('aronnax/Core',
 
     var _log = Logger.getLog('aronnax.Core');
 
+    var _fps = config.fps || 60,
+        _millisecondsPerFrame = 1000 / _fps,
+        _isRunning = false,
+        _requestId;
+
+
     var Core = Base.create(Object.prototype, 'Core', {
       /**
        * The frames per second the game should run at defaults to 60
        * @type Number
        */
       fps: {
-        value: config.fps || 60,
-        writable: false
+        get: function() { return _fps; },
+        set: function(value) {
+          _fps = value;
+          _millisecondsPerFrame = 1000 / _fps;
+        }
       },
       /**
        * The number of milliseconds for each frame should be based on
        * the fps
+       * @protected
        * @type Number
        */
       millisecondsPerFrame: {
-        value: 1000 / config.fps,
-        writable: false
+        get: function () { return _millisecondsPerFrame; }
       },
       /**
        * The number of milliseconds for each frame should be based on
@@ -66,15 +75,14 @@ define('aronnax/Core',
        * @type Boolean
        */
       isRunning: {
-        value: false,
-        writable: true
+        get: function() { return _isRunning; }
       },
       /**
        * The ID of the animation frame, returned from requestAnimationFrame.
        * @type Number
        */
       requestId: {
-        writable: true
+        get: function() { return _requestId; }
       },
 
       /**
@@ -90,11 +98,11 @@ define('aronnax/Core',
         this.previousTime = currentTime;
         this.lag += elapsed;
 
-        while (this.lag >= this.millisecondsPerFrame) {
+        while (this.lag >= _millisecondsPerFrame) {
           this.update();
-          this.lag -= this.millisecondsPerFrame;
+          this.lag -= _millisecondsPerFrame;
         }
-        this.draw(this.lag / this.millisecondsPerFrame);
+        this.draw(this.lag / _millisecondsPerFrame);
         this.frame++;
       },
 
@@ -102,9 +110,9 @@ define('aronnax/Core',
        * Runs the game if not already running, runs the loop with launchLoop.
        */
       run: function () {
-        if (!this.isRunning) {
+        if (!_isRunning) {
           this.launchLoop();
-          this.isRunning = true;
+          _isRunning = true;
         }
       },
 
@@ -122,8 +130,8 @@ define('aronnax/Core',
 
         runner = function() {
           self.tick();
-          if (self.isRunning) {
-            self.requestId = requestAnimationFrame(runner);
+          if (_isRunning) {
+            _requestId = requestAnimationFrame(runner);
           }
         };
         runner();
@@ -133,7 +141,7 @@ define('aronnax/Core',
        * Stops the game by changing the isRunning variable.
        */
       stop: function() {
-        this.isRunning = false;
+        _isRunning = false;
       },
 
       /**
