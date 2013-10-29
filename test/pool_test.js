@@ -16,6 +16,8 @@ describe('aronnax.Pool', function() {
       Base = __Base;
       Pool = __Pool;
       Pooled = __Pooled;
+      Pool.pools = {};
+      Pool.totalPools = 0;
       flag = true;
     });
 

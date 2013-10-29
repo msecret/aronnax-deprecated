@@ -27,7 +27,7 @@ define('aronnax/Base',
       }
 
       return classIds[className]++;
-    };
+    }
 
    /**
     * A base object to inherit from the provide a shared object to inherit
@@ -54,8 +54,8 @@ define('aronnax/Base',
             writable: false });
 
         for (key in props) {
-          prop = props[key];
           if (props.hasOwnProperty(key)) {
+            prop = props[key];
             if (typeof prop === 'function') {
               o[key] = prop;
             }
@@ -93,7 +93,7 @@ define('aronnax/Base',
 
         return o;
       }
-    }
+    };
 
     return Base;
 });
