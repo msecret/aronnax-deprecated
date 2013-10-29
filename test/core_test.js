@@ -72,7 +72,7 @@ describe('aronnax.Core', function() {
     });
 
     it('should not start the loop through launchLoop if already running', function() {
-      game.isRunning = true;
+      game.run();
       sinon.spy(game, 'launchLoop');
 
       game.run();

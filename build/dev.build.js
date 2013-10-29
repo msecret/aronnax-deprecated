@@ -8,23 +8,13 @@
 
 ({
   appDir: '../',
-  baseUrl: 'src/',
+  baseUrl: './',
   dir: '../dist',
   generateSourceMaps: true,
   locale: 'en-us',
   logLevel: 0,
   optimize: 'uglify',
   optimizeCss: 'none',
-  paths: {
-    'aronnax': 'src',
-    'underscore': 'lib/components/underscore/index'
-  },
-  shim: {
-    'underscore': {
-      deps: [],
-      exports: '_'
-    }
-  },
   useStrict: true,
 
   uglify: {

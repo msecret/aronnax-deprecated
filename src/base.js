@@ -17,20 +17,19 @@ define('aronnax/Base',
   function(_) {
     "use strict";
 
-    var nextId = 0;
-
-    var classIds = {};
+    var _nextId = 0,
+        _classIds = {};
 
     function nextClassId(className) {
-      if (!classIds[className]) {
-        classIds[className] = 0;
+      if (!_classIds[className]) {
+        _classIds[className] = 0;
       }
 
-      return classIds[className]++;
+      return _classIds[className]++;
     }
 
    /**
-    * A base object to inherit from the provide a shared object to inherit
+    * Create an object with a classname and properties to add to it.
     * from.
     * @exports aronnax.Base
     */
@@ -42,16 +41,18 @@ define('aronnax/Base',
        * @param {Object} props Properties to add to the inherited object.
        * @returns {Object} The newly created instance.
        */
-      create: function(obj, name, props) {
+      create: function (obj, name, props) {
         var o = Object.create(obj),
             prop,
             key;
 
         Object.defineProperty(o, "className",
-          { value : name || 'Base',
+          {
+            value: name || 'Base',
             configurable: false,
             enumerable: false,
-            writable: false });
+            writable: false
+          });
 
         for (key in props) {
           if (props.hasOwnProperty(key)) {
@@ -76,20 +77,20 @@ define('aronnax/Base',
        * @param {Object} obj The object to create and ID.
        * @returns {Object} The object created.
        */
-      construct: function(obj) {
+      construct: function (obj) {
         var classId = nextClassId(obj.className),
           o = Object.create(obj, {
-          'id': {
-            enumerable: false,
-            writable: false,
-            value: nextId++
-          },
-          'classId': {
-            enumerable: false,
-            writable: false,
-            value: classId
-          }
-        });
+            'id': {
+              enumerable: false,
+              writable: false,
+              value: _nextId++
+            },
+            'classId': {
+              enumerable: false,
+              writable: false,
+              value: classId
+            }
+          });
 
         return o;
       }
