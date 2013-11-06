@@ -43,10 +43,8 @@ define('aronnax/entity', [
       initComponents: function(opts) {
         var key,
             component;
-        console.log(this.components);
         for (key in this.components) {
           if (this.components.hasOwnProperty(key)) {
-            console.log(key);
             component = this.components[key];
             this[component.className] = Base.construct(component);
             this[component.className].init(opts);
@@ -85,7 +83,7 @@ define('aronnax/entity', [
             component = components[i];
             // make unwritable?
             o[component.className] = component;
-            o.components[className] = component;
+            o.components[component.className] = component;
             o.componentList.push(component.className);
           }
         }

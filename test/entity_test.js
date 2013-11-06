@@ -39,7 +39,7 @@ describe('aronnax.Entity', function() {
       expect(testProtoEntity.initComponents).toBeDefined();
       expect(testProtoEntity.initComponents).toBeAFunction();
       expect(testProtoEntity.components).toBeDefined();
-      expect(testProtoEntity.components).toBeAnArray();
+      expect(testProtoEntity.components).toBeAnObject();
       expect(testProtoEntity.componentList).toBeDefined();
       expect(testProtoEntity.componentList).toBeAnArray();
     });
@@ -55,7 +55,7 @@ describe('aronnax.Entity', function() {
             testMethodA: function() { },
             init: function() { }
           }),
-          TestEntityProto = Entity.create('TestEntity', [testComponentProto]),
+          TestEntityProto = Entity.create('TestEntityA', [testComponentProto]),
           testInst = TestEntityProto.make();
 
       expect(testInst.TestComponentA).toBeDefined();
@@ -67,7 +67,7 @@ describe('aronnax.Entity', function() {
             init: function() { },
             testMethodB: function() { }
           }),
-          TestEntityProto = Entity.create('TestEntity', [testComponentProto]),
+          TestEntityProto = Entity.create('TestEntityB', [testComponentProto]),
           testInst = TestEntityProto.make();
 
       expect(testInst.componentList).toBeDefined();
@@ -118,7 +118,6 @@ describe('aronnax.Entity', function() {
           testInst = TestEntityProto.make();
 
       testInst.init({x: 1});
-      console.dir(testInst);
       expect(testInst.TestComponent.x).toEqual(1);
     });
 
