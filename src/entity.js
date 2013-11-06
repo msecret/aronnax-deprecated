@@ -16,64 +16,42 @@ define('aronnax/entity', [
   ],
   function(_, Base, Logger, config, Pooled) {
 
-    var _components = [],
-        _componentList = [];
-
    /**
     * A base game entity object which is pooled
     * @exports aronnax/Entity
     */
-    var Entity = Base.create(Pooled, 'Entity', {
+    var EntityProto = Base.create(Pooled, 'Entity', {
       /**
        * A list of components on the entity
        * @type Array
        */
       components: {
-        get: function() { return _components; }
+        value: {},
+        writable: true
       },
 
       componentList: {
-        get: function() { return _componentList; }
+        value: [],
+        writable: true
       },
 
       init: function(opts) {
+        console.log('EntityProto.init');
         this.initComponents(opts);
       },
 
       initComponents: function(opts) {
         var key,
             component;
+        console.log(this.components);
         for (key in this.components) {
           if (this.components.hasOwnProperty(key)) {
+            console.log(key);
             component = this.components[key];
             this[component.className] = Base.construct(component);
+            this[component.className].init(opts);
           }
         }
-      },
-
-      /**
-       * Creates the new entity and adds the components to it.
-       * @param {Sting} entityName The name of the type of entity
-       * @param {Array} components A list of components to add to the entity
-       * @return {Object} The entity prototype to create to entities with
-       */
-      create: function(entityName, components) {
-        var o = Base.create(this, entityName),
-            component,
-            i = 0,
-            ilen;
-
-        if (components) {
-          for (ilen = components.length; i < ilen; i++) {
-            component = components[i];
-            // make unwritable?
-            o[component.className] = component;
-            _components.push(component);
-            _componentList.push(component.className);
-          }
-        }
-
-        return o;
       },
 
       /**
@@ -84,6 +62,47 @@ define('aronnax/entity', [
       addMixins: function(mixins) {
         _.extend(this, mixins);
       }
+    });
+
+    var Entity = Base.create(EntityProto, 'Entity', {
+      /**
+       * Creates the new entity and adds the components to it.
+       * @param {Sting} entityName The name of the type of entity
+       * @param {Array} components A list of components to add to the entity
+       * @return {Object} The entity prototype to create to entities with
+       */
+      create: function(entityName, components) {
+        var o = Base.create(EntityProto, entityName),
+            component,
+            i = 0,
+            ilen;
+
+        o.components = {};
+        o.componentList = [];
+
+        if (components) {
+          for (ilen = components.length; i < ilen; i++) {
+            component = components[i];
+            // make unwritable?
+            o[component.className] = component;
+            o.components[className] = component;
+            o.componentList.push(component.className);
+          }
+        }
+
+        return o;
+      },
+
+      /**
+       * Add an object of mixins to the current prototype.
+       *
+       * @param {Object} obj Object to add mixins to
+       * @param {Object} mixins A full object of mixins to add.
+       */
+      addMixins: function(obj, mixins) {
+        _.extend(obj, mixins);
+      }
+
     });
 
     return Entity;
