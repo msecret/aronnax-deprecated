@@ -2,6 +2,10 @@
   {
     "comment": "/**\n * @file Holds the pooled object\n */",
     "meta": {
+      "range": [
+        100,
+        140
+      ],
       "filename": "pooled.js",
       "lineno": 6,
       "path": "src",
@@ -18,16 +22,16 @@
     "meta": {
       "range": [
         332,
-        796
+        1107
       ],
       "filename": "pooled.js",
       "lineno": 18,
       "path": "src",
       "code": {
-        "id": "astnode160094946",
+        "id": "astnode1278956965",
         "name": "Pooled",
         "type": "CALL",
-        "node": "Object",
+        "node": "<Object>",
         "value": "CALL"
       }
     },
@@ -42,17 +46,17 @@
     "comment": "/**\n       * Gets a free object from the pool, enhances it and then returns it.\n       * @return {Object|Array|Function} The object being returned from the pool\n       */",
     "meta": {
       "range": [
-        555,
-        653
+        567,
+        665
       ],
       "filename": "pooled.js",
       "lineno": 24,
       "path": "src",
       "code": {
-        "id": "astnode192714409",
+        "id": "astnode657982295",
         "name": "make",
         "type": "FUNCTION",
-        "node": "Object",
+        "node": "<Object>",
         "value": "FUNCTION",
         "paramnames": []
       },
@@ -71,10 +75,10 @@
             "Function"
           ]
         },
-        "optional": null,
-        "nullable": null,
-        "variable": null,
-        "defaultvalue": "undef",
+        "optional": "undefined",
+        "nullable": "undefined",
+        "variable": "undefined",
+        "defaultvalue": "undefined",
         "description": "The object being returned from the pool"
       }
     ],
@@ -87,17 +91,17 @@
     "comment": "",
     "meta": {
       "range": [
-        586,
-        608
+        598,
+        620
       ],
       "filename": "pooled.js",
       "lineno": 25,
       "path": "src",
       "code": {
-        "id": "astnode223489506",
+        "id": "astnode25989707",
         "name": "f",
         "type": "CALL",
-        "node": "Object",
+        "node": "<Object>",
         "value": "CALL"
       }
     },
@@ -112,17 +116,17 @@
     "comment": "",
     "meta": {
       "range": [
-        622,
-        625
+        634,
+        637
       ],
       "filename": "pooled.js",
       "lineno": 26,
       "path": "src",
       "code": {
-        "id": "astnode628029189",
+        "id": "astnode1231085727",
         "name": "key",
         "type": "undefined",
-        "node": "Object",
+        "node": "<Object>",
         "value": "key"
       }
     },
@@ -137,25 +141,103 @@
     "comment": "/**\n       * Releases a used object, cleans it, and returns it to the free pool.\n       */",
     "meta": {
       "range": [
-        759,
-        789
+        771,
+        851
       ],
       "filename": "pooled.js",
       "lineno": 34,
       "path": "src",
       "code": {
-        "id": "astnode881341271",
-        "name": "release",
+        "id": "astnode1168664452",
+        "name": "free",
         "type": "FUNCTION",
-        "node": "Object",
+        "node": "<Object>",
         "value": "FUNCTION",
         "paramnames": []
       }
     },
     "description": "Releases a used object, cleans it, and returns it to the free pool.",
-    "name": "release",
+    "name": "free",
     "kind": "function",
-    "longname": "release",
+    "longname": "free",
     "scope": "global"
+  },
+  {
+    "comment": "/**\n       * The current Pool object for this object prototype\n       */",
+    "meta": {
+      "range": [
+        939,
+        1100
+      ],
+      "filename": "pooled.js",
+      "lineno": 42,
+      "path": "src",
+      "code": {
+        "id": "astnode209649109",
+        "name": "pool",
+        "type": "OBJECTLIT",
+        "node": "<Object>",
+        "value": "OBJECTLIT"
+      }
+    },
+    "description": "The current Pool object for this object prototype",
+    "name": "pool",
+    "kind": "member",
+    "longname": "pool",
+    "scope": "global"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        1001,
+        1092
+      ],
+      "filename": "pooled.js",
+      "lineno": 44,
+      "path": "src",
+      "code": {
+        "id": "astnode180486481",
+        "name": "get",
+        "type": "FUNCTION",
+        "node": "<Object>",
+        "value": "FUNCTION",
+        "paramnames": []
+      },
+      "vars": {
+        "pool": false
+      }
+    },
+    "undocumented": true,
+    "name": "get",
+    "kind": "function",
+    "memberof": "pool",
+    "scope": "static",
+    "longname": "pool.get"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        1033,
+        1058
+      ],
+      "filename": "pooled.js",
+      "lineno": 45,
+      "path": "src",
+      "code": {
+        "id": "astnode1074780345",
+        "name": "pool",
+        "type": "CALL",
+        "node": "<Object>",
+        "value": "CALL"
+      }
+    },
+    "undocumented": true,
+    "name": "pool",
+    "kind": "member",
+    "memberof": "pool.get",
+    "longname": "pool.get~pool",
+    "scope": "inner"
   }
 ]

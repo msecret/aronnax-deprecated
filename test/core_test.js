@@ -11,7 +11,7 @@ describe('aronnax.Core', function() {
   beforeEach(function() {
     var flag = false;
 
-    require(['aronnax/Base', 'aronnax/Core'],
+    require(['aronnax/base', 'aronnax/core'],
       function(__Base, __Core) {
       Base = __Base;
       Core = __Core;

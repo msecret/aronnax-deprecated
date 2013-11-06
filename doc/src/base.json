@@ -2,6 +2,10 @@
   {
     "comment": "/**\n * @file Holds the Base object\n */",
     "meta": {
+      "range": [
+        100,
+        138
+      ],
       "filename": "base.js",
       "lineno": 6,
       "path": "src",
@@ -16,6 +20,10 @@
   {
     "comment": "/**\n* A base object to inherit from the provide a shared object to inherit\n* from.\n* @module aronnax.Base\n*/",
     "meta": {
+      "range": [
+        140,
+        248
+      ],
       "filename": "base.js",
       "lineno": 8,
       "path": "src",
@@ -29,24 +37,136 @@
     "scope": "static"
   },
   {
-    "comment": "/**\n    * A base object to inherit from the provide a shared object to inherit\n    * from.\n    * @exports aronnax.Base\n    */",
+    "comment": "",
     "meta": {
       "range": [
-        462,
-        1556
+        333,
+        344
+      ],
+      "filename": "base.js",
+      "lineno": 20,
+      "path": "src",
+      "code": {
+        "id": "astnode151804362",
+        "name": "_nextId",
+        "type": "NUMBER",
+        "node": "<Object>",
+        "value": "0"
+      }
+    },
+    "undocumented": true,
+    "name": "_nextId",
+    "kind": "member",
+    "memberof": "<anonymous>",
+    "longname": "<anonymous>~_nextId",
+    "scope": "inner"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        354,
+        368
+      ],
+      "filename": "base.js",
+      "lineno": 21,
+      "path": "src",
+      "code": {
+        "id": "astnode1846023025",
+        "name": "_classIds",
+        "type": "OBJECTLIT",
+        "node": "<Object>",
+        "value": "OBJECTLIT"
+      }
+    },
+    "undocumented": true,
+    "name": "_classIds",
+    "kind": "member",
+    "memberof": "<anonymous>",
+    "longname": "<anonymous>~_classIds",
+    "scope": "inner"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        375,
+        529
+      ],
+      "filename": "base.js",
+      "lineno": 23,
+      "path": "src",
+      "code": {
+        "id": "astnode1255364991",
+        "name": "nextClassId",
+        "type": "function",
+        "node": "<Object>",
+        "funcscope": "<anonymous>",
+        "paramnames": [
+          "className"
+        ]
+      }
+    },
+    "undocumented": true,
+    "name": "nextClassId",
+    "kind": "function",
+    "memberof": "<anonymous>",
+    "longname": "<anonymous>~nextClassId",
+    "scope": "inner"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        452,
+        476
       ],
       "filename": "base.js",
       "lineno": 25,
       "path": "src",
       "code": {
-        "id": "astnode1369543768",
+        "id": "astnode529012052",
+        "name": "_classIds[className]",
+        "type": "NUMBER",
+        "node": "<Object>",
+        "funcscope": "<anonymous>",
+        "value": "0"
+      }
+    },
+    "undocumented": true,
+    "name": "_classIds[className]",
+    "kind": "member",
+    "tags": [
+      {
+        "originalTitle": "scope",
+        "title": "scope",
+        "text": "inner",
+        "value": "inner"
+      }
+    ],
+    "scope": "inner",
+    "memberof": "aronnax.module:Base",
+    "longname": "aronnax.module:Base~_classIds[className]"
+  },
+  {
+    "comment": "/**\n    * Create an object with a classname and properties to add to it.\n    * from.\n    * @exports aronnax.Base\n    */",
+    "meta": {
+      "range": [
+        662,
+        2397
+      ],
+      "filename": "base.js",
+      "lineno": 36,
+      "path": "src",
+      "code": {
+        "id": "astnode283689423",
         "name": "Base",
         "type": "OBJECTLIT",
-        "node": "Object",
+        "node": "<Object>",
         "value": "OBJECTLIT"
       }
     },
-    "description": "A base object to inherit from the provide a shared object to inherit\nfrom.",
+    "description": "Create an object with a classname and properties to add to it.\nfrom.",
     "alias": "aronnax.Base",
     "kind": "module",
     "name": "Base",
@@ -58,17 +178,17 @@
     "comment": "/**\n       * Creates a new object, maps to Object.create.\n       * @param {Object} obj The object to inherit from\n       * @param {String} name The name of the object.\n       * @param {Object} props Properties to add to the inherited object.\n       * @returns {Object} The newly created instance.\n       */",
     "meta": {
       "range": [
-        790,
-        1550
+        990,
+        1774
       ],
       "filename": "base.js",
-      "lineno": 33,
+      "lineno": 44,
       "path": "src",
       "code": {
-        "id": "astnode648734830",
+        "id": "astnode1866674540",
         "name": "create",
         "type": "FUNCTION",
-        "node": "Object",
+        "node": "<Object>",
         "value": "FUNCTION",
         "paramnames": [
           "obj",
@@ -90,10 +210,10 @@
             "Object"
           ]
         },
-        "optional": null,
-        "nullable": null,
-        "variable": null,
-        "defaultvalue": "undef",
+        "optional": "undefined",
+        "nullable": "undefined",
+        "variable": "undefined",
+        "defaultvalue": "undefined",
         "description": "The object to inherit from",
         "name": "obj"
       },
@@ -103,10 +223,10 @@
             "String"
           ]
         },
-        "optional": null,
-        "nullable": null,
-        "variable": null,
-        "defaultvalue": "undef",
+        "optional": "undefined",
+        "nullable": "undefined",
+        "variable": "undefined",
+        "defaultvalue": "undefined",
         "description": "The name of the object.",
         "name": "name"
       },
@@ -116,10 +236,10 @@
             "Object"
           ]
         },
-        "optional": null,
-        "nullable": null,
-        "variable": null,
-        "defaultvalue": "undef",
+        "optional": "undefined",
+        "nullable": "undefined",
+        "variable": "undefined",
+        "defaultvalue": "undefined",
         "description": "Properties to add to the inherited object.",
         "name": "props"
       }
@@ -131,10 +251,10 @@
             "Object"
           ]
         },
-        "optional": null,
-        "nullable": null,
-        "variable": null,
-        "defaultvalue": "undef",
+        "optional": "undefined",
+        "nullable": "undefined",
+        "variable": "undefined",
+        "defaultvalue": "undefined",
         "description": "The newly created instance."
       }
     ],
@@ -148,17 +268,17 @@
     "comment": "",
     "meta": {
       "range": [
-        839,
-        861
+        1040,
+        1062
       ],
       "filename": "base.js",
-      "lineno": 34,
+      "lineno": 45,
       "path": "src",
       "code": {
-        "id": "astnode1115600610",
+        "id": "astnode1768306261",
         "name": "o",
         "type": "CALL",
-        "node": "Object",
+        "node": "<Object>",
         "value": "CALL"
       }
     },
@@ -173,17 +293,17 @@
     "comment": "",
     "meta": {
       "range": [
-        875,
-        879
+        1076,
+        1080
       ],
       "filename": "base.js",
-      "lineno": 35,
+      "lineno": 46,
       "path": "src",
       "code": {
-        "id": "astnode773149104",
+        "id": "astnode176951619",
         "name": "prop",
         "type": "undefined",
-        "node": "Object",
+        "node": "<Object>",
         "value": "prop"
       }
     },
@@ -198,17 +318,17 @@
     "comment": "",
     "meta": {
       "range": [
-        893,
-        896
+        1094,
+        1097
       ],
       "filename": "base.js",
-      "lineno": 36,
+      "lineno": 47,
       "path": "src",
       "code": {
-        "id": "astnode1254032703",
+        "id": "astnode1227528003",
         "name": "key",
         "type": "undefined",
-        "node": "Object",
+        "node": "<Object>",
         "value": "key"
       }
     },
@@ -223,17 +343,17 @@
     "comment": "",
     "meta": {
       "range": [
-        957,
-        979
+        1170,
+        1191
       ],
       "filename": "base.js",
-      "lineno": 39,
+      "lineno": 51,
       "path": "src",
       "code": {
-        "id": "astnode1274367071",
+        "id": "astnode1107410614",
         "name": "value",
         "type": "OR",
-        "node": "Object",
+        "node": "<Object>",
         "value": "OR"
       }
     },
@@ -256,17 +376,17 @@
     "comment": "",
     "meta": {
       "range": [
-        993,
-        1012
+        1205,
+        1224
       ],
       "filename": "base.js",
-      "lineno": 40,
+      "lineno": 52,
       "path": "src",
       "code": {
-        "id": "astnode596347156",
+        "id": "astnode1077379849",
         "name": "configurable",
         "type": "FALSE",
-        "node": "Object",
+        "node": "<Object>",
         "value": "false"
       }
     },
@@ -289,17 +409,17 @@
     "comment": "",
     "meta": {
       "range": [
-        1026,
-        1043
+        1238,
+        1255
       ],
       "filename": "base.js",
-      "lineno": 41,
+      "lineno": 53,
       "path": "src",
       "code": {
-        "id": "astnode1805440858",
+        "id": "astnode1707829375",
         "name": "enumerable",
         "type": "FALSE",
-        "node": "Object",
+        "node": "<Object>",
         "value": "false"
       }
     },
@@ -322,17 +442,17 @@
     "comment": "",
     "meta": {
       "range": [
-        1057,
-        1072
+        1269,
+        1284
       ],
       "filename": "base.js",
-      "lineno": 42,
+      "lineno": 54,
       "path": "src",
       "code": {
-        "id": "astnode1506858075",
+        "id": "astnode314589054",
         "name": "writable",
         "type": "FALSE",
-        "node": "Object",
+        "node": "<Object>",
         "value": "false"
       }
     },
@@ -355,17 +475,17 @@
     "comment": "",
     "meta": {
       "range": [
-        1117,
-        1134
+        1384,
+        1401
       ],
       "filename": "base.js",
-      "lineno": 45,
+      "lineno": 59,
       "path": "src",
       "code": {
-        "id": "astnode1409073314",
+        "id": "astnode626128227",
         "name": "prop",
         "type": "GETELEM",
-        "node": "Object",
+        "node": "<Object>",
         "funcscope": "aronnax.module:Base.create",
         "value": "props[key]"
       }
@@ -389,17 +509,17 @@
     "comment": "",
     "meta": {
       "range": [
-        1239,
-        1252
+        1463,
+        1476
       ],
       "filename": "base.js",
-      "lineno": 48,
+      "lineno": 61,
       "path": "src",
       "code": {
-        "id": "astnode141106670",
+        "id": "astnode1641900675",
         "name": "o[key]",
         "type": "NAME",
-        "node": "Object",
+        "node": "<Object>",
         "funcscope": "aronnax.module:Base.create",
         "value": "prop"
       }
@@ -418,5 +538,332 @@
     "scope": "inner",
     "memberof": "aronnax.module:Base",
     "longname": "aronnax.module:Base~o[key]"
+  },
+  {
+    "comment": "/**\n       * Will create the object and provide id and classIds for it.\n       * @param {Object} obj The object to create and ID.\n       * @returns {Object} The object created.\n       */",
+    "meta": {
+      "range": [
+        1976,
+        2391
+      ],
+      "filename": "base.js",
+      "lineno": 80,
+      "path": "src",
+      "code": {
+        "id": "astnode1556766508",
+        "name": "construct",
+        "type": "FUNCTION",
+        "node": "<Object>",
+        "value": "FUNCTION",
+        "paramnames": [
+          "obj"
+        ]
+      },
+      "vars": {
+        "classId": false,
+        "o": false
+      }
+    },
+    "description": "Will create the object and provide id and classIds for it.",
+    "params": [
+      {
+        "type": {
+          "names": [
+            "Object"
+          ]
+        },
+        "optional": "undefined",
+        "nullable": "undefined",
+        "variable": "undefined",
+        "defaultvalue": "undefined",
+        "description": "The object to create and ID.",
+        "name": "obj"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "Object"
+          ]
+        },
+        "optional": "undefined",
+        "nullable": "undefined",
+        "variable": "undefined",
+        "defaultvalue": "undefined",
+        "description": "The object created."
+      }
+    ],
+    "name": "construct",
+    "kind": "function",
+    "memberof": "aronnax.module:Base",
+    "scope": "static",
+    "longname": "aronnax.module:Base.construct"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        2016,
+        2052
+      ],
+      "filename": "base.js",
+      "lineno": 81,
+      "path": "src",
+      "code": {
+        "id": "astnode252717411",
+        "name": "classId",
+        "type": "CALL",
+        "node": "<Object>",
+        "value": "CALL"
+      }
+    },
+    "undocumented": true,
+    "name": "classId",
+    "kind": "member",
+    "memberof": "aronnax.module:Base.construct",
+    "longname": "aronnax.module:Base.construct~classId",
+    "scope": "inner"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        2064,
+        2363
+      ],
+      "filename": "base.js",
+      "lineno": 82,
+      "path": "src",
+      "code": {
+        "id": "astnode1920929607",
+        "name": "o",
+        "type": "CALL",
+        "node": "<Object>",
+        "value": "CALL"
+      }
+    },
+    "undocumented": true,
+    "name": "o",
+    "kind": "member",
+    "memberof": "aronnax.module:Base.construct",
+    "longname": "aronnax.module:Base.construct~o",
+    "scope": "inner"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        2101,
+        2217
+      ],
+      "filename": "base.js",
+      "lineno": 83,
+      "path": "src",
+      "code": {
+        "id": "astnode1467808486",
+        "name": "id",
+        "type": "OBJECTLIT",
+        "node": "<Object>",
+        "value": "OBJECTLIT"
+      }
+    },
+    "undocumented": true,
+    "name": "id",
+    "kind": "member",
+    "tags": [
+      {
+        "originalTitle": "scope",
+        "title": "scope",
+        "text": "inner",
+        "value": "inner"
+      }
+    ],
+    "scope": "inner",
+    "memberof": "aronnax.module:Base",
+    "longname": "aronnax.module:Base~id"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        2123,
+        2140
+      ],
+      "filename": "base.js",
+      "lineno": 84,
+      "path": "src",
+      "code": {
+        "id": "astnode2114485237",
+        "name": "enumerable",
+        "type": "FALSE",
+        "node": "<Object>",
+        "value": "false"
+      }
+    },
+    "undocumented": true,
+    "name": "enumerable",
+    "kind": "member",
+    "memberof": "aronnax.module:Base~id",
+    "scope": "static",
+    "longname": "aronnax.module:Base~id.enumerable"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        2156,
+        2171
+      ],
+      "filename": "base.js",
+      "lineno": 85,
+      "path": "src",
+      "code": {
+        "id": "astnode292827996",
+        "name": "writable",
+        "type": "FALSE",
+        "node": "<Object>",
+        "value": "false"
+      }
+    },
+    "undocumented": true,
+    "name": "writable",
+    "kind": "member",
+    "memberof": "aronnax.module:Base~id",
+    "scope": "static",
+    "longname": "aronnax.module:Base~id.writable"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        2187,
+        2203
+      ],
+      "filename": "base.js",
+      "lineno": 86,
+      "path": "src",
+      "code": {
+        "id": "astnode1933241942",
+        "name": "value",
+        "type": "INC",
+        "node": "<Object>",
+        "value": "INC"
+      }
+    },
+    "undocumented": true,
+    "name": "value",
+    "kind": "member",
+    "memberof": "aronnax.module:Base~id",
+    "scope": "static",
+    "longname": "aronnax.module:Base~id.value"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        2231,
+        2350
+      ],
+      "filename": "base.js",
+      "lineno": 88,
+      "path": "src",
+      "code": {
+        "id": "astnode2139493462",
+        "name": "classId",
+        "type": "OBJECTLIT",
+        "node": "<Object>",
+        "value": "OBJECTLIT"
+      }
+    },
+    "undocumented": true,
+    "name": "classId",
+    "kind": "member",
+    "tags": [
+      {
+        "originalTitle": "scope",
+        "title": "scope",
+        "text": "inner",
+        "value": "inner"
+      }
+    ],
+    "scope": "inner",
+    "memberof": "aronnax.module:Base",
+    "longname": "aronnax.module:Base~classId"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        2258,
+        2275
+      ],
+      "filename": "base.js",
+      "lineno": 89,
+      "path": "src",
+      "code": {
+        "id": "astnode1585369699",
+        "name": "enumerable",
+        "type": "FALSE",
+        "node": "<Object>",
+        "value": "false"
+      }
+    },
+    "undocumented": true,
+    "name": "enumerable",
+    "kind": "member",
+    "memberof": "aronnax.module:Base~classId",
+    "scope": "static",
+    "longname": "aronnax.module:Base~classId.enumerable"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        2291,
+        2306
+      ],
+      "filename": "base.js",
+      "lineno": 90,
+      "path": "src",
+      "code": {
+        "id": "astnode1279164170",
+        "name": "writable",
+        "type": "FALSE",
+        "node": "<Object>",
+        "value": "false"
+      }
+    },
+    "undocumented": true,
+    "name": "writable",
+    "kind": "member",
+    "memberof": "aronnax.module:Base~classId",
+    "scope": "static",
+    "longname": "aronnax.module:Base~classId.writable"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        2322,
+        2336
+      ],
+      "filename": "base.js",
+      "lineno": 91,
+      "path": "src",
+      "code": {
+        "id": "astnode1275152355",
+        "name": "value",
+        "type": "NAME",
+        "node": "<Object>",
+        "value": "classId"
+      }
+    },
+    "undocumented": true,
+    "name": "value",
+    "kind": "member",
+    "memberof": "aronnax.module:Base~classId",
+    "scope": "static",
+    "longname": "aronnax.module:Base~classId.value"
   }
 ]

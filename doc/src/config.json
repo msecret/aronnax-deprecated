@@ -4,16 +4,16 @@
     "meta": {
       "range": [
         57,
-        94
+        115
       ],
       "filename": "config.js",
       "lineno": 3,
       "path": "src",
       "code": {
-        "id": "astnode1235930463",
+        "id": "astnode1873924229",
         "name": "Config",
         "type": "OBJECTLIT",
-        "node": "Object",
+        "node": "<Object>",
         "value": "OBJECTLIT"
       }
     },
@@ -29,16 +29,41 @@
     "meta": {
       "range": [
         67,
-        93
+        78
       ],
       "filename": "config.js",
       "lineno": 3,
       "path": "src",
       "code": {
-        "id": "astnode1939520811",
+        "id": "astnode495098365",
+        "name": "env",
+        "type": "STRING",
+        "node": "<Object>",
+        "value": "dev"
+      }
+    },
+    "undocumented": true,
+    "name": "env",
+    "kind": "member",
+    "memberof": "<anonymous>~Config",
+    "scope": "static",
+    "longname": "<anonymous>~Config.env"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        79,
+        105
+      ],
+      "filename": "config.js",
+      "lineno": 3,
+      "path": "src",
+      "code": {
+        "id": "astnode1815478364",
         "name": "initialPoolSizeAmount",
         "type": "NUMBER",
-        "node": "Object",
+        "node": "<Object>",
         "value": "12"
       }
     },
@@ -48,5 +73,30 @@
     "memberof": "<anonymous>~Config",
     "scope": "static",
     "longname": "<anonymous>~Config.initialPoolSizeAmount"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        106,
+        114
+      ],
+      "filename": "config.js",
+      "lineno": 3,
+      "path": "src",
+      "code": {
+        "id": "astnode906955460",
+        "name": "fps",
+        "type": "NUMBER",
+        "node": "<Object>",
+        "value": "60"
+      }
+    },
+    "undocumented": true,
+    "name": "fps",
+    "kind": "member",
+    "memberof": "<anonymous>~Config",
+    "scope": "static",
+    "longname": "<anonymous>~Config.fps"
   }
 ]

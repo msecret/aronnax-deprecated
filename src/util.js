@@ -8,7 +8,7 @@
  */
 
 define('aronnax/util',
-  ['underscore', 'aronnax/Config', 'aronnax/Logger'],
+  ['underscore', 'aronnax/config', 'aronnax/logger'],
   function(_, Config, Logger) {
     "use strict";
 

@@ -12,7 +12,7 @@
 * from.
 * @module aronnax.Base
 */
-define('aronnax/Base',
+define('aronnax/base',
   ['underscore'],
   function(_) {
     "use strict";

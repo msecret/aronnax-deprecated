@@ -7,8 +7,8 @@
  * @file Holds the pooled object
  */
 
-define('aronnax/Pooled',
-  ['aronnax/Base', 'aronnax/Pool'],
+define('aronnax/pooled',
+  ['aronnax/base', 'aronnax/pool'],
   function(Base, Pool) {
 
    /**

@@ -7,11 +7,11 @@
  * @file time Holds the game loop and any other timing functionality
  */
 
-define('aronnax/Core',
-  ['aronnax/Base',
-    'aronnax/Logger',
+define('aronnax/core',
+  ['aronnax/base',
+    'aronnax/logger',
     'aronnax/util',
-    'aronnax/Config',
+    'aronnax/config',
     'aronnax/shims/requestAnimationFrame'],
   function(Base, Logger, util, config, requestAnimationFrame) {
     "use strict";

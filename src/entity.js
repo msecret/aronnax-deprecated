@@ -7,12 +7,12 @@
  * @file Holds the Entity object
  */
 
-define('aronnax/Entity', [
+define('aronnax/entity', [
     'underscore',
-    'aronnax/Base',
-    'aronnax/Logger',
-    'aronnax/Config',
-    'aronnax/Pooled'
+    'aronnax/base',
+    'aronnax/logger',
+    'aronnax/config',
+    'aronnax/pooled'
   ],
   function(_, Base, Logger, config, Pooled) {
 

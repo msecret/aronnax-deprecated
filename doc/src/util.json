@@ -1,0 +1,262 @@
+[
+  {
+    "comment": "/**\n * @file The aronnax specific utility class\n */",
+    "meta": {
+      "range": [
+        100,
+        151
+      ],
+      "filename": "util.js",
+      "lineno": 6,
+      "path": "src",
+      "code": {}
+    },
+    "name": "src/util.js",
+    "kind": "file",
+    "description": "The aronnax specific utility class",
+    "preserveName": true,
+    "longname": "src/util.js"
+  },
+  {
+    "comment": "/**\n     * @module util\n     */",
+    "meta": {
+      "range": [
+        675,
+        706
+      ],
+      "filename": "util.js",
+      "lineno": 34,
+      "path": "src",
+      "code": {}
+    },
+    "kind": "module",
+    "name": "util",
+    "longname": "module:util"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        289,
+        325
+      ],
+      "filename": "util.js",
+      "lineno": 15,
+      "path": "src",
+      "code": {
+        "id": "astnode271077746",
+        "name": "_log",
+        "type": "CALL",
+        "node": "<Object>",
+        "value": "CALL"
+      }
+    },
+    "undocumented": true,
+    "name": "_log",
+    "kind": "member",
+    "memberof": "<anonymous>",
+    "longname": "<anonymous>~_log",
+    "scope": "inner"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        332,
+        390
+      ],
+      "filename": "util.js",
+      "lineno": 17,
+      "path": "src",
+      "code": {
+        "id": "astnode265590105",
+        "name": "clearArray",
+        "type": "function",
+        "node": "<Object>",
+        "funcscope": "<anonymous>",
+        "paramnames": [
+          "array"
+        ]
+      }
+    },
+    "undocumented": true,
+    "name": "clearArray",
+    "kind": "function",
+    "memberof": "<anonymous>",
+    "longname": "<anonymous>~clearArray",
+    "scope": "inner"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        367,
+        383
+      ],
+      "filename": "util.js",
+      "lineno": 18,
+      "path": "src",
+      "code": {
+        "id": "astnode1301876269",
+        "name": "array.length",
+        "type": "NUMBER",
+        "node": "<Object>",
+        "value": "0"
+      }
+    },
+    "undocumented": true,
+    "name": "length",
+    "kind": "member",
+    "tags": [
+      {
+        "originalTitle": "scope",
+        "title": "scope",
+        "text": "inner",
+        "value": "inner"
+      }
+    ],
+    "scope": "static",
+    "memberof": "module:util~array",
+    "longname": "module:util~array.length"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        396,
+        669
+      ],
+      "filename": "util.js",
+      "lineno": 21,
+      "path": "src",
+      "code": {
+        "id": "astnode1494246498",
+        "name": "clearObject",
+        "type": "function",
+        "node": "<Object>",
+        "funcscope": "<anonymous>",
+        "paramnames": [
+          "object"
+        ]
+      },
+      "vars": {
+        "key": false
+      }
+    },
+    "undocumented": true,
+    "name": "clearObject",
+    "kind": "function",
+    "memberof": "<anonymous>",
+    "longname": "<anonymous>~clearObject",
+    "scope": "inner"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        437,
+        440
+      ],
+      "filename": "util.js",
+      "lineno": 22,
+      "path": "src",
+      "code": {
+        "id": "astnode1127123868",
+        "name": "key",
+        "type": "undefined",
+        "node": "<Object>",
+        "value": "key"
+      }
+    },
+    "undocumented": true,
+    "name": "key",
+    "kind": "member",
+    "memberof": "<anonymous>~clearObject",
+    "longname": "<anonymous>~clearObject~key",
+    "scope": "inner"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        715,
+        1242
+      ],
+      "filename": "util.js",
+      "lineno": 37,
+      "path": "src",
+      "code": {
+        "id": "astnode1202784272",
+        "name": "util",
+        "type": "OBJECTLIT",
+        "node": "<Object>",
+        "value": "OBJECTLIT"
+      }
+    },
+    "undocumented": true,
+    "name": "util",
+    "kind": "member",
+    "memberof": "<anonymous>",
+    "longname": "<anonymous>~util",
+    "scope": "inner"
+  },
+  {
+    "comment": "/**\n       * Cleans any type of primitive, object or array. For an object will clear\n       * all it's propertyes, for an array it will clear all it's elements.\n       * @param {Object|Array} thing The primitive to be cleared.\n       * @return {Object|Array} The cleaned thing.\n       */",
+    "meta": {
+      "range": [
+        1024,
+        1236
+      ],
+      "filename": "util.js",
+      "lineno": 44,
+      "path": "src",
+      "code": {
+        "id": "astnode1615484174",
+        "name": "cleanAnything",
+        "type": "FUNCTION",
+        "node": "<Object>",
+        "value": "FUNCTION",
+        "paramnames": [
+          "thing"
+        ]
+      }
+    },
+    "description": "Cleans any type of primitive, object or array. For an object will clear\nall it's propertyes, for an array it will clear all it's elements.",
+    "params": [
+      {
+        "type": {
+          "names": [
+            "Object",
+            "Array"
+          ]
+        },
+        "optional": "undefined",
+        "nullable": "undefined",
+        "variable": "undefined",
+        "defaultvalue": "undefined",
+        "description": "The primitive to be cleared.",
+        "name": "thing"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "Object",
+            "Array"
+          ]
+        },
+        "optional": "undefined",
+        "nullable": "undefined",
+        "variable": "undefined",
+        "defaultvalue": "undefined",
+        "description": "The cleaned thing."
+      }
+    ],
+    "name": "cleanAnything",
+    "kind": "function",
+    "memberof": "<anonymous>~util",
+    "scope": "static",
+    "longname": "<anonymous>~util.cleanAnything"
+  }
+]

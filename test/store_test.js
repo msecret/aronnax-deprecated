@@ -10,7 +10,7 @@ describe('aronnax.Store', function() {
   beforeEach(function() {
     var flag = false;
 
-    require(['aronnax/Store'], function(_Store) {
+    require(['aronnax/store'], function(_Store) {
       Store = _Store;
       store = Object.create(Store);
       store.init();

@@ -9,7 +9,7 @@ describe('aronnax.Base', function() {
   beforeEach(function() {
     var flag = false;
 
-    require(['aronnax/Base'], function(__Base) {
+    require(['aronnax/base'], function(__Base) {
       Base = __Base;
       flag = true;
     });

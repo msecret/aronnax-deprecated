@@ -27,6 +27,7 @@
     "grunt-template-jasmine-requirejs": "~0.1.4",
     "grunt-contrib-jasmine": "~0.5.1",
     "grunt-banner": "~0.1.4",
-    "grunt-amd-doc": "~0.4.3"
+    "grunt-amd-doc": "~0.4.3",
+    "grunt-global-config": "*"
   }
 }

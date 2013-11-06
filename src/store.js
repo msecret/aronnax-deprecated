@@ -7,8 +7,8 @@
  * @file Holds the Store object
  */
 
-define('aronnax/Store',
-  ['underscore', 'aronnax/Base'],
+define('aronnax/store',
+  ['underscore', 'aronnax/base'],
   function(_, Base) {
 
     /**

@@ -18,7 +18,7 @@ describe('aronnax.Logger', function() {
   beforeEach(function() {
     var flag = false;
 
-    require(['aronnax/Logger'], function(__Logger) {
+    require(['aronnax/logger'], function(__Logger) {
       Logger = __Logger;
       flag = true;
     });
@@ -71,7 +71,7 @@ describe('aronnax.Log', function() {
   beforeEach(function() {
     var flag = false;
 
-    require(['aronnax/Logger', 'deps/logWriter'], function(__Logger, __logWriter) {
+    require(['aronnax/logger', 'deps/logWriter'], function(__Logger, __logWriter) {
       Logger = __Logger;
       logWriter = __logWriter;
       testLog =  Logger.getLog('test log');

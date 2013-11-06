@@ -11,7 +11,7 @@ describe('aronnax.Pool', function() {
   beforeEach(function() {
     var flag = false;
 
-    require(['aronnax/Base', 'aronnax/Pool', 'aronnax/Pooled'],
+    require(['aronnax/base', 'aronnax/pool', 'aronnax/pooled'],
         function(__Base, __Pool, __Pooled) {
       Base = __Base;
       Pool = __Pool;

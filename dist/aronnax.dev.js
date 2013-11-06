@@ -2,10 +2,10 @@
 // All Rights Reserved
 // aronnax - v0.1.1
 // https://github.com/msecret/aronnax 
-// 2013-08-16
+// 2013-11-05
 // Licensed MIT 
 
-//     Underscore.js 1.5.1
+//     Underscore.js 1.5.2
 //     http://underscorejs.org
 //     (c) 2009-2013 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 //     Underscore may be freely distributed under the MIT license.
@@ -15,7 +15,7 @@
   // Baseline setup
   // --------------
 
-  // Establish the root object, `window` in the browser, or `global` on the server.
+  // Establish the root object, `window` in the browser, or `exports` on the server.
   var root = this;
 
   // Save the previous value of the `_` variable.
@@ -72,7 +72,7 @@
   }
 
   // Current version.
-  _.VERSION = '1.5.1';
+  _.VERSION = '1.5.2';
 
   // Collection Functions
   // --------------------
@@ -85,14 +85,13 @@
     if (nativeForEach && obj.forEach === nativeForEach) {
       obj.forEach(iterator, context);
     } else if (obj.length === +obj.length) {
-      for (var i = 0, l = obj.length; i < l; i++) {
+      for (var i = 0, length = obj.length; i < length; i++) {
         if (iterator.call(context, obj[i], i, obj) === breaker) return;
       }
     } else {
-      for (var key in obj) {
-        if (_.has(obj, key)) {
-          if (iterator.call(context, obj[key], key, obj) === breaker) return;
-        }
+      var keys = _.keys(obj);
+      for (var i = 0, length = keys.length; i < length; i++) {
+        if (iterator.call(context, obj[keys[i]], keys[i], obj) === breaker) return;
       }
     }
   };
@@ -291,7 +290,8 @@
     return result.value;
   };
 
-  // Shuffle an array.
+  // Shuffle an array, using the modern version of the 
+  // [Fisher-Yates shuffle](http://en.wikipedia.org/wiki/Fisher–Yates_shuffle).
   _.shuffle = function(obj) {
     var rand;
     var index = 0;
@@ -304,6 +304,16 @@
     return shuffled;
   };
 
+  // Sample **n** random values from an array.
+  // If **n** is not specified, returns a single random element from the array.
+  // The internal `guard` argument allows it to work with `map`.
+  _.sample = function(obj, n, guard) {
+    if (arguments.length < 2 || guard) {
+      return obj[_.random(obj.length - 1)];
+    }
+    return _.shuffle(obj).slice(0, Math.max(0, n));
+  };
+
   // An internal function to generate lookup iterators.
   var lookupIterator = function(value) {
     return _.isFunction(value) ? value : function(obj){ return obj[value]; };
@@ -314,9 +324,9 @@
     var iterator = lookupIterator(value);
     return _.pluck(_.map(obj, function(value, index, list) {
       return {
-        value : value,
-        index : index,
-        criteria : iterator.call(context, value, index, list)
+        value: value,
+        index: index,
+        criteria: iterator.call(context, value, index, list)
       };
     }).sort(function(left, right) {
       var a = left.criteria;
@@ -325,38 +335,41 @@
         if (a > b || a === void 0) return 1;
         if (a < b || b === void 0) return -1;
       }
-      return left.index < right.index ? -1 : 1;
+      return left.index - right.index;
     }), 'value');
   };
 
   // An internal function used for aggregate "group by" operations.
-  var group = function(obj, value, context, behavior) {
-    var result = {};
-    var iterator = lookupIterator(value == null ? _.identity : value);
-    each(obj, function(value, index) {
-      var key = iterator.call(context, value, index, obj);
-      behavior(result, key, value);
-    });
-    return result;
+  var group = function(behavior) {
+    return function(obj, value, context) {
+      var result = {};
+      var iterator = value == null ? _.identity : lookupIterator(value);
+      each(obj, function(value, index) {
+        var key = iterator.call(context, value, index, obj);
+        behavior(result, key, value);
+      });
+      return result;
+    };
   };
 
   // Groups the object's values by a criterion. Pass either a string attribute
   // to group by, or a function that returns the criterion.
-  _.groupBy = function(obj, value, context) {
-    return group(obj, value, context, function(result, key, value) {
-      (_.has(result, key) ? result[key] : (result[key] = [])).push(value);
-    });
-  };
+  _.groupBy = group(function(result, key, value) {
+    (_.has(result, key) ? result[key] : (result[key] = [])).push(value);
+  });
+
+  // Indexes the object's values by a criterion, similar to `groupBy`, but for
+  // when you know that your index values will be unique.
+  _.indexBy = group(function(result, key, value) {
+    result[key] = value;
+  });
 
   // Counts instances of an object that group by a certain criterion. Pass
   // either a string attribute to count by, or a function that returns the
   // criterion.
-  _.countBy = function(obj, value, context) {
-    return group(obj, value, context, function(result, key) {
-      if (!_.has(result, key)) result[key] = 0;
-      result[key]++;
-    });
-  };
+  _.countBy = group(function(result, key) {
+    _.has(result, key) ? result[key]++ : result[key] = 1;
+  });
 
   // Use a comparator function to figure out the smallest index at which
   // an object should be inserted so as to maintain order. Uses binary search.
@@ -393,7 +406,7 @@
   // allows it to work with `_.map`.
   _.first = _.head = _.take = function(array, n, guard) {
     if (array == null) return void 0;
-    return (n != null) && !guard ? slice.call(array, 0, n) : array[0];
+    return (n == null) || guard ? array[0] : slice.call(array, 0, n);
   };
 
   // Returns everything but the last entry of the array. Especially useful on
@@ -408,10 +421,10 @@
   // values in the array. The **guard** check allows it to work with `_.map`.
   _.last = function(array, n, guard) {
     if (array == null) return void 0;
-    if ((n != null) && !guard) {
-      return slice.call(array, Math.max(array.length - n, 0));
-    } else {
+    if ((n == null) || guard) {
       return array[array.length - 1];
+    } else {
+      return slice.call(array, Math.max(array.length - n, 0));
     }
   };
 
@@ -443,7 +456,7 @@
     return output;
   };
 
-  // Return a completely flattened version of an array.
+  // Flatten out an array, either recursively (by default), or just one level.
   _.flatten = function(array, shallow) {
     return flatten(array, shallow, []);
   };
@@ -515,7 +528,7 @@
   _.object = function(list, values) {
     if (list == null) return {};
     var result = {};
-    for (var i = 0, l = list.length; i < l; i++) {
+    for (var i = 0, length = list.length; i < length; i++) {
       if (values) {
         result[list[i]] = values[i];
       } else {
@@ -533,17 +546,17 @@
   // for **isSorted** to use binary search.
   _.indexOf = function(array, item, isSorted) {
     if (array == null) return -1;
-    var i = 0, l = array.length;
+    var i = 0, length = array.length;
     if (isSorted) {
       if (typeof isSorted == 'number') {
-        i = (isSorted < 0 ? Math.max(0, l + isSorted) : isSorted);
+        i = (isSorted < 0 ? Math.max(0, length + isSorted) : isSorted);
       } else {
         i = _.sortedIndex(array, item);
         return array[i] === item ? i : -1;
       }
     }
     if (nativeIndexOf && array.indexOf === nativeIndexOf) return array.indexOf(item, isSorted);
-    for (; i < l; i++) if (array[i] === item) return i;
+    for (; i < length; i++) if (array[i] === item) return i;
     return -1;
   };
 
@@ -569,11 +582,11 @@
     }
     step = arguments[2] || 1;
 
-    var len = Math.max(Math.ceil((stop - start) / step), 0);
+    var length = Math.max(Math.ceil((stop - start) / step), 0);
     var idx = 0;
-    var range = new Array(len);
+    var range = new Array(length);
 
-    while(idx < len) {
+    while(idx < length) {
       range[idx++] = start;
       start += step;
     }
@@ -685,17 +698,24 @@
   // N milliseconds. If `immediate` is passed, trigger the function on the
   // leading edge, instead of the trailing.
   _.debounce = function(func, wait, immediate) {
-    var result;
-    var timeout = null;
+    var timeout, args, context, timestamp, result;
     return function() {
-      var context = this, args = arguments;
+      context = this;
+      args = arguments;
+      timestamp = new Date();
       var later = function() {
-        timeout = null;
-        if (!immediate) result = func.apply(context, args);
+        var last = (new Date()) - timestamp;
+        if (last < wait) {
+          timeout = setTimeout(later, wait - last);
+        } else {
+          timeout = null;
+          if (!immediate) result = func.apply(context, args);
+        }
       };
       var callNow = immediate && !timeout;
-      clearTimeout(timeout);
-      timeout = setTimeout(later, wait);
+      if (!timeout) {
+        timeout = setTimeout(later, wait);
+      }
       if (callNow) result = func.apply(context, args);
       return result;
     };
@@ -761,22 +781,33 @@
 
   // Retrieve the values of an object's properties.
   _.values = function(obj) {
-    var values = [];
-    for (var key in obj) if (_.has(obj, key)) values.push(obj[key]);
+    var keys = _.keys(obj);
+    var length = keys.length;
+    var values = new Array(length);
+    for (var i = 0; i < length; i++) {
+      values[i] = obj[keys[i]];
+    }
     return values;
   };
 
   // Convert an object into a list of `[key, value]` pairs.
   _.pairs = function(obj) {
-    var pairs = [];
-    for (var key in obj) if (_.has(obj, key)) pairs.push([key, obj[key]]);
+    var keys = _.keys(obj);
+    var length = keys.length;
+    var pairs = new Array(length);
+    for (var i = 0; i < length; i++) {
+      pairs[i] = [keys[i], obj[keys[i]]];
+    }
     return pairs;
   };
 
   // Invert the keys and values of an object. The values must be serializable.
   _.invert = function(obj) {
     var result = {};
-    for (var key in obj) if (_.has(obj, key)) result[obj[key]] = key;
+    var keys = _.keys(obj);
+    for (var i = 0, length = keys.length; i < length; i++) {
+      result[obj[keys[i]]] = keys[i];
+    }
     return result;
   };
 
@@ -1060,8 +1091,7 @@
       '<': '&lt;',
       '>': '&gt;',
       '"': '&quot;',
-      "'": '&#x27;',
-      '/': '&#x2F;'
+      "'": '&#x27;'
     }
   };
   entityMap.unescape = _.invert(entityMap.escape);
@@ -1092,7 +1122,7 @@
 
   // Add your own custom functions to the Underscore object.
   _.mixin = function(obj) {
-    each(_.functions(obj), function(name){
+    each(_.functions(obj), function(name) {
       var func = _[name] = obj[name];
       _.prototype[name] = function() {
         var args = [this._wrapped];
@@ -1273,13 +1303,24 @@ define("underscore", (function (global) {
 * from.
 * @module aronnax.Base
 */
-define('aronnax/Base',
+define('aronnax/base',
   ['underscore'],
   function(_) {
     
 
+    var _nextId = 0,
+        _classIds = {};
+
+    function nextClassId(className) {
+      if (!_classIds[className]) {
+        _classIds[className] = 0;
+      }
+
+      return _classIds[className]++;
+    }
+
    /**
-    * A base object to inherit from the provide a shared object to inherit
+    * Create an object with a classname and properties to add to it.
     * from.
     * @exports aronnax.Base
     */
@@ -1291,20 +1332,22 @@ define('aronnax/Base',
        * @param {Object} props Properties to add to the inherited object.
        * @returns {Object} The newly created instance.
        */
-      create: function(obj, name, props) {
+      create: function (obj, name, props) {
         var o = Object.create(obj),
             prop,
             key;
 
         Object.defineProperty(o, "className",
-          { value : name || 'Base',
+          {
+            value: name || 'Base',
             configurable: false,
             enumerable: false,
-            writable: false });
+            writable: false
+          });
 
         for (key in props) {
-          prop = props[key];
           if (props.hasOwnProperty(key)) {
+            prop = props[key];
             if (typeof prop === 'function') {
               o[key] = prop;
             }
@@ -1318,10 +1361,39 @@ define('aronnax/Base',
         // object to allow for chaining: ie Base.create(thing).init();
 
         return o;
+      },
+
+      /**
+       * Will create the object and provide id and classIds for it.
+       * @param {Object} obj The object to create and ID.
+       * @returns {Object} The object created.
+       */
+      construct: function (obj) {
+        var classId = nextClassId(obj.className),
+          o = Object.create(obj, {
+            'id': {
+              enumerable: false,
+              writable: false,
+              value: _nextId++
+            },
+            'classId': {
+              enumerable: false,
+              writable: false,
+              value: classId
+            }
+          });
+
+        return o;
       }
-    }
+    };
 
     return Base;
+});
+
+define('aronnax/config', [],function() { 
+
+var Config = {"env":"dev","initialPoolSizeAmount":12,"fps":60};
+return Config;
 });
 
 // Copyright (c) 2013
@@ -1343,15 +1415,15 @@ define('deps/logWriter',
  * @file Holds the logger object
  */
 
-define('aronnax/Logger',
-  ['underscore', 'aronnax/Base', 'deps/logWriter'],
-  function(_, Base, logWriterObject) {
+define('aronnax/logger',
+  ['underscore', 'aronnax/base', 'aronnax/config', 'deps/logWriter'],
+  function(_, Base, config, logWriterObject) {
     
 
    /**
     * A log which will provide logging capabilities
     */
-    var Log = Base.create(null, 'Log', {
+    var Log = Base.create(Object.prototype, 'Log', {
 
       /**
        * Initializes the log.
@@ -1448,8 +1520,7 @@ define('aronnax/Logger',
        * Settings for the logger
        */
       settings: {
-        // TODO replace with global config
-        environment: 'staging',
+        environment: config.env,
         errorTypes: ['log', 'warn', 'error']
       },
 
@@ -1484,10 +1555,217 @@ define('aronnax/Logger',
     return Logger;
 });
 
-define('aronnax/Config', [],function() { 
+// Copyright (c) 2013
+// All Rights Reserved
+// https://github.com/msecret/aronnax
+// Licensed MIT
 
-var Config = {"initialPoolSizeAmount":12};
-return Config;
+/**
+ * @file The aronnax specific utility class
+ */
+
+define('aronnax/util',
+  ['underscore', 'aronnax/config', 'aronnax/logger'],
+  function(_, Config, Logger) {
+    
+
+    var _log = Logger.getLog('aronnax.util');
+
+    function clearArray(array) {
+      array.length = 0;
+    }
+
+    function clearObject(object) {
+      var key;
+
+      for (key in object) {
+        if (object.hasOwnProperty(key)) {
+          // Ensures only writable properties are deleted.
+          try {
+            delete object[key];
+          } catch (e) { }
+        }
+      }
+    }
+
+    /**
+     * @module util
+     */
+    var util = {
+      /**
+       * Cleans any type of primitive, object or array. For an object will clear
+       * all it's propertyes, for an array it will clear all it's elements.
+       * @param {Object|Array} thing The primitive to be cleared.
+       * @return {Object|Array} The cleaned thing.
+       */
+      cleanAnything: function(thing) {
+        if (_.isArray(thing)) {
+          clearArray(thing);
+        }
+        else if (_.isObject(thing)) {
+          clearObject(thing);
+        }
+
+        return thing;
+      }
+    };
+
+    return util;
+});
+
+// Copyright (c) 2013
+// All Rights Reserved
+// https://github.com/msecret/aronnax
+// Licensed MIT
+
+/**
+ * @file Holds the Store object
+ */
+
+define('aronnax/store',
+  ['underscore', 'aronnax/base'],
+  function(_, Base) {
+
+    /**
+     * Takes any object and creates a string representation of it.
+     * @private
+     * @param {Object|Array|Function} obj The object to stringify
+     * @returns {String} The string representation of the object.
+     */
+    function objectToString(obj) {
+      if (_.isArray(obj)) {
+        return obj.join('*');
+      }
+      else if (_.isFunction(obj)) {
+        return obj.toString();
+      }
+      else if (_.isObject(obj)) {
+        return JSON.stringify(obj);
+      }
+      else {
+        return obj.toString();
+      }
+    }
+
+    /**
+     * A Store that uses hashing
+     * @module aronnax/Store
+     * @exports aronnax/Store
+    */
+    var Store = Base.create(Object.prototype, 'Store', {
+
+      /**
+       * The accessible data store.
+       * @type Object
+       */
+      store: {
+        get: function() { return this._dataStore; }
+      },
+
+      /**
+       * The current amount of objects in the store
+       * @type Number
+       */
+      length: {
+        get: function() { return _.size(this._dataStore); }
+      },
+
+      /**
+       * Initializes the store
+       */
+      init: function() {
+        this._dataStore = {};
+      },
+
+      /**
+       * Will add a new item to the store, either ID'ed or not
+       * @param {Object|Array|Function} item The item to add
+       * @returns {Object|Array|Function} The item passed in.
+       */
+      put: function(item) {
+        var stringObjectValue;
+        if (item.classId) {
+          if (this._dataStore[item.classId]) {
+            throw new Error('Object key collision occurred, cannot store key');
+          }
+          this._dataStore[item.classId] = item;
+        }
+        else if (item.id) {
+          if (this._dataStore[item.id]) {
+            throw new Error('Object key collision occurred, cannot store key');
+          }
+          this._dataStore[item.id] = item;
+        }
+        else {
+          stringObjectValue = this.stringify(item);
+          if (!this._dataStore[stringObjectValue]) {
+            this._dataStore[stringObjectValue] = [];
+          }
+          this._dataStore[stringObjectValue].push(item);
+        }
+
+        return item;
+      },
+
+      /**
+       * Will get the passed in object from the store.
+       * @param {Object|Array|Function} item The item to add
+       * @returns {Object|Array|Function} The item passed in.
+       */
+      get: function(item) {
+        var stringObjectValue;
+
+        if (item.classId) {
+          return this._dataStore[item.classId];
+        }
+        if (item.id) {
+          return this._dataStore[item.id];
+        }
+        else {
+          stringObjectValue = this.stringify(item);
+          if (!this._dataStore[stringObjectValue]) {
+            return;
+          }
+          return this._dataStore[stringObjectValue][0];
+        }
+      },
+
+      /**
+       * Creates a string representation of an object
+       * @param {Array|Object|Funciton} item The item to stringify
+       * @returns {String} The string representation
+       */
+      stringify: function(item) {
+        return objectToString(item);
+      },
+
+      /**
+       * Removes an item from the data store, if it is found.
+       * @param {Object|Array|Function} item The item to remove
+       * @returns {Undefined}
+       */
+      // TODO Parts of this just reuse the gets functionality
+      remove: function(item) {
+        var existingItem = this.get(item),
+            stringObjectValue;
+
+        if (existingItem) {
+          if (item.classId) {
+            delete this._dataStore[item.classId];
+          }
+          if (item.id) {
+            delete this._dataStore[item.id];
+          }
+          else {
+            stringObjectValue = this.stringify(item);
+            return this._dataStore[stringObjectValue].pop();
+          }
+          return existingItem;
+        }
+      }
+    });
+
+    return Store;
 });
 
 // Copyright (c) 2013
@@ -1500,11 +1778,11 @@ return Config;
  * pooled.
  */
 
-define('aronnax/Pool',
-  ['aronnax/Base', 'aronnax/Logger', 'aronnax/Config'],
-  function(Base, Logger, config) {
+define('aronnax/pool',
+  ['aronnax/base', 'aronnax/logger', 'aronnax/util', 'aronnax/config',
+      'aronnax/store'],
+  function(Base, Logger, util, config, Store) {
     
-    console.log(config);
 
     var _log = Logger.getLog('aronnax.Pool');
 
@@ -1529,32 +1807,50 @@ define('aronnax/Pool',
           toreturn = {};
           break;
         default:
-          toreturn = Object.create(this.basePrototype);
+          toreturn = Base.construct(this.basePrototype);
           break;
       }
 
       return toreturn;
     }
 
-    var PoolPrototype = Base.create(null, 'Pool', {
+    var PoolPrototype = Base.create(Object.prototype, 'Pool', {
       /**
-      * The current pool of active members, a hashtable
+      * The current pool of active members, a store
       * @type Object
       */
       activePool: {
         writable: true
       },
+      /**
+      * A free pool of objects ready to be used
+      * @type Array
+      */
       freePool: {
         writable: true
       },
 
-      basePrototype: {
-        configurable: true,
-        writable: true
+      /**
+       * The amount of objects free in the pool that are ready for use.
+       * @type Number
+       */
+      totalObjectsFree: {
+        get: function() { return this.freePool.length; }
       },
-      init: function(initialSize, basePrototype) {
+
+      /**
+       * The amount of objects that are in the active pool and are considered
+       * to be in active use.
+       * @type Number
+       */
+      totalObjectsActive: {
+        get: function() { return this.activePool.length; }
+      },
+
+      init: function(initialSize, basePrototype, className) {
         this.freePool = [];
-        this.activePool = [];
+        this.activePool = Object.create(Store);
+        this.activePool.init();
         this.basePrototype = basePrototype;
 
         this.expandPool(initialSize);
@@ -1583,89 +1879,189 @@ define('aronnax/Pool',
           this.expandPool();
         }
         var member = this.freePool.pop();
-        this.activePool.push(member);
+        this.activePool.put(member);
         return member;
+      },
+
+      /**
+       * Releases a member back to the pool, adding it to free pools and taking
+       * away from active pool.
+       * @param {Object} member The object to release
+       */
+      releaseMember: function(member) {
+        var activeMember = this.activePool.get(member),
+            released;
+
+        if (!activeMember) {
+          throw new Error('Member not found, cannot be released');
+        }
+
+        released = this.activePool.remove(member);
+        util.cleanAnything(released);
+        this.freePool.push(released);
       }
 
     });
 
     // TODO return this into regular way.
-    var Pool = {};
-    /**
-     * All the current pools, as a hash with the class type as the key.
-     * @static
-     * @type aronnax.Pool
-     */
-    Pool.pools = {};
+    var Pool = {
+      /**
+       * All the current pools, as a hash with the class type as the key.
+       * @static
+       * @type aronnax.Pool
+       */
+      pools: {},
 
-    /**
-     * Count of the current total pools
-     * @static
-     * @type Number
-     */
-    Pool.totalPools = 0;
+      /**
+       * Count of the current total pools
+       * @static
+       * @type Number
+       */
+      totalPools: 0,
 
-    /**
-     * Gets the pool of the class type, creating one if it doesn't exists
-     * @static
-     * @param {Sting} className The name of the class
-     * @return {arronax.Pool} The pool of the class type
-     */
-    Pool.acquirePool = function(className, objPrototype) {
-      var pool = this.pools[className];
-      if (!pool) {
-        pool = this.createPool(className, objPrototype);
+      /**
+       * Returns the total amount of active objects in all the pools
+       * @type Number
+       */
+      get totalActiveObjects() {
+        var total = 0,
+            className,
+            pool;
+
+        for (className in this.pools) {
+          pool = this.pools[className];
+          total += pool.totalObjectsActive;
+        }
+
+        return total;
+      },
+
+      /**
+       * Returns the total amount of free objects in all the pools
+       * @type Number
+       */
+      get totalFreeObjects() {
+        var total = 0,
+            className,
+            pool;
+
+        for (className in this.pools) {
+          pool = this.pools[className];
+          total += pool.totalObjectsFree;
+        }
+
+        return total;
+
+      },
+
+      /**
+       * Gets the pool of the class type, creating one if it doesn't exists
+       * @static
+       * @param {Sting} className The name of the class
+       * @return {arronax.Pool} The pool of the class type
+       */
+      acquirePool: function(className, objPrototype) {
+        var pool = this.getPool(objPrototype, className);
+        if (!pool) {
+          pool = this.createPool(className, objPrototype);
+        }
+
+        return pool;
+      },
+
+      /**
+       * Will get the pool from the current pools by looking up the classname
+       * on the object prototype.
+       * @param {Object|Array|Function} objPrototype The prototype of the pool
+       * being searched for.
+       * @param {String} poolClassName The name of the pool class
+       * @returns {Object} The Pool object.
+       */
+      getPool: function(objPrototype, poolClassName) {
+        var className = poolClassName || this.getClassName(objPrototype);
+        return this.pools[className];
+      },
+
+      /**
+       * Gets the class name of the member, whether Based or not
+       * @param {Object|Array|Function} classMember The member to get name of
+       * @returns {String} The name of the member
+       */
+      getClassName: function(classMember) {
+        var className = classMember.className;
+        if (typeof className !== 'string') {
+          if (window.toString.call(classMember) === '[object Array]') {
+            className = 'array';
+          }
+          else if (typeof classMember === 'function') {
+            className = 'function';
+          }
+          else if (typeof classMember === 'object') {
+            className = 'object';
+          }
+          else {
+            _log.error('Aquired Pool class not a string');
+            throw new Error('Aquired Pool class not a string');
+          }
+        }
+        return className;
+      },
+
+      /**
+       * Aquires a free member from the pool. Maps directly to the acquire
+       * pool methodand then the Pool.acquire method. Uses a non-standard
+       * Function.name property to obtain the class name.
+       * @static
+       * @param {Object|Array|Function} classMember The object being fetch from
+       * pool
+       * @return {Object|Array|Function} The object being return from the pool
+       */
+      acquire: function(classMember) {
+        var className,
+            pool;
+
+        try {
+          className = this.getClassName(classMember);
+        } catch (e) {
+          throw new Error(e);
+        }
+        pool = this.acquirePool(className, classMember);
+
+        return pool.acquireMember();
+      },
+
+      /**
+       * Releases a member back to the free pool, removing from inactive pool.
+       * @param {Object|Array|Function} classMember The object to release
+       */
+      release: function(classMember) {
+        var className = this.getClassName(classMember),
+            pool = this.acquirePool(className);
+
+        if (pool) {
+          pool.releaseMember(classMember);
+        }
+      },
+
+      /**
+       * Creates a new pool of a certain type
+       * @static
+       * @param {Sting} className The name of the class
+       * @param {Number} initialSize The initial size to make the free pool
+       * @return {arronax.Pool} The new pool of the class type
+       */
+      createPool: function(className, objPrototype, initialSize) {
+        var pool = Object.create(PoolPrototype);
+        // overwrite class name to the actual class name, not Pool
+        Object.defineProperty(pool, 'className', {
+          value: className
+        });
+        pool.init(initialSize, objPrototype, className);
+
+        this.totalPools += 1;
+        this.pools[className] = pool;
+        return pool;
       }
-
-      return pool;
-    };
-
-    /**
-     * Aquires a free member from the pool. Maps directly to the acquire
-     * pool methodand then the Pool.acquire method. Uses a non-standard
-     * Function.name property to obtain the class name.
-     * @static
-     * @param {Object|Array|Function} classMember The object being fetch from
-     * pool
-     * @return {Object|Array|Function} The object being return from the pool
-     */
-    Pool.acquire = function(classMember) {
-      var className = classMember.className;
-      if (typeof className !== 'string') {
-        if (window.toString.call(classMember) === '[object Array]') {
-          className = 'array';
-        }
-        else if (typeof classMember === 'function') {
-          className = 'function';
-        }
-        else if (typeof classMember === 'object') {
-          className = 'object';
-        }
-        else {
-          _log.error('Aquired Pool class not a string');
-          throw new Error('Aquired Pool class not a string');
-        }
-      }
-      var pool = this.acquirePool(className, classMember);
-
-      return pool.acquireMember();
-    };
-
-
-    /**
-     * Creates a new pool of a certain type
-     * @static
-     * @param {Sting} className The name of the class
-     * @param {Number} initialSize The initial size to make the free pool
-     * @return {arronax.Pool} The new pool of the class type
-     */
-    Pool.createPool = function(className, objPrototype, initialSize) {
-      var pool = Object.create(PoolPrototype);
-      pool.init(initialSize, objPrototype);
-
-      this.totalPools += 1;
-      this.pools[className] = pool;
-      return pool;
     };
 
     return Pool;
@@ -1680,15 +2076,15 @@ define('aronnax/Pool',
  * @file Holds the pooled object
  */
 
-define('aronnax/Pooled',
-  ['aronnax/Base', 'aronnax/Pool'],
+define('aronnax/pooled',
+  ['aronnax/base', 'aronnax/pool'],
   function(Base, Pool) {
 
    /**
     * An object the provides pooling functionality
     * @exports aronnax/Pooled
     */
-    var Pooled = Base.create(null, 'Pooled', {
+    var Pooled = Base.create(Object.prototype, 'Pooled', {
 
       /**
        * Gets a free object from the pool, enhances it and then returns it.
@@ -1704,8 +2100,20 @@ define('aronnax/Pooled',
       /**
        * Releases a used object, cleans it, and returns it to the free pool.
        */
-      release: function() {
+      free: function() {
+        Pool.release(this);
+        return undefined;
+      },
 
+      /**
+       * The current Pool object for this object prototype
+       */
+      pool: {
+        // TODO is it possible to cache this?
+        get: function() {
+          var pool = Pool.getPool(this);
+          return pool;
+        }
       }
     });
 
@@ -1717,7 +2125,7 @@ define('aronnax/Pooled',
 // https://github.com/msecret/aronnax
 // Licensed MIT
 
-require(['aronnax/Base', 'aronnax/Pool', 'aronnax/Pooled'],
+require(['aronnax/base', 'aronnax/pool', 'aronnax/pooled'],
   function(Base, Pool, Pooled) {
     console.log('init');
 });

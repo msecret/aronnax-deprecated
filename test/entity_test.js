@@ -10,7 +10,7 @@ describe('aronnax.Entity', function() {
   beforeEach(function() {
     var flag = false;
 
-    require(['aronnax/Base', 'aronnax/Entity'],
+    require(['aronnax/base', 'aronnax/entity'],
         function(__Base, __Entity) {
       Base = __Base;
       Entity = __Entity;

@@ -3,7 +3,7 @@
 // https://github.com/msecret/aronnax
 // Licensed MIT
 
-require(['aronnax/Base', 'aronnax/Pool', 'aronnax/Pooled'],
+require(['aronnax/base', 'aronnax/pool', 'aronnax/pooled'],
   function(Base, Pool, Pooled) {
     console.log('init');
 });

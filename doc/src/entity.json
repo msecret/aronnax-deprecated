@@ -1,0 +1,655 @@
+[
+  {
+    "comment": "/**\n * @file Holds the Entity object\n */",
+    "meta": {
+      "range": [
+        100,
+        140
+      ],
+      "filename": "entity.js",
+      "lineno": 6,
+      "path": "src",
+      "code": {}
+    },
+    "name": "src/entity.js",
+    "kind": "file",
+    "description": "Holds the Entity object",
+    "preserveName": true,
+    "longname": "src/entity.js"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        332,
+        348
+      ],
+      "filename": "entity.js",
+      "lineno": 19,
+      "path": "src",
+      "code": {
+        "id": "astnode15399519",
+        "name": "_components",
+        "type": "ARRAYLIT",
+        "node": "<Object>",
+        "value": "ARRAYLIT"
+      }
+    },
+    "undocumented": true,
+    "name": "_components",
+    "kind": "member",
+    "memberof": "<anonymous>",
+    "longname": "<anonymous>~_components",
+    "scope": "inner"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        358,
+        377
+      ],
+      "filename": "entity.js",
+      "lineno": 20,
+      "path": "src",
+      "code": {
+        "id": "astnode1433936385",
+        "name": "_componentList",
+        "type": "ARRAYLIT",
+        "node": "<Object>",
+        "value": "ARRAYLIT"
+      }
+    },
+    "undocumented": true,
+    "name": "_componentList",
+    "kind": "member",
+    "memberof": "<anonymous>",
+    "longname": "<anonymous>~_componentList",
+    "scope": "inner"
+  },
+  {
+    "comment": "/**\n    * A base game entity object which is pooled\n    * @exports aronnax/Entity\n    */",
+    "meta": {
+      "range": [
+        480,
+        2198
+      ],
+      "filename": "entity.js",
+      "lineno": 26,
+      "path": "src",
+      "code": {
+        "id": "astnode903892325",
+        "name": "Entity",
+        "type": "CALL",
+        "node": "<Object>",
+        "value": "CALL"
+      }
+    },
+    "description": "A base game entity object which is pooled",
+    "alias": "aronnax/Entity",
+    "kind": "module",
+    "name": "aronnax/Entity",
+    "longname": "module:aronnax/Entity",
+    "scope": "global"
+  },
+  {
+    "comment": "/**\n       * A list of components on the entity\n       * @type Array\n       */",
+    "meta": {
+      "range": [
+        612,
+        681
+      ],
+      "filename": "entity.js",
+      "lineno": 31,
+      "path": "src",
+      "code": {
+        "id": "astnode322302866",
+        "name": "components",
+        "type": "OBJECTLIT",
+        "node": "<Object>",
+        "value": "OBJECTLIT"
+      }
+    },
+    "description": "A list of components on the entity",
+    "type": {
+      "names": [
+        "Array"
+      ]
+    },
+    "name": "components",
+    "kind": "member",
+    "longname": "components",
+    "scope": "global"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        634,
+        673
+      ],
+      "filename": "entity.js",
+      "lineno": 32,
+      "path": "src",
+      "code": {
+        "id": "astnode1950586498",
+        "name": "get",
+        "type": "FUNCTION",
+        "node": "<Object>",
+        "value": "FUNCTION",
+        "paramnames": []
+      }
+    },
+    "undocumented": true,
+    "name": "get",
+    "kind": "function",
+    "memberof": "components",
+    "scope": "static",
+    "longname": "components.get"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        690,
+        765
+      ],
+      "filename": "entity.js",
+      "lineno": 35,
+      "path": "src",
+      "code": {
+        "id": "astnode1135685051",
+        "name": "componentList",
+        "type": "OBJECTLIT",
+        "node": "<Object>",
+        "value": "OBJECTLIT"
+      }
+    },
+    "undocumented": true,
+    "name": "componentList",
+    "kind": "member",
+    "longname": "componentList",
+    "scope": "global"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        715,
+        757
+      ],
+      "filename": "entity.js",
+      "lineno": 36,
+      "path": "src",
+      "code": {
+        "id": "astnode1365367846",
+        "name": "get",
+        "type": "FUNCTION",
+        "node": "<Object>",
+        "value": "FUNCTION",
+        "paramnames": []
+      }
+    },
+    "undocumented": true,
+    "name": "get",
+    "kind": "function",
+    "memberof": "componentList",
+    "scope": "static",
+    "longname": "componentList.get"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        774,
+        839
+      ],
+      "filename": "entity.js",
+      "lineno": 39,
+      "path": "src",
+      "code": {
+        "id": "astnode997805152",
+        "name": "init",
+        "type": "FUNCTION",
+        "node": "<Object>",
+        "value": "FUNCTION",
+        "paramnames": [
+          "opts"
+        ]
+      }
+    },
+    "undocumented": true,
+    "name": "init",
+    "kind": "function",
+    "longname": "init",
+    "scope": "global"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        848,
+        1155
+      ],
+      "filename": "entity.js",
+      "lineno": 43,
+      "path": "src",
+      "code": {
+        "id": "astnode1485920794",
+        "name": "initComponents",
+        "type": "FUNCTION",
+        "node": "<Object>",
+        "value": "FUNCTION",
+        "paramnames": [
+          "opts"
+        ]
+      },
+      "vars": {
+        "key": false,
+        "component": false
+      }
+    },
+    "undocumented": true,
+    "name": "initComponents",
+    "kind": "function",
+    "longname": "initComponents",
+    "scope": "global"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        893,
+        896
+      ],
+      "filename": "entity.js",
+      "lineno": 44,
+      "path": "src",
+      "code": {
+        "id": "astnode1285692808",
+        "name": "key",
+        "type": "undefined",
+        "node": "<Object>",
+        "value": "key"
+      }
+    },
+    "undocumented": true,
+    "name": "key",
+    "kind": "member",
+    "memberof": "initComponents",
+    "longname": "initComponents~key",
+    "scope": "inner"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        910,
+        919
+      ],
+      "filename": "entity.js",
+      "lineno": 45,
+      "path": "src",
+      "code": {
+        "id": "astnode420684556",
+        "name": "component",
+        "type": "undefined",
+        "node": "<Object>",
+        "value": "component"
+      }
+    },
+    "undocumented": true,
+    "name": "component",
+    "kind": "member",
+    "memberof": "initComponents",
+    "longname": "initComponents~component",
+    "scope": "inner"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        1025,
+        1057
+      ],
+      "filename": "entity.js",
+      "lineno": 48,
+      "path": "src",
+      "code": {
+        "id": "astnode4788792",
+        "name": "component",
+        "type": "GETELEM",
+        "node": "<Object>",
+        "funcscope": "initComponents",
+        "value": "this.components[key]"
+      }
+    },
+    "undocumented": true,
+    "name": "component",
+    "kind": "member",
+    "longname": "initComponents~component",
+    "memberof": "initComponents",
+    "scope": "inner"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        1071,
+        1124
+      ],
+      "filename": "entity.js",
+      "lineno": 49,
+      "path": "src",
+      "code": {
+        "id": "astnode1550665724",
+        "name": "this[component.className]",
+        "type": "CALL",
+        "node": "<Object>",
+        "value": "CALL"
+      }
+    },
+    "undocumented": true,
+    "name": "className]",
+    "kind": "member",
+    "memberof": "this[component",
+    "longname": "this[component.className]",
+    "scope": "static"
+  },
+  {
+    "comment": "/**\n       * Creates the new entity and adds the components to it.\n       * @param {Sting} entityName The name of the type of entity\n       * @param {Array} components A list of components to add to the entity\n       * @return {Object} The entity prototype to create to entities with\n       */",
+    "meta": {
+      "range": [
+        1464,
+        1961
+      ],
+      "filename": "entity.js",
+      "lineno": 60,
+      "path": "src",
+      "code": {
+        "id": "astnode2147085221",
+        "name": "create",
+        "type": "FUNCTION",
+        "node": "<Object>",
+        "value": "FUNCTION",
+        "paramnames": [
+          "entityName",
+          "components"
+        ]
+      },
+      "vars": {
+        "o": false,
+        "component": false,
+        "i": false,
+        "ilen": false
+      }
+    },
+    "description": "Creates the new entity and adds the components to it.",
+    "params": [
+      {
+        "type": {
+          "names": [
+            "Sting"
+          ]
+        },
+        "optional": "undefined",
+        "nullable": "undefined",
+        "variable": "undefined",
+        "defaultvalue": "undefined",
+        "description": "The name of the type of entity",
+        "name": "entityName"
+      },
+      {
+        "type": {
+          "names": [
+            "Array"
+          ]
+        },
+        "optional": "undefined",
+        "nullable": "undefined",
+        "variable": "undefined",
+        "defaultvalue": "undefined",
+        "description": "A list of components to add to the entity",
+        "name": "components"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "Object"
+          ]
+        },
+        "optional": "undefined",
+        "nullable": "undefined",
+        "variable": "undefined",
+        "defaultvalue": "undefined",
+        "description": "The entity prototype to create to entities with"
+      }
+    ],
+    "name": "create",
+    "kind": "function",
+    "longname": "create",
+    "scope": "global"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        1519,
+        1552
+      ],
+      "filename": "entity.js",
+      "lineno": 61,
+      "path": "src",
+      "code": {
+        "id": "astnode1986897549",
+        "name": "o",
+        "type": "CALL",
+        "node": "<Object>",
+        "value": "CALL"
+      }
+    },
+    "undocumented": true,
+    "name": "o",
+    "kind": "member",
+    "memberof": "create",
+    "longname": "create~o",
+    "scope": "inner"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        1566,
+        1575
+      ],
+      "filename": "entity.js",
+      "lineno": 62,
+      "path": "src",
+      "code": {
+        "id": "astnode1852286825",
+        "name": "component",
+        "type": "undefined",
+        "node": "<Object>",
+        "value": "component"
+      }
+    },
+    "undocumented": true,
+    "name": "component",
+    "kind": "member",
+    "memberof": "create",
+    "longname": "create~component",
+    "scope": "inner"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        1589,
+        1594
+      ],
+      "filename": "entity.js",
+      "lineno": 63,
+      "path": "src",
+      "code": {
+        "id": "astnode2077106408",
+        "name": "i",
+        "type": "NUMBER",
+        "node": "<Object>",
+        "value": "0"
+      }
+    },
+    "undocumented": true,
+    "name": "i",
+    "kind": "member",
+    "memberof": "create",
+    "longname": "create~i",
+    "scope": "inner"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        1608,
+        1612
+      ],
+      "filename": "entity.js",
+      "lineno": 64,
+      "path": "src",
+      "code": {
+        "id": "astnode1387955238",
+        "name": "ilen",
+        "type": "undefined",
+        "node": "<Object>",
+        "value": "ilen"
+      }
+    },
+    "undocumented": true,
+    "name": "ilen",
+    "kind": "member",
+    "memberof": "create",
+    "longname": "create~ilen",
+    "scope": "inner"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        1656,
+        1680
+      ],
+      "filename": "entity.js",
+      "lineno": 67,
+      "path": "src",
+      "code": {
+        "id": "astnode103598648",
+        "name": "ilen",
+        "type": "GETPROP",
+        "node": "<Object>",
+        "funcscope": "create",
+        "value": "components.length"
+      }
+    },
+    "undocumented": true,
+    "name": "ilen",
+    "kind": "member",
+    "longname": "create~ilen",
+    "memberof": "create",
+    "scope": "inner"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        1711,
+        1736
+      ],
+      "filename": "entity.js",
+      "lineno": 68,
+      "path": "src",
+      "code": {
+        "id": "astnode1720155521",
+        "name": "component",
+        "type": "GETELEM",
+        "node": "<Object>",
+        "funcscope": "create",
+        "value": "components[i]"
+      }
+    },
+    "undocumented": true,
+    "name": "component",
+    "kind": "member",
+    "longname": "create~component",
+    "memberof": "create",
+    "scope": "inner"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        1782,
+        1816
+      ],
+      "filename": "entity.js",
+      "lineno": 70,
+      "path": "src",
+      "code": {
+        "id": "astnode1440468131",
+        "name": "o[component.className]",
+        "type": "NAME",
+        "node": "<Object>",
+        "funcscope": "create",
+        "value": "component"
+      }
+    },
+    "undocumented": true,
+    "name": "className]",
+    "kind": "member",
+    "longname": "create~o[component.className]",
+    "memberof": "create~o[component",
+    "scope": "static"
+  },
+  {
+    "comment": "/**\n       * Add an object of mixins to the current prototype.\n       *\n       * @param {Object} mixins A full object of mixins to add.\n       */",
+    "meta": {
+      "range": [
+        2122,
+        2191
+      ],
+      "filename": "entity.js",
+      "lineno": 84,
+      "path": "src",
+      "code": {
+        "id": "astnode506660821",
+        "name": "addMixins",
+        "type": "FUNCTION",
+        "node": "<Object>",
+        "value": "FUNCTION",
+        "paramnames": [
+          "mixins"
+        ]
+      }
+    },
+    "description": "Add an object of mixins to the current prototype.",
+    "params": [
+      {
+        "type": {
+          "names": [
+            "Object"
+          ]
+        },
+        "optional": "undefined",
+        "nullable": "undefined",
+        "variable": "undefined",
+        "defaultvalue": "undefined",
+        "description": "A full object of mixins to add.",
+        "name": "mixins"
+      }
+    ],
+    "name": "addMixins",
+    "kind": "function",
+    "longname": "addMixins",
+    "scope": "global"
+  }
+]

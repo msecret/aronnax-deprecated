@@ -8,9 +8,9 @@
  * pooled.
  */
 
-define('aronnax/Pool',
-  ['aronnax/Base', 'aronnax/Logger', 'aronnax/util', 'aronnax/Config',
-      'aronnax/Store'],
+define('aronnax/pool',
+  ['aronnax/base', 'aronnax/logger', 'aronnax/util', 'aronnax/config',
+      'aronnax/store'],
   function(Base, Logger, util, config, Store) {
     "use strict";
 

@@ -85,11 +85,11 @@ module.exports = function(grunt) {
           warning_level: 'verbose'
         },
         src: 'src/**/*.js',
-        dest: 'build.aronnax.min.js',
+        dest: 'build.aronnax.min.js'
       },
       prod: {
         src: 'src/**/*.js',
-        dest: 'build.aronnax.min.js',
+        dest: 'build.aronnax.min.js'
       }
     },
     clean: ['src', 'test'],

@@ -7,8 +7,8 @@
  * @file Holds the logger object
  */
 
-define('aronnax/Logger',
-  ['underscore', 'aronnax/Base', 'aronnax/Config', 'deps/logWriter'],
+define('aronnax/logger',
+  ['underscore', 'aronnax/base', 'aronnax/config', 'deps/logWriter'],
   function(_, Base, config, logWriterObject) {
     "use strict";
 

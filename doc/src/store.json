@@ -1,0 +1,868 @@
+[
+  {
+    "comment": "/**\n * @file Holds the Store object\n */",
+    "meta": {
+      "range": [
+        100,
+        139
+      ],
+      "filename": "store.js",
+      "lineno": 6,
+      "path": "src",
+      "code": {}
+    },
+    "name": "src/store.js",
+    "kind": "file",
+    "description": "Holds the Store object",
+    "preserveName": true,
+    "longname": "src/store.js"
+  },
+  {
+    "comment": "/**\n     * A Store that uses hashing\n     * @module aronnax/Store\n     * @exports aronnax/Store\n    */",
+    "meta": {
+      "range": [
+        770,
+        872
+      ],
+      "filename": "store.js",
+      "lineno": 35,
+      "path": "src",
+      "code": {}
+    },
+    "description": "A Store that uses hashing",
+    "kind": "module",
+    "name": "aronnax/Store",
+    "alias": "aronnax/Store",
+    "longname": "module:aronnax/Store"
+  },
+  {
+    "comment": "/**\n     * Takes any object and creates a string representation of it.\n     * @private\n     * @param {Object|Array|Function} obj The object to stringify\n     * @returns {String} The string representation of the object.\n     */",
+    "meta": {
+      "range": [
+        457,
+        764
+      ],
+      "filename": "store.js",
+      "lineno": 20,
+      "path": "src",
+      "code": {
+        "id": "astnode1038280584",
+        "name": "objectToString",
+        "type": "function",
+        "node": "<Object>",
+        "funcscope": "<anonymous>",
+        "paramnames": [
+          "obj"
+        ]
+      }
+    },
+    "description": "Takes any object and creates a string representation of it.",
+    "access": "private",
+    "params": [
+      {
+        "type": {
+          "names": [
+            "Object",
+            "Array",
+            "Function"
+          ]
+        },
+        "optional": "undefined",
+        "nullable": "undefined",
+        "variable": "undefined",
+        "defaultvalue": "undefined",
+        "description": "The object to stringify",
+        "name": "obj"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "String"
+          ]
+        },
+        "optional": "undefined",
+        "nullable": "undefined",
+        "variable": "undefined",
+        "defaultvalue": "undefined",
+        "description": "The string representation of the object."
+      }
+    ],
+    "name": "objectToString",
+    "kind": "function",
+    "memberof": "<anonymous>",
+    "longname": "<anonymous>~objectToString",
+    "scope": "inner"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        881,
+        4039
+      ],
+      "filename": "store.js",
+      "lineno": 40,
+      "path": "src",
+      "code": {
+        "id": "astnode2077143413",
+        "name": "Store",
+        "type": "CALL",
+        "node": "<Object>",
+        "value": "CALL"
+      }
+    },
+    "undocumented": true,
+    "name": "Store",
+    "kind": "member",
+    "memberof": "<anonymous>",
+    "longname": "<anonymous>~Store",
+    "scope": "inner"
+  },
+  {
+    "comment": "/**\n       * The accessible data store.\n       * @type Object\n       */",
+    "meta": {
+      "range": [
+        1015,
+        1083
+      ],
+      "filename": "store.js",
+      "lineno": 46,
+      "path": "src",
+      "code": {
+        "id": "astnode434150887",
+        "name": "store",
+        "type": "OBJECTLIT",
+        "node": "<Object>",
+        "value": "OBJECTLIT"
+      }
+    },
+    "description": "The accessible data store.",
+    "type": {
+      "names": [
+        "Object"
+      ]
+    },
+    "name": "store",
+    "kind": "member",
+    "tags": [
+      {
+        "originalTitle": "scope",
+        "title": "scope",
+        "text": "inner",
+        "value": "inner"
+      }
+    ],
+    "scope": "inner",
+    "memberof": "module:aronnax/Store",
+    "longname": "module:aronnax/Store~store"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        1032,
+        1075
+      ],
+      "filename": "store.js",
+      "lineno": 47,
+      "path": "src",
+      "code": {
+        "id": "astnode1831576911",
+        "name": "get",
+        "type": "FUNCTION",
+        "node": "<Object>",
+        "value": "FUNCTION",
+        "paramnames": []
+      }
+    },
+    "undocumented": true,
+    "name": "get",
+    "kind": "function",
+    "memberof": "module:aronnax/Store~store",
+    "scope": "static",
+    "longname": "module:aronnax/Store~store.get"
+  },
+  {
+    "comment": "/**\n       * The current amount of objects in the store\n       * @type Number\n       */",
+    "meta": {
+      "range": [
+        1186,
+        1263
+      ],
+      "filename": "store.js",
+      "lineno": 54,
+      "path": "src",
+      "code": {
+        "id": "astnode1475391814",
+        "name": "length",
+        "type": "OBJECTLIT",
+        "node": "<Object>",
+        "value": "OBJECTLIT"
+      }
+    },
+    "description": "The current amount of objects in the store",
+    "type": {
+      "names": [
+        "Number"
+      ]
+    },
+    "name": "length",
+    "kind": "member",
+    "tags": [
+      {
+        "originalTitle": "scope",
+        "title": "scope",
+        "text": "inner",
+        "value": "inner"
+      }
+    ],
+    "scope": "inner",
+    "memberof": "module:aronnax/Store",
+    "longname": "module:aronnax/Store~length"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        1204,
+        1255
+      ],
+      "filename": "store.js",
+      "lineno": 55,
+      "path": "src",
+      "code": {
+        "id": "astnode1842742261",
+        "name": "get",
+        "type": "FUNCTION",
+        "node": "<Object>",
+        "value": "FUNCTION",
+        "paramnames": []
+      }
+    },
+    "undocumented": true,
+    "name": "get",
+    "kind": "function",
+    "memberof": "module:aronnax/Store~length",
+    "scope": "static",
+    "longname": "module:aronnax/Store~length.get"
+  },
+  {
+    "comment": "/**\n       * Initializes the store\n       */",
+    "meta": {
+      "range": [
+        1323,
+        1379
+      ],
+      "filename": "store.js",
+      "lineno": 61,
+      "path": "src",
+      "code": {
+        "id": "astnode278909062",
+        "name": "init",
+        "type": "FUNCTION",
+        "node": "<Object>",
+        "value": "FUNCTION",
+        "paramnames": []
+      }
+    },
+    "description": "Initializes the store",
+    "name": "init",
+    "kind": "function",
+    "tags": [
+      {
+        "originalTitle": "scope",
+        "title": "scope",
+        "text": "inner",
+        "value": "inner"
+      }
+    ],
+    "scope": "inner",
+    "memberof": "module:aronnax/Store",
+    "longname": "module:aronnax/Store~init"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        1350,
+        1370
+      ],
+      "filename": "store.js",
+      "lineno": 62,
+      "path": "src",
+      "code": {
+        "id": "astnode233142031",
+        "name": "this._dataStore",
+        "type": "OBJECTLIT",
+        "node": "<Object>",
+        "value": "OBJECTLIT"
+      }
+    },
+    "undocumented": true,
+    "name": "_dataStore",
+    "kind": "member",
+    "memberof": "module:aronnax/Store",
+    "longname": "module:aronnax/Store#_dataStore",
+    "scope": "instance"
+  },
+  {
+    "comment": "/**\n       * Will add a new item to the store, either ID'ed or not\n       * @param {Object|Array|Function} item The item to add\n       * @returns {Object|Array|Function} The item passed in.\n       */",
+    "meta": {
+      "range": [
+        1594,
+        2368
+      ],
+      "filename": "store.js",
+      "lineno": 70,
+      "path": "src",
+      "code": {
+        "id": "astnode173829130",
+        "name": "put",
+        "type": "FUNCTION",
+        "node": "<Object>",
+        "value": "FUNCTION",
+        "paramnames": [
+          "item"
+        ]
+      },
+      "vars": {
+        "stringObjectValue": false
+      }
+    },
+    "description": "Will add a new item to the store, either ID'ed or not",
+    "params": [
+      {
+        "type": {
+          "names": [
+            "Object",
+            "Array",
+            "Function"
+          ]
+        },
+        "optional": "undefined",
+        "nullable": "undefined",
+        "variable": "undefined",
+        "defaultvalue": "undefined",
+        "description": "The item to add",
+        "name": "item"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "Object",
+            "Array",
+            "Function"
+          ]
+        },
+        "optional": "undefined",
+        "nullable": "undefined",
+        "variable": "undefined",
+        "defaultvalue": "undefined",
+        "description": "The item passed in."
+      }
+    ],
+    "name": "put",
+    "kind": "function",
+    "tags": [
+      {
+        "originalTitle": "scope",
+        "title": "scope",
+        "text": "inner",
+        "value": "inner"
+      }
+    ],
+    "scope": "inner",
+    "memberof": "module:aronnax/Store",
+    "longname": "module:aronnax/Store~put"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        1628,
+        1645
+      ],
+      "filename": "store.js",
+      "lineno": 71,
+      "path": "src",
+      "code": {
+        "id": "astnode590667317",
+        "name": "stringObjectValue",
+        "type": "undefined",
+        "node": "<Object>",
+        "value": "stringObjectValue"
+      }
+    },
+    "undocumented": true,
+    "name": "stringObjectValue",
+    "kind": "member",
+    "memberof": "module:aronnax/Store~put",
+    "longname": "module:aronnax/Store~put~stringObjectValue",
+    "scope": "inner"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        1824,
+        1860
+      ],
+      "filename": "store.js",
+      "lineno": 76,
+      "path": "src",
+      "code": {
+        "id": "astnode873249349",
+        "name": "this._dataStore[item.classId]",
+        "type": "NAME",
+        "node": "<Object>",
+        "value": "item"
+      }
+    },
+    "undocumented": true,
+    "name": "classId]",
+    "kind": "member",
+    "memberof": "module:aronnax/Store#_dataStore[item",
+    "longname": "module:aronnax/Store#_dataStore[item.classId]",
+    "scope": "static"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        2044,
+        2075
+      ],
+      "filename": "store.js",
+      "lineno": 82,
+      "path": "src",
+      "code": {
+        "id": "astnode1857401212",
+        "name": "this._dataStore[item.id]",
+        "type": "NAME",
+        "node": "<Object>",
+        "value": "item"
+      }
+    },
+    "undocumented": true,
+    "name": "id]",
+    "kind": "member",
+    "memberof": "module:aronnax/Store#_dataStore[item",
+    "longname": "module:aronnax/Store#_dataStore[item.id]",
+    "scope": "static"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        2112,
+        2152
+      ],
+      "filename": "store.js",
+      "lineno": 85,
+      "path": "src",
+      "code": {
+        "id": "astnode259665579",
+        "name": "stringObjectValue",
+        "type": "CALL",
+        "node": "<Object>",
+        "funcscope": "module:aronnax/Store~put",
+        "value": "CALL"
+      }
+    },
+    "undocumented": true,
+    "name": "stringObjectValue",
+    "kind": "member",
+    "tags": [
+      {
+        "originalTitle": "scope",
+        "title": "scope",
+        "text": "inner",
+        "value": "inner"
+      }
+    ],
+    "scope": "inner",
+    "memberof": "module:aronnax/Store",
+    "longname": "module:aronnax/Store~stringObjectValue"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        2219,
+        2258
+      ],
+      "filename": "store.js",
+      "lineno": 87,
+      "path": "src",
+      "code": {
+        "id": "astnode1037781896",
+        "name": "this._dataStore[stringObjectValue]",
+        "type": "ARRAYLIT",
+        "node": "<Object>",
+        "value": "ARRAYLIT"
+      }
+    },
+    "undocumented": true,
+    "name": "_dataStore[stringObjectValue]",
+    "kind": "member",
+    "memberof": "module:aronnax/Store",
+    "longname": "module:aronnax/Store#_dataStore[stringObjectValue]",
+    "scope": "instance"
+  },
+  {
+    "comment": "/**\n       * Will get the passed in object from the store.\n       * @param {Object|Array|Function} item The item to add\n       * @returns {Object|Array|Function} The item passed in.\n       */",
+    "meta": {
+      "range": [
+        2575,
+        3016
+      ],
+      "filename": "store.js",
+      "lineno": 100,
+      "path": "src",
+      "code": {
+        "id": "astnode375511959",
+        "name": "get",
+        "type": "FUNCTION",
+        "node": "<Object>",
+        "value": "FUNCTION",
+        "paramnames": [
+          "item"
+        ]
+      },
+      "vars": {
+        "stringObjectValue": false
+      }
+    },
+    "description": "Will get the passed in object from the store.",
+    "params": [
+      {
+        "type": {
+          "names": [
+            "Object",
+            "Array",
+            "Function"
+          ]
+        },
+        "optional": "undefined",
+        "nullable": "undefined",
+        "variable": "undefined",
+        "defaultvalue": "undefined",
+        "description": "The item to add",
+        "name": "item"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "Object",
+            "Array",
+            "Function"
+          ]
+        },
+        "optional": "undefined",
+        "nullable": "undefined",
+        "variable": "undefined",
+        "defaultvalue": "undefined",
+        "description": "The item passed in."
+      }
+    ],
+    "name": "get",
+    "kind": "function",
+    "tags": [
+      {
+        "originalTitle": "scope",
+        "title": "scope",
+        "text": "inner",
+        "value": "inner"
+      }
+    ],
+    "scope": "inner",
+    "memberof": "module:aronnax/Store",
+    "longname": "module:aronnax/Store~get"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        2609,
+        2626
+      ],
+      "filename": "store.js",
+      "lineno": 101,
+      "path": "src",
+      "code": {
+        "id": "astnode1091281027",
+        "name": "stringObjectValue",
+        "type": "undefined",
+        "node": "<Object>",
+        "value": "stringObjectValue"
+      }
+    },
+    "undocumented": true,
+    "name": "stringObjectValue",
+    "kind": "member",
+    "memberof": "module:aronnax/Store~get",
+    "longname": "module:aronnax/Store~get~stringObjectValue",
+    "scope": "inner"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        2816,
+        2856
+      ],
+      "filename": "store.js",
+      "lineno": 110,
+      "path": "src",
+      "code": {
+        "id": "astnode1147148999",
+        "name": "stringObjectValue",
+        "type": "CALL",
+        "node": "<Object>",
+        "funcscope": "module:aronnax/Store~get",
+        "value": "CALL"
+      }
+    },
+    "undocumented": true,
+    "name": "stringObjectValue",
+    "kind": "member",
+    "tags": [
+      {
+        "originalTitle": "scope",
+        "title": "scope",
+        "text": "inner",
+        "value": "inner"
+      }
+    ],
+    "scope": "inner",
+    "memberof": "module:aronnax/Store",
+    "longname": "module:aronnax/Store~stringObjectValue"
+  },
+  {
+    "comment": "/**\n       * Creates a string representation of an object\n       * @param {Array|Object|Funciton} item The item to stringify\n       * @returns {String} The string representation\n       */",
+    "meta": {
+      "range": [
+        3219,
+        3291
+      ],
+      "filename": "store.js",
+      "lineno": 123,
+      "path": "src",
+      "code": {
+        "id": "astnode2136971391",
+        "name": "stringify",
+        "type": "FUNCTION",
+        "node": "<Object>",
+        "value": "FUNCTION",
+        "paramnames": [
+          "item"
+        ]
+      }
+    },
+    "description": "Creates a string representation of an object",
+    "params": [
+      {
+        "type": {
+          "names": [
+            "Array",
+            "Object",
+            "Funciton"
+          ]
+        },
+        "optional": "undefined",
+        "nullable": "undefined",
+        "variable": "undefined",
+        "defaultvalue": "undefined",
+        "description": "The item to stringify",
+        "name": "item"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "String"
+          ]
+        },
+        "optional": "undefined",
+        "nullable": "undefined",
+        "variable": "undefined",
+        "defaultvalue": "undefined",
+        "description": "The string representation"
+      }
+    ],
+    "name": "stringify",
+    "kind": "function",
+    "tags": [
+      {
+        "originalTitle": "scope",
+        "title": "scope",
+        "text": "inner",
+        "value": "inner"
+      }
+    ],
+    "scope": "inner",
+    "memberof": "module:aronnax/Store",
+    "longname": "module:aronnax/Store~stringify"
+  },
+  {
+    "comment": "/**\n       * Removes an item from the data store, if it is found.\n       * @param {Object|Array|Function} item The item to remove\n       * @returns {Undefined}\n       */",
+    "meta": {
+      "range": [
+        3538,
+        4032
+      ],
+      "filename": "store.js",
+      "lineno": 133,
+      "path": "src",
+      "code": {
+        "id": "astnode209090329",
+        "name": "remove",
+        "type": "FUNCTION",
+        "node": "<Object>",
+        "value": "FUNCTION",
+        "paramnames": [
+          "item"
+        ]
+      },
+      "vars": {
+        "existingItem": false,
+        "stringObjectValue": false
+      }
+    },
+    "description": "Removes an item from the data store, if it is found.",
+    "params": [
+      {
+        "type": {
+          "names": [
+            "Object",
+            "Array",
+            "Function"
+          ]
+        },
+        "optional": "undefined",
+        "nullable": "undefined",
+        "variable": "undefined",
+        "defaultvalue": "undefined",
+        "description": "The item to remove",
+        "name": "item"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "Undefined"
+          ]
+        },
+        "optional": "undefined",
+        "nullable": "undefined",
+        "variable": "undefined",
+        "defaultvalue": "undefined"
+      }
+    ],
+    "name": "remove",
+    "kind": "function",
+    "tags": [
+      {
+        "originalTitle": "scope",
+        "title": "scope",
+        "text": "inner",
+        "value": "inner"
+      }
+    ],
+    "scope": "inner",
+    "memberof": "module:aronnax/Store",
+    "longname": "module:aronnax/Store~remove"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        3575,
+        3604
+      ],
+      "filename": "store.js",
+      "lineno": 134,
+      "path": "src",
+      "code": {
+        "id": "astnode856388408",
+        "name": "existingItem",
+        "type": "CALL",
+        "node": "<Object>",
+        "value": "CALL"
+      }
+    },
+    "undocumented": true,
+    "name": "existingItem",
+    "kind": "member",
+    "memberof": "module:aronnax/Store~remove",
+    "longname": "module:aronnax/Store~remove~existingItem",
+    "scope": "inner"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        3618,
+        3635
+      ],
+      "filename": "store.js",
+      "lineno": 135,
+      "path": "src",
+      "code": {
+        "id": "astnode2104034500",
+        "name": "stringObjectValue",
+        "type": "undefined",
+        "node": "<Object>",
+        "value": "stringObjectValue"
+      }
+    },
+    "undocumented": true,
+    "name": "stringObjectValue",
+    "kind": "member",
+    "memberof": "module:aronnax/Store~remove",
+    "longname": "module:aronnax/Store~remove~stringObjectValue",
+    "scope": "inner"
+  },
+  {
+    "comment": "",
+    "meta": {
+      "range": [
+        3869,
+        3909
+      ],
+      "filename": "store.js",
+      "lineno": 145,
+      "path": "src",
+      "code": {
+        "id": "astnode659090032",
+        "name": "stringObjectValue",
+        "type": "CALL",
+        "node": "<Object>",
+        "funcscope": "module:aronnax/Store~remove",
+        "value": "CALL"
+      }
+    },
+    "undocumented": true,
+    "name": "stringObjectValue",
+    "kind": "member",
+    "tags": [
+      {
+        "originalTitle": "scope",
+        "title": "scope",
+        "text": "inner",
+        "value": "inner"
+      }
+    ],
+    "scope": "inner",
+    "memberof": "module:aronnax/Store",
+    "longname": "module:aronnax/Store~stringObjectValue"
+  }
+]
