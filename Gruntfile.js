@@ -14,23 +14,10 @@ module.exports = function(grunt) {
     },
     requirejs: {
       options: {
-        mainConfigFile: "build/dev.build.js",
-        name: 'aronnax/main',
-        paths: {
-          'aronnax': 'src',
-          'underscore': 'lib/components/underscore/underscore',
-          'deps/logWriter': 'src/deps/console'
-        },
-        shim: {
-          'underscore': {
-            deps: [],
-            exports: '_'
-          }
-        }
+        mainConfigFile: "build/dev.build.js"
       },
       compile: {
         options: {
-          out: 'dist/<%= pkg.name %>.dev.min.js',
           wrap: {
             start: "<%= pkg.author.name %>" +
                    "(function() {",
@@ -40,7 +27,6 @@ module.exports = function(grunt) {
       },
       concat: {
         options: {
-          out: 'dist/<%= pkg.name %>.dev.js',
           optimize: 'none',
           wrap: {
             start: "<%= meta.banner %>"
@@ -104,7 +90,6 @@ module.exports = function(grunt) {
     },
     jasmine: {
       options: {
-        specs: 'test/**/*_test.js',
         helpers: ['lib/components/*.js',
           'lib/components/sinonjs/sinon.js',
           'lib/components/jasmine-sinon/lib/jasmine-sinon.js',
@@ -114,21 +99,10 @@ module.exports = function(grunt) {
         keepRunner: true,
         template: require('grunt-template-jasmine-requirejs'),
         templateOptions: {
-          requireConfigFile: 'build/dev.build.js',
           requireConfig: {
-            name: 'aronnax/main',
-            paths: {
-              'aronnax': 'src',
-              'underscore': 'lib/components/underscore/underscore',
-              'deps/logWriter': 'src/deps/console'
-            },
-            shim: {
-              'underscore': {
-                deps: [],
-                exports: '_'
-              }
-            }
-          }
+            baseUrl: 'src'
+          },
+          requireConfigFile: 'build/dev.build.js'
         }
       },
       integration: {

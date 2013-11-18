@@ -8,7 +8,7 @@
  */
 
 define('aronnax/logger',
-  ['underscore', 'aronnax/base', 'aronnax/config', 'deps/logWriter'],
+  ['underscore', 'aronnax/base', 'aronnax/config', 'aronnax/deps/logWriter'],
   function(_, Base, config, logWriterObject) {
     "use strict";
 
