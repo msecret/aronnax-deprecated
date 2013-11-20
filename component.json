@@ -1,0 +1,8 @@
+{
+  "name": "aronnax",
+  "version": "0.1.1",
+  "main": "dist/aronnax.js",
+  "dependencies": {
+    "underscore": "~1.5.1"
+  }
+}
