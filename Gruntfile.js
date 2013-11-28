@@ -234,7 +234,7 @@ module.exports = function(grunt) {
           it : true,
           _: true
         }
-      },
+      }
     }
   });
 

@@ -36,7 +36,6 @@ define('aronnax/entity', [
       },
 
       init: function(opts) {
-        console.log('EntityProto.init');
         this.initComponents(opts);
       },
 
@@ -50,6 +49,16 @@ define('aronnax/entity', [
             this[component.className].init(opts);
           }
         }
+      },
+
+      /**
+       * Adds a single mixin to the Entity.
+       *
+       * @param {String} name Name of the mixin to become the method name
+       * @param {Function} mixin The actual function
+       */
+      addMixin: function(name, mixin) {
+        this[name] = mixin;
       },
 
       /**
