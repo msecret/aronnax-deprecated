@@ -44,29 +44,12 @@ define('aronnax/base',
       return _classIds[className]++;
     }
 
-    /**
-     * @class Base
-     */
-    var BaseProto = /** @lends Base.prototype */ {
-      /**
-       * The class name of the object prototye.
-       */
-      className: 'Base',
-      /**
-       * Construct an instance of the object with ids.
-       * @return {Object} The created object.
-       */
-      construct: function() {
-        Base.construct(this);
-      }
-    };
-
    /**
     * Create an object with a classname and properties to add to it.
     * from.
     * @class Base
     */
-    var Base = /** @lends Base */ {
+    var Base = /** @lends Base.prototype */ {
 
       /**
        * Creates a new object, maps to Object.create.
@@ -827,10 +810,10 @@ define('aronnax/pool',
 
    /**
     * A log which will provide logging capabilities
-    * @class Pool
-    * @extends Base
     */
-    var PoolPrototype = Base.create(Object.prototype, 'Pool', {
+    var PoolPrototype = Base.create(Object.prototype, 'Pool',
+      /** @lends Pool.prototype */
+      {
       /**
       * The current pool of active members, a store
       * @type Object
@@ -919,12 +902,16 @@ define('aronnax/pool',
 
     });
 
-    // TODO return this into regular way.
-    var Pool = {
+   /**
+    * A log which will provide logging capabilities
+    * @class Pool
+    * @extends Base
+    */
+    var Pool = /** @lends Pool */ {
       /**
        * All the current pools, as a hash with the class type as the key.
        * @static
-       * @type aronnax.Pool
+       * @type Pool
        */
       pools: {},
 
@@ -974,7 +961,7 @@ define('aronnax/pool',
        * Gets the pool of the class type, creating one if it doesn't exists
        * @static
        * @param {Sting} className The name of the class
-       * @return {arronax.Pool} The pool of the class type
+       * @return {Pool} The pool of the class type
        */
       acquirePool: function(className, objPrototype) {
         var pool = this.getPool(objPrototype, className);
@@ -991,7 +978,7 @@ define('aronnax/pool',
        * @param {Object|Array|Function} objPrototype The prototype of the pool
        * being searched for.
        * @param {String} poolClassName The name of the pool class
-       * @returns {Object} The Pool object.
+       * @returns {Pool} The Pool object.
        */
       getPool: function(objPrototype, poolClassName) {
         var className = poolClassName || this.getClassName(objPrototype);
@@ -1064,7 +1051,7 @@ define('aronnax/pool',
        * @static
        * @param {Sting} className The name of the class
        * @param {Number} initialSize The initial size to make the free pool
-       * @return {arronax.Pool} The new pool of the class type
+       * @return {Pool} The new pool of the class type
        */
       createPool: function(className, objPrototype, initialSize) {
         var pool = Object.create(PoolPrototype);
@@ -1093,12 +1080,14 @@ define('aronnax/pool',
  */
 
 define('aronnax/pooled',
+  /** @exports aronnax/Pooled */
   ['aronnax/base', 'aronnax/pool'],
   function(Base, Pool) {
 
    /**
     * An object the provides pooling functionality
-    * @exports aronnax/Pooled
+    * @class Pooled
+    * @extends Base
     */
     var Pooled = Base.create(Object.prototype, 'Pooled', {
 
@@ -1146,6 +1135,7 @@ define('aronnax/pooled',
  */
 
 define('aronnax/entity', [
+  /** @exports aronnax/Entity */
     'underscore',
     'aronnax/base',
     'aronnax/logger',
@@ -1156,27 +1146,39 @@ define('aronnax/entity', [
 
    /**
     * A base game entity object which is pooled
-    * @exports aronnax/Entity
     */
-    var EntityProto = Base.create(Pooled, 'Entity', {
+    var EntityProto = Base.create(Pooled, 'Entity',
+                                  /** @lends Entity.prototype */ {
       /**
-       * A list of components on the entity
-       * @type Array
+       * A hash of component name to component object.
+       * @type Object
        */
       components: {
         value: {},
         writable: true
       },
 
+      /**
+       * A list of component names on the entity
+       * @type Array
+       */
       componentList: {
         value: [],
         writable: true
       },
 
+      /**
+       * Initialize the entity and all components.
+       * @param {Object} opts Options passed to entity and components as hash.
+       */
       init: function(opts) {
         this.initComponents(opts);
       },
 
+      /**
+       * Initialize just the components
+       * @param {Object} opts Options passed to entity and components as hash.
+       */
       initComponents: function(opts) {
         var key,
             component;
@@ -1209,7 +1211,12 @@ define('aronnax/entity', [
       }
     });
 
-    var Entity = Base.create(EntityProto, 'Entity', {
+    /**
+     * A base game entity object which is pooled
+     * @class Entity
+     * @extends Pooled
+     */
+    var Entity = Base.create(EntityProto, 'Entity', /** @lends Entity */ {
       /**
        * Creates the new entity and adds the components to it.
        * @param {Sting} entityName The name of the type of entity
@@ -1258,17 +1265,80 @@ define('aronnax/entity', [
 // https://github.com/msecret/aronnax
 // Licensed MIT
 
-require(['aronnax/base', 'aronnax/core', 'aronnax/pooled', 'aronnax/entity'],
-  function(Base, Core, Pooled, Entity) {
+define('aronnax/aronnax',[
+       'aronnax/base',
+       'aronnax/config',
+       'aronnax/core',
+       'aronnax/entity',
+       'aronnax/logger',
+       'aronnax/pool',
+       'aronnax/pooled',
+       'aronnax/store',
+       'aronnax/util'],
+  /** @exports aronnax/Aronnax */
+  function(Base, Config, Core, Entity, Logger, Pool, Pooled, Store, Util) {
+
     /**
-     * Aronnax main object
-     * @exports Aronnax/Aronnax
+     * The base Aronnax core object.
+     * @class Aronnax
      */
-    var Aronnax = {};
+    var Aronnax = /** @lends Aronnax */ {
+      /**
+       * Aronnax.Base
+       * @type Base
+       */
+      Base: Base,
+
+      /**
+       * Aronnax.Config
+       * @type Config
+       */
+      Config: Config,
+
+      /**
+       * Aronnax.Core
+       * @type Core
+       */
+      Core: Core,
+
+      /**
+       * Aronnax.Logger
+       * @type Logger
+       */
+      Logger: Logger,
+
+      /**
+       * Aronnax.Entity
+       * @type Entity
+       */
+      Entity: Entity,
+
+      /**
+       * Aronnax.Pool
+       * @type Pool
+       */
+      Pool: Pool,
+
+      /**
+       * Aronnax.Pooled
+       * @type Pooled
+       */
+      Pooled: Pooled,
+
+      /**
+       * Aronnax.Store
+       * @type Store
+       */
+      Store: Store,
+
+      /**
+       * Aronnax.Util
+       * @type Util
+       */
+      Util: Util
+    };
 
     return Aronnax;
 });
-
-define("aronnax/aronnax", function(){});
 
 require(["aronnax"]);

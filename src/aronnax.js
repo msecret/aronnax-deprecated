@@ -3,9 +3,18 @@
 // https://github.com/msecret/aronnax
 // Licensed MIT
 
-define(['aronnax/base', 'aronnax/core', 'aronnax/pooled', 'aronnax/entity'],
+define([
+       'aronnax/base',
+       'aronnax/config',
+       'aronnax/core',
+       'aronnax/entity',
+       'aronnax/logger',
+       'aronnax/pool',
+       'aronnax/pooled',
+       'aronnax/store',
+       'aronnax/util'],
   /** @exports aronnax/Aronnax */
-  function(Base, Core, Pooled, Entity) {
+  function(Base, Config, Core, Entity, Logger, Pool, Pooled, Store, Util) {
 
     /**
      * The base Aronnax core object.
@@ -19,10 +28,34 @@ define(['aronnax/base', 'aronnax/core', 'aronnax/pooled', 'aronnax/entity'],
       Base: Base,
 
       /**
+       * Aronnax.Config
+       * @type Config
+       */
+      Config: Config,
+
+      /**
        * Aronnax.Core
        * @type Core
        */
       Core: Core,
+
+      /**
+       * Aronnax.Logger
+       * @type Logger
+       */
+      Logger: Logger,
+
+      /**
+       * Aronnax.Entity
+       * @type Entity
+       */
+      Entity: Entity,
+
+      /**
+       * Aronnax.Pool
+       * @type Pool
+       */
+      Pool: Pool,
 
       /**
        * Aronnax.Pooled
@@ -31,10 +64,16 @@ define(['aronnax/base', 'aronnax/core', 'aronnax/pooled', 'aronnax/entity'],
       Pooled: Pooled,
 
       /**
-       * Aronnax.Entity
-       * @type Entity
+       * Aronnax.Store
+       * @type Store
        */
-      Entity: Entity
+      Store: Store,
+
+      /**
+       * Aronnax.Util
+       * @type Util
+       */
+      Util: Util
     };
 
     return Aronnax;
