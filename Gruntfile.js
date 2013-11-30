@@ -215,6 +215,6 @@ module.exports = function(grunt) {
   grunt.registerTask('banner', 'usebanner');
   grunt.registerTask('doc', 'amd-doc');
 
-  grunt.registerTask('default', ['lint', 'concat', 'compile', 'test', 'doc']);
-
+  grunt.retisterTask('default', ['lint', 'clean', 'compile', 'banner', 'concat',
+                                  'test', 'doct']);
 };
