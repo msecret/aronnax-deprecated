@@ -203,7 +203,6 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-amd-doc');
   grunt.loadNpmTasks('grunt-banner');
-  grunt.loadNpmTasks('grunt-closure-tools');
   grunt.loadNpmTasks('grunt-global-config');
 
   // Default task(s).
