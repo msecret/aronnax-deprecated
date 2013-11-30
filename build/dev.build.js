@@ -6,25 +6,23 @@
  *
  */
 require.config({
-  baseUrl: '../src',
-  dir: '../dist',
+  baseUrl: '../',
+  insertRequire: ['aronnax'],
+  name: 'aronnax/aronnax',
+  exclude: [
+    'underscore'
+  ],
+  out: '../dist/aronnax.js',
 
   // Options
-  removeCombined: true,
   useStrict: true,
-
-  modules: [{
-    name: 'aronnax/aronnax',
-    exclude: [
-      'underscore'
-    ]
-  }],
+  wrap: true,
 
   paths: {
-    aronnax: './',
-    underscore: '../lib/components/underscore/underscore',
+    aronnax: 'src',
+    underscore: 'lib/components/underscore/underscore',
     // Renaming for dependencies
-    'aronnax/deps/logWriter': 'deps/console'
+    'deps/logWriter': 'src/deps/console'
   },
 
   shim: {
@@ -32,38 +30,5 @@ require.config({
       exports: '_'
     }
   }
-  
 });
 
-
-/*
-({
-  generateSourceMaps: true,
-  locale: 'en-us',
-  logLevel: 0,
-  mainConfigFile: '../src/main.js',
-  optimize: 'uglify',
-  optimizeCss: 'none',
-  useStrict: true,
-
-  uglify: {
-    ascii_only: true,
-    beautify: true,
-    indent: 2,
-    max_line_length: 1000,
-    no_mangle: true,
-    toplevel: true
-  }
-});
-*/
-
-/*
- * Directory structure
- *
- * src/*.js
- * src/deps/*.js
- * lib/components/*.js
- *
- * dist/aronax.min.js
- * dist/lib/*.js
- */

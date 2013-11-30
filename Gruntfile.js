@@ -8,9 +8,8 @@ module.exports = function(grunt) {
                   "<%= pkg.author.name %>\n" +
               "// All Rights Reserved\n" +
               "// <%= pkg.title || pkg.name %> - v<%= pkg.version %>\n" +
-              "// <%= pkg.homepage %> \n" +
-              "// <%= grunt.template.today('yyyy-mm-dd') %>\n" +
-              "// Licensed <%= _.pluck(pkg.licenses, 'type').join(', ') %> \n"
+              "// <%= pkg.homepage %>\n" +
+              "// Licensed <%= _.pluck(pkg.licenses, 'type').join(', ') %>\n"
     },
     requirejs: {
       options: {
@@ -18,74 +17,32 @@ module.exports = function(grunt) {
       },
       compile: {
         options: {
-          wrap: {
-            start: "<%= pkg.author.name %>" +
-                   "(function() {",
-            end: "}());"
-          }
+          almond: true,
+          replaceRequireScript: [{
+            files: ['index.html'],
+            module: '<%= pkg.name %>.min'
+          }],
+          out: 'dist/<%= pkg.name %>.min.js'
         }
       },
       concat: {
         options: {
           optimize: 'none',
+          out: "dist/<%= pkg.name %>.js",
           wrap: {
             start: "<%= meta.banner %>"
           }
         }
       }
     },
-    closureBuilder: {
-      options: {
-        closureLibraryPath: 'lib/closure-library',
-        compile: false,
-        execOpts: {
-          maxBuffer: 999999 * 1024
-        },
-        inputs: 'src/*.js',
-        output_file: 'dist/aronnax.js',
-        output_mode: 'script'
-      },
-      dev: {
-        src: 'src/',
-        dest: 'build/aronnax.js'
-      }
-    },
-    closureCompiler: {
-      options: {
-        checkModified: true,
-        closureCompiler: 'build/closure-compiler/compiler.jar',
-        compilerOpts: {
-          compilation_level: 'ADVANCED_OPTIMIZATIONS',
-          process_common_js_modules: true,
-          transform_amd_modules: true
-        },
-        execOpts: {
-          maxBuffer: 999999 * 1024
-        }
-      },
-      dev: {
-        TEMPcompilerOpts: {
-          define: ["'goog.DEBUG=false'"],
-          formatting: 'PRETTY_PRINT',
-          summary_detail_level: 3,
-          warning_level: 'verbose'
-        },
-        src: 'src/**/*.js',
-        dest: 'build.aronnax.min.js'
-      },
-      prod: {
-        src: 'src/**/*.js',
-        dest: 'build.aronnax.min.js'
-      }
-    },
-    clean: ['src', 'test'],
+    clean: ['dist/*', 'doc/**/*'],
     config: {
       files: {
         src: 'build/dev.config.json',
         dest: 'src/config.js'
       },
       options: {
-        module: 'aronnax/Config'
+        module: '<%= pkg.name %>/Config'
       }
     },
     jasmine: {
@@ -100,7 +57,7 @@ module.exports = function(grunt) {
         template: require('grunt-template-jasmine-requirejs'),
         templateOptions: {
           requireConfig: {
-            baseUrl: 'src'
+            baseUrl: './'
           },
           requireConfigFile: 'build/dev.build.js'
         }
@@ -124,23 +81,23 @@ module.exports = function(grunt) {
           banner: '<%= meta.banner %>'
         },
         files: {
-          src: [ 'src/**/*.js', 'test/**/*.js' ]
+          src: [ 'dist/aronnax.js', 'dist/aronnax.min.js' ]
         }
       }
     },
     'amd-doc': {
       all: {
         files: {
-            src: 'src/**/*.js'
+            src: 'src/*.js'
         },
         options: {
-          out: 'doc',
+          out: 'doc/out',
           cache: 'doc/cache',
           mixin: 'doc/mixin',
           repoview: 'https://github.com/msecret/aronnax/src',
           requirejs: {
-            mainConfigFile: "build/dev.build.js",
-            name: 'aronnax/main'
+            baseUrl: './',
+            mainConfigFile: "build/dev.build.js"
           },
           types: (function() {
             var types = [];
@@ -189,7 +146,7 @@ module.exports = function(grunt) {
         files: ['test/**/*.js', 'src/**/*.js'],
         tasks: ['jshint'],
         options: {
-          spawn: false,
+          spawn: false
         }
       }
     },
@@ -241,7 +198,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-jasmine');
   grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-requirejs');
+  grunt.loadNpmTasks('grunt-requirejs');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   grunt.loadNpmTasks('grunt-amd-doc');

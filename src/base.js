@@ -1,18 +1,16 @@
 // Copyright (c) 2013
 // All Rights Reserved
+// aronnax - v0.1.1
 // https://github.com/msecret/aronnax
 // Licensed MIT
 
-/**
- * @file Holds the Base object
- */
 
-/**
-* A base object to inherit from the provide a shared object to inherit
-* from.
-* @module aronnax.Base
-*/
 define('aronnax/base',
+ /**
+  * Create an object with a classname and properties to add to it.
+  * from.
+  * @exports aronnax/base
+  */
   ['underscore'],
   function(_) {
     "use strict";
@@ -31,11 +29,14 @@ define('aronnax/base',
    /**
     * Create an object with a classname and properties to add to it.
     * from.
-    * @exports aronnax.Base
+    * @name Base
+    * @class Base
+    * @exports aronnax/base
     */
     var Base = {
       /**
        * Creates a new object, maps to Object.create.
+       * @method
        * @param {Object} obj The object to inherit from
        * @param {String} name The name of the object.
        * @param {Object} props Properties to add to the inherited object.
