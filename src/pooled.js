@@ -8,12 +8,14 @@
  */
 
 define('aronnax/pooled',
+  /** @exports aronnax/Pooled */
   ['aronnax/base', 'aronnax/pool'],
   function(Base, Pool) {
 
    /**
     * An object the provides pooling functionality
-    * @exports aronnax/Pooled
+    * @class Pooled
+    * @extends Base
     */
     var Pooled = Base.create(Object.prototype, 'Pooled', {
 

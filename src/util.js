@@ -8,16 +8,25 @@
  */
 
 define('aronnax/util',
+  /** @exports aronnax/Util */
   ['underscore', 'aronnax/config', 'aronnax/logger'],
   function(_, Config, Logger) {
     "use strict";
 
     var _log = Logger.getLog('aronnax.util');
 
+    /**
+     * Clear out an array.
+     * @private
+     */
     function clearArray(array) {
       array.length = 0;
     }
 
+    /**
+     * Clear out an object of all properties
+     * @private
+     */
     function clearObject(object) {
       var key;
 
@@ -31,10 +40,12 @@ define('aronnax/util',
       }
     }
 
-    /**
-     * @module util
-     */
-    var util = {
+   /**
+    * A log which will provide logging capabilities
+    * @class Util
+    */
+    var util = /** @lends Util **/ {
+
       /**
        * Cleans any type of primitive, object or array. For an object will clear
        * all it's propertyes, for an array it will clear all it's elements.

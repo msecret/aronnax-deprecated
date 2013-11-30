@@ -3,13 +3,39 @@
 // https://github.com/msecret/aronnax
 // Licensed MIT
 
-require(['aronnax/base', 'aronnax/core', 'aronnax/pooled', 'aronnax/entity'],
+define(['aronnax/base', 'aronnax/core', 'aronnax/pooled', 'aronnax/entity'],
+  /** @exports aronnax/Aronnax */
   function(Base, Core, Pooled, Entity) {
+
     /**
-     * Aronnax main object
-     * @exports Aronnax/Aronnax
+     * The base Aronnax core object.
+     * @class Aronnax
      */
-    var Aronnax = {};
+    var Aronnax = /** @lends Aronnax */ {
+      /**
+       * Aronnax.Base
+       * @type Base
+       */
+      Base: Base,
+
+      /**
+       * Aronnax.Core
+       * @type Core
+       */
+      Core: Core,
+
+      /**
+       * Aronnax.Pooled
+       * @type Pooled
+       */
+      Pooled: Pooled,
+
+      /**
+       * Aronnax.Entity
+       * @type Entity
+       */
+      Entity: Entity
+    };
 
     return Aronnax;
 });

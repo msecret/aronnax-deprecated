@@ -10,20 +10,32 @@
 // https://github.com/msecret/aronnax
 // Licensed MIT
 
+/**
+ * @file base Holds the base module
+ */
 
 define('aronnax/base',
- /**
-  * Create an object with a classname and properties to add to it.
-  * from.
-  * @exports aronnax/base
-  */
+  /** @exports aronnax/Base */
   ['underscore'],
   function(_) {
     "use strict";
 
+    /**
+     * Used for getting the next id while assigning ids to new objects
+     * @private
+     */
     var _nextId = 0,
-        _classIds = {};
+    /**
+     * Hash structure for class ids to set next classId.
+     * @private
+     */
+        _classIds  = {};
 
+    /**
+     * Returns the next id for a class;
+     *
+     * @private
+     */
     function nextClassId(className) {
       if (!_classIds[className]) {
         _classIds[className] = 0;
@@ -32,17 +44,32 @@ define('aronnax/base',
       return _classIds[className]++;
     }
 
+    /**
+     * @class Base
+     */
+    var BaseProto = /** @lends Base.prototype */ {
+      /**
+       * The class name of the object prototye.
+       */
+      className: 'Base',
+      /**
+       * Construct an instance of the object with ids.
+       * @return {Object} The created object.
+       */
+      construct: function() {
+        Base.construct(this);
+      }
+    };
+
    /**
     * Create an object with a classname and properties to add to it.
     * from.
-    * @name Base
     * @class Base
-    * @exports aronnax/base
     */
-    var Base = {
+    var Base = /** @lends Base */ {
+
       /**
        * Creates a new object, maps to Object.create.
-       * @method
        * @param {Object} obj The object to inherit from
        * @param {String} name The name of the object.
        * @param {Object} props Properties to add to the inherited object.
@@ -129,21 +156,31 @@ define('deps/logWriter',
 // Licensed MIT
 
 /**
- * @file Holds the logger object
+ * @file logger All logging capabilities.
  */
 
 define('aronnax/logger',
+  /** @exports aronnax/Logger */
   ['underscore', 'aronnax/base', 'aronnax/config', 'deps/logWriter'],
   function(_, Base, config, logWriterObject) {
     "use strict";
 
    /**
     * A log which will provide logging capabilities
+    * @class Log
+    * @extends Base
     */
-    var Log = Base.create(Object.prototype, 'Log', {
+    var Log = Base.create(Object.prototype, 'Log',
+      /** @lends Log.prototype **/
+      {
 
       /**
        * Initializes the log.
+       *
+       * @param {String} name The name of the log, displayed in output.
+       * @param {Object} logWriter The interface to use to write the log. This
+       * interface can be window.console or other solutions. It should conform
+       * to the same interface as window.console; debug, log, warn, error.
        */
       init: function(name, logWriter) {
         /**
@@ -222,19 +259,22 @@ define('aronnax/logger',
       }
     });
 
-    /**
-     * An interface to control logs.
-     * @exports aronnax/Logger
-     */
-    var Logger = {
+   /**
+    * A log which will provide logging capabilities
+    * @class Logger
+    */
+    var Logger = /** @lends Logger */ {
 
       /**
        * List of currently active logs.
+       * @type Array
        */
       logs: [],
 
       /**
        * Settings for the logger
+       * @type Object
+       * @default
        */
       settings: {
         environment: config.env,
@@ -246,7 +286,7 @@ define('aronnax/logger',
        * exist
        * @static
        * @param name Name of the log being accessed, or created
-       * @returns {aronnax/Log} The log instance being requested, either new
+       * @returns {Log} The log instance being requested, either new
        * or one already created.
        */
       getLog: function(name) {
@@ -282,16 +322,25 @@ define('aronnax/logger',
  */
 
 define('aronnax/util',
+  /** @exports aronnax/Util */
   ['underscore', 'aronnax/config', 'aronnax/logger'],
   function(_, Config, Logger) {
     "use strict";
 
     var _log = Logger.getLog('aronnax.util');
 
+    /**
+     * Clear out an array.
+     * @private
+     */
     function clearArray(array) {
       array.length = 0;
     }
 
+    /**
+     * Clear out an object of all properties
+     * @private
+     */
     function clearObject(object) {
       var key;
 
@@ -305,10 +354,12 @@ define('aronnax/util',
       }
     }
 
-    /**
-     * @module util
-     */
-    var util = {
+   /**
+    * A log which will provide logging capabilities
+    * @class Util
+    */
+    var util = /** @lends Util **/ {
+
       /**
        * Cleans any type of primitive, object or array. For an object will clear
        * all it's propertyes, for an array it will clear all it's elements.
@@ -392,10 +443,11 @@ define('aronnax/shims/requestAnimationFrame',
 // Licensed MIT
 
 /**
- * @file time Holds the game loop and any other timing functionality
+ * @file core Holds the game loop and any other timing functionality
  */
 
 define('aronnax/core',
+  /** @exports aronnax/Core */
   ['aronnax/base',
     'aronnax/logger',
     'aronnax/util',
@@ -404,6 +456,10 @@ define('aronnax/core',
   function(Base, Logger, util, config, requestAnimationFrame) {
     "use strict";
 
+    /**
+     * The local log for the file.
+     * @private
+     */
     var _log = Logger.getLog('aronnax.Core');
 
     var _fps = config.fps || 60,
@@ -412,7 +468,16 @@ define('aronnax/core',
         _requestId;
 
 
-    var Core = Base.create(Object.prototype, 'Core', {
+   /**
+    * Create an object with a classname and properties to add to it.
+    * from.
+    * @class Core
+    * @extends Base
+    */
+    var Core = Base.create(Object.prototype, 'Core',
+       /** @lends Core */
+       {
+
       /**
        * The frames per second the game should run at defaults to 60
        * @type Number
@@ -564,6 +629,7 @@ define('aronnax/core',
  */
 
 define('aronnax/store',
+  /** @exports aronnax/Store */
   ['underscore', 'aronnax/base'],
   function(_, Base) {
 
@@ -590,10 +656,12 @@ define('aronnax/store',
 
     /**
      * A Store that uses hashing
-     * @module aronnax/Store
-     * @exports aronnax/Store
+     * @class Store
+     * @extends Base
     */
-    var Store = Base.create(Object.prototype, 'Store', {
+    var Store = Base.create(Object.prototype, 'Store',
+      /** @lends Store.prototype **/
+      {
 
       /**
        * The accessible data store.
@@ -607,6 +675,7 @@ define('aronnax/store',
        * The current amount of objects in the store
        * @type Number
        */
+      // TODO Cache this, flush cache on changes.
       length: {
         get: function() { return _.size(this._dataStore); }
       },
@@ -720,6 +789,7 @@ define('aronnax/store',
  */
 
 define('aronnax/pool',
+  /** @exports aronnax/Pool */
   ['aronnax/base', 'aronnax/logger', 'aronnax/util', 'aronnax/config',
       'aronnax/store'],
   function(Base, Logger, util, config, Store) {
@@ -755,6 +825,11 @@ define('aronnax/pool',
       return toreturn;
     }
 
+   /**
+    * A log which will provide logging capabilities
+    * @class Pool
+    * @extends Base
+    */
     var PoolPrototype = Base.create(Object.prototype, 'Pool', {
       /**
       * The current pool of active members, a store

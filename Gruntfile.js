@@ -85,59 +85,12 @@ module.exports = function(grunt) {
         }
       }
     },
-    'amd-doc': {
-      all: {
-        files: {
-            src: 'src/*.js'
-        },
+    jsdoc: {
+      dist: {
+        src: ['src/*.js'],
         options: {
-          out: 'doc/out',
-          cache: 'doc/cache',
-          mixin: 'doc/mixin',
-          repoview: 'https://github.com/msecret/aronnax/src',
-          requirejs: {
-            baseUrl: './',
-            mainConfigFile: "build/dev.build.js"
-          },
-          types: (function() {
-            var types = [];
-
-            //make all built-in types link to their MDN pages
-            ['Number', 'String', 'Object', 'Function', 'Array', 'RegExp',
-                'Boolean'].forEach(function(val) {
-              types.push({
-                  name: val,
-                  link: 'https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/' + val
-              });
-            });
-
-            types.push({
-              name: 'Any',
-              link: 'https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects'
-            });
-
-            types.push({
-              name: 'void',
-              link: 'https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/undefined'
-            });
-
-            types.push({
-              name: 'Element',
-              link: 'https://developer.mozilla.org/en-US/docs/DOM/element'
-            });
-
-            types.push({
-              name: 'Constructor',
-              link: 'https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/constructor'
-            });
-
-            types.push({
-              name: 'require',
-              link: 'http://requirejs.org/'
-            });
-
-            return types;
-          })()
+          destination: 'doc',
+          'private': true
         }
       }
     },
@@ -202,6 +155,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   grunt.loadNpmTasks('grunt-amd-doc');
+  grunt.loadNpmTasks('grunt-jsdoc');
   grunt.loadNpmTasks('grunt-banner');
   grunt.loadNpmTasks('grunt-global-config');
 
@@ -212,8 +166,8 @@ module.exports = function(grunt) {
   grunt.registerTask('test', 'jasmine:test');
   grunt.registerTask('integration', 'jasmine:integration');
   grunt.registerTask('banner', 'usebanner');
-  grunt.registerTask('doc', 'amd-doc');
+  grunt.registerTask('doc', 'jsdoc');
 
-  grunt.retisterTask('default', ['lint', 'clean', 'compile', 'banner', 'concat',
-                                  'test', 'doct']);
+  grunt.registerTask('default', ['lint', 'clean', 'compile', 'banner', 'concat',
+                                 'test', 'doc']);
 };
