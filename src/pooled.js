@@ -17,7 +17,9 @@ define('aronnax/pooled',
     * @class Pooled
     * @extends Base
     */
-    var Pooled = Base.create(Object.prototype, 'Pooled', {
+    var Pooled = Base.create(Object.prototype, 'Pooled', 
+      /** @lends Pooled */
+      {
 
       /**
        * Gets a free object from the pool, enhances it and then returns it.
