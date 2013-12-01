@@ -5,7 +5,7 @@
 // Licensed MIT
 
 /**
- * @file base Holds the base module
+ * @file base Holds the Base module
  */
 
 define('aronnax/base',

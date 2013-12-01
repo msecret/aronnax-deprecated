@@ -4,8 +4,7 @@
 // Licensed MIT
 
 /**
- * @file Holds the pool static class and the pooled class to make an object
- * pooled.
+ * @file pool Holds the Pool module
  */
 
 define('aronnax/pool',

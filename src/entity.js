@@ -4,7 +4,7 @@
 // Licensed MIT
 
 /**
- * @file Holds the Entity object
+ * @file entity Holds the Entity module
  */
 
 define('aronnax/entity', [

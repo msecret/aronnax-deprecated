@@ -4,7 +4,7 @@
 // Licensed MIT
 
 /**
- * @file logger All logging capabilities.
+ * @file logger holds the Logger module
  */
 
 define('aronnax/logger',

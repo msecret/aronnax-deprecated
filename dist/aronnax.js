@@ -15,7 +15,11 @@
  */
 
 define('aronnax/base',
-  /** @exports aronnax/Base */
+  /**
+   * Provides functionality to create a base prototype with a classname and 
+   * properties to add to it.
+   * @exports aronnax/Base
+   */
   ['underscore'],
   function(_) {
     "use strict";
@@ -44,12 +48,7 @@ define('aronnax/base',
       return _classIds[className]++;
     }
 
-   /**
-    * Create an object with a classname and properties to add to it.
-    * from.
-    * @class Base
-    */
-    var Base = /** @lends Base.prototype */ {
+    var Base = /** @lends module:aronnax/Base */ {
 
       /**
        * Creates a new object, maps to Object.create.
@@ -127,6 +126,9 @@ var Config = {"env":"dev","initialPoolSizeAmount":12,"fps":60};
 return Config;
 });
 
+/**
+ * @file base Holds the logWriter dependency 
+ */
 
 define('deps/logWriter',
   [],function() {
@@ -143,7 +145,11 @@ define('deps/logWriter',
  */
 
 define('aronnax/logger',
-  /** @exports aronnax/Logger */
+  /**
+   * A factory interface to create named logs of instance {Log}
+   * @exports aronnax/Logger
+   * @see Log
+   */
   ['underscore', 'aronnax/base', 'aronnax/config', 'deps/logWriter'],
   function(_, Base, config, logWriterObject) {
     "use strict";
@@ -175,6 +181,7 @@ define('aronnax/logger',
 
         /**
          * The object responsible for writing the log, such as console.
+         * @protected
          * @instance
          */
         this._logWriter = logWriter;
@@ -242,11 +249,7 @@ define('aronnax/logger',
       }
     });
 
-   /**
-    * A log which will provide logging capabilities
-    * @class Logger
-    */
-    var Logger = /** @lends Logger */ {
+    var Logger = /** @lends module:aronnax/Logger */ {
 
       /**
        * List of currently active logs.
@@ -305,7 +308,10 @@ define('aronnax/logger',
  */
 
 define('aronnax/util',
-  /** @exports aronnax/Util */
+  /**
+   * Utility methods.
+   * @exports aronnax/Util
+   */
   ['underscore', 'aronnax/config', 'aronnax/logger'],
   function(_, Config, Logger) {
     "use strict";
@@ -337,11 +343,7 @@ define('aronnax/util',
       }
     }
 
-   /**
-    * A log which will provide logging capabilities
-    * @class Util
-    */
-    var util = /** @lends Util **/ {
+    var util = /** @lends module:aronnax/Util **/ {
 
       /**
        * Cleans any type of primitive, object or array. For an object will clear
@@ -430,7 +432,12 @@ define('aronnax/shims/requestAnimationFrame',
  */
 
 define('aronnax/core',
-  /** @exports aronnax/Core */
+  /**
+   * Core game engine functionality.
+   * @exports aronnax/Core
+   * @extends Base
+   * @requires requestAnimationFrame
+   */
   ['aronnax/base',
     'aronnax/logger',
     'aronnax/util',
@@ -451,14 +458,8 @@ define('aronnax/core',
         _requestId;
 
 
-   /**
-    * Create an object with a classname and properties to add to it.
-    * from.
-    * @class Core
-    * @extends Base
-    */
     var Core = Base.create(Object.prototype, 'Core',
-       /** @lends Core */
+       /** @lends module:aronnax/Core */
        {
 
       /**
@@ -612,7 +613,12 @@ define('aronnax/core',
  */
 
 define('aronnax/store',
-  /** @exports aronnax/Store */
+  /**
+   * Provides an object store that uses a hash.
+   * @exports aronnax/Store
+   * @requires underscore
+   * @see Store
+   */
   ['underscore', 'aronnax/base'],
   function(_, Base) {
 
@@ -812,6 +818,9 @@ define('aronnax/pool',
 
    /**
     * Pool protoype object, an object to build pools off of.
+    * @class Pool
+    * @extends Base
+    * @see module:aronnax/Pool
     */
     var PoolPrototype = Base.create(Object.prototype, 'Pool',
       /** @lends Pool.prototype */
@@ -906,10 +915,8 @@ define('aronnax/pool',
 
    /**
     * A log which will provide logging capabilities
-    * @class Pool
-    * @extends Base
     */
-    var Pool = /** @lends Pool */ {
+    var Pool = /** @lends module:aronnax/Pool */ {
       /**
        * All the current pools, as a hash with the class type as the key.
        * @static
@@ -1082,7 +1089,11 @@ define('aronnax/pool',
  */
 
 define('aronnax/pooled',
-  /** @exports aronnax/Pooled */
+  /**
+   * Pooled module.
+   * @exports aronnax/Pooled
+   * @see Pooled
+   */
   ['aronnax/base', 'aronnax/pool'],
   function(Base, Pool) {
 
@@ -1091,8 +1102,8 @@ define('aronnax/pooled',
     * @class Pooled
     * @extends Base
     */
-    var Pooled = Base.create(Object.prototype, 'Pooled', 
-      /** @lends Pooled */
+    var Pooled = Base.create(Object.prototype, 'Pooled',
+      /** @lends Pooled.prototype */
       {
 
       /**
@@ -1139,7 +1150,13 @@ define('aronnax/pooled',
  */
 
 define('aronnax/entity', [
-  /** @exports aronnax/Entity */
+  /**
+   * A factory interface to create new entities.
+   * @exports aronnax/Entity
+   * @extends Entity
+   * @requires underscore
+   * @see Entity
+   */
     'underscore',
     'aronnax/base',
     'aronnax/logger',
@@ -1150,6 +1167,8 @@ define('aronnax/entity', [
 
    /**
     * A base game entity object which is pooled
+    * @class Entity
+    * @extends Pooled
     */
     var EntityProto = Base.create(Pooled, 'Entity',
                                   /** @lends Entity.prototype */ {
@@ -1215,12 +1234,8 @@ define('aronnax/entity', [
       }
     });
 
-    /**
-     * A base game entity object which is pooled
-     * @class Entity
-     * @extends Pooled
-     */
-    var Entity = Base.create(EntityProto, 'Entity', /** @lends Entity */ {
+    var Entity = Base.create(EntityProto, 'Entity', 
+      /** @lends module:aronnax/Entity */ {
       /**
        * Creates the new entity and adds the components to it.
        * @param {Sting} entityName The name of the type of entity
@@ -1269,6 +1284,10 @@ define('aronnax/entity', [
 // https://github.com/msecret/aronnax
 // Licensed MIT
 
+/**
+ * @file aronnax Holds the aronnax module
+ */
+
 define('aronnax/aronnax',[
        'aronnax/base',
        'aronnax/config',
@@ -1279,65 +1298,64 @@ define('aronnax/aronnax',[
        'aronnax/pooled',
        'aronnax/store',
        'aronnax/util'],
-  /** @exports aronnax/Aronnax */
+  /**
+   * The base Aronnax core object. All aronnax modules available from here.
+   * @exports aronnax/Aronnax
+   */
   function(Base, Config, Core, Entity, Logger, Pool, Pooled, Store, Util) {
 
-    /**
-     * The base Aronnax core object.
-     * @class Aronnax
-     */
-    var Aronnax = /** @lends Aronnax */ {
+    var Aronnax = /** @lends module:aronnax/Aronnax */ {
       /**
        * Aronnax.Base
-       * @type Base
+       * @type module:aronnax/Base
        */
       Base: Base,
 
       /**
        * Aronnax.Config
-       * @type Config
+       * @type module:aronnax/Config
        */
       Config: Config,
 
       /**
        * Aronnax.Core
-       * @type Core
+       * @type module:aronnax/Core
        */
       Core: Core,
 
       /**
        * Aronnax.Logger
-       * @type Logger
+       * @type module:aronnax/Logger
        */
       Logger: Logger,
 
       /**
        * Aronnax.Entity
-       * @type Entity
+       * @type module:aronnax/Entity
        */
       Entity: Entity,
 
       /**
        * Aronnax.Pool
-       * @type Pool
+       * @type module:aronnax/Pool
        */
       Pool: Pool,
 
       /**
        * Aronnax.Pooled
-       * @type Pooled
+       * @type module:aronnax/Pooled
        */
       Pooled: Pooled,
 
       /**
        * Aronnax.Store
-       * @type Store
+       * @type module:aronnax/Store
        */
       Store: Store,
 
       /**
        * Aronnax.Util
-       * @type Util
+       * @type module:aronnax/Util
        */
       Util: Util
     };

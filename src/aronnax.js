@@ -3,6 +3,10 @@
 // https://github.com/msecret/aronnax
 // Licensed MIT
 
+/**
+ * @file aronnax Holds the aronnax module
+ */
+
 define([
        'aronnax/base',
        'aronnax/config',

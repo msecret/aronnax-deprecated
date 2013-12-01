@@ -4,7 +4,7 @@
 // Licensed MIT
 
 /**
- * @file core Holds the game loop and any other timing functionality
+ * @file core Holds the Core module
  */
 
 define('aronnax/core',

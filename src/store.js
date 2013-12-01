@@ -5,7 +5,7 @@
 // Licensed MIT
 
 /**
- * @file Holds the Store object
+ * @file store Holds the Store module
  */
 
 define('aronnax/store',

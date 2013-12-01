@@ -4,7 +4,7 @@
 // Licensed MIT
 
 /**
- * @file Holds the pooled object
+ * @file pooled Holds the Pooled module
  */
 
 define('aronnax/pooled',

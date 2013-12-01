@@ -4,7 +4,7 @@
 // Licensed MIT
 
 /**
- * @file The aronnax specific utility class
+ * @file util Holds the Util module
  */
 
 define('aronnax/util',
