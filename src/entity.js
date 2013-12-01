@@ -43,7 +43,7 @@ define('aronnax/entity', [
        * A list of component names on the entity
        * @type Array
        */
-      componentList: {
+      componentLcst: {
         value: [],
         writable: true
       },

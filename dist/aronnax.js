@@ -11,7 +11,7 @@
 // Licensed MIT
 
 /**
- * @file base Holds the base module
+ * @file base Holds the Base module
  */
 
 define('aronnax/base',
@@ -19,6 +19,7 @@ define('aronnax/base',
    * Provides functionality to create a base prototype with a classname and 
    * properties to add to it.
    * @exports aronnax/Base
+   * @extends Base
    */
   ['underscore'],
   function(_) {
@@ -48,6 +49,57 @@ define('aronnax/base',
       return _classIds[className]++;
     }
 
+    /**
+     * Will create the object and provide id and classIds for it.
+     * @private
+     * @param {Object} obj The object to create and ID.
+     * @returns {Object} The object created.
+     */
+    function construct(obj) {
+      var classId = nextClassId(obj.className),
+        o = Object.create(obj, {
+          'id': {
+            enumerable: false,
+            writable: false,
+            value: _nextId++
+          },
+          'classId': {
+            enumerable: false,
+            writable: false,
+            value: classId
+          }
+        });
+
+      return o;
+    }
+
+    /**
+     * Base protype to extend off of. Provides class name property and method
+     * to construct an instance of the prototype.
+     * @class Base
+     */
+    var BaseProto = /** @lends Base.prototype */ {
+      /**
+       * Class name of the prototype being created.
+       * @type String
+       * @default Base
+       */
+      className: {
+        value: 'Base',
+        configurable: false,
+        enumerable: false,
+        writable: true
+      },
+      /**
+       * Constructs an instance of the protoype, assigning an id and a class
+       * id.
+       * @return {Object} An instance object of the prototype.
+       */
+      construct: function() {
+        return construct(this);
+      }
+    };
+
     var Base = /** @lends module:aronnax/Base */ {
 
       /**
@@ -58,17 +110,17 @@ define('aronnax/base',
        * @returns {Object} The newly created instance.
        */
       create: function (obj, name, props) {
-        var o = Object.create(obj),
+        var o,
             prop,
+            f,
             key;
+        if (obj && !obj.className) {
+          f = Object.create(obj);
+          f.prototype = Object.create(BaseProto);
+        }
 
-        Object.defineProperty(o, "className",
-          {
-            value: name || 'Base',
-            configurable: false,
-            enumerable: false,
-            writable: false
-          });
+        o = Object.create(f || obj);
+        o.className = name || 'Base';
 
         for (key in props) {
           if (props.hasOwnProperty(key)) {
@@ -94,21 +146,7 @@ define('aronnax/base',
        * @returns {Object} The object created.
        */
       construct: function (obj) {
-        var classId = nextClassId(obj.className),
-          o = Object.create(obj, {
-            'id': {
-              enumerable: false,
-              writable: false,
-              value: _nextId++
-            },
-            'classId': {
-              enumerable: false,
-              writable: false,
-              value: classId
-            }
-          });
-
-        return o;
+        return construct(obj);
       }
     };
 
@@ -141,7 +179,7 @@ define('deps/logWriter',
 // Licensed MIT
 
 /**
- * @file logger All logging capabilities.
+ * @file logger holds the Logger module
  */
 
 define('aronnax/logger',
@@ -304,7 +342,7 @@ define('aronnax/logger',
 // Licensed MIT
 
 /**
- * @file The aronnax specific utility class
+ * @file util Holds the Util module
  */
 
 define('aronnax/util',
@@ -428,7 +466,7 @@ define('aronnax/shims/requestAnimationFrame',
 // Licensed MIT
 
 /**
- * @file core Holds the game loop and any other timing functionality
+ * @file core Holds the Core module
  */
 
 define('aronnax/core',
@@ -609,7 +647,7 @@ define('aronnax/core',
 // Licensed MIT
 
 /**
- * @file Holds the Store object
+ * @file store Holds the Store module
  */
 
 define('aronnax/store',
@@ -773,8 +811,7 @@ define('aronnax/store',
 // Licensed MIT
 
 /**
- * @file Holds the pool static class and the pooled class to make an object
- * pooled.
+ * @file pool Holds the Pool module
  */
 
 define('aronnax/pool',
@@ -1085,7 +1122,7 @@ define('aronnax/pool',
 // Licensed MIT
 
 /**
- * @file Holds the pooled object
+ * @file pooled Holds the Pooled module
  */
 
 define('aronnax/pooled',
@@ -1146,7 +1183,7 @@ define('aronnax/pooled',
 // Licensed MIT
 
 /**
- * @file Holds the Entity object
+ * @file entity Holds the Entity module
  */
 
 define('aronnax/entity', [
