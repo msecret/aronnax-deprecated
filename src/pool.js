@@ -9,7 +9,9 @@
  */
 
 define('aronnax/pool',
-  /** @exports aronnax/Pool */
+  /** Object Pooling, the implementation behing Pooling class interface.
+   * @exports aronnax/Pool
+  */
   ['aronnax/base', 'aronnax/logger', 'aronnax/util', 'aronnax/config',
       'aronnax/store'],
   function(Base, Logger, util, config, Store) {
@@ -46,7 +48,7 @@ define('aronnax/pool',
     }
 
    /**
-    * A log which will provide logging capabilities
+    * Pool protoype object, an object to build pools off of.
     */
     var PoolPrototype = Base.create(Object.prototype, 'Pool',
       /** @lends Pool.prototype */
