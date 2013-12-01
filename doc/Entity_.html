@@ -38,6 +38,8 @@
     
     
         
+            <div class="description">A factory interface to create new entities.</div>
+        
         
         
 <dl class="details">
@@ -62,12 +64,19 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="entity.js.html">entity.js</a>, <a href="entity.js.html#line18">line 18</a>
+        <a href="entity.js.html">entity.js</a>, <a href="entity.js.html#line24">line 24</a>
     </li></ul></dd>
     
     
     
     
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="Entity.html">Entity</a></li>
+        </ul>
+    </dd>
     
     
     
@@ -79,6 +88,21 @@
     </div>
     
     
+        <h3 class="subsection-title">Extends</h3>
+        
+        <ul>
+            <li><a href="Entity.html">Entity</a></li>
+        </ul>
+    
+    
+    
+    
+    
+        <h3 class="subsection-title">Requires</h3>
+        
+        <ul>
+            <li>module:underscore</li>
+        </ul>
     
     
     
@@ -88,25 +112,100 @@
     
     
     
-    
-        <h3 class="subsection-title">Members</h3>
+        <h3 class="subsection-title">Methods</h3>
         
         <dl>
             
 <dt>
-    <h4 class="name" id="EntityProto"><span class="type-signature">&lt;inner> </span>EntityProto<span class="type-signature"></span></h4>
+    <h4 class="name" id="addMixins"><span class="type-signature">&lt;static> </span>addMixins<span class="signature">(obj, mixins)</span><span class="type-signature"></span></h4>
     
     
 </dt>
 <dd>
     
+    
     <div class="description">
-        A base game entity object which is pooled
+        Add an object of mixins to the current prototype.
     </div>
     
-    
-    
 
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>obj</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">Object to add mixins to</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>mixins</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">A full object of mixins to add.</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
     
 <dl class="details">
     
@@ -130,7 +229,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="entity.js.html">entity.js</a>, <a href="entity.js.html#line23">line 23</a>
+        <a href="entity.js.html">entity.js</a>, <a href="entity.js.html#line131">line 131</a>
     </li></ul></dd>
     
     
@@ -143,11 +242,181 @@
 
     
     
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="create"><span class="type-signature">&lt;static> </span>create<span class="signature">(entityName, components)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Creates the new entity and adds the components to it.
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>entityName</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Sting</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">The name of the type of entity</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>components</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">A list of components to add to the entity</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="entity.js.html">entity.js</a>, <a href="entity.js.html#line103">line 103</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    The entity prototype to create to entities with
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">Object</span>
+
+
+	</dd>
+</dl>
+
+        
+    
+    
 </dd>
 
         </dl>
-    
-    
     
     
     
@@ -163,13 +432,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Index</a></h2><h3>Modules</h3><ul><li><a href="Aronnax_.html">aronnax/Aronnax</a></li><li><a href="Base_.html">aronnax/Base</a></li><li><a href="Core_.html">aronnax/Core</a></li><li><a href="Entity_.html">aronnax/Entity</a></li><li><a href="Logger_.html">aronnax/Logger</a></li><li><a href="Pool.html">aronnax/Pool</a></li><li><a href="Pooled.html">aronnax/Pooled</a></li><li><a href="Store.html">aronnax/Store</a></li><li><a href="Util.html">aronnax/Util</a></li></ul><h3>Classes</h3><ul><li><a href="Aronnax.html">Aronnax</a></li><li><a href="Base.html">Base</a></li><li><a href="Core.html">Core</a></li><li><a href="Entity.html">Entity</a></li><li><a href="Log.html">Log</a></li><li><a href="Logger.html">Logger</a></li><li><a href="Pool_.html">Pool</a></li><li><a href="Pooled_.html">Pooled</a></li><li><a href="Store_.html">Store</a></li><li><a href="Util_.html">Util</a></li></ul>
+    <h2><a href="index.html">Index</a></h2><h3>Modules</h3><ul><li><a href="Aronnax.html">aronnax/Aronnax</a></li><li><a href="Base.html">aronnax/Base</a></li><li><a href="Core.html">aronnax/Core</a></li><li><a href="Entity_.html">aronnax/Entity</a></li><li><a href="Logger.html">aronnax/Logger</a></li><li><a href="Pool.html">aronnax/Pool</a></li><li><a href="Pooled.html">aronnax/Pooled</a></li><li><a href="Store.html">aronnax/Store</a></li><li><a href="Util.html">aronnax/Util</a></li></ul><h3>Classes</h3><ul><li><a href="Entity.html">Entity</a></li><li><a href="Log.html">Log</a></li><li><a href="Pool_.html">Pool</a></li><li><a href="Pooled_.html">Pooled</a></li><li><a href="Store_.html">Store</a></li></ul>
 </nav>
 
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0</a> on Sat Nov 30 2013 16:55:50 GMT-0800 (PST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0</a> on Sat Nov 30 2013 18:38:51 GMT-0800 (PST)
 </footer>
 
 <script> prettyPrint(); </script>

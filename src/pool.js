@@ -49,6 +49,9 @@ define('aronnax/pool',
 
    /**
     * Pool protoype object, an object to build pools off of.
+    * @class Pool
+    * @extends Base
+    * @see module:aronnax/Pool
     */
     var PoolPrototype = Base.create(Object.prototype, 'Pool',
       /** @lends Pool.prototype */
@@ -143,10 +146,8 @@ define('aronnax/pool',
 
    /**
     * A log which will provide logging capabilities
-    * @class Pool
-    * @extends Base
     */
-    var Pool = /** @lends Pool */ {
+    var Pool = /** @lends module:aronnax/Pool */ {
       /**
        * All the current pools, as a hash with the class type as the key.
        * @static

@@ -8,7 +8,13 @@
  */
 
 define('aronnax/entity', [
-  /** @exports aronnax/Entity */
+  /**
+   * A factory interface to create new entities.
+   * @exports aronnax/Entity
+   * @extends Entity
+   * @requires underscore
+   * @see Entity
+   */
     'underscore',
     'aronnax/base',
     'aronnax/logger',
@@ -19,6 +25,8 @@ define('aronnax/entity', [
 
    /**
     * A base game entity object which is pooled
+    * @class Entity
+    * @extends Pooled
     */
     var EntityProto = Base.create(Pooled, 'Entity',
                                   /** @lends Entity.prototype */ {
@@ -84,12 +92,8 @@ define('aronnax/entity', [
       }
     });
 
-    /**
-     * A base game entity object which is pooled
-     * @class Entity
-     * @extends Pooled
-     */
-    var Entity = Base.create(EntityProto, 'Entity', /** @lends Entity */ {
+    var Entity = Base.create(EntityProto, 'Entity', 
+      /** @lends module:aronnax/Entity */ {
       /**
        * Creates the new entity and adds the components to it.
        * @param {Sting} entityName The name of the type of entity

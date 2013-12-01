@@ -13,65 +13,64 @@ define([
        'aronnax/pooled',
        'aronnax/store',
        'aronnax/util'],
-  /** @exports aronnax/Aronnax */
+  /**
+   * The base Aronnax core object. All aronnax modules available from here.
+   * @exports aronnax/Aronnax
+   */
   function(Base, Config, Core, Entity, Logger, Pool, Pooled, Store, Util) {
 
-    /**
-     * The base Aronnax core object.
-     * @class Aronnax
-     */
-    var Aronnax = /** @lends Aronnax */ {
+    var Aronnax = /** @lends module:aronnax/Aronnax */ {
       /**
        * Aronnax.Base
-       * @type Base
+       * @type module:aronnax/Base
        */
       Base: Base,
 
       /**
        * Aronnax.Config
-       * @type Config
+       * @type module:aronnax/Config
        */
       Config: Config,
 
       /**
        * Aronnax.Core
-       * @type Core
+       * @type module:aronnax/Core
        */
       Core: Core,
 
       /**
        * Aronnax.Logger
-       * @type Logger
+       * @type module:aronnax/Logger
        */
       Logger: Logger,
 
       /**
        * Aronnax.Entity
-       * @type Entity
+       * @type module:aronnax/Entity
        */
       Entity: Entity,
 
       /**
        * Aronnax.Pool
-       * @type Pool
+       * @type module:aronnax/Pool
        */
       Pool: Pool,
 
       /**
        * Aronnax.Pooled
-       * @type Pooled
+       * @type module:aronnax/Pooled
        */
       Pooled: Pooled,
 
       /**
        * Aronnax.Store
-       * @type Store
+       * @type module:aronnax/Store
        */
       Store: Store,
 
       /**
        * Aronnax.Util
-       * @type Util
+       * @type module:aronnax/Util
        */
       Util: Util
     };

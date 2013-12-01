@@ -8,7 +8,10 @@
  */
 
 define('aronnax/util',
-  /** @exports aronnax/Util */
+  /**
+   * Utility methods.
+   * @exports aronnax/Util
+   */
   ['underscore', 'aronnax/config', 'aronnax/logger'],
   function(_, Config, Logger) {
     "use strict";
@@ -40,11 +43,7 @@ define('aronnax/util',
       }
     }
 
-   /**
-    * A log which will provide logging capabilities
-    * @class Util
-    */
-    var util = /** @lends Util **/ {
+    var util = /** @lends module:aronnax/Util **/ {
 
       /**
        * Cleans any type of primitive, object or array. For an object will clear

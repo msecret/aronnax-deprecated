@@ -8,7 +8,11 @@
  */
 
 define('aronnax/logger',
-  /** @exports aronnax/Logger */
+  /**
+   * A factory interface to create named logs of instance {Log}
+   * @exports aronnax/Logger
+   * @see Log
+   */
   ['underscore', 'aronnax/base', 'aronnax/config', 'deps/logWriter'],
   function(_, Base, config, logWriterObject) {
     "use strict";
@@ -40,6 +44,7 @@ define('aronnax/logger',
 
         /**
          * The object responsible for writing the log, such as console.
+         * @protected
          * @instance
          */
         this._logWriter = logWriter;
@@ -107,11 +112,7 @@ define('aronnax/logger',
       }
     });
 
-   /**
-    * A log which will provide logging capabilities
-    * @class Logger
-    */
-    var Logger = /** @lends Logger */ {
+    var Logger = /** @lends module:aronnax/Logger */ {
 
       /**
        * List of currently active logs.

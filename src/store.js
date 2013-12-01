@@ -9,7 +9,12 @@
  */
 
 define('aronnax/store',
-  /** @exports aronnax/Store */
+  /**
+   * Provides an object store that uses a hash.
+   * @exports aronnax/Store
+   * @requires underscore
+   * @see Store
+   */
   ['underscore', 'aronnax/base'],
   function(_, Base) {
 

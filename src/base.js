@@ -9,7 +9,11 @@
  */
 
 define('aronnax/base',
-  /** @exports aronnax/Base */
+  /**
+   * Provides functionality to create a base prototype with a classname and 
+   * properties to add to it.
+   * @exports aronnax/Base
+   */
   ['underscore'],
   function(_) {
     "use strict";
@@ -38,12 +42,7 @@ define('aronnax/base',
       return _classIds[className]++;
     }
 
-   /**
-    * Create an object with a classname and properties to add to it.
-    * from.
-    * @class Base
-    */
-    var Base = /** @lends Base.prototype */ {
+    var Base = /** @lends module:aronnax/Base */ {
 
       /**
        * Creates a new object, maps to Object.create.

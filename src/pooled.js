@@ -8,7 +8,11 @@
  */
 
 define('aronnax/pooled',
-  /** @exports aronnax/Pooled */
+  /**
+   * Pooled module.
+   * @exports aronnax/Pooled
+   * @see Pooled
+   */
   ['aronnax/base', 'aronnax/pool'],
   function(Base, Pool) {
 
@@ -17,8 +21,8 @@ define('aronnax/pooled',
     * @class Pooled
     * @extends Base
     */
-    var Pooled = Base.create(Object.prototype, 'Pooled', 
-      /** @lends Pooled */
+    var Pooled = Base.create(Object.prototype, 'Pooled',
+      /** @lends Pooled.prototype */
       {
 
       /**

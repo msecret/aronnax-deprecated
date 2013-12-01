@@ -8,7 +8,12 @@
  */
 
 define('aronnax/core',
-  /** @exports aronnax/Core */
+  /**
+   * Core game engine functionality.
+   * @exports aronnax/Core
+   * @extends Base
+   * @requires requestAnimationFrame
+   */
   ['aronnax/base',
     'aronnax/logger',
     'aronnax/util',
@@ -29,14 +34,8 @@ define('aronnax/core',
         _requestId;
 
 
-   /**
-    * Create an object with a classname and properties to add to it.
-    * from.
-    * @class Core
-    * @extends Base
-    */
     var Core = Base.create(Object.prototype, 'Core',
-       /** @lends Core */
+       /** @lends module:aronnax/Core */
        {
 
       /**
