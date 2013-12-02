@@ -1,6 +1,5 @@
 // Copyright (c) 2013
 // All Rights Reserved
-// aronnax - v0.1.1
 // https://github.com/msecret/aronnax
 // Licensed MIT
 
