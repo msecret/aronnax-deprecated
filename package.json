@@ -16,18 +16,16 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "grunt": "~0.4.1",
-    "grunt-closure-tools": "~0.8.3",
-    "grunt-contrib-watch": "~0.5.1",
-    "grunt-jsdoc-plugin": "0.1.4",
-    "grunt-contrib-jshint": "~0.6.2",
+    "grunt": "~0.4.2",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-jsdoc-plugin": "~0.1.4",
+    "grunt-contrib-jshint": "~0.7.2",
     "grunt-requirejs": "~0.4.0",
     "grunt-contrib-clean": "~0.5.0",
     "grunt-template-jasmine-requirejs": "~0.1.4",
-    "grunt-contrib-jasmine": "~0.5.1",
-    "grunt-banner": "~0.1.4",
-    "grunt-amd-doc": "~0.4.3",
-    "grunt-global-config": "*",
+    "grunt-contrib-jasmine": "~0.5.2",
+    "grunt-banner": "~0.2.0",
+    "grunt-global-config": "~0.1.0",
     "grunt-jsdoc": "~0.4.2"
   }
 }
