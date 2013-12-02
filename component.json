@@ -3,6 +3,6 @@
   "version": "0.1.1",
   "main": "dist/aronnax.js",
   "dependencies": {
-    "underscore": "~1.5.1"
+    "underscore": "~1.5.2"
   }
 }
