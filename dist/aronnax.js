@@ -20,6 +20,7 @@ define('aronnax/base',
    * properties to add to it.
    * @exports aronnax/Base
    * @extends Base
+   * @see Base
    */
   ['underscore'],
   function(_) {
@@ -114,6 +115,7 @@ define('aronnax/base',
             prop,
             f,
             key;
+
         if (obj && !obj.className) {
           f = Object.create(obj);
           f.prototype = Object.create(BaseProto);
@@ -490,9 +492,29 @@ define('aronnax/core',
      */
     var _log = Logger.getLog('aronnax.Core');
 
+    /**
+     * Local private frames per second
+     * @type Number
+     * @private
+     */
     var _fps = config.fps || 60,
+    /**
+     * Local private miliseconds per frame
+     * @type Number
+     * @private
+     */
         _millisecondsPerFrame = 1000 / _fps,
+    /**
+     * Local private for if the game is running
+     * @type Boolean
+     * @private
+     */
         _isRunning = false,
+    /**
+     * Request animation frame request id
+     * @type Number
+     * @private
+     */
         _requestId;
 
 
@@ -502,6 +524,7 @@ define('aronnax/core',
 
       /**
        * The frames per second the game should run at defaults to 60
+       * @default 60
        * @type Number
        */
       fps: {
@@ -547,6 +570,7 @@ define('aronnax/core',
       /**
        * Whether the game is currently running or not, used to actually
        * stop the loop.
+       * @readonly
        * @type Boolean
        */
       isRunning: {
@@ -554,6 +578,7 @@ define('aronnax/core',
       },
       /**
        * The ID of the animation frame, returned from requestAnimationFrame.
+       * @readonly
        * @type Number
        */
       requestId: {
@@ -632,7 +657,7 @@ define('aronnax/core',
       /**
        * Draw function should be overwritten
        */
-      draw: function() { _log.log('draw'); }
+      draw: function() { }
 
     });
 
@@ -1222,7 +1247,7 @@ define('aronnax/entity', [
        * A list of component names on the entity
        * @type Array
        */
-      componentList: {
+      componentLcst: {
         value: [],
         writable: true
       },
